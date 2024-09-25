@@ -1,0 +1,138 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lu-thesis}[2014/08/21 Example package]
+
+\RequirePackage[british]{babel}
+
+% Load required packages for code listing
+\RequirePackage{listings}
+\RequirePackage{xcolor}
+\RequirePackage{xargs}
+\RequirePackage{ifthen}
+
+
+\RequirePackage{graphicx}
+\RequirePackage{xparse}
+
+\newif\if@myfont\@myfontfalse
+\DeclareOption{times}{\@myfonttrue}
+\DeclareOption*{\OptionNotUsed}
+\ProcessOptions\relax
+
+\if@myfont
+  \RequirePackage{newtx}  
+\else
+  \RequirePackage{ebgaramond}
+  \RequirePackage[cmintegrals,cmbraces]{newtxmath}
+  \RequirePackage{ebgaramond-maths}  
+\fi
+
+\setsecnumdepth{subsection}
+\maxsecnumdepth{subsection}
+
+%%%%% BEGIN memoir customisations
+
+\chapterstyle{default}
+\renewcommand{\chapnamefont}{\chaptitlefont\scshape}
+
+\pagestyle{Ruled}
+
+%%%%% END memoir customisations
+
+%%%%% BEGIN cover page
+
+\makeatletter
+\NewDocumentCommand{\maketitleLU}{m m}{%
+  \begin{titlingpage}
+    \centering    
+    {\LARGE\bfseries \@title\par}    
+    \vfill
+    {\large by \@author\\[1em]\@date}
+    \vfill
+    {\includegraphics[width=0.25\textwidth]{logo}}\\[2em]
+    {\large #1\ Thesis in Mathematics\\[0.5em] Thesis advisor: #2}
+  \end{titlingpage}
+}
+\makeatother
+
+%%%%% END cover page
+
+%%%%% BEGIN code style 
+\definecolor{lundblue}{RGB}{0,0,128}
+\definecolor{lundbronze}{RGB}{156,97,20}
+
+\definecolor{codegreen}{rgb}{0,0.5,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\newcommand{\captionposition}{t}% code box caption on the top
+\newcommand{\framemargin}{0.5ex}
+\newcommand{\codetitlestyle}[1]{\small\textit{#1}}
+
+
+% Common style
+\lstdefinestyle{c@mmon}{%
+showtabs=true,
+tab=,
+tabsize=2,
+basicstyle=\ttfamily\scriptsize,
+%basicstyle=\ttfamily\footnotesize,
+breaklines=true,
+breakatwhitespace=true,
+backgroundcolor=\color{backcolour},
+commentstyle=\color{codegreen},
+keywordstyle=\color{magenta},
+numberstyle=\tiny\color{codegray},
+stringstyle=\color{codepurple},
+xleftmargin=5pt,
+xrightmargin=5pt
+%,numbers=left
+}
+\lstset{style=c@mmon}
+
+\lstdefinestyle{LULatex}{%
+  style=c@mmon,
+  language=[LaTeX]TeX,
+  keywordstyle=\color{lundblue}
+}
+
+%--- Typesetting LaTeX ---
+\lstnewenvironment{latexcode}{\lstset{style=LULatex}}{}
+\newcommand{\inputlatex}[1]{\lstset{style=LULatex}%
+  \lstinputlisting{#1}}
+
+%%% LU Python style
+\lstdefinestyle{LUpython}{
+  style=c@mmon,
+  language=python,
+  aboveskip=1ex,
+  keywordstyle=\color{magenta},
+  %captionpos=t, 
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+
+\newcommand{\codetitlecheck}[2]
+{
+  \ifthenelse{\equal{emptytitle}{#1}}
+  {\codetitlestyle{#2}}
+  {\codetitlestyle{#1}}
+}
+
+
+%% convenience commands
+% input python code file or a section of it if argument 2 and 3 are not given
+\newcommandx*\inputpython[4][2=emptytitle, 3=1, 4=100000]{\lstinputlisting[firstline=#3,lastline=#4,firstnumber=#3,framesep=.3ex,breaklines=true,style=LUpython,title={\codetitlecheck{#2}{#1}}]{#1}}
+
+% python inside text 
+\newcommand*{\pyth}{\lstinline[style=LUpython]}
+
+% python code environment
+\lstnewenvironment{python}[1][]{\lstset{style=LUpython, breakindent=.5\textwidth,#1}}{}
+
+%%%%% END code style 

@@ -1,0 +1,142 @@
+\documentclass[a4paper,12pt]{memoir}
+
+% \usepackage{lipsum}
+% package for generating dummy text -- remove for actual thesis
+
+\usepackage{amsmath,amssymb,amsthm} % standard AMS LaTeX packages
+
+\usepackage{listings} % for typesetting programming code and similar elements
+\lstset{
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+}
+
+\usepackage{lu-thesis}
+% load after amsmath!
+% requires the memoir document class as well as the following packages:
+% ebgaramond, ebgaramond-maths, graphicx, hyperref, newtxmath, xparse
+% load with 'times' option to use a Times New Roman replacement as default font
+
+\usepackage{xcolor} % access to more colours
+\definecolor{lundblue}{RGB}{0,0,128}
+\definecolor{lundbronze}{RGB}{156,97,20}
+
+\usepackage[colorlinks]{hyperref}
+% package for generating hyperlinks
+% load after all other packages to avoid compatibility issues (unless a package
+% complains and say you should do otherwise)
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=lundblue,%
+  urlcolor=lundblue,%
+  citecolor=lundbronze,%
+}
+
+\usepackage{subfiles} 
+% used to compile pdfs for sections seperately
+
+%%%% BEGIN example usage of amsthm package
+
+\numberwithin{equation}{section} % preface equation number with section number
+
+% equations, theorems, propositions, lemmas and corollaries share the same counter
+\theoremstyle{theorem}
+\newtheorem*{utheorem}{Theorem} % unnumbered Theorem environment
+\newtheorem{theorem}[equation]{Theorem} 
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{corollary}[equation]{Corollary}
+
+\theoremstyle{definition} % these environments are not typeset in italics, but
+                          % the environment's name is typeset in boldface
+\newtheorem*{udefinition}{Definition} % unnumbered Definition environment
+\newtheorem{definition}[equation]{Definition}
+
+\theoremstyle{remark} % these environments are not typeset in italics, and
+                      % environment's name is typeset in italics instead of boldface
+\newtheorem{remark}[equation]{Remark}
+\newtheorem{example}[equation]{Example}
+
+%%%% END example usage of amsthm package
+
+\begin{document}
+
+%%%%% BEGIN cover page
+
+\author{Oskar Emmerich}
+% the thesis' author
+
+\title{Group Structure on arbitrary sets:\\An algebraic application of the Axiom of Choice}
+% the thesis' title
+
+\date{\today}
+% the thesis' hand-in date
+
+\maketitleLU{Bachelor's}{Anitha Thillaisundaram} % comment for master's thesis
+% \maketitleLU[Master's][Advisor's name] % uncomment for master's thesis
+
+%%%%% END cover page
+
+\frontmatter % pages within the front matter are numbered using lowercase Roman numerals
+
+%%%%% BEGIN abstract
+
+\thispagestyle{empty}
+
+\begin{abstract}
+  The thesis should include an abstract that summarises its contents;
+  mathematical jargon can be utilised here. The typical length of an abstract is
+  between 100 and 300 words.
+\end{abstract}
+
+%%%%% END Abstract
+
+%%%%% BEGIN popsci description
+
+\chapter*{Popular science description}
+\addcontentsline{toc}{chapter}{Popular science description}
+\subfile{sections/popular_description.tex}
+
+%%%%% END popsci description
+
+%%%%% BEGIN toc
+
+\cleardoublepage
+
+\settocdepth{subsection}
+\tableofcontents*
+
+%%%%% END toc
+
+%%%%% BEGIN intro
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+\subfile{sections/introduction}
+
+%%%%% END intro
+
+%%%%% BEGIN main body of the thesis
+
+\mainmatter % pages within the main matter are numbered using Arabic numerals
+
+\chapter{First chapter}
+
+%%%%% END main body of the thesis
+
+%%%%% BEGIN appendices
+
+\appendix % appendices are numbered using uppercase Roman letters
+
+%%%%% END appendices
+
+\backmatter
+
+%%%%% BEGIN references
+
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+
+%%%%% END references
+
+\end{document}
