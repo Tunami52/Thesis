@@ -40,7 +40,8 @@
 \numberwithin{equation}{section} % preface equation number with section number
 
 % equations, theorems, propositions, lemmas and corollaries share the same counter
-\theoremstyle{theorem}
+\theoremstyle{plain} %\theoremstyle{theorem}
+
 \newtheorem*{utheorem}{Theorem} % unnumbered Theorem environment
 \newtheorem{theorem}[equation]{Theorem} 
 \newtheorem{proposition}[equation]{Proposition}
@@ -95,7 +96,7 @@
 
 \chapter*{Popular science description}
 \addcontentsline{toc}{chapter}{Popular science description}
-\subfile{sections//popular_description/popular_description}
+\subfile{sections/popular_description/popular_description}
 
 %%%%% END popsci description
 
@@ -121,6 +122,7 @@
 \mainmatter % pages within   the main matter are numbered using Arabic numerals
 
 \chapter{First chapter}
+\subfile{sections/main_theorem/main_theorem}
 
 %%%%% END main body of the thesis
 

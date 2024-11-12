@@ -1,21 +1,26 @@
-\begin{thebibliography}{Ker75}
+\begin{thebibliography}{Har15}
 
-\bibitem[Gol17]{6350139}
+\bibitem[Gol17]{Gol17}
 D.C. Goldrei.
 \newblock {\em Classic set theory :}.
 \newblock CRC PRESS,, [S.l.] :, 2017.
 
-\bibitem[HK72]{MR329895}
+\bibitem[Har15]{Har15}
+F.~Hartogs.
+\newblock \"uber das {P}roblem der {W}ohlordnung.
+\newblock {\em Math. Ann.}, 76(4):438--443, 1915.
+
+\bibitem[HK72]{Haj72}
 A.~Hajnal and A.~Kert\'esz.
 \newblock Some new algebraic equivalents of the axiom of choice.
 \newblock {\em Publ. Math. Debrecen}, 19:339--340, 1972.
 
-\bibitem[Jec78]{3110983}
+\bibitem[Jec78]{Jec78}
 Thomas Jech.
 \newblock {\em Set theory /}.
 \newblock Acad. P.,, New York :, 1978.
 
-\bibitem[Ker75]{4993767}
+\bibitem[Ker75]{Ker75}
 Andor Kertész.
 \newblock {\em Einführung in die transfinite Algebra /}.
 \newblock Birkhäuser,, Basel :, cop. 1975.
