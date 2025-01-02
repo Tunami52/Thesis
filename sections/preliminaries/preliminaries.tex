@@ -1,0 +1,51 @@
+\documentclass[../../main.tex]{subfiles}
+\begin{document}
+The convention in this thesis will be to say \textbf{ZF} when talking about Zermelo-Fraenkel set theory \textit{without} the axoim of choice.
+When talking about the axoim of choice on its own we will say \textbf{AC}, and when talking about Zermelo-Fraenkel set theory together with the axiom of choice use \textbf{ZFC}.
+
+We assume that the reader has some familiarity with axiomatic set theory, but for convenience and constistency we restate some of the necessary basics here. %change wording
+For a more thorough review, see \cite{Gol17}.
+
+\section{Zermelo-Fraenkel Axioms}
+Taken (almost) unchanged from \cite{Gol17}.
+
+\subsection{Axiom of Extensionality}
+$$\forall x \forall y \left(x = y \iff \forall z \left(z \in x \iff z \in y\right) \right)$$
+Two sets are equal if and only if they contain the same elements.
+
+\subsection{Empty Set Axiom}
+$$\exists x \forall y y \notin x$$
+There is a set with no elements.
+
+\subsection{Axiom of Pairs}
+$$\forall x \forall y \exists z \forall w \left( w \in z \iff \left(w = x \vee w = y \right)\right)$$
+For any two sets, there is a set whose elements are precisely these sets.
+
+\subsection{Axiom of Seperation}
+$$\forall x \exists y \forall z \left(z \in y \iff \left(z \in x \wedge \phi(z)\right)\right),$$
+where $\phi(z)$ is any statement of the formal language with free variable $z$.
+For any set $x$ there is a set consiting of all $z$ in $x$ for which $\phi(z)$ holds.
+
+\subsection{Power Set Axiom}
+$$\forall x \exists y \forall z \left(z \in y \iff z \subseteq x\right)$$
+For any set $x$ there is a set consisting of all subsets of x.
+
+\subsection{Union Axiom}
+$$\forall x \exists y \forall z \left(z \in y \iff \exists w \left(z \in w \wedge w \in x\right)\right)$$
+For any set $x$ there is a set which is the union of all the elements of $x$.
+
+\subsection{Axiom of Infinity}
+$$\exists x \left(\varnothing \in x \wedge \forall y \left(y \in x \implies y \cup \{y\} \in x \right)\right)$$
+There is an inductive set.
+
+\subsection{Axiom of Replacement}
+$$\forall x \exists y \forall y' \left(y' \in y \iff \exists x' \left(x' \in x \wedge \phi(x', y')\right)\right),$$
+where $phi(s, t)$ is a formula such that 
+$$\forall s \exists t \left(\phi(s, t) \wedge \forall t' \left(\phi(s, t') \implies t' = t\right)\right).$$
+Of $\phi(s, t)$ is a class function, then when its domain is restricted to $x$m the resulting images form a set $y$.
+
+\subsection{Axiom of Foundation}
+$$\forall x \exists y \left(y \in x \wedge x \cap y = \varnothing \right)$$
+Every set is \textit{well-founded}, i.e. contains an $\in$-minimal element.
+
+\end{document}
