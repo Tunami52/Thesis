@@ -1,7 +1,38 @@
 \documentclass[../../main.tex]{subfiles}
 \begin{document}
 
-\subsection*{Hartogs' Lemma}
+\section{Linear, Partial and Well-orderings}
+
+\section{Ordinals and Order Types}
+
+\section{The Well-ordering Theorem}
+The following, along with \textit{Zorn's Lemma}, is one of the most fundamental results in set theory.
+There is a (bad) joke that goes:
+\begin{quote} %find source
+    The \textit{Axiom of Choice} is obviously true, the \textit{well-ordering theorem} obviously false, 
+    and who knows with \textit{Zorn's Lemma}.
+\end{quote}
+If you are not dying of laughter already, I am sure you will by the end of this section.
+
+\begin{definition}[Zermelo's Well-ordering Theorem]\cite{Jec78}\label{well-order-thm}
+    Every set can be well ordered.
+\end{definition}
+
+We could provide a proof for \ref{well-order-thm} in \textbf{ZFC} here, 
+and treat the well-ordering theorem as a regular theorem.
+This theorem, as it turn out, is not just another regular theorem, and we will therefore also not treat it as one.
+
+Indeed, the well-ordering theorem is actually equivalent to the Axiom of Choice.
+This means that if either statement is assumed to be true (and it has to be assumed since we are talking about \textit{axioms}),
+the other one can be proved from it.
+This is also how we will proceed with the proof, first showing that the well-ordering theorem is true in \textbf{ZFC},
+then conversely proving \textbf{AC} in \textbf{ZF}, assuming that the well-ordering theorem holds true.
+
+\begin{theorem}
+    \hyperref[well-order-thm]{The Well-ordering Theorem} is equivalent to the Axiom of Choice. %cross-reference AC definition
+\end{theorem}
+
+\section{Hartogs' Lemma}
 We continue with the final result for this chapter, 
 a lemma originally stated by Hartogs in 1915, restated in this form in our main paper \cite{Haj72}.
 
@@ -9,7 +40,7 @@ a lemma originally stated by Hartogs in 1915, restated in this form in our main 
     Let $A$ be an arbitrary set.
     Then there exists an ordinal $\alpha$, 
     %such that no subset of $A$ can be injectively mapped on to $\alpha$.
-    such that no injective map from any subset of $A$ to $\alpha$ exists.
+    such that no injective map from any subset of $A$ to $\alpha$ exists. %is this correct? it makes no intuitive sense...
 \end{lemma}
 
 \end{document}
