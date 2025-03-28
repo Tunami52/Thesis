@@ -13,8 +13,8 @@ There is a (bad) joke that goes:
     and who knows with \textit{Zorn's Lemma}.
 \end{quote}
 
-\begin{definition}[Zermelo's Well-Ordering Theorem]\cite[Theorem 15]{Jec78}\label{well-order-thm}
-    Every set can be well ordered.
+\begin{definition}[Zermelo's Well-Ordering Theorem]\cite[Theorem 15, p.39]{Jec78}\label{well-order-thm}
+    \newline Every set can be well ordered.
 \end{definition}
 
 We could provide a proof for definition \ref{well-order-thm} in \textbf{ZFC} here, 
@@ -24,9 +24,6 @@ This theorem, as it turn out, is not just another regular theorem, and we will t
 Indeed, the well-ordering theorem is actually equivalent to the Axiom of Choice.
 This means that if either statement is assumed to be true (and it has to be assumed since we are talking about \textit{axioms}),
 the other one can be proved from it.
-This is also how we will proceed with the proof, first showing that the well-ordering theorem is true in \textbf{ZFC},
-then conversely proving \textbf{AC} in \textbf{ZF}, assuming that the well-ordering theorem holds true.
-
 This is the same methodology we will use for proving our main result, theorem \ref{main-thm}, as well.
 There we will show equivalence of our main statement, that group structure exists on all arbitrary sets, with the Well-Ordering Theorem.
 As such by transitivity, this main statement is also equivalent to the Axiom of Choice.
@@ -34,6 +31,44 @@ As such by transitivity, this main statement is also equivalent to the Axiom of 
 \begin{theorem}
     \hyperref[well-order-thm]{The Well-ordering Theorem} is equivalent to the Axiom of Choice. %cross-reference AC definition
 \end{theorem}
+
+\begin{proof} \cite[p.39]{Jec78}
+    We provide a proof in two parts; first showing that the Well-Ordering Theorem is true in \textbf{ZFC}.
+    Then, conversely, we prove \textbf{AC} in \textbf{ZF}, assuming that the well-ordering theorem holds true.
+    \begin{enumerate}
+        \item \textbf{Axiom of Choice} $\implies$ \textbf{Well-Ordering Theorem}
+        
+        We proceed by transfinite induction.
+
+        Let $A$ be an arbitrary set and let $S = \mathcal{P}(A) \setminus \varnothing$ be the collection of all non-empty subsets of $A$.
+        Let $f: S \to A$ be a choice function (as specified by the Axiom of Choice).
+        We then define an ordinal sequence $\left< \, a_{\alpha} \, \vert \, \alpha < \theta \, \right>$ the following way:
+        \begin{align*}
+            a_0 &= f(A)\\
+            a_{\alpha} &= f\left(A \setminus \left\{a_\xi \, \vert \, \xi < \alpha\right\} \right)
+            &\text{if}\ A \setminus \left\{a_\xi \, \vert \, \xi < \alpha\right\}\ \text{is non-empty}.
+        \end{align*}
+        Now let $\theta$ be the smallest ordinal such that $A = \left\{a_\xi \, \vert \, \xi < \theta\right\}$.
+        
+        We know that such an ordinal must exist, since the sequence $\left< \, a_{\alpha} \, \vert \, \alpha < \theta \, \right>$ is entirely defined by the choice function $f$.
+        $f$ maps every non-empty subset of $A$, i.e. members of $S$, to a element of that subset (in $A$).
+        
+        By defining the ordinal sequence the way we did, it is not possible for any element of $A$ to occur in the sequence twice.
+        Any subset of $A$, which is the input of the choice function for some element $a_\gamma$ in the sequence, does not contain any elements $a_\alpha$ for $\alpha < \gamma$, and by definition $f$ can not map to any of these members.
+        
+        As such $\mathbf{Im}\left(\left< \, a_{\alpha} \, \vert \, \alpha < \theta \, \right>\right) = A$
+        and $\left< \, a_{\alpha} \, \vert \, \alpha < \theta \, \right>$ enumerates $A$, i.e. is a bijection\footnote{Recall that a sequence is just a function from $\mathbb{N}$, resp. an ordinal, to the set of its elements}.
+        Hence $A$ can be well-ordered, the least element of any subset being the one which corresponds to the smallest ordinal in the sequence.
+        \item \textbf{Well-Ordering Theorem} $\implies$ \textbf{Axiom of Choice}
+        
+        Let $S$ be a set of non-empty sets.
+
+        $\bigcup S$ can be well-ordered by assumption and clearly $s \in S \implies s \subseteq \bigcup S$.
+        We can then define the function $f: S \to \bigcup S$ to map any elements of $S$ to its least element, according to the well-order of $\bigcup S$.
+        
+        Evidently $f$ is a choice function and since the set $S$ was arbitrary the Axiom of Choice holds.
+    \end{enumerate}
+\end{proof}
 
 \section{Hartogs' Lemma}
 We continue with the final result for this chapter, 
