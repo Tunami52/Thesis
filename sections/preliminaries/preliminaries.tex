@@ -1,39 +1,54 @@
 \documentclass[../../main.tex]{subfiles}
 \begin{document}
 The convention in this thesis will be to say \textbf{ZF} when talking about Zermelo-Fraenkel set theory \textit{without} the axiom of choice.
-When talking about the axiom of choice on its own we will say \textbf{AC}, and when talking about Zermelo-Fraenkel set theory together with the axiom of choice use \textbf{ZFC}.
+When talking about the axiom of choice on its own we will say \textbf{AC}, and when talking about Zermelo-Fraenkel set theory together with the axiom of choice we use \textbf{ZFC}.
 
 We will use the convention of including $0$ at the beginning of the natural numbers $\mathbb{N}$, i.e. $\mathbb{N} = \left\{0, \, 1, \, 2\, \ldots\right\}$.
 This is a \textit{natural} choice, since we then can use $\mathbb{N}$ to mean the set described by the \hyperref[ZF7]{Axiom of Infinity}.
 
-\section{First-order Logic and formal Languages}
+\section{First-order Logic and Classes}
 
 \section{Zermelo-Fraenkel Axioms of Set Theory}
 We assume that the reader has some familiarity with axiomatic set theory, but for convenience and consistency we restate some of the necessary basics here. %change wording
 For a more thorough introduction of the topic, see \cite[4.3-4.5]{Gol17}, alternatively \cite[1.1]{Jec78} gives a more technical overview.
-The formulation of the axioms below are based on both textbooks.
+The formulation of the axioms below is based on both textbooks.
 %Double check that the formulas used are not identical to Goldrei
 
 \subsection{Axiom of Extensionality}
 $$\forall x \forall y \left(x = y \iff \forall z \left(z \in x \iff z \in y\right) \right)$$
-Two sets are equal if and only if they contain the same elements.
-
-\subsection{Axiom of the Empty Set}
-$$\exists x \forall y \ y \notin x$$
-There is a set with no elements.
+Two sets are equal if and only if they contain the same elements.\cite[4.3, p.76]{Gol17}
 
 \subsection{Axiom of Pairs}
 $$\forall x \forall y \exists z \forall w \left( w \in z \iff \left(w = x \vee w = y \right)\right)$$
 For any two sets, there is a set whose elements are precisely these sets.
+ 
+We define an ordered pair $\left<x,\, y\right>$ to be the set $\left\{\left\{x\right\},\, \left\{x,\, y\right\}\right\}$.
+Further, ordered $n$-tuples are defined recursively as $\left<x_1,\, x_2,\, x_3,\ldots,\, x_n\right> = \left<x_1,\, \left<x_2,\, x_3,\ldots,\, x_n\right>\right>$.\cite[4.3, pp.76, 79-80]{Gol17}
 
-\subsection{Axiom of Separation}
-$$\forall x \exists y \forall z \left(z \in y \iff \left(z \in x \wedge \phi(z)\right)\right),$$
-where $\phi(z)$ is any statement of the formal language with free variable $z$.
-For any set $x$ there is a set consisting of all $z$ in $x$ for which $\phi(z)$ holds.
+Ordered pairs satisfy the property that for any sets $x$, $y$, $u$, $v$, if $\left<x,\, y\right> = \left<u,\, v\right>$, then $x = u$ and $y = v$.\cite[Theorem 4.2, p.79]{Gol17}
+
+\subsection{Axiom Schema of Separation}\label{ZF3}
+Let $\phi(z, p)$ be a formula in first order logic with a free variable $z$. Then
+\begin{equation}\label{seperation-axiom}
+    \forall x \forall p \exists y \forall z \left(z \in y \iff \left(z \in x \wedge \phi(z, p)\right)\right).
+\end{equation}
+For any sets $x$ and $p$ there is a unique set consisting of all $z$ in $x$ for which $\phi(z, p)$ holds.
+This is an axiom schema, meaning an infinite collection of axioms, since (\ref{seperation-axiom}) is a separate axiom for every formula $\phi(z, p)$.\cite[pp.5-6]{Jec78}
+%able to define intersections between a class and a set as a set itself
+
+\subsection{Axiom of the Empty Set} 
+$$\exists x \forall y \ y \notin x$$
+There is a set with no elements. We call this set $\varnothing = \left\{\right\}$. \cite{Gol17}
+
+The Empty Set Axiom is not strictly required, the existence of the empty set also arises from the \hyperref[ZF3]{Axiom Schema of Seperation}.
+Since we can define the empty class $\varnothing = \left\{u\, \vert\, u \neq u\right\}$, the empty set is also a set.
+However this follows from $\varnothing$ being a subset of all sets and hence only under the assumption that at least one other set exists.
+The existence of that set, in turn, follows from the \hyperref[ZF7]{Axiom of Infinity}.\cite[p.6]{Jec78}
 
 \subsection{Axiom of Power Sets}
 $$\forall x \exists y \forall z \left(z \in y \iff z \subseteq x\right)$$
 For any set $x$ there is a set, denoted by $\mathcal{P}(x)$ and called the power set of x, consisting of all subsets of x.
+%cartesian products and functions
 
 \subsection{Union Axiom}
 $$\forall x \exists y \forall z \left(z \in y \iff \exists w \left(z \in w \wedge w \in x\right)\right)$$
@@ -48,11 +63,12 @@ $$\forall x \exists y \forall y' \left(y' \in y \iff \exists x' \left(x' \in x \
 where $\phi(s, t)$ is a formula such that 
 $$\forall s \exists t \left(\phi(s, t) \wedge \forall t' \left(\phi(s, t') \implies t' = t\right)\right).$$
 If $\phi(s, t)$ is a class function, then when its domain is restricted to a set $x$, the resulting images form a set $y$.
-Since no proper classes will be treated in this text, the relevant statement for us is that the image of any function, of which the domain is a proper set, always is a set.
+%rework to be axiom schema of replacement
 
 \subsection{Axiom of Foundation}
 $$\forall x \exists y \left(y \in x \wedge x \cap y = \varnothing \right)$$
-Every set is \textit{well-founded}, i.e. contains an $\in$-minimal element.
+Every set contains an $\in$-minimal element, we call this being \textit{well-founded}.\cite[p.92]{Gol17}
+This also means there exist no infinitely descending chains of sets, such as $x_0 \ni x_1 \ni x_2 \ni \cdots$.\cite[Theorem 4.3, p.95]{Gol17}
 
 \section{The Axiom of Choice}
 %It has to be somewhere, right?
