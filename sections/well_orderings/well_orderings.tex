@@ -4,6 +4,47 @@
 \section{Linear, Partial and Well-orderings}
 
 \section{Ordinals and Order Types}
+There are several ways to define the natural numbers $\mathbb{N}$, the way we do it here, and the way generally used in set theory, is to use the \hyperref[ZF7]{Axiom of Infinity}.
+This states that $\mathbb{N}$ is an \textit{inductive set}, meaning that it contains $0$, defined as $\varnothing = \left\{\right\}$, as well as the successor of every element in it, including of course $0$ itself. \cite[p.39]{Gol17}
+
+\begin{definition}\cite[p.38]{Gol17}
+    The successor of a set $\alpha$ is $\alpha^+ = \alpha \cup \left\{\alpha\right\}$.
+    The successor of $0 = \varnothing$ is called $1$ and the successor of $1$ is called $2$, etc.. 
+\end{definition}
+
+The consequence of this is that $\mathbb{N}$ is the set we are familiar with: $\left\{0,\, 1,\, 2,\, 3,\ldots\right\}$.
+It also means that any natural number is defined as the set of all of its predecessors.
+For example $3 = \left\{0,\, 1,\, 2\right\}$ and $5 = \left\{0,\, 1,\, 2,\, 3,\, 4\right\}$.
+
+Perhaps slightly more subtle then is that, under the usual ordering, $n < m \implies n \in m \wedge n \subset m$.
+This is an important property and the natural numbers, as well as the set $\mathbb{N}$ at large, are \textit{transitive} sets.
+
+\begin{definition}\cite[p.14]{Jec78}
+    A set $T$ is called \textit{transitive} if $$\forall x \left(x \in T \implies x \subseteq T\right).$$
+\end{definition}
+
+\begin{definition}\cite[p.14]{Jec78}
+    A set is called an \textit{ordinal number} or \textit{ordinal} if it is transitive and well-ordered by $\in$.
+\end{definition}
+
+Ordinals are denoted by lowercase greek letter: $\alpha,\, \beta,\, \gamma,\ldots$.
+The ordinal associated with $\left(\mathbb{N},\, \in\right)$ specifically is denoted by $\omega$.
+
+\begin{lemma}
+    $\omega$ and every natural number $n \in \omega$ is an ordinal.
+\end{lemma}
+
+\begin{lemma}\cite[Lemma 2.3, p.15]{Jec78}
+    \begin{enumerate}
+        \item If $\alpha$ is an ordinal abd $\beta \in \alpha$, then $\beta$ is an ordinal.
+        \item If $\alpha,\, \beta$ are ordinals and $\alpha \subset \beta$, then $\alpha \in \beta$.
+        \item If $\alpha,\, \beta$ are ordinals, then either  $\alpha \subseteq \beta$ or $\beta \subseteq \alpha$
+    \end{enumerate}
+\end{lemma}
+
+\begin{theorem}\cite[Theorem 2, p.15]{Jec78}
+    Every well-ordered set is isomorphic to a unique ordinal.
+\end{theorem}
 
 \section{The Well-ordering Theorem}
 The following, along with \textit{Zorn's Lemma}, is one of the most fundamental results in set theory.
