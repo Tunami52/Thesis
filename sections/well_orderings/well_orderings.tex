@@ -3,6 +3,36 @@
 
 \section{Linear, Partial and Well-Orderings}
 
+We define the two types of partial orderings, \textit{strong} and \textit{weak} ones, as follows:
+
+\begin{definition}[Strong Partial Order]\cite[p.165]{Gol17}
+    Let $X$ be a set and $<\, \subseteq X \times X$ a binary relation on $X$.
+    Then $<$ is called a \textit{(strong) partial order of $X$}, and $(X, <)$ called a \textit{(strongly) partially ordered set}, if it is
+    \begin{enumerate}[label=(\roman*)]
+        \item \textbf{irreflexive}: $\forall x,\, y \in X \left((x < y) \vee (x = y) \vee (y < x)\right)$
+        \item \textbf{transitive}: $\forall x,\, y,\, z \in X \left(\left(x < y \wedge y < z\right) \implies x < z\right)$
+    \end{enumerate}
+    It is called \textit{linear} if for all $x$, $y$ in $X$, $x < y$ or $y < x$ or $x = y$.
+\end{definition}
+
+\begin{definition}[Weak Partial Order]\cite[p.164]{Gol17}
+    Let $X$ be a set and $\leq\, \subseteq X \times X$ a binary relation on $X$.
+    Then $\leq$ is called a \textit{weak partial order} of $X$, and $(X, \leq)$ called a \textit{weakly partially ordered set}, if it is
+    \begin{enumerate}[label=(\roman*)]
+        \item \textbf{reflexive}: $\forall x \in X \ (x \leq x)$
+        \item \textbf{transitive}: $\forall x,\, y,\, z \in X \left(\left(x \leq y \wedge y \leq z\right) \implies x \leq z\right)$
+        \item \textbf{anti-symmetric}: $\forall x,\, y \in X \left((x \leq y) \wedge (y \leq x) \implies x = y\right)$
+    \end{enumerate}
+    It is called \textit{linear} if for all $x$, $y$ in $X$, $x \leq y$ or $y \leq x$.
+\end{definition}
+
+A partially ordered set $(X, <)$ is sometimes also referred to simply as $X$ by some abuse of notation when the relation $<$ is known.
+Additionally, whenever we talk about partially or linearly ordered sets without specifying which type we are referring to strong ones. \cite[p.12]{Jec78}
+
+\begin{definition}[Well-Order]\cite[p.13]{Jec78}
+    A linear ordering $<$ of a set $X$ is called a \textit{well-ordering} if every subset of $X$ has a least element.
+\end{definition}
+
 \section{Ordinals and Order Types}
 There are several ways to define the natural numbers $\mathbb{N}$, the way we do it here, and the way generally used in set theory, is to use the \hyperref[ZF7]{Axiom of Infinity}.
 This states that $\mathbb{N}$ is an \textit{inductive set}, meaning that it contains $0$, defined as $\varnothing = \left\{\right\}$, as well as the successor of every element in it, including of course $0$ itself. \cite[p.39]{Gol17}
@@ -17,7 +47,8 @@ It also means that any natural number is defined as the set of all of its predec
 For example $3 = \left\{0,\, 1,\, 2\right\}$ and $5 = \left\{0,\, 1,\, 2,\, 3,\, 4\right\}$.
 
 Perhaps slightly more subtle then is that, under the usual ordering, $n < m \implies n \in m \wedge n \subset m$.
-This is an important property and the natural numbers, as well as the set $\mathbb{N}$ at large, are \textit{transitive} sets.
+This is an important property and the natural numbers, as well as the set $\mathbb{N}$ at large, are called \textit{transitive} sets.
+The notion of a \textit{transitive set} is not to be confused with that of a \textit{transitive (binary) relation}, which is an unfortunate overlap in terminology.
 
 \begin{definition}\cite[p.14]{Jec78}
     A set $T$ is called \textit{transitive} if $$\forall x \left(x \in T \implies x \subseteq T\right).$$
