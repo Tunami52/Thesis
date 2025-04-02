@@ -30,7 +30,7 @@ A partially ordered set $(X, <)$ is sometimes also referred to simply as $X$ by 
 Additionally, whenever we talk about partially or linearly ordered sets without specifying which type we are referring to strong ones. \cite[p.12]{Jec78}
 
 \begin{definition}[Well-Order]\cite[p.13]{Jec78}
-    A linear ordering $<$ of a set $X$ is called a \textit{well-ordering} if every subset of $X$ has a least element.
+    A strong linear order $<$ of a set $X$ is called a \textit{well-ordering} if every subset of $X$ has a least element.
 \end{definition}
 
 \section{Ordinals and Order Types}
@@ -44,7 +44,7 @@ This states that $\mathbb{N}$ is an \textit{inductive set}, meaning that it cont
 
 The consequence of this is that $\mathbb{N}$ is the set we are familiar with: $\left\{0,\, 1,\, 2,\, 3,\ldots\right\}$.
 It also means that any natural number is defined as the set of all of its predecessors.
-For example $3 = \left\{0,\, 1,\, 2\right\}$ and $5 = \left\{0,\, 1,\, 2,\, 3,\, 4\right\}$.
+For example $3 = \left\{0,\, 1,\, 2\right\} = \left\{\left\{\right\},\, \left\{\left\{\right\}\right\},\, \left\{\left\{\right\},\, \left\{\left\{\right\}\right\}\right\}\right\}$ and $5 = \left\{0,\, 1,\, 2,\, 3,\, 4\right\}$.
 
 Perhaps slightly more subtle then is that, under the usual ordering, $n < m \implies n \in m \wedge n \subset m$.
 This is an important property and the natural numbers, as well as the set $\mathbb{N}$ at large, are called \textit{transitive} sets.
@@ -56,22 +56,40 @@ The notion of a \textit{transitive set} is not to be confused with that of a \te
 
 \begin{definition}\cite[p.14]{Jec78}
     A set is called an \textit{ordinal number} or \textit{ordinal} if it is transitive and well-ordered by $\in$.
+    We say $\alpha < \beta$ if and only if $\alpha \in \beta$.
 \end{definition}
 
-Ordinals are denoted by lowercase greek letter: $\alpha,\, \beta,\, \gamma,\ldots.$
+Ordinals are denoted by lowercase greek letters: $\alpha,\, \beta,\, \gamma,\ldots.$
 The ordinal associated with $\left(\mathbb{N},\, \in\right)$ specifically is denoted by $\omega$.
-
-\begin{lemma}
-    $\omega$ and every natural number $n \in \omega$ is an ordinal.
-\end{lemma}
+We know that $\omega$ is indeed an ordinal by construction.
+It follows from the following lemma that every natural number also is an ordinal with respect to set inclusion.
 
 \begin{lemma}\cite[Lemma 2.3, p.15]{Jec78}
     \begin{enumerate}
+        \item The empty set $\varnothing$ is an ordinal.
         \item If $\alpha$ is an ordinal and $\beta \in \alpha$, then $\beta$ is an ordinal.
         \item If $\alpha,\, \beta$ are ordinals and $\alpha \subset \beta$, then $\alpha \in \beta$.
         \item If $\alpha,\, \beta$ are ordinals, then either  $\alpha \subseteq \beta$ or $\beta \subseteq \alpha$
     \end{enumerate}
 \end{lemma}
+
+\begin{proof}\cite[Lemma 2.3, p.15]{Jec78}
+    \begin{enumerate}
+        \item The empty set has no non-empty subsets, hence it is transitive and well-ordered by $\in$.
+        \item If $\beta \in \alpha$, then $\beta \subseteq \alpha$ by definition. Since $\alpha$ is well-ordered and transitive, so is $\beta$.
+        \item Let $\gamma$ be the least element of the set $\beta \setminus \alpha$. We show that $\alpha = \gamma$.
+        
+        The ordinal $\alpha$ is transitive by definition and from this it follows that there are no "gaps" in the order. Indeed $\alpha$ must be an initial segment of $\beta$.
+        As an initial segment, we can describe $\alpha$ as the set $\left\{\xi \in \beta \,\vert\, \xi < \gamma\right\}$.
+        Again by the definition of ordinals, this is the set $\gamma$ itself and $\alpha = \beta$.
+        \item We know that the intersection $\alpha \cap \beta = \gamma$ must be an ordinal, since not least the empty set also is an ordinal.
+        However anything other than $\alpha = \gamma$ or $\beta = \gamma$ results in a contradiction:
+        
+        Assume for this contradiction that $\gamma \in \alpha$. Then $\gamma \in \beta$ by the second point of the lemma. 
+        Because $\gamma$ is defined as the intersection of $\alpha$ and $\beta$, this means that $\gamma \in \gamma$.
+        Since $\gamma$ is an ordinal, strongly linearly ordered, this is not possible. \qedhere
+    \end{enumerate}
+\end{proof}
 
 \begin{theorem}\cite[Theorem 2, p.15]{Jec78}
     Every well-ordered set is order isomorphic to a unique ordinal.
