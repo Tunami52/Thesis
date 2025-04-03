@@ -91,7 +91,7 @@ It follows from the following lemma that every natural number also is an ordinal
     \end{enumerate}
 \end{proof}
 
-\begin{theorem}\cite[Theorem 2, p.15]{Jec78}
+\begin{theorem}\label{unique-}\cite[Theorem 2, p.15]{Jec78}
     Every well-ordered set is order isomorphic to a unique ordinal.
 \end{theorem}
 
@@ -161,13 +161,20 @@ As such by transitivity, this main statement is also equivalent to the Axiom of 
 
 \section{Hartogs' Lemma}
 We continue with the final result for this chapter, 
-a lemma originally stated by Hartogs in 1915, restated in this form in our main paper \cite{Haj72}.
+a lemma originally stated by Hartogs in 1915, restated and proven in this form in our main paper by Hajnal and Kertész.
 
 \begin{lemma}\cite{Har15}
-    Let $A$ be an arbitrary set.
-    Then there exists an ordinal $\alpha$, 
-    %such that no subset of $A$ can be injectively mapped on to $\alpha$.
-    such that no injective map from any subset of $A$ to $\alpha$ exists. %is this correct? it makes no intuitive sense...
+    Let $A$ be an arbitrary set and let $S = \mathcal{P}(A)$ be the collection of subsets of $A$.
+    Then there exists an ordinal $\alpha$, such that no no mapping $f_s: s \to \alpha$ from any subset $s \in S$ of $A$ to $\alpha$ is an order isomorphisms.
 \end{lemma}
+
+\begin{proof}\cite[Lemma]{Haj72}
+    We let the ordinal $\alpha$ take the following value:
+    $$\alpha = \cup\left\{ \text{type}\left(X, R\right) + 1 \,\vert\, X \subseteq A, R \subseteq A \times A \wedge R\ \text{well-orders}\ A\right\}.$$
+    We will show that $\alpha$ is such that it satisfies the lemma's statement.
+
+    % -> show that alpha is a set
+    % -> show that alpha is an ordinal (so it is well-ordered)
+\end{proof}
 
 \end{document}
