@@ -3,7 +3,8 @@
 
 \section{Linear, Partial and Well-Orderings}
 
-We define the two types of partial orderings, \textit{strong} and \textit{weak} ones, as follows:
+We define the two types of partial orderings, \textit{strong} and \textit{weak} ones.
+To give a more intuitive understanding of how these differ we use the notation $<$ and $\leq$ respectively, but $R$ is also commonly used to denote a relation.
 
 \begin{definition}[Strong Partial Order]\cite[p.165]{Gol17}
     Let $X$ be a set and $<\, \subseteq X \times X$ a binary relation on $X$.
@@ -26,12 +27,59 @@ We define the two types of partial orderings, \textit{strong} and \textit{weak} 
     It is called \textit{linear} if for all $x$, $y$ in $X$, $x \leq y$ or $y \leq x$.
 \end{definition}
 
-A partially ordered set $(X, <)$ is sometimes also referred to simply as $X$ by some abuse of notation when the relation $<$ is known.
-Additionally, whenever we talk about partially or linearly ordered sets without specifying which type we are referring to strong ones. \cite[p.12]{Jec78}
+\begin{definition}\cite[p.12]{Jec78}
+    An element $a$ of an ordered set $\left(X, <\right)$ is the \textit{least element} of $X$ with respect to $<$, if $\forall x \in X  \left(a < x \vee x = a\right)$.
+    Similarly, an element $z$ is called the \textit{greatest element} of $X$ if $\forall x \in X  \left(x < a \vee x = a\right)$.
+\end{definition}
 
+This notion of a least element lets us define a more restrictive version of a linearly ordered set.
 \begin{definition}[Well-Order]\cite[p.13]{Jec78}
     A strong linear order $<$ of a set $X$ is called a \textit{well-ordering} if every subset of $X$ has a least element.
 \end{definition}
+
+A partially ordered set $(X, <)$ is sometimes also referred to simply as $X$ by some abuse of notation when the relation $<$ is known.
+Additionally, whenever we talk about partially or linearly ordered sets without specifying which type, and were the type of partial order matters, we are referring to strong ones. \cite[p.12]{Jec78}
+Out of convenience, when talking about a strong partial order $<$, we sometimes refer to the term $\left(a < b \wedge a = b\right)$ as $a \leq b$.
+
+We continue with functions between two ordered sets:
+\begin{definition}\cite[p.13]{Jec78}
+    If $\left(X,\, <_X\right)$ and $\left(Y,\, <_Y\right)$ are two partially ordered sets, we call a function $f: X \to Y$ \textit{order-preserving} if
+    $$x_1 <_X x_2 \iff f(x_1) <_Y f(x_2).$$
+    If $X$ and $Y$ are both linearly ordered, an order-preserving function is also said to be \textit{increasing}.
+
+    The function $f$ is called an \textit{order-isomorphism} if $f$ is both order-preserving and a bijective.
+    Whenever it is clear from context that we are talking about ordered sets we simply call $f$ an \textit{isomorphism}.
+    If $f$ is order-preserving and injective, it is called an \textit{order-embedding}. \cite[p.167]{Gol17}
+\end{definition}
+
+\begin{lemma}\label{increasing-fcn-lemm}\cite[Lemma 2.1, p.13]{Jec78}
+    If $\left(W,\, <\right)$ is a well-ordered set and $f: W \to W$ is an increasing function, then $f(x) \geq x$ for each $x\in W$.
+\end{lemma}
+
+\begin{proof}\cite[Lemma 2.1, p.13]{Jec78}
+    In order to contrive a contradiction, we assume that $X = \left\{x \in W \,\vert\, f(x) < x\right\}$, the collection of elements of $W$ not satisfying the lemma, is a non-empty set.
+    We then let $z$ be the least element of $X$ and $w = f(z)$ its preimage in $f$.
+    By the definition of $X$ we this means that $f(w) < w$, contradicting the initial assumption that $f$ is an increasing function.
+\end{proof}
+
+The next lemma is needed for the proof of theorem \ref{unique-ordinal}, an important result in regards to ordinals.
+We introduce ordinals in the next section in order to better describe well-ordered sets.
+For this we need to define the initial section of an ordered set first:
+
+\begin{definition}
+    If $X$ is a well-ordered set and $s \in X$, we call the set $\left\{x \in X \,\vert\, x < s\right\}$ an \textit{initial segment} of $X$.
+\end{definition}
+
+\begin{lemma}\cite[Lemma 2.2, p.13]{Jec78}
+    No well ordered set is isomorphic to an initial segment of itself.
+\end{lemma}
+
+\begin{proof}\cite[Lemma 2.2, p.13]{Jec78}
+    Assume for a contradiction that $f$ is an order isomorphism from an ordered set $\left(X,\, <\right)$ to an initial segment $\left(S,\, <\right) = \left\{x \in X \,\vert\, x < s\right\}$, for some $s \in X$ of itself.
+    The image of $f$ is then $\mathbf{Im}\left(f\right) = \left\{x \in X \,\vert\, x < s\right\} = S$, but we know this is not possible by lemma \ref{increasing-fcn-lemm}. 
+\end{proof}
+
+We are now ready to define ordinal numbers, motivated by the way we describe the natural numbers in set theory.
 
 \section{Ordinals and Order Types}
 There are several ways to define the natural numbers $\mathbb{N}$, the way we do it here, and the way generally used in set theory, is to use the \hyperref[ZF7]{Axiom of Infinity}.
@@ -91,7 +139,7 @@ It follows from the following lemma that every natural number also is an ordinal
     \end{enumerate}
 \end{proof}
 
-\begin{theorem}\label{unique-}\cite[Theorem 2, p.15]{Jec78}
+\begin{theorem}\label{unique-ordinal}\cite[Theorem 2, p.15]{Jec78}
     Every well-ordered set is order isomorphic to a unique ordinal.
 \end{theorem}
 
