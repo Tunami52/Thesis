@@ -3,14 +3,14 @@
 
 \section{Linear, Partial and Well-Orderings}
 
-We define the two types of partial orderings, \textit{strong} and \textit{weak} ones.
+We start by defining the two types of partial orderings, \textit{strict} and \textit{weak} ones.
 To give a more intuitive understanding of how these differ we use the notation $<$ and $\leq$ respectively, but $R$ is also commonly used to denote a relation.
 
-\begin{definition}[Strong Partial Order]\cite[p.165]{Gol17}
+\begin{definition}[Strict Partial Order]\cite[p.165]{Gol17}
     Let $X$ be a set and $<\, \subseteq X \times X$ a binary relation on $X$.
-    Then $<$ is called a \textit{(strong) partial order of $X$}, and $(X, <)$ called a \textit{(strongly) partially ordered set}, if it is
+    Then $<$ is called a \textit{(strict) partial order of $X$}, and $(X, <)$ called a \textit{(strictly) partially ordered set}, if it is
     \begin{enumerate}[label=(\roman*)]
-        \item \textbf{irreflexive}: $\forall x,\, y \in X \left((x < y) \vee (x = y) \vee (y < x)\right)$
+        \item \textbf{irreflexive}: $\forall x \in X \left(x \not < x\right)$
         \item \textbf{transitive}: $\forall x,\, y,\, z \in X \left(\left(x < y \wedge y < z\right) \implies x < z\right)$
     \end{enumerate}
     It is called \textit{linear} if for all $x$, $y$ in $X$, $x < y$ or $y < x$ or $x = y$.
@@ -23,25 +23,10 @@ To give a more intuitive understanding of how these differ we use the notation $
         \item \textbf{reflexive}: $\forall x \in X \ (x \leq x)$
         \item \textbf{transitive}: $\forall x,\, y,\, z \in X \left(\left(x \leq y \wedge y \leq z\right) \implies x \leq z\right)$
         \item \textbf{anti-symmetric}: $\forall x,\, y \in X \left((x \leq y) \wedge (y \leq x) \implies x = y\right)$
-    \end{enumerate}
+    \end{enumerate} 
     It is called \textit{linear} if for all $x$, $y$ in $X$, $x \leq y$ or $y \leq x$.
 \end{definition}
 
-\begin{definition}\cite[p.12]{Jec78}
-    An element $a$ of an ordered set $\left(X, <\right)$ is the \textit{least element} of $X$ with respect to $<$, if $\forall x \in X  \left(a < x \vee x = a\right)$.
-    Similarly, an element $z$ is called the \textit{greatest element} of $X$ if $\forall x \in X  \left(x < a \vee x = a\right)$.
-\end{definition}
-
-This notion of a least element lets us define a more restrictive version of a linearly ordered set.
-\begin{definition}[Well-Order]\cite[p.13]{Jec78}
-    A strong linear order $<$ of a set $X$ is called a \textit{well-ordering} if every subset of $X$ has a least element.
-\end{definition}
-
-A partially ordered set $(X, <)$ is sometimes also referred to simply as $X$ by some abuse of notation when the relation $<$ is known.
-Additionally, whenever we talk about partially or linearly ordered sets without specifying which type, and were the type of partial order matters, we are referring to strong ones. \cite[p.12]{Jec78}
-Out of convenience, when talking about a strong partial order $<$, we sometimes refer to the term $\left(a < b \wedge a = b\right)$ as $a \leq b$.
-
-We continue with functions between two ordered sets:
 \begin{definition}\cite[p.13]{Jec78}
     If $\left(X,\, <_X\right)$ and $\left(Y,\, <_Y\right)$ are two partially ordered sets, we call a function $f: X \to Y$ \textit{order-preserving} if
     $$x_1 <_X x_2 \iff f(x_1) <_Y f(x_2).$$
@@ -50,6 +35,33 @@ We continue with functions between two ordered sets:
     The function $f$ is called an \textit{order-isomorphism} if $f$ is both order-preserving and a bijective.
     Whenever it is clear from context that we are talking about ordered sets we simply call $f$ an \textit{isomorphism}.
     If $f$ is order-preserving and injective, it is called an \textit{order-embedding}. \cite[p.167]{Gol17}
+\end{definition}
+
+A partially ordered set $(X, <)$ is sometimes also referred to simply as $X$ by some abuse of notation when the relation $<$ is known.
+Additionally, whenever we talk about partially or linearly ordered sets without specifying which type, and where the type of partial order matters, we are referring to strict ones. \cite[p.12]{Jec78}
+Out of convenience, when talking about a strict partial order $<$, we sometimes refer to the term $\left(a < b \vee a = b\right)$ as $a \leq b$.
+
+Clearly it is straightforward to define a weak partial order $R'$ from a strict partial order $R$, letting $\left<x,\, y\right> \in R'$ whenever $\left<x,\, y\right> \in R'$ or $x = y$.
+
+\begin{definition}\cite[p.12]{Jec78}
+    An element $a$ of an ordered set $\left(X, <\right)$ is the \textit{least element} of $X$ with respect to $<$, if $\forall x \in X  \left(a < x \vee x = a\right)$.
+    Similarly, an element $z$ is called the \textit{greatest element} of $X$ if $\forall x \in X  \left(x < a \vee x = a\right)$.
+\end{definition}
+
+This notion of a least element lets us define a special kind of linearly ordered set:
+\begin{definition}[Well-Order]\cite[p.13]{Jec78}
+    A strict linear order $<$ of a set $X$ is called a \textit{well-ordering} if every subset of $X$ has a least element.
+\end{definition}
+
+Well-ordered sets are central to the axiomatic set theory at hand.
+In fact, one of the most important results we will treat here, is that every set can we well-ordered (with the Axiom of Choice).
+
+Further, we will introduce the concept of ordinals as a way effectively classify all well-ordered sets.
+The next two lemmata are needed for the proof of Theorem \ref{unique-ordinal}, an important result with regards to ordinals.
+For this we need to define the initial section of an ordered set first:
+
+\begin{definition}
+    If $X$ is a well-ordered set and $s \in X$, we call the set $\left\{x \in X \,\vert\, x < s\right\}$ an \textit{initial segment} of $X$.
 \end{definition}
 
 \begin{lemma}\label{increasing-fcn-lemm}\cite[Lemma 2.1, p.13]{Jec78}
@@ -62,21 +74,13 @@ We continue with functions between two ordered sets:
     By the definition of $X$ we this means that $f(w) < w$, contradicting the initial assumption that $f$ is an increasing function.
 \end{proof}
 
-The next lemma is needed for the proof of theorem \ref{unique-ordinal}, an important result in regards to ordinals.
-We introduce ordinals in the next section in order to better describe well-ordered sets.
-For this we need to define the initial section of an ordered set first:
-
-\begin{definition}
-    If $X$ is a well-ordered set and $s \in X$, we call the set $\left\{x \in X \,\vert\, x < s\right\}$ an \textit{initial segment} of $X$.
-\end{definition}
-
 \begin{lemma}\cite[Lemma 2.2, p.13]{Jec78}
-    No well ordered set is isomorphic to an initial segment of itself.
+    No well-ordered set is isomorphic to an initial segment of itself.
 \end{lemma}
 
 \begin{proof}\cite[Lemma 2.2, p.13]{Jec78}
     Assume for a contradiction that $f$ is an order isomorphism from an ordered set $\left(X,\, <\right)$ to an initial segment $\left(S,\, <\right) = \left\{x \in X \,\vert\, x < s\right\}$, for some $s \in X$ of itself.
-    The image of $f$ is then $\mathbf{Im}\left(f\right) = \left\{x \in X \,\vert\, x < s\right\} = S$, but we know this is not possible by lemma \ref{increasing-fcn-lemm}. 
+    The image of $f$ is then $\mathbf{Im}\left(f\right) = \left\{x \in X \,\vert\, x < s\right\} = S$, but we know this is not possible by Lemma \ref{increasing-fcn-lemm}. 
 \end{proof}
 
 We are now ready to define ordinal numbers, motivated by the way we describe the natural numbers in set theory.
@@ -87,7 +91,7 @@ This states that $\mathbb{N}$ is an \textit{inductive set}, meaning that it cont
 
 \begin{definition}\cite[p.38]{Gol17}
     The successor of a set $\alpha$ is $\alpha^+ = \alpha \cup \left\{\alpha\right\}$.
-    The successor of $0 = \varnothing$ is called $1$ and the successor of $1$ is called $2$, etc.. 
+    The successor of $0 = \varnothing$ is called $1$ and the successor of $1$ is called $2$, etc.
 \end{definition}
 
 The consequence of this is that $\mathbb{N}$ is the set we are familiar with: $\left\{0,\, 1,\, 2,\, 3,\ldots\right\}$.
@@ -107,7 +111,7 @@ The notion of a \textit{transitive set} is not to be confused with that of a \te
     We say $\alpha < \beta$ if and only if $\alpha \in \beta$.
 \end{definition}
 
-Ordinals are denoted by lowercase greek letters: $\alpha,\, \beta,\, \gamma,\ldots.$
+Ordinals are denoted by lowercase Greek letters: $\alpha,\, \beta,\, \gamma,\ldots.$
 The ordinal associated with $\left(\mathbb{N},\, \in\right)$ specifically is denoted by $\omega$.
 We know that $\omega$ is indeed an ordinal by construction.
 It follows from the following lemma that every natural number also is an ordinal with respect to set inclusion.
@@ -117,7 +121,7 @@ It follows from the following lemma that every natural number also is an ordinal
         \item The empty set $\varnothing$ is an ordinal.
         \item If $\alpha$ is an ordinal and $\beta \in \alpha$, then $\beta$ is an ordinal.
         \item If $\alpha,\, \beta$ are ordinals and $\alpha \subset \beta$, then $\alpha \in \beta$.
-        \item If $\alpha,\, \beta$ are ordinals, then either  $\alpha \subseteq \beta$ or $\beta \subseteq \alpha$
+        \item If $\alpha,\, \beta$ are ordinals, then either  $\alpha \subseteq \beta$ or $\beta \subseteq \alpha$.
     \end{enumerate}
 \end{lemma}
 
@@ -127,7 +131,7 @@ It follows from the following lemma that every natural number also is an ordinal
         \item If $\beta \in \alpha$, then $\beta \subseteq \alpha$ by definition. Since $\alpha$ is well-ordered and transitive, so is $\beta$.
         \item Let $\gamma$ be the least element of the set $\beta \setminus \alpha$. We show that $\alpha = \gamma$.
         
-        The ordinal $\alpha$ is transitive by definition and from this it follows that there are no "gaps" in the order. Indeed $\alpha$ must be an initial segment of $\beta$.
+        The ordinal $\alpha$ is transitive by definition and from this it follows that there are no ``gaps'' in the order. Indeed $\alpha$ must be an initial segment of $\beta$.
         As an initial segment, we can describe $\alpha$ as the set $\left\{\xi \in \beta \,\vert\, \xi < \gamma\right\}$.
         Again by the definition of ordinals, this is the set $\gamma$ itself and $\alpha = \beta$.
         \item We know that the intersection $\alpha \cap \beta = \gamma$ must be an ordinal, since not least the empty set also is an ordinal.
@@ -135,7 +139,7 @@ It follows from the following lemma that every natural number also is an ordinal
         
         Assume for this contradiction that $\gamma \in \alpha$. Then $\gamma \in \beta$ by the second point of the lemma. 
         Because $\gamma$ is defined as the intersection of $\alpha$ and $\beta$, this means that $\gamma \in \gamma$.
-        Since $\gamma$ is an ordinal, strongly linearly ordered, this is not possible. \qedhere
+        Since $\gamma$ is an ordinal, strictly linearly ordered, this is not possible. \qedhere
     \end{enumerate}
 \end{proof}
 
@@ -155,7 +159,7 @@ There is a (bad) joke that goes:
     \newline Every set can be well ordered.
 \end{definition}
 
-We could provide a proof for definition \ref{well-order-thm} in \textbf{ZFC} here directly.
+We could provide a proof for Definition \ref{well-order-thm} in \textbf{ZFC} here directly.
 This theorem, as it turn out, is not just another regular theorem, and we will therefore also not treat it as one.
 
 Indeed, the Well-Ordering Theorem is actually equivalent to the Axiom of Choice.
