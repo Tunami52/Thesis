@@ -130,6 +130,27 @@ Every set contains an $\in$-minimal element, we call this being \textit{well-fou
 This also means there exist no infinitely descending chains of sets, such as $x_0 \ni x_1 \ni x_2 \ni \cdots$.\cite[Theorem 4.3, p.95]{Gol17}
 
 \section{The Axiom of Choice}
-%It has to be somewhere, right?
+To talk about the axiom of choice we need to first define what a choice function is, the concept which the axiom is centered around.
+\begin{definition}[Choice Function]\cite[p.38]{Jec78}
+    Let $S$ be a family of nonempty sets.
+    A function $f: S \to \bigcup S$ is called a \textit{choice function} of $S$ if
+    $$f(X) \in X$$
+    holds for all sets $X \in S$.
+\end{definition}
 
+The Axiom of Choice is then defined as follows:
+\begin{definition}[Axiom of Choice]\cite[p.38]{Jec78}
+    There exists a choice function for every family of nonempty sets.
+\end{definition}
+
+The Axiom of Choice is not always needed for showing that a choice function exist.
+Take for example $S = \mathcal{P}(\mathbb{N})$, under the usual order $<$ every subset of $\mathbb{N}$ has a least element.
+We can therefore construct a choice function $f: S \to \mathbb{N}$ by letting $f(N)$ be the unique least element of $N$ for $N \in S$.
+This is however not possible for a family of possibly infinite subsets of $\mathbb{R}$; for example the open interval $\left(0,\, 1\right)$ does not contain a least element.
+
+In general there does not always exist an external structure for sets which we can utilize to construct a choice function.
+The Axiom of Choice ensures that we can, but not how that choice function might look like.
+In fact \textbf{AC} is the only axiom of \textbf{ZFC} which states the existence of a mathematical object without explicitly defining it.
+This is a powerful tool, but can lead lead to fairly unintuitive results. 
+As such, with \textbf{AC} there exists a way to order the real numbers where every subset has a least element (including open intervals like $\left(0,\, 1\right)$)!
 \end{document}
