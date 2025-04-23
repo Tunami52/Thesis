@@ -5,27 +5,86 @@ When talking about the axiom of choice on its own we will say \textbf{AC}, and w
 
 We will use the convention of including $0$ at the beginning of the natural numbers $\mathbb{N}$, i.e. $\mathbb{N} = \left\{0, \, 1, \, 2\, \ldots\right\}$.
 This is a \textit{natural} choice, since we then can use $\mathbb{N}$ to mean the set described by the \hyperref[ZF7]{Axiom of Infinity}.
+If we want to talk about strictly positive integers we use the notation $\mathbb{Z}^+ = \mathbb{N}\setminus\left\{0\right\}$.
 
-\section{First-order Logic and Classes}
+Lastly, whenever we deal with the negation of some symbol, we cross it out to mean this, for example $a \neq b$ means $\lnot \left(a = b\right)$.
+
+\section{First-Order Logic and Classes}
+When talking about first order logic we mean the symbol $$= \text{ (equals)}$$ in conjunction with the logical connectives
+$$\lnot \text{ (not), } \wedge \text{(and), } \vee \text{(or), } \rightarrow \text{(implies) and } \leftrightarrow \text{(if and only if)}$$
+as well as the quantifiers $$\forall \text{ (for all) and } \exists \text{ (exists)}.$$
+Additionally, as we are talking about sets, we use the symbol $\in$ to denote set inclusion. \cite[pp.2-3]{Jec78}
+
+In order to effectively talk about properties of set and set-like structures we need to somehow properly define formulas.
+We will go more into depth about formulas in Chapter \ref{model-theory}, where we will introduce the notion of a formal language.
+
+For now we are only concerned with the language of sets defined above.
+
+\begin{definition}[Formula of a Set]
+    An \textit{atomic formula} in set theory is either
+    \begin{enumerate}
+        \item $x = y$, or
+        \item $x \in y$
+    \end{enumerate}
+    A \textit{formula} $\phi$ is an any combination of atomic formulas with logical connectives and quantifiers.
+\end{definition}
+
+The symbols $x$ and $y$ above are called variables and for any two variables an atomic formula is either true or false for each $x$ and $y$.
+A variable \textit{occurs freely} inside of a formula if it does not appear inside of a $\exists$ or $\forall$ quantifier, otherwise the variable is \textit{bound}.
+We write $\phi\left(x_1,\ldots,\, x_n\right)$ for a formula with $n \in \mathbb{Z}^+$ free variables.
+A formula where every variable is bound is called a \textit{sentence}. \cite[pp.10-11]{Mar02}
+
+A sentence is either true are false and a formula with free variables is true or false for each choice of the free variables.
+Each of the \textbf{ZF} axioms below are examples of sentences and as axioms we assume them to be inherently true (within the framework of our theory).
+An example of a formula with a free variable would be $$\phi(x) = \exists y \, \left(y \in x\right).$$ 
+This formula is only false for the empty set, since it is the unique set which does not contain any elements.
+In that sense we think of formulas with free variables describing a \textit{property}, something we make use of in \textit{classes}.
+
+\begin{definition}[Class]
+    Let $\phi\left(x,\, p_1,\ldots,\, p_n\right)$ be a formula in first order logic.
+    Then a \textit{class} $\mathbf{C}$ is defined as
+    $$\mathbf{C} = \left\{x \,\vert\, \phi\left(x,\, p_1,\ldots,\, p_n\right)\right\}.$$
+    The class $\mathbf{C}$ is called \textit{definable from} $p_1,\ldots,\, p_n$.
+    Furthermore, if $x$ is the only free variable of $\phi$, the class $\mathbf{C}$ is simply called \textit{definable}. \cite[p.3]{Jec78}
+\end{definition}
+
+In practice, we use classes as a tool to help us construct useful sets in \textbf{ZFC}, as elements of classes are always sets in the stricter sense.
+All sets are classes, but not all classes are sets, since if we have a fixed set $s$ we can always construct the corresponding class would be $\mathbf{S} = \left\{x \,\vert\, x = s\right\}$.
+A class which is not a set is called a \textit{proper class}.
+
+We consider to two classes to be the same if they have the same elements.
+The familiar set operations of \textit{inclusion}, \textit{union}, \textit{intersection}, and \textit{difference} are definable using formulas.
+As such for classes $\mathbf{C}$, $\mathbf{D}$,
+\begin{align*}
+    \mathbf{C} \subseteq \mathbf{D} &\iff \forall x \left(x \in \mathbf{C} \implies x \in \mathbf{D}\right) \\
+    \mathbf{C} \cup \mathbf{D} &= \left\{x \,\vert\, x \in \mathbf{C} \vee x \in \mathbf{D}\right\} \\
+    \mathbf{C} \cap \mathbf{D} &= \left\{x \,\vert\, x \in \mathbf{C} \wedge x \in \mathbf{D}\right\} \\ 
+    \mathbf{C} \setminus \mathbf{D} &= \left\{x \,\vert\, x \in \mathbf{C} \wedge x \not\in \mathbf{D}\right\} \\
+    \bigcup \mathbf{C} &= \left\{x \,\vert\, x \in S \ \text{for some}\ S \in \mathbf{C}\right\}
+\end{align*}\cite[pp.3-4]{Jec78}
+
+For the use in this text, classes are in a sense ``naive sets-like object''; they to help us describe collections of sets without worrying about paradoxes.
+Consider for example the class $\mathbf{V} = \left\{x \,\vert\, x=x\right\}$, which is the universe of all sets and does not exist in pure set theory.
+Another important class which we will make use of later is the \textit{empty class} $\varnothing = \left\{x \,\vert\, x \neq x\right\}$ (although this is also a set as we will see).
 
 \section{Zermelo-Fraenkel Axioms of Set Theory}
 We assume that the reader has some familiarity with axiomatic set theory, but for convenience and consistency we restate some of the necessary basics here. %change wording
-For a more thorough introduction of the topic, see \cite[4.3-4.5]{Gol17}, alternatively \cite[1.1]{Jec78} gives a more technical overview.
+For a more thorough introduction of the topic, see \cite[\S\S 4.3-4.5]{Gol17}, alternatively \cite[\S 1.1]{Jec78} gives a more technical overview.
 The formulation of the axioms below is based on both textbooks.
 %Double check that the formulas used are not identical to Goldrei
 
 \subsection{Axiom of Extensionality}
 $$\forall x \forall y \left(x = y \iff \forall z \left(z \in x \iff z \in y\right) \right)$$
-Two sets are equal if and only if they contain the same elements.\cite[4.3, p.76]{Gol17}
+Two sets are equal if and only if they contain the same elements.\cite[\S 4.3, p.76]{Gol17}
 
 \subsection{Axiom of Pairs}
 $$\forall x \forall y \exists z \forall w \left( w \in z \iff \left(w = x \vee w = y \right)\right)$$
 For any two sets, there is a set whose elements are precisely these sets.
  
 We define an ordered pair $\left<x,\, y\right>$ to be the set $\left\{\left\{x\right\},\, \left\{x,\, y\right\}\right\}$.
-Further, ordered $n$-tuples are defined recursively as $\left<x_1,\, x_2,\, x_3,\ldots,\, x_n\right> = \left<x_1,\, \left<x_2,\, x_3,\ldots,\, x_n\right>\right>$.\cite[4.3, pp.76, 79-80]{Gol17}
+Further, ordered $n$-tuples are defined recursively as $\left<x_1,\, x_2,\, x_3,\ldots,\, x_n\right> = \left<x_1,\, \left<x_2,\, x_3,\ldots,\, x_n\right>\right>$.\cite[\S 4.3, pp.76, 79-80]{Gol17}
 
-Ordered pairs satisfy the property that for any sets $x$, $y$, $u$, $v$, if $\left<x,\, y\right> = \left<u,\, v\right>$, then $x = u$ and $y = v$.\cite[Theorem 4.2, p.79]{Gol17}
+Ordered pairs satisfy the property that for any sets $x$, $y$, $u$, $v$, if $\left<x,\, y\right> = \left<u,\, v\right>$, then $x = u$ and $y = v$.\cite[Theorem 4.2]{Gol17}
 
 \subsection{Axiom Schema of Separation}\label{ZF3}
 Let $\phi(z, p)$ be a formula in first order logic with a free variable $z$. Then

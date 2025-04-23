@@ -1,4 +1,4 @@
-\begin{thebibliography}{Har15}
+\begin{thebibliography}{Mar02}
 
 \bibitem[CK90]{Cha90}
 Chen~Chung Chang and H.~Jerome Keisler.
@@ -29,5 +29,10 @@ Thomas Jech.
 Andor Kertész.
 \newblock {\em Einführung in die transfinite Algebra}.
 \newblock Birkhäuser, Basel, cop. 1975.
+
+\bibitem[Mar02]{Mar02}
+David Marker.
+\newblock {\em Model theory}.
+\newblock Graduate texts in mathematics. Springer, New York, cop. 2002.
 
 \end{thebibliography}
