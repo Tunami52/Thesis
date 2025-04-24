@@ -1,6 +1,6 @@
 \documentclass[../../main.tex]{subfiles}
 \begin{document}
-
+\section{Models of Formal Languages}
 \begin{definition}\cite[Definition 1.1.1]{Mar02}
     A \textit{formal language} $\mathcal{L}$ in first order logic is given by the following:
     \begin{enumerate}
@@ -9,5 +9,37 @@
         \item A set $\mathcal{C}$ of constants.
     \end{enumerate}
 \end{definition}
+
+\section{The Löwenheim-Skolem Theorem}
+
+\begin{lemma}\cite[Lemma 2.1.1]{Cha90}
+    Let $T$ be a consistent set of sentences of $\mathcal{L}$.
+    Let $C$ be a set of new constant symbols of power $\left\lvert C \right\rvert = \left\lVert \mathcal{L} \right\rVert$
+     and let $\bar{\mathcal{L}} = \mathcal{L} \cup C$ be the simple expansion of $\mathcal{L}$ formed by adding $C$.
+    
+     Then $T$ can be expanded to a consistent set of sentences $\bar{T}$ in $\bar{\mathcal{L}}$, which has $C$ as a set of witnesses in $\bar{\mathcal{L}}$.
+\end{lemma}
+
+\begin{lemma}\cite[Lemma 2.1.2]{Cha90}
+    Let $T$ be a set of sentences and let $C$ be a set of witnesses of $T$ in $\mathcal{L}$.
+    Then $T$ has a model $\mathfrak{U}$, such that every element of $\mathfrak{U}$ is an interpretation of a constant $c \in C$.
+\end{lemma}
+
+\begin{theorem}[Extended Completeness Theorem]\cite[Theorem 1.3.21]{Cha90}
+    Let $\Sigma$ be a set of sentences in $\mathcal{L}$.
+    Then $\Sigma$ is consistent if and only if $\Sigma$ has a model.
+\end{theorem}
+
+\begin{theorem}[Downward Löwenheim-Skolem Theorem]\cite[Corollary 2.1.4]{Cha90}
+    Every consistent theory $T$ in $\mathcal{L}$ has a model of power at most $\left\lVert \mathcal{L} \right\rVert$.
+\end{theorem}
+
+\begin{theorem}[Compactness Theorem]\cite[Theorem 1.3.22]{Cha90}
+    A set of sentences $\Sigma$ has a model if and only if every finite subset of $\Sigma$ has a model.
+\end{theorem}
+
+\begin{theorem}[Upward Löwenheim-Skolem Theorem]\cite[Corollary 2.1.6]{Cha90}
+    If $T$ has infinite models, then it has infinite models of any given power $\alpha \geq \left\lVert \mathcal{L} \right\rVert$.
+\end{theorem}
 
 \end{document}
