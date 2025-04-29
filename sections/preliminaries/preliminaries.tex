@@ -53,7 +53,7 @@ All sets are classes, but not all classes are sets, since if we have a fixed set
 A class which is not a set is called a \textit{proper class}.
 
 We consider to two classes to be the same if they have the same elements.
-The familiar set operations of \textit{inclusion}, \textit{union}, \textit{intersection}, and \textit{difference} are definable using formulas.
+The familiar operations of \textit{inclusion}, \textit{union}, \textit{intersection}, and \textit{difference} are definable using formulas.
 As such for classes $\mathbf{C}$, $\mathbf{D}$,
 \begin{align*}
     \mathbf{C} \subseteq \mathbf{D} &\iff \forall x \left(x \in \mathbf{C} \implies x \in \mathbf{D}\right) \\
@@ -73,12 +73,12 @@ For a more thorough introduction of the topic, see \cite[\S\S 4.3-4.5]{Gol17}, a
 The formulation of the axioms below is based on both textbooks.
 %Double check that the formulas used are not identical to Goldrei
 
-\subsection{Axiom of Extensionality}
-$$\forall x \forall y \left(x = y \iff \forall z \left(z \in x \iff z \in y\right) \right)$$
+\subsection{Axiom of Extensionality}\label{ZF1}
+$$\forall x\, \forall y\, \left(x = y \iff \forall z \left(z \in x \iff z \in y\right) \right)$$
 Two sets are equal if and only if they contain the same elements.\cite[\S 4.3, p.76]{Gol17}
 
-\subsection{Axiom of Pairs}
-$$\forall x \forall y \exists z \forall w \left( w \in z \iff \left(w = x \vee w = y \right)\right)$$
+\subsection{Axiom of Pairs}\label{ZF2}
+$$\forall x\, \forall y\, \exists z\, \forall w\, \left( w \in z \iff \left(w = x \vee w = y \right)\right)$$
 For any two sets, there is a set whose elements are precisely these sets.
  
 We define an ordered pair $\left<x,\, y\right>$ to be the set $\left\{\left\{x\right\},\, \left\{x,\, y\right\}\right\}$.
@@ -87,42 +87,108 @@ Further, ordered $n$-tuples are defined recursively as $\left<x_1,\, x_2,\, x_3,
 Ordered pairs satisfy the property that for any sets $x$, $y$, $u$, $v$, if $\left<x,\, y\right> = \left<u,\, v\right>$, then $x = u$ and $y = v$.\cite[Theorem 4.2]{Gol17}
 
 \subsection{Axiom Schema of Separation}\label{ZF3}
-Let $\phi(z, p)$ be a formula in first order logic with a free variable $z$. Then
+Let $\phi(z,\ p)$ be a formula in first order logic with free variables $z$ and $x$. Then
 \begin{equation}\label{seperation-axiom}
-    \forall x \forall p \exists y \forall z \left(z \in y \iff \left(z \in x \wedge \phi(z, p)\right)\right).
+    \forall x\, \forall p\, \exists y\, \forall z\, \left(z \in y \iff \left(z \in x \wedge \phi(z,\, p)\right)\right).
 \end{equation}
-For any sets $x$ and $p$ there is a unique set consisting of all $z$ in $x$ for which $\phi(z, p)$ holds.
-This is an axiom schema, meaning an infinite collection of axioms, since (\ref{seperation-axiom}) is a separate axiom for every formula $\phi(z, p)$.\cite[pp.5-6]{Jec78}
-%able to define intersections between a class and a set as a set itself
+For any sets $x$ and $p$ there exists a unique set consisting of all elements $z$ in $x$ for which $\phi(z,\, p)$ holds.
+This is an axiom schema, meaning an infinite collection of axioms, since (\ref{seperation-axiom}) is a separate axiom for every formula $\phi(z,\, p)$.
 
-\subsection{Axiom of the Empty Set} 
+Assume $\psi(z,\, p_1,\ldots,\, p_n)$ is a more general formula for which we want to utilize the axiom schema for.
+We can then let $\phi(z,\ p)$ be the formula
+$$\phi(z,\, p) = \exists p_1 \cdots \exists p_n\, \left(\left(p = \left<p_1,\ldots,\, p_n\right>\right) \ \text{and} \ \psi(z,\, p_1,\ldots,\, p_n)\right),$$
+where we have that $\phi(z,\, \left<p_1,\ldots,\, p_n\right>)$ is true if and only if $\psi(z,\, p_1,\ldots,\, p_n)$ is true.
+Hence we can generalize the axiom schema to 
+\begin{equation}\label{general-seperation-axiom}
+    \forall x\, \forall p_1 \cdots \forall p_n\, \exists y\, \forall z\, \left(z \in y \iff \left(z \in x \wedge \psi(z,\, p_1,\ldots,\, p_n)\right)\right).
+\end{equation}
+
+Let $\mathbf{C} = \left\{z \,\vert\, \psi(z,\, p_1,\ldots,\, p_n)\right\}$ be the class containing all sets $z$ which satisfy the formula $\psi$ for any free variables $p_1,\ldots,\, p_n$.
+We can then utilize \ref{general-seperation-axiom} and have that
+$$\forall x \, \exists y \, \left(\mathbf{C} \cap x = y\right),$$
+describes the same set.
+This means that any subclass of a set is also a set, and naturally a subclass of a set is called a subset. 
+
+As a consequence the set theoretic operations \textit{difference} $\left(x \setminus y\right) \subseteq x$ and \textit{intersection} $\left(x \cap y\right) \subseteq x$ are also defined for any two sets $x$ and $y$,
+since all sets also are classes.
+Further the intersection 
+$$\bigcap \mathbf{C} = \left\{z \,\vert\, z \in x \ \text{for every}\ x \in \mathbf{C}\right\}$$
+of a class $\mathbf{C}$ is a set, since it is a subset of all of its elements, which are strictly sets. \cite[pp.5-6]{Jec78}
+
+\subsection{The Empty Set}\label{ZF4}
 $$\exists x \forall y \ y \notin x$$
 There is a set with no elements. We call this set $\varnothing = \left\{\right\}$. \cite{Gol17}
 
-The Empty Set Axiom is not strictly required, the existence of the empty set also arises from the \hyperref[ZF3]{Axiom Schema of Seperation}.
+This statement stands out, as it is not an axiom, the existence of the empty set also arises from the \hyperref[ZF3]{Axiom Schema of Seperation}.
+We include it here for the sake of completeness.
+
 Since we can define the empty class $\varnothing = \left\{u\, \vert\, u \neq u\right\}$, the empty set is also a set.
 However this follows from $\varnothing$ being a subset of all sets and hence only under the assumption that at least one other set exists.
 The existence of that set, in turn, follows from the \hyperref[ZF7]{Axiom of Infinity}.\cite[p.6]{Jec78}
 
-\subsection{Axiom of Power Sets}
-$$\forall x \exists y \forall z \left(z \in y \iff z \subseteq x\right)$$
-For any set $x$ there is a set, denoted by $\mathcal{P}(x)$ and called the power set of x, consisting of all subsets of x.
-%cartesian products and functions
-
-\subsection{Union Axiom}
+\subsection{Axiom of Unions}\label{ZF5}
 $$\forall x \exists y \forall z \left(z \in y \iff \exists w \left(z \in w \wedge w \in x\right)\right)$$
 For any set $x$ there is a set, denoted by $\bigcup x$, which is the union of all the elements of $x$.
+meaning it contains all elements of the members of $x$.
+
+For any sets, we recursively define their union as
+\begin{align*}
+    x \cup y &= \bigcup \left\{x,\, y\right\} \\
+    x \cup y \cup z &= \left(x \cup y\right) \cup z \\
+    &\cdots
+\end{align*}
+as well as a set with more then two members as,
+\begin{align*}
+    \left\{x_1,\ldots,\ x_n\right\} &= \left\{x_1\right\} \cup \cdots \cup \left\{x_n\right\}
+\end{align*}
+where the existence of $\left\{x,\, y\right\}$ and $\left\{x\right\} = \left\{x,\, x\right\}$ is justified by the \hyperref[ZF2]{Axiom of Pairs}. \cite[p.6]{Jec78}
+
+\subsection{Axiom of Power Sets}\label{ZF6}
+$$\forall x\, \exists y\, \forall z\, \left(z \in y \iff z \subseteq x\right)$$
+For any set $x$ there is a set, denoted by $\mathcal{P}(x)$ and called the power set of $x$, consisting of all subsets $s \subseteq x$.
+
+Using the axioms of \hyperref[ZF3]{Separation}, \hyperref[ZF5]{Union} and \hyperref[ZF6]{Power Set} we can define the \textit{cartesian product} of the sets $X$ and $X$ as
+$$x \times y = \left\{(u,\, v) \,\vert\, u \in x \vee v \in y\right\} \subseteq \mathcal{P}\left(\mathcal{P}\left(x \cup y\right)\right),$$
+and for multiple sets $x_1,\ldots,\, x_n$ as
+$$x^n = \underbrace{x_1 \times \cdots x_{n-1} \times x_n}_{n\ \text{times}}  = \left(x_1 \times \cdots \times x_{n-1}\right) \times x_n.$$
+
+We call a set $R \subseteq X^n$ a \textit{n-ary} relation over $X$.
+In general $R$ is a set of tuples and if $R$ is a binary relation, we write $x,\ R\, y$ for $(x,\, y) \in R$.
+
+A binary relation $f \subseteq X \times Y$ is called a \textit{function} (or \textit{map}), if
+$$\left((x,\, y) \in f \wedge (x,\, z) \in f\right) \implies y = z$$
+holds for all $x \in X$ and $y,\, z \in Y$, and if for all $u \in X$ there exists some $v \in Y$, such that $(u,\, v) \in f$.
+
+In the definition above, we call $X$ the \textit{domain} and $Y$ the \textit{codomain} of $f$.
+The set
+$$\mathbf{Im}(f) = \left\{y \,\vert\, \exists x \in X \, \left((x,\, y) \in f\right)\right\}$$
+is called the \textit{image} of $f$. 
+In general we write $f: X \to Y$ for $f \subseteq X \times Y$ and $f(x) = y$ whenever $(x,\, y) \in f$, in the latter case saying that $x$ \textit{maps to} $y$ in $f$.
+
+A function $f: X \to Y$ is called a \textit{surjection} if $\mathbf{Im}(f) = Y$
+and an \textit{injection}, if $$\left(f(x_1) = y \wedge f(x_2) = y\right) \implies x_1 = x_2.$$ 
+A function is \textit{bijection}, if it is both a surjection and an injection. \cite[pp.7-10]{Jec78}
 
 \subsection{Axiom of Infinity} \label{ZF7}
 $$\exists x \left(\varnothing \in x \wedge \forall y \left(y \in x \implies y \cup \{y\} \in x \right)\right)$$
 There is an inductive set.
+An inductive set contains both the empty set $\varnothing$ as well as the successor $x^+$ of every $x$ in the set.
+In this context the successor of a set $x$ is defined as $x^+ = x \cup \left\{x\right\}$.
+We will go into more detail on this in Section \ref{ordinals-section}.
 
-\subsection{Axiom of Replacement}
-$$\forall x \exists y \forall y' \left(y' \in y \iff \exists x' \left(x' \in x \wedge \phi(x', y')\right)\right),$$
-where $\phi(s, t)$ is a formula such that 
-$$\forall s \exists t \left(\phi(s, t) \wedge \forall t' \left(\phi(s, t') \implies t' = t\right)\right).$$
-If $\phi(s, t)$ is a class function, then when its domain is restricted to a set $x$, the resulting images form a set $y$.
-%rework to be axiom schema of replacement
+\subsection{Axiom Schema of Replacement}
+Let $\phi(x,\, y,\, p)$ a formula in first-order logic with free variables $x$, $y$ and $p$.
+\begin{align}\label{replacement-axiom}
+    &\forall x\, \forall y\, \forall z\, \left(\phi(x,\, y,\, p) \wedge \phi(x,\, z,\, p) \implies y = z\right)\nonumber \\
+    &\implies \forall x'\, \exists y'\, \forall y\, \left(y \in y'\ \iff \left(\exists x \in x'\right) \phi(x,\, y,\, p)\right)
+\end{align}
+
+Similar to \hyperref[ZF3]{the Axiom Schema of Seperation}, this is an axiom schema, meaning that (\ref{replacement-axiom}) is a separate axiom for each formula $\phi(x,\, y,\, p)$.
+We can also generalize the Axiom of replacement in a similar way, by replacing $\phi(x,\, y,\, p)$ with $\phi(x,\, y,\, p_1,\ldots,\, p_n)$.
+
+The axiom schema states that if $\mathbf{F} = \left\{(x\, y) \,\vert\, \phi(x,\, y,\, p)\right\}$ is a class function,
+then the image $\mathbf{Im}(\mathbf{F})$ is a set whenever we restrict the domain of $\mathbf{F}$ to a set.
+Consequently this restriction of $\mathbf{F}$ is also a function of sets. \cite[p.11]{Jec78}
 
 \subsection{Axiom of Foundation}
 $$\forall x \exists y \left(y \in x \wedge x \cap y = \varnothing \right)$$
@@ -137,7 +203,6 @@ To talk about the axiom of choice we need to first define what a choice function
     $$f(X) \in X$$
     holds for all sets $X \in S$.
 \end{definition}
-
 The Axiom of Choice is then defined as follows:
 \begin{definition}[Axiom of Choice]\cite[p.38]{Jec78}
     There exists a choice function for every family of nonempty sets.
