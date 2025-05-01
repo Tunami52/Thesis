@@ -8,7 +8,7 @@ To give a more intuitive understanding of how these differ we use the notation $
 
 \begin{definition}[Strict Partial Order]\cite[p.165]{Gol17}
     Let $X$ be a set and $<\, \subseteq X \times X$ a binary relation on $X$.
-    Then $<$ is called a \textit{(strict) partial order of $X$}, and $(X, <)$ called a \textit{(strictly) partially ordered set}, if it is
+    Then $<$ is called a \textit{(strict) partial order of $X$}, and $(X,\, <)$ called a \textit{(strictly) partially ordered set}, if it is
     \begin{enumerate}[label=(\roman*)]
         \item \textbf{irreflexive}: $\forall x \in X \left(x \not < x\right)$
         \item \textbf{transitive}: $\forall x,\, y,\, z \in X \left(\left(x < y \wedge y < z\right) \implies x < z\right)$
@@ -18,7 +18,7 @@ To give a more intuitive understanding of how these differ we use the notation $
 
 \begin{definition}[Weak Partial Order]\cite[p.164]{Gol17}
     Let $X$ be a set and $\leq\, \subseteq X \times X$ a binary relation on $X$.
-    Then $\leq$ is called a \textit{weak partial order} of $X$, and $(X, \leq)$ called a \textit{weakly partially ordered set}, if it is
+    Then $\leq$ is called a \textit{weak partial order} of $X$, and $(X,\, \leq)$ called a \textit{weakly partially ordered set}, if it is
     \begin{enumerate}[label=(\roman*)]
         \item \textbf{reflexive}: $\forall x \in X \ (x \leq x)$
         \item \textbf{transitive}: $\forall x,\, y,\, z \in X \left(\left(x \leq y \wedge y \leq z\right) \implies x \leq z\right)$
@@ -41,10 +41,40 @@ A partially ordered set $(X, <)$ is sometimes also referred to simply as $X$ by 
 Additionally, whenever we talk about partially or linearly ordered sets without specifying which type, and where the type of partial order matters, we are referring to strict ones. \cite[p.12]{Jec78}
 Out of convenience, when talking about a strict partial order $<$, we sometimes refer to the term $\left(a < b \vee a = b\right)$ as $a \leq b$.
 
-Clearly it is straightforward to define a weak partial order $R'$ from a strict partial order $R$, letting $\left<x,\, y\right> \in R'$ whenever $\left<x,\, y\right> \in R'$ or $x = y$.
+Clearly it is straightforward to define a weak partial order $R'$ from a strict partial order $R$, letting $\left<x,\, y\right> \in R'$ whenever $\left<x,\, y\right> \in R$ or $x = y$.
+
+\begin{example}
+        Let $(\mathbb{Q},\, <)$ and $(\mathbb{R},\, <)$ be the rational and real numbers with their respective usual order.
+        Then, both $\mathbb{Q}$ and $\mathbb{R}$ are strictly partially and linearly ordered with respect to $<$.
+        Additionally the function $f: \mathbb{Q} \to \mathbb{R}$ defined as $f(x) = x$ is an order-embedding, 
+        however due to the differences in cardinality the inverse $f^{-1}$ is not a proper function.
+\end{example}
+
+\begin{example}
+    Consider the complex numbers $\mathbb{C}$ with $<_{\mathbb{R}}$ the usual order as defined on $\mathbb{R}$.
+    Then $(\mathbb{C},\, <_{\mathbb{R}})$ is a strict partial order, but not linear since $<_{\mathbb{R}}$ is only defined for strictly real numbers.
+    Let us denote a complex number as an element of $\mathbb{R}^2$, so we express $z = a + b i$ as $\left<a,\, b\right>$.
+    We can then define a linear order on $\mathbb{R}^2$, by letting 
+    \begin{align*}
+        \left<a_1,\, b_1\right> < \left<a_2,\, b_2\right>\ &\text{if}\ a_1 < a_2 \\
+        &\text{or}\ a_1 = a_2 \wedge b_1 < b_2.
+    \end{align*}
+    This is called the \textit{lexicographical order} of $\mathbb{R}^2$ with respect to the order $<$ on $\mathbb{R}$ and is perhaps the most natural way to a cartesian product. \cite[p.182]{Gol17}
+    The \textit{anti-lexicographical order} order of $\mathbb{R}^2$ would be 
+    \begin{align*}
+        \left<a_1,\, b_1\right> < \left<a_2,\, b_2\right>\ &\text{if}\ b_1 < b_2 \\
+        &\text{or}\ b_1 = b_2 \wedge a_1 < a_2.
+    \end{align*}
+    If we express a complex number as $z = r e^{\varphi i}$, we can define a linear order a different way:
+    \begin{align*}
+        z_1 = r_1 e^{\varphi_1 i} < z_2 = r_2 e^{\varphi_2 i}\ &\text{if}\ r_1 < r_2 \\
+        &\text{or}\ r_1 = r_2 \wedge (\varphi_1 < \varphi_2\ \text{mod}\ 2\pi).
+    \end{align*}
+    If we view the number $z = r e^{\varphi i}$ as the ordered pair $\left<r,\, \varphi\right>$, this is then the lexicographical ordering of $\mathbb{R} \times \left[0,\, 2 \pi\right)$.
+\end{example}
 
 \begin{definition}\cite[p.12]{Jec78}
-    An element $a$ of an ordered set $\left(X, <\right)$ is the \textit{least element} of $X$ with respect to $<$, if $\forall x \in X  \left(a < x \vee x = a\right)$.
+    An element $a$ of an ordered set $\left(X,\, <\right)$ is the \textit{least element} of $X$ with respect to $<$, if $\forall x \in X  \left(a < x \vee x = a\right)$.
     Similarly, an element $z$ is called the \textit{greatest element} of $X$ if $\forall x \in X  \left(x < a \vee x = a\right)$.
 \end{definition}
 
@@ -52,6 +82,11 @@ This notion of a least element lets us define a special kind of linearly ordered
 \begin{definition}[Well-Order]\cite[p.13]{Jec78}
     A strict linear order $<$ of a set $X$ is called a \textit{well-ordering} if every subset of $X$ has a least element.
 \end{definition}
+
+\begin{example}
+    The natural numbers $\mathbb{N}$ are a well-ordered set with respect to their usual order.
+    The least element of $\mathbb{N}$ is $0$.
+\end{example}
 
 Well-ordered sets are central to the axiomatic set theory at hand.
 In fact, one of the most important results we will treat here, is that every set can we well-ordered (with the Axiom of Choice).
