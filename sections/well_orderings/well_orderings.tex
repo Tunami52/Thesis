@@ -33,7 +33,7 @@ To give a more intuitive understanding of how these differ we use the notation $
     If $X$ and $Y$ are both linearly ordered, an order-preserving function is also said to be \textit{increasing}.
 
     The function $f$ is called an \textit{order-isomorphism} if $f$ is both order-preserving and a bijective.
-    Whenever it is clear from context that we are talking about ordered sets we simply call $f$ an \textit{isomorphism}.
+    Whenever it is clear from context that we are talking about ordered sets we simply call $f$ an \textit{isomorphism} and write $X \simeq Y$.
     If $f$ is order-preserving and injective, it is called an \textit{order-embedding}. \cite[p.167]{Gol17}
 \end{definition}
 
@@ -88,6 +88,12 @@ This notion of a least element lets us define a special kind of linearly ordered
     The least element of $\mathbb{N}$ is $0$.
 \end{example}
 
+\begin{example}
+    The integers $\mathbb{Z}$ are not well-ordered under their usual order.
+    They have no least element, and while of course every finite subset has a least element, 
+    this does not hold for all subsets of $\mathbb{Z}$ (for example the set of even integers).
+\end{example}
+
 Well-ordered sets are central to the axiomatic set theory at hand.
 In fact, one of the most important results we will treat here, is that every set can we well-ordered (with the Axiom of Choice).
 
@@ -109,7 +115,7 @@ For this we need to define the initial section of an ordered set first:
     By the definition of $X$ we this means that $f(w) < w$, contradicting the initial assumption that $f$ is an increasing function.
 \end{proof}
 
-\begin{lemma}\cite[Lemma 2.2, p.13]{Jec78}
+\begin{lemma}\cite[Lemma 2.2, p.13]{Jec78}\label{initial-segment-isomorphism}
     No well-ordered set is isomorphic to an initial segment of itself.
 \end{lemma}
 
@@ -118,9 +124,99 @@ For this we need to define the initial section of an ordered set first:
     The image of $f$ is then $\mathbf{Im}\left(f\right) = \left\{x \in X \,\vert\, x < s\right\} = S$, but we know this is not possible by Lemma \ref{increasing-fcn-lemm}. 
 \end{proof}
 
-We are now ready to define ordinal numbers, motivated by the way we describe the natural numbers in set theory.
+\begin{theorem}\label{well-order-isomorphism}\cite[Theorem 1]{Jec78}
+    Let $(W_1,\, <_1)$ and $(W_1,\, <_2)$ be well-ordered sets.
+    Then one of the following holds:
+    \begin{enumerate}
+        \item $W_1$ is isomorphic to $W_2$,
+        \item $W_1$ is isomorphic to an initial segment of $W_2$,
+        \item $W_2$ is isomorphic to an initial segment of $W_1$.
+    \end{enumerate}
+\end{theorem}
 
-\section{Ordinals and Order Types}\label{ordinals-section}
+\begin{proof}\cite[Theorem 1]{Jec78}
+    Let $W_1$ and $W_2$ be as in the statement of the theorem and let $W_i(u)$ be the initial segment $\left\{u \in W_i \,\vert\, u < v\right\}$ of $W_i$ for $i \in \left\{1,\, 2\right\}$.
+    We can then define the following set of ordered pairs:
+    $$f = \left\{\left<x,\, y\right> \in W_1 \times W_2 \,\vert\, W_1(x) \simeq W_2(y)\right\}.$$
+    By Lemma \ref{initial-segment-isomorphism} no element of either $W_1$ or $W_2$ can be a member of more than one ordered pair in $f$,
+    since $$\left<x,\, y_1\right>, \left<x,\, y_1\right> \in f \implies y_1 \simeq x \simeq y_2.$$
+    Hence $f$ is a bijective function, however not necessarily one of which the domain and image are $W_1$ and $W_2$.
+    
+    Let $h: W_1(u) \to W_2(v)$ be an isomorphism between two initial segments of $W_1$ and $W_2$.
+    Then if we have $u' < u$ in $W_1$, it follows that $W_1(u') \simeq W_2(h(u'))$ and hence $\left<u',\, h(u')\right>$ must be in $f$.
+
+    Based on these properties we can explore the following cases:
+    \begin{enumerate}
+        \item If $W_1$ is the domain of $f$ and $\mathbf{Im}(f) = W_2$, we have that $W_1$ and $W_2$ must be isomorphic.
+        Hence case $1$ of the the theorem holds.
+        \item If $\mathbf{Im}(f) \neq W_2$, we have that $W_2 \setminus \mathbf{Im}(f)$ is non-empty and denote the least element of $W_2 \setminus \mathbf{Im}(f)$ by $y_0$.
+        Then $\mathbf{Im}(f) = W_2(y_0)$, since for $y_1 < y_2$ in $W_2$, having $y_2 \in \mathbf{Im}(W_2)$ means that $y_1 \in \mathbf{Im}(W_2)$.
+
+        Further $\text{dom}(f) = W_1$, because otherwise $\text{dom}(f) = W_1(w_0)$ for the least element $x_0$ of $W_1 \setminus \text{dom}(f)$.
+        This in turn results in a contradiction as $W_1(x_0)$ is necessarily isomorphic to $W_2(y_0)$, meaning that $\left<x_0,\, y_0\right> \in f$ and $x_0 \in \text{dom}(f)$.
+
+        As such we have that $f: W_1 \to W_2(y_0)$ is an order isomorphism and case $2$ of the theorem holds.
+        \item If $\text{dom}(f) \neq W_1$, we have that $\text{dom}(f) = W_1(w_0)$ for the least element $x_0$ of the set $W_1 \setminus \text{dom}(f)$.
+        Proceeding analogously to case before we have that $\mathbf{Im}(f) = W_2$. 
+        Hence $W_2$ is order-isomorphic to an initial segment of $W_1$ and case $3$ of the theorem holds.
+    \end{enumerate}
+    By case 2 it is clear that these are the only possibilities for $\text{dom}(f)$ and $\mathbf{Im}(f)$ and by Lemma \ref{initial-segment-isomorphism} the cases must be mutually exclusive.
+\end{proof}
+
+\section{Properties of Linear Orderings}
+
+There are some more important concepts to define when discussing linear orderings, namely how we describe their properties.
+The sets $\mathbb{N}$, $\mathbb{Z}$ and $\mathbb{Q}$ are all countable, but their usual orderings clearly all differ.
+On the other hand, $\mathbb{Q}$ and $\mathbb{R}$ have different cardinalities, 
+however the way both are ordered seems very similar.\footnote{The sets $\mathbb{Z}$, $\mathbb{Q}$ and $\mathbb{R}$ are used without formally defining them or their orders here.
+It is assumed the reader is familiar.}
+
+\begin{definition}\cite[Definition 1.20]{Ros82}
+    Let $(X,\, <)$ be a strictly linearly ordered set and $b \in X$ an element of $X$.
+    Then an element $c \in X$ is called the (unique and immediate) \textit{successor} of $b$, if
+    $$\forall x \in X \, \left(x < c \implies x < b \vee x = b\right).$$
+    Similarly an element $a \in X$ is called the (unique and immediate) \textit{predecessor} of $b$, if
+    $$\forall x \in X \, \left(a < x \implies x = b \vee b < x\right).$$
+\end{definition}
+Every element in $\mathbb{N}$ and $\mathbb{Z}$ has an immediate successor and every element in $\mathbb{Z}$ has an immediate predecessor.
+This is however not the case for elements of $\mathbb{Q}$, as the natural order of the rationals is \textit{dense}.
+
+\begin{definition}[Dense orderings]\cite[Definition 2.1]{Ros82}
+    Let $(Y,\, <)$ be a strictly linearly ordered set.
+    Then $Y$ is called \textit{dense}, if
+    $$\forall a_1,\, a_2 \in Y \left(a_1 < a_2 \implies \exists a \in Y \left(a_1 < a \wedge a < a_2\right)\right).$$
+\end{definition}
+
+We will not dwell on the concept of density to long.
+Especially the distinction between the two dense orderings of $\mathbb{Q}$ and $\mathbb{R}$ goes more into the direction of point-set topology and is beyond the scope of this text.
+For a treatment of this topic from the perspective of linear orderings we refer the curious reader to \cite[\S 2]{Ros82}.
+
+The broader discussion of the properties of linear orderings is important however, as we need a way to classify and compare ordered sets.
+For the classification we utilize order preserving functions; this is especially useful for the use-case of well-ordered sets all they always relate to each other in this way by Theorem (\ref{well-order-isomorphism}).
+
+\begin{definition}[Order Type]\cite[Definition 1.12, 1.13]{Ros82}
+    Let $(X, <_X)$ and $(Y, <_Y)$ be linear orderings.
+    We say that $X$ and $Y$ have the same \textit{order type}, if there exists an order-isomorphism $f: X \to Y$.
+
+    Assume that $\alpha$ is some linear ordering that we choose as a representative.
+    If $X$ and $\alpha$ are order-isomorphic we also say that $X$ has \textit{order type} $\alpha$.
+\end{definition}
+
+\begin{example}
+    Consider the positive integers $\mathbb{Z}^+ = \mathbb{N} \setminus \left\{0\right\}$.
+    We can define the function $s: \mathbb{N} \to \mathbb{Z^+}$ by $s(n) = n + 1$ and have that $s$ is an order-isomorphism:
+    $$n < m \iff n+1 < m+1.$$
+    Hence $\mathbb{Z}^+$ has the same order-type as $\mathbb{N}$.
+\end{example}
+
+%% \begin{example}\cite[Exercise 2.3]{Ros82}
+%%     We denote the order type of the rational numbers $\mathbb{Q}$ by $\eta$.
+%%     Then $\mathbb{Q}$ as $\mathbb{Q} \setminus \left\{0\right\}$ with the usual ordering also has order type $\eta$.
+%% \end{example}
+%%
+%% \\TODO
+
+\section{Ordinals}\label{ordinals-section}
 There are several ways to define the natural numbers $\mathbb{N}$, the way we do it here, and the way generally used in set theory, is to use the \hyperref[ZF7]{Axiom of Infinity}.
 This states that $\mathbb{N}$ is an \textit{inductive set}, meaning that it contains $0$, defined as $\varnothing = \left\{\right\}$, as well as the successor of every element in it, including of course $0$ itself. \cite[p.39]{Gol17}
 
@@ -200,7 +296,7 @@ This theorem, as it turn out, is not just another regular theorem, and we will t
 Indeed, the Well-Ordering Theorem is actually equivalent to the Axiom of Choice.
 This means that if either statement is assumed to be true (and it has to be assumed since we are talking about \textit{axioms}),
 the other one can be proved from it.
-This is the same methodology we will use for proving our main result, theorem \ref{main-thm}, as well.
+This is the same methodology we will use for proving our main result, Theorem \ref{main-thm}, as well.
 There we will show equivalence of our main statement, that a group structure exists on all arbitrary sets, with the Well-Ordering Theorem.
 As such by transitivity, this main statement is also equivalent to the Axiom of Choice.
 
@@ -247,12 +343,18 @@ As such by transitivity, this main statement is also equivalent to the Axiom of 
 \end{proof}
 
 \section{Hartogs' Lemma}
-We continue with the final result for this chapter, 
-a lemma originally stated by Hartogs in 1915, restated and proven in this form in our main paper by Hajnal and Kertész.
+We continue with the conclusion of this chapter, a lemma originally stated by Hartogs in a paper from 1915. % restated and proven in this form in our main paper by Hajnal and Kertész.
+Just as with Theorem (\ref{well-order-thm}), this is used in the proof of our final result, Theorem (\ref{main-thm}).
+Before we can state and prove this however, we need the following lemma:
+
+\begin{lemma}\cite[Annex]{Har15}
+    Let $M$ be an arbitrary set.
+    Then there exists a set $M_0$ consisting only of elements which are well-ordered set, whose elements are also elements of $M$.
+\end{lemma}
 
 \begin{lemma}\cite{Har15}
     Let $A$ be an arbitrary set and let $S = \mathcal{P}(A)$ be the collection of subsets of $A$.
-    Then there exists an ordinal $\alpha$, such that no no mapping $f_s: s \to \alpha$ from any subset $s \in S$ of $A$ to $\alpha$ is an order isomorphisms.
+    Then there exists an ordinal $\alpha$, such that no mapping $f_s: s \to \alpha$ from any subset $s \in S$ of $A$ to the ordinal $\alpha$ is a bijection.
 \end{lemma}
 
 \begin{proof}\cite[Lemma]{Haj72}

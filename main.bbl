@@ -23,7 +23,7 @@ A.~Hajnal and A.~Kert\'esz.
 \bibitem[Jec78]{Jec78}
 Thomas Jech.
 \newblock {\em Set Theory}.
-\newblock Acad. P., New York, 1978.
+\newblock Pure and applied Mathematics. Academic Press, New York, 1978.
 
 \bibitem[Ker75]{Ker75}
 Andor Kertész.
@@ -34,5 +34,10 @@ Andor Kertész.
 David Marker.
 \newblock {\em Model theory}.
 \newblock Graduate texts in mathematics. Springer, New York, cop. 2002.
+
+\bibitem[Ros82]{Ros82}
+Joseph~G. Rosenstein.
+\newblock {\em Linear Orderings}.
+\newblock Pure and applied Mathematics. Academic Press, New York, 1982.
 
 \end{thebibliography}
