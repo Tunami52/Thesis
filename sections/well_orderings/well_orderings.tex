@@ -120,7 +120,7 @@ For this we need to define the initial section of an ordered set first:
 \end{lemma}
 
 \begin{proof}\cite[Lemma 2.2, p.13]{Jec78}
-    Assume for a contradiction that $f$ is an order isomorphism from an ordered set $\left(X,\, <\right)$ to an initial segment $\left(S,\, <\right) = \left\{x \in X \,\vert\, x < s\right\}$, for some $s \in X$ of itself.
+    Assume for a contradiction that $f$ is an order-isomorphism from an ordered set $\left(X,\, <\right)$ to an initial segment $\left(S,\, <\right) = \left\{x \in X \,\vert\, x < s\right\}$, for some $s \in X$ of itself.
     The image of $f$ is then $\mathbf{Im}\left(f\right) = \left\{x \in X \,\vert\, x < s\right\} = S$, but we know this is not possible by Lemma \ref{increasing-fcn-lemm}. 
 \end{proof}
 
@@ -147,20 +147,20 @@ For this we need to define the initial section of an ordered set first:
 
     Based on these properties we can explore the following cases:
     \begin{enumerate}
-        \item If $W_1$ is the domain of $f$ and $\mathbf{Im}(f) = W_2$, we have that $W_1$ and $W_2$ must be isomorphic.
+        \item If $\mathbf{Dom}(f) = W_1$ is the domain of $f$ and $\mathbf{Im}(f) = W_2$, we have that $W_1$ and $W_2$ must be isomorphic.
         Hence case $1$ of the the theorem holds.
         \item If $\mathbf{Im}(f) \neq W_2$, we have that $W_2 \setminus \mathbf{Im}(f)$ is non-empty and denote the least element of $W_2 \setminus \mathbf{Im}(f)$ by $y_0$.
         Then $\mathbf{Im}(f) = W_2(y_0)$, since for $y_1 < y_2$ in $W_2$, having $y_2 \in \mathbf{Im}(W_2)$ means that $y_1 \in \mathbf{Im}(W_2)$.
 
-        Further $\text{dom}(f) = W_1$, because otherwise $\text{dom}(f) = W_1(w_0)$ for the least element $x_0$ of $W_1 \setminus \text{dom}(f)$.
-        This in turn results in a contradiction as $W_1(x_0)$ is necessarily isomorphic to $W_2(y_0)$, meaning that $\left<x_0,\, y_0\right> \in f$ and $x_0 \in \text{dom}(f)$.
+        Further $\mathbf{Dom}(f) = W_1$, because otherwise $\mathbf{Dom}(f) = W_1(w_0)$ for the least element $x_0$ of $W_1 \setminus \mathbf{Dom}(f)$.
+        This in turn results in a contradiction as $W_1(x_0)$ is necessarily isomorphic to $W_2(y_0)$, meaning that $\left<x_0,\, y_0\right> \in f$ and $x_0 \in \mathbf{Dom}(f)$.
 
-        As such we have that $f: W_1 \to W_2(y_0)$ is an order isomorphism and case $2$ of the theorem holds.
-        \item If $\text{dom}(f) \neq W_1$, we have that $\text{dom}(f) = W_1(w_0)$ for the least element $x_0$ of the set $W_1 \setminus \text{dom}(f)$.
+        As such we have that $f: W_1 \to W_2(y_0)$ is an order-isomorphism and case $2$ of the theorem holds.
+        \item If $\mathbf{Dom}(f) \neq W_1$, we have that $\mathbf{Dom}(f) = W_1(w_0)$ for the least element $x_0$ of the set $W_1 \setminus \mathbf{Dom}(f)$.
         Proceeding analogously to case before we have that $\mathbf{Im}(f) = W_2$. 
         Hence $W_2$ is order-isomorphic to an initial segment of $W_1$ and case $3$ of the theorem holds.
     \end{enumerate}
-    By case 2 it is clear that these are the only possibilities for $\text{dom}(f)$ and $\mathbf{Im}(f)$ and by Lemma \ref{initial-segment-isomorphism} the cases must be mutually exclusive.
+    By case 2 it is clear that these are the only possibilities for $\mathbf{Dom}(f)$ and $\mathbf{Im}(f)$ and by Lemma \ref{initial-segment-isomorphism} the cases must be mutually exclusive.
 \end{proof}
 
 \section{Properties of Linear Orderings}
@@ -209,15 +209,15 @@ For the classification we utilize order preserving functions; this is especially
     Hence $\mathbb{Z}^+$ has the same order-type as $\mathbb{N}$.
 \end{example}
 
-%% \begin{example}\cite[Exercise 2.3]{Ros82}
-%%     We denote the order type of the rational numbers $\mathbb{Q}$ by $\eta$.
-%%     Then $\mathbb{Q}$ as $\mathbb{Q} \setminus \left\{0\right\}$ with the usual ordering also has order type $\eta$.
-%% \end{example}
+\begin{example}\cite[Exercise 2.3]{Ros82}
+    We denote the order type of the rational numbers $\mathbb{Q}$ under the usual order by $\eta$.
+    Then the punctured rationals $\mathbb{Q} \setminus \left\{0\right\}$ with the usual ordering also have order type $\eta$.
+\end{example}
 %%
 %% \\TODO
 
 \section{Ordinals}\label{ordinals-section}
-There are several ways to define the natural numbers $\mathbb{N}$, the way we do it here, and the way generally used in set theory, is to use the \hyperref[ZF7]{Axiom of Infinity}.
+There are several ways to define the natural numbers $\mathbb{N}$, the way we do it here, and the way generally used in set theory, is to use the \hyperref[ZF7]{Axiom of Infinity}, motivated by the Peano Axioms.
 This states that $\mathbb{N}$ is an \textit{inductive set}, meaning that it contains $0$, defined as $\varnothing = \left\{\right\}$, as well as the successor of every element in it, including of course $0$ itself. \cite[p.39]{Gol17}
 
 \begin{definition}\cite[p.38]{Gol17}
@@ -275,8 +275,52 @@ It follows from the following lemma that every natural number also is an ordinal
 \end{proof}
 
 \begin{theorem}\label{unique-ordinal}\cite[Theorem 2, p.15]{Jec78}
-    Every well-ordered set is order isomorphic to a unique ordinal.
+    Every well-ordered set is order-isomorphic to a unique ordinal.
 \end{theorem}
+
+\begin{proof}\cite[Theorem 2]{Jec78}
+    Let $W$ be a well ordered set.
+    We will show that $W$ is order-isomorphic to an ordinal $\alpha$, the uniqueness of $\alpha$ follows from Lemma \ref{initial-segment-isomorphism}.
+
+    Let $\mathbf{F}$ be the class function
+    $$\mathbf{F} = \left\{\left<x, \alpha\right> \,\vert\, W(x) \simeq \alpha\right\},$$
+    which maps an element $x$ to the ordinal $\alpha$, only if the initial segment $\left\{u \in W \,\vert\, u < x\right\}$ given by $x$ is order-isomorphic to $\alpha$.
+    Then, by the \hyperref[ZF8]{Axiom Schema of Replacement}, the restriction $\mathbf{F}\vert_W$ is a function of sets, since $\mathbf{Dom}(\mathbf{F}\vert_W) \subseteq W$.
+    As such $\mathbf{Im}(\mathbf{F\vert_W})$ is also a set.
+
+    Additionally, we have that $\mathbf{F}(w)$ is defined for each $w \in W$:
+    Consider for a contradiction the least element $w_0$ of $W$ not isomorphic to an ordinal.
+    Then $W(w_0) \simeq \beta$ for some ordinal $\beta$ and consequently the least ordinal $\alpha_0$ for which $\beta < \alpha_0$ holds must be isomorphic to $w_0$.
+
+    Finally we let $\gamma$ be the least ordinal such that $\gamma \not\in \textbf{Im}(\mathbf{F}\vert_W)$ and have that $\gamma$ is order-isomorphic to $W$ 
+    as every $\alpha \in \gamma$ is isomorphic to an initial segment of $W$.
+\end{proof}
+
+This theorem makes it possible for us to associate the order type of a well-ordered sets with precisely the ordinal it is order-isomorphic to.
+In that sense we use the terms order type and ordinal interchangeably when talking about well-ordered sets.
+
+The idea of ordinals was introduced using the natural numbers and while that is a useful comparison, 
+we want to think about ordinals more as a generalization of $\mathbb{N}$, rather that a direct analog.
+As the name implies, ordinals describe magnitudes of \textit{order} rather than \textit{size}.
+
+Consider for example the ordinal $\omega + 1 = \omega \cup \left\{\omega\right\}$, which describes the element coming after the ``number'' which is larger that every natural number.
+We can still define a bijective function from $\omega + 1$ to the natural numbers, so $\omega + 1$ is not larger in a \textit{cardinal} sense, but rather relates to order.
+We will not deal with the proper notion of cardinality, the size of sets, in this text, 
+however we will see in Theorem \ref{hartogs-lemma} that the distinction between cardinality and ordinals is not always clear cut.
+
+In $\omega + 1$ and $\omega$ we can also recognize the two important types of ordinals, \textit{successor ordinals} and \textit{limit ordinals}.
+
+\begin{definition}[Successor Ordinal]\cite[p.13]{Jec78}
+    We call an ordinal $\alpha$ a \textit{successor ordinal}, if it is the direct successor $$\alpha = \beta^+ = \beta + 1$$
+    for some other ordinal $\beta$.
+\end{definition}
+
+\begin{definition}[Limit Ordinal]\cite[Exercise 2.3]{Jec78}
+    We call an ordinal $\alpha$ a \textit{successor ordinal} if it is not a limit ordinal.
+    Then $\alpha = \bigcup \alpha$ and $$\beta < \alpha \implies \beta + 1 < \alpha.$$
+    The latter follows since $\beta + 1 \not< \alpha$ would imply that both $\beta \subset \alpha$ and $\beta \subset \beta + 1$ hold.
+    But since $\alpha$ is not a successor ordinal by definition we have $\alpha \neq \beta + 1$, hence $\beta + 1 \in \alpha$ by contradiction.
+\end{definition}
 
 \section{The Well-Ordering Theorem}
 The following, along with \textit{Zorn's Lemma}, is one of the most fundamental results in set theory.
@@ -287,7 +331,7 @@ There is a (bad) joke that goes:
 \end{quote}
 
 \begin{definition}[Zermelo's Well-Ordering Theorem]\cite[Theorem 15, p.39]{Jec78}\label{well-order-thm}
-    \newline Every set can be well ordered.
+    \newline Every set can be well ordered. 
 \end{definition}
 
 We could provide a proof for Definition \ref{well-order-thm} in \textbf{ZFC} here directly.
@@ -357,7 +401,7 @@ Before we can state and prove this however, we need the following lemma:
     Then there exists an ordinal $\alpha$, such that no mapping $f_s: s \to \alpha$ from any subset $s \in S$ of $A$ to the ordinal $\alpha$ is a bijection.
 \end{lemma}
 
-\begin{proof}\cite[Lemma]{Haj72}
+\begin{proof}\label{hartogs-lemma}\cite[Lemma]{Haj72}
     We let the ordinal $\alpha$ take the following value:
     $$\alpha = \cup\left\{ \text{type}\left(X, R\right) + 1 \,\vert\, X \subseteq A, R \subseteq A \times A \wedge R\ \text{well-orders}\ A\right\}.$$
     We will show that $\alpha$ is such that it satisfies the lemma's statement.

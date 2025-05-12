@@ -176,7 +176,7 @@ An inductive set contains both the empty set $\varnothing$ as well as the succes
 In this context the successor of a set $x$ is defined as $x^+ = x \cup \left\{x\right\}$.
 We will go into more detail on this in Section \ref{ordinals-section}.
 
-\subsection{Axiom Schema of Replacement}
+\subsection{Axiom Schema of Replacement}\label{ZF8}
 Let $\phi(x,\, y,\, p)$ a formula in first-order logic with free variables $x$, $y$ and $p$.
 \begin{align}\label{replacement-axiom}
     &\forall x\, \forall y\, \forall z\, \left(\phi(x,\, y,\, p) \wedge \phi(x,\, z,\, p) \implies y = z\right)\nonumber \\
@@ -190,7 +190,7 @@ The axiom schema states that if $\mathbf{F} = \left\{(x\, y) \,\vert\, \phi(x,\,
 then the image $\mathbf{Im}(\mathbf{F})$ is a set whenever we restrict the domain of $\mathbf{F}$ to a set.
 Consequently this restriction of $\mathbf{F}$ is also a function of sets. \cite[p.11]{Jec78}
 
-\subsection{Axiom of Foundation}
+\subsection{Axiom of Foundation}\label{ZF9}
 $$\forall x \exists y \left(y \in x \wedge x \cap y = \varnothing \right)$$
 Every set contains an $\in$-minimal element, we call this being \textit{well-founded}.\cite[p.92]{Gol17}
 This also means there exist no infinitely descending chains of sets, such as $x_0 \ni x_1 \ni x_2 \ni \cdots$.\cite[Theorem 4.3, p.95]{Gol17}
