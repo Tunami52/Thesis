@@ -316,11 +316,42 @@ In $\omega + 1$ and $\omega$ we can also recognize the two important types of or
 \end{definition}
 
 \begin{definition}[Limit Ordinal]\cite[Exercise 2.3]{Jec78}
-    We call an ordinal $\alpha$ a \textit{successor ordinal} if it is not a limit ordinal.
-    Then $\alpha = \bigcup \alpha$ and $$\beta < \alpha \implies \beta + 1 < \alpha.$$
-    The latter follows since $\beta + 1 \not< \alpha$ would imply that both $\beta \subset \alpha$ and $\beta \subset \beta + 1$ hold.
-    But since $\alpha$ is not a successor ordinal by definition we have $\alpha \neq \beta + 1$, hence $\beta + 1 \in \alpha$ by contradiction.
+    We call an ordinal $\alpha$ a \textit{limit ordinal} if it is not a successor ordinal.
+    Then $\alpha = \bigcup \alpha$ is the least upper bound of the set $\left\{\beta \,\vert\, \beta < \alpha\right\}$ and $$\beta < \alpha \implies \beta + 1 < \alpha.$$
+    The latter follows since $\beta + 1 \not< \alpha$ would imply that both $\beta \in \alpha$ and $\beta \in \beta + 1$ hold.
+    But since $\alpha$ is not a successor ordinal by definition we also have $\alpha \neq \beta + 1$.
+    This means $\beta + 1 \in \alpha$ must be true by contradiction, because ordinals are well-ordered by set inclusion.
+
+    We also say consider $0$ a limit ordinal and say that the least upper bound of $0$ is itself.
 \end{definition}
+
+We now introduce the final concept important for ordinals, that of \textit{transfinite induction}.
+When we do a proof by (regular) induction, we show that some property holds for every natural number.
+Transfinite is the same concept extended to the ordinal numbers; loosely speaking we show not only that a property holds for a base case and every successive number,
+but also that if it holds for all ordinals smaller than some limit ordinal, that it holds for the limit ordinal as well.
+This concept is generalized in the following theorem:
+
+\begin{theorem}[Transfinite Induction]\cite[Theroem 3]{Jec78}
+    Let $\mathbf{C}$ be a class containing only ordinals and let the following hold for $\mathbf{C}$:
+    \begin{enumerate}[label=(\roman*)]
+        \item $0 \in \mathbf{C}$,
+        \item If $\alpha \in \mathbf{C}$ is an ordinal, then $\alpha + 1 \in \mathbf{C}$,
+        \item If $\alpha$ is a non-zero ordinal and $\beta \in \mathbf{C}$ holds for all $\beta < \alpha$, then $\alpha \in \mathbf{C}$.
+    \end{enumerate}
+    Then $\mathbf{C}$ is the class of all ordinals.
+\end{theorem}
+
+\begin{proof}\cite[Theroem 3]{Jec78}
+    Let $\mathit{Ord}$ be the class of all ordinals.
+    Assume for a contradiction that the theorem does not hold and assume that $\alpha$ is the least ordinal contained in the class $\mathit{Ord} \setminus \mathbf{C}$.
+    
+    If $\alpha = 0$ we immediately arrive at a contradiction, hence assume that $\alpha$ is some non-zero ordinal.
+    If $\alpha$ is a successor ordinal we have that its direct predecessor must be a member of $\mathbf{C}$ and by the second criteria of the theorem we have that $\alpha \in \mathbf{C}$.
+    
+    Similarly, if $\alpha$ is a limit ordinal we have that $\beta \in \mathbf{C}$ for all $\beta < \alpha$.
+    Therefore, by the third criteria of the theorem, we must also have that $\alpha \in \mathbf{C}$, a contradiction.
+    Hence $\mathit{Ord} = \mathbf{C}$.
+\end{proof}
 
 \section{The Well-Ordering Theorem}
 The following, along with \textit{Zorn's Lemma}, is one of the most fundamental results in set theory.
