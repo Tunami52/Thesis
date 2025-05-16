@@ -5,15 +5,66 @@
     A \textit{formal language} $\mathcal{L}$ in first order logic is given by the following:
     \begin{enumerate}
         \item A set $\mathcal{F}$ of functions $f$ of $n_f$ variables, with $n_f \in \mathbb{Z}^+$ a positive integer,
-        \item A set $\mathcal{R}$ of $n_r$-ary relations $r$, with $n_r \in \mathbb{Z}^+$ a positive integer,
-        \item A set $\mathcal{C}$ of constants.
+        \item a set $\mathcal{R}$ of $n_R$-ary relations $R$, with $n_R \in \mathbb{Z}^+$ a positive integer,
+        \item a set $\mathcal{C}$ of constants.
     \end{enumerate}
+\end{definition}
+
+Since we utilize set theory in the definition of languages, we consider the set inclusion symbol $\in$ to be to be part of first-order logic here (in the same vein as $=$.)
+As such, when we dealt with set theoretic constructions we used the language of given by $\mathcal{L}_{Set} = \varnothing$.
+Some other examples of languages are those of groups or of rings,
+\begin{align*}
+    \mathcal{L}_g = \left\{\cdot,\, e\right\} 
+    && \text{and} &&
+    \mathcal{L}_r = \left\{+,\,\cdot,\, 0,\, 1\right\},
+\end{align*}
+where $+$, and $\cdot$ are binary functions and $e$, $0$, $1$ are constants.
+
+These are just \textit{languages} however, they do not dictate any additional structure related to the objects they contain.
+The axioms of groups and rings are not part of the language itself, for groups, say, we only know the parity of $\cdot$ and that some distinguished element $e$ exists.
+As such the language of rings is also the same as the language of fields, since fields are just a special case of rings.
+
+The existence of constant symbols also means we cannot just reuse the definition of a formula we used for sets.
+As such we first define \textit{terms}, a notion of chaining together operations.
+
+\begin{definition}\cite[Definition 1.1.4]{Mar02}
+    We say that $T$ is the set of $\mathcal{L}$-terms, if $T$ is the smallest set such that
+    \begin{enumerate}
+        \item $c \in T$ for each constant $c \in \mathcal{C}$
+        \item $v_i \in T$ for variable symbols $v_i$, where $i = 1,\, 2,\ldots$,
+        \item $f(t_1,\ldots,\, t_n) \in T$ for $f \in \mathcal{F}$ and terms $t_1,\ldots,\, t_n \in T$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Formula of a Set]
+    An \textit{atomic formula} in a language $\mathcal{L}$ is either
+    \begin{enumerate}
+        \item $t_1 = t_2$ for terms $t_1,\, t_2 \in T$, or   
+        \item $R(t_1,\ldots,\, t_{n_R})$ for $R \in \mathcal{R}$ and terms $t_1,\ldots,\, t_{n_R} \in T$.
+    \end{enumerate}
+    A \textit{formula} $\phi$ in $\mathcal{L}$ is an any combination of atomic formulas with logical connectives and quantifiers.
+\end{definition}
+
+In order to actually utilize languages we also define the namesake of model theory, models.
+
+\begin{definition}\cite[Definition 1.1.2]{Mar02}
+    We $\mathcal{L}$-\textit{structure} or \textit{model} $\mathcal{M}$ is given by the following:
+    \begin{enumerate}
+        \item A nonempty set $M$,
+        \item a function $f^{\mathcal{M}}: M^{n_f} \to M$ for each $f \in \mathcal{F}$,
+        \item a set $R^\mathcal{M} \subseteq M^{n_R}$ for each $R \in \mathcal{R}$,
+        \item an element $c^\mathcal{M} \in M$ for each $c \in \mathcal{C}$.
+    \end{enumerate}
+    The set $M$ is referred to as the \textit{universe}, \textit{domain} or \textit{underlying set} of $\mathcal{M}$ 
+    and $f^{\mathcal{M}}$, $R^{\mathcal{M}}$ and $c^{\mathcal{M}}$ are called the \textit{interpretations} of $\mathcal{M}$.
+    We sometimes also identify a model $\mathcal{M}$ with the pair $\left<M,\, \mathcal{I}\right>$, 
+    where $\mathcal{I}$ is the function mapping $\mathcal{F}$, $\mathcal{R}$ and $\mathcal{C}$ to their respective interpretations in $M$.
 \end{definition}
 
 \section{The Löwenheim-Skolem Theorem}
 
 \begin{lemma}\cite[Lemma 2.1.1]{Cha90}
-    Let $T$ be a consistent set of sentences of $\mathcal{L}$.
+    Let $T$ be a consistent set of sentences of $\mathcal{L}$.  
     Let $C$ be a set of new constant symbols of power $\left\lvert C \right\rvert = \left\lVert \mathcal{L} \right\rVert$
      and let $\bar{\mathcal{L}} = \mathcal{L} \cup C$ be the simple expansion of $\mathcal{L}$ formed by adding $C$.
     
@@ -23,7 +74,7 @@
 \begin{lemma}\cite[Lemma 2.1.2]{Cha90}
     Let $T$ be a set of sentences and let $C$ be a set of witnesses of $T$ in $\mathcal{L}$.
     Then $T$ has a model $\mathfrak{U}$, such that every element of $\mathfrak{U}$ is an interpretation of a constant $c \in C$.
-\end{lemma}
+\end{lemma} 
 
 \begin{theorem}[Extended Completeness Theorem]\cite[Theorem 1.3.21]{Cha90}
     Let $\Sigma$ be a set of sentences in $\mathcal{L}$.
