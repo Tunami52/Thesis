@@ -1,5 +1,66 @@
 \documentclass[../../main.tex]{subfiles}
 \begin{document}
+The aim of this chapter is to give an introduction to the basic tools of model theory with which will then prove the \hyperref[up-lowenheim-skolem]{Löwenheim-Skolem Theorem}.
+This theorem, divided into two parts, is dependent on \hyperref[choice-axiom]{The Axiom of Choice}, 
+hence we will later use it to show that \textbf{AC} implies the existence of a group structure on all non-empty sets.
+
+We were already concerned with axiomatizations in the previous chapters, however we will formalize these notions some more here.
+The set theory axioms outlined in Chapter \ref{preliminaries} still hold true, 
+but we will discover more about what is and is not true in for example group theory or other algebraic structures.
+We start the treatment of model theory with the motivating example of ``Ehrenfeucht-Fra\"isse games'', 
+exemplifying how the field relates to the linear orderings from Chapter \ref{orderings}.
+The impatient or familiar reader however may skip this section without missing any necessary theory.
+
+\section{Ehrenfeucht-Fra\"isse Games}
+Let us suppose we are given two linear orderings, based on which we define a two player game.
+Player I is called \textit{spoiler} and starts by picking a point on one of the two orderings, 
+If they pick an element of $A$ we call this $a_1$ and if they pick an element of $B$ we call it $b_1$.
+After the spoiler has picked their point, player $II$ will pick a point on the other linear ordering. 
+We call player II \textit{replicator}.\footnote{The names ``spoiler'' and ``duplicator'' were coined by Joel Spencer.\cite[\S 6]{Wil24}
+The literature \cite{Ros82} we mainly base this section of the text on uses ``Player I'' and ``Player II'' instead.}
+Say spoiler picked $a_1$ in $A$, replicator then has to pick some element $b_1$ of $B$.
+
+The spoiler and replicator go back and forth picking points on the linear orderings for a predetermined amount of turns $n$.
+Spoiler always gets to choose the ordering they pick a point on and replicator has to pick something on the other ordering.
+The second player, replicator, wins if the elements $a_1,\ldots,\, a_n$ are in the same order with respect to $A$ as the elements $b_1,\ldots,\, b_n$ are with respect to $B$.
+Spoiler wins if replicator loses, if the elements are not in the same order. 
+This is how a single play of an \textit{Ehrenfeucht-Fra\"isse game}, also called a \textit{Back-and-forth game}, in $n$ turns is played out.
+
+\begin{example}
+    We will go through the play of a game with $3$ steps. 
+    Let $A = \mathbb{Q}$ and $B=\mathbb{Z}$ under the usual order be the two linear orderings that are played on.
+    
+    Spoiler starts and picks the point $a_1 = 0$ in $\mathbb{Z}$. Duplicator on their turn also picks the point $b_0 = 0$ but in $\mathbb{Z}$.
+    On the next turn spoiler picks $a_2 = 1$ in $\mathbb{Z}$, duplicator again matches this and picks $b_2 = 1$ in $\mathbb{Q}$.
+    Now however spoiler can and does pick $b_3$ in $\mathbb{Q}$ to be $\frac{1}{2}$. 
+    This is not possible for duplicator to match since they are now confined to picking a point $a_3$ in $\mathbb{Z}$.
+    Hence no matter what point duplicator picks to be $a_3$, they will lose.
+\end{example}
+
+%insert tikz image here%
+
+\begin{example}
+    Some example where duplicator has a winning strategy.
+\end{example}
+
+\begin{definition}[Ehrenfeucht-Fra\"isse Game]\cite[Definition 6.2]{Ros82}
+    Formal definition of EF-Game.
+\end{definition}
+
+\begin{definition}[$G_n$-equivalence]\cite[Definition 6.8]{Ros82}
+    Formal definition of EF-equivalence.
+\end{definition}
+
+\begin{theorem}\cite[Theorem 2.4.6]{Mar02}\label{elementary-eq-th}
+    Let $\mathcal{M}$ and $\mathcal{N}$ be two $\mathcal{L}$-structures, where $\mathcal{L}$ is a finite language without any function symbols.
+    Then duplicator has a winning strategy in $G_n(\mathcal{M},\, \mathcal{N})$ for all $n \in \mathbb{N}$ if and only if $\mathcal{M}$ and $\mathcal{N}$ satisfy exactly the same theories.
+\end{theorem}
+
+We will not prove Theorem \ref{elementary-eq-th} here, but rather include it as an appetizer;
+a means show the usefulness of model theory applied to problems we may already be interested in.
+The reader interested in the proof of the theorem may read it in the sub-subsection titled ``Ehrenfeucht-Fra\"isse Games'' in \cite[\S 2.4]{Mar02}.
+The rest of this chapter should provide an adequate, although maybe not ideal, background to understanding it.
+
 \section{Models of Formal Languages}
 \begin{definition}\cite[Definition 1.1.1]{Mar02}
     A \textit{formal language} $\mathcal{L}$ in first order logic is given by the following:
@@ -68,7 +129,7 @@ In order to actually utilize languages we also define the namesake of model theo
     Let $C$ be a set of new constant symbols of power $\left\lvert C \right\rvert = \left\lVert \mathcal{L} \right\rVert$
      and let $\bar{\mathcal{L}} = \mathcal{L} \cup C$ be the simple expansion of $\mathcal{L}$ formed by adding $C$.
     
-     Then $T$ can be expanded to a consistent set of sentences $\bar{T}$ in $\bar{\mathcal{L}}$, which has $C$ as a set of witnesses in $\bar{\mathcal{L}}$.
+    Then $T$ can be expanded to a consistent set of sentences $\bar{T}$ in $\bar{\mathcal{L}}$, which has $C$ as a set of witnesses in $\bar{\mathcal{L}}$.
 \end{lemma}
 
 \begin{lemma}\cite[Lemma 2.1.2]{Cha90}
@@ -81,7 +142,7 @@ In order to actually utilize languages we also define the namesake of model theo
     Then $\Sigma$ is consistent if and only if $\Sigma$ has a model.
 \end{theorem}
 
-\begin{theorem}[Downward Löwenheim-Skolem Theorem]\cite[Corollary 2.1.4]{Cha90}
+\begin{theorem}[Downward Löwenheim-Skolem Theorem]\label{down-lowenheim-skolem}\cite[Corollary 2.1.4]{Cha90}
     Every consistent theory $T$ in $\mathcal{L}$ has a model of power at most $\left\lVert \mathcal{L} \right\rVert$.
 \end{theorem}
 
@@ -89,7 +150,7 @@ In order to actually utilize languages we also define the namesake of model theo
     A set of sentences $\Sigma$ has a model if and only if every finite subset of $\Sigma$ has a model.
 \end{theorem}
 
-\begin{theorem}[Upward Löwenheim-Skolem Theorem]\cite[Corollary 2.1.6]{Cha90}
+\begin{theorem}[Upward Löwenheim-Skolem Theorem]\label{up-lowenheim-skolem}\cite[Corollary 2.1.6]{Cha90}
     If $T$ has infinite models, then it has infinite models of any given power $\alpha \geq \left\lVert \mathcal{L} \right\rVert$.
 \end{theorem}
 
