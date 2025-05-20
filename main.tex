@@ -17,6 +17,11 @@
 % ebgaramond, ebgaramond-maths, graphicx, hyperref, newtxmath, xparse
 % load with 'times' option to use a Times New Roman replacement as default font
 
+\usepackage{tikz}     % used for displaying in-document graphics
+\usetikzlibrary{shapes}
+\usepackage{enumitem} % used to customize enumerate 
+\usepackage{subfiles} % used to compile pdfs for sections separately
+
 \usepackage{xcolor} % access to more colours
 \definecolor{lundblue}{RGB}{0,0,128}
 \definecolor{lundbronze}{RGB}{156,97,20}
@@ -31,9 +36,6 @@
   urlcolor=lundblue,%
   citecolor=lundbronze,%
 }
-
-\usepackage{enumitem}
-\usepackage{subfiles} % used to compile pdfs for sections seperately
 
 %%%% BEGIN example usage of amsthm package
 

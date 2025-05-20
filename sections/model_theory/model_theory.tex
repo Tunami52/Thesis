@@ -1,7 +1,7 @@
 \documentclass[../../main.tex]{subfiles}
 \begin{document}
-The aim of this chapter is to give an introduction to the basic tools of model theory with which will then prove the \hyperref[up-lowenheim-skolem]{Löwenheim-Skolem Theorem}.
-This theorem, divided into two parts, is dependent on \hyperref[choice-axiom]{The Axiom of Choice}, 
+The aim of this chapter is to give an introduction to the basic tools of model theory with which we will prove the \hyperref[up-lowenheim-skolem]{Löwenheim-Skolem Theorem}.
+This theorem, divided into two parts, is dependent on the \hyperref[choice-axiom]{Axiom of Choice}, 
 hence we will later use it to show that \textbf{AC} implies the existence of a group structure on all non-empty sets.
 
 We were already concerned with axiomatizations in the previous chapters, however we will formalize these notions some more here.
@@ -13,20 +13,20 @@ The impatient or familiar reader however may skip this section without missing a
 
 \section{Ehrenfeucht-Fra\"isse Games}
 Let us suppose we are given two linear orderings, based on which we define a two player game.
-Player I is called \textit{spoiler} and starts by picking a point on one of the two orderings, 
+Player I is called \textit{spoiler} and starts by picking a point on one of the two orderings.
 If they pick an element of $A$ we call this $a_1$ and if they pick an element of $B$ we call it $b_1$.
-After the spoiler has picked their point, player $II$ will pick a point on the other linear ordering. 
-We call player II \textit{replicator}.\footnote{The names ``spoiler'' and ``duplicator'' were coined by Joel Spencer.\cite[\S 6]{Wil24}
-The literature \cite{Ros82} we mainly base this section of the text on uses ``Player I'' and ``Player II'' instead.}
-Say spoiler picked $a_1$ in $A$, replicator then has to pick some element $b_1$ of $B$.
+After the spoiler has picked their point, player II will pick a point on the other linear ordering. 
+We call player II \textit{duplicator}.\footnote{The names ``spoiler'' and ``duplicator'' were coined by Joel Spencer.\cite[\S 6]{Wil24}
+The literature \cite{Ros82} this section of the text is mainly based on uses ``Player I'' and ``Player II'' instead.}
+Say spoiler picked $a_1$ in $A$, duplicator then has to pick some element $b_1$ of $B$.
 
-The spoiler and replicator go back and forth picking points on the linear orderings for a predetermined amount of turns $n$.
-Spoiler always gets to choose the ordering they pick a point on and replicator has to pick something on the other ordering.
-The second player, replicator, wins if the elements $a_1,\ldots,\, a_n$ are in the same order with respect to $A$ as the elements $b_1,\ldots,\, b_n$ are with respect to $B$.
-Spoiler wins if replicator loses, if the elements are not in the same order. 
-This is how a single play of an \textit{Ehrenfeucht-Fra\"isse game}, also called a \textit{Back-and-forth game}, in $n$ turns is played out.
+The spoiler and duplicator go back and forth picking points on the linear orderings for a predetermined amount of turns $n$.
+Spoiler always gets to choose the ordering they pick a point on and duplicator has to pick something on the other ordering.
+The second player, duplicator, wins if the elements $a_1,\ldots,\, a_n$ are in the same order with respect to $A$ as the elements $b_1,\ldots,\, b_n$ are with respect to $B$.
+Spoiler wins if duplicator loses, if the elements are not in the same order. 
+This is how a single play of an \textit{Ehrenfeucht-Fra\"isse game}, also called a \textit{Back-and-forth game}, in $n$ turns is played out. \cite[\S 6.1]{Ros82}
 
-\begin{example}
+\begin{example}\label{game-example-1}
     We will go through the play of a game with $3$ steps. 
     Let $A = \mathbb{Q}$ and $B=\mathbb{Z}$ under the usual order be the two linear orderings that are played on.
     
@@ -37,30 +37,145 @@ This is how a single play of an \textit{Ehrenfeucht-Fra\"isse game}, also called
     Hence no matter what point duplicator picks to be $a_3$, they will lose.
 \end{example}
 
-%insert tikz image here%
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=2]
+        % draw nodes for game stages 
+        \draw[densely dotted] (0,   0) -- (0,   0.2) node[draw, solid, above, align=center] {I,  $a_1$};
+        \draw[densely dotted] (1,   0) -- (1,   0.2) node[draw, solid, above, align=center] {I,  $a_2$};
+        \draw[densely dotted] (2,   0) -- (2,   0.2) node[draw, solid, above, align=center] {II, $a_3$};
+        \draw (2,   0.2) node[draw, cross out, above, align=center] {II, $a_3$};
+        \draw[densely dotted] (0,  -2) -- (0,  -1.7) node[draw, solid, above, align=center] {II, $b_1$};
+        \draw[densely dotted] (1,  -2) -- (1,  -1.7) node[draw, solid, above, align=center] {II, $b_2$};
+        \draw[densely dotted] (0.5,-2) -- (0.5,-1.2) node[draw, solid, above, align=center] {I,  $b_3$};
 
-\begin{example}
-    Some example where duplicator has a winning strategy.
+        % draw both coordinate axes
+        \foreach \y/\ytext in {0/A = \mathbb{Z}, -2/B = \mathbb{Q}} {
+            \draw[thick, <->] (-1.5, 0 + \y) node[draw, left = 20] {$\ytext$} -- (2.5, 0 + \y);
+            \draw[thick] (0,-0.1 + \y) -- (0, 0.1 + \y);
+            \foreach \x in {-1, 0,...,2} {
+                \draw (\x,-0.05 + \y) -- (\x, 0.05 + \y) node[below = 10] {$\x$};
+            }
+        }
+
+        % draw extra ticks for Q
+        \foreach \x/\xtext in {-0.5/-\frac{1}{2}, 0.5/\frac{1}{2}, 1.5/\frac{3}{2}} {  
+            \draw (\x,-0.05 - 2) -- (\x, 0.05 - 2) node[below = 10] {$\xtext$};
+        }
+    \end{tikzpicture}
+    \caption{Example \ref{game-example-1} illustrated.
+    Points \textit{spoiler} picked are prefixed by ``I'', points \textit{duplicator} picked are prefixed by ``II''.
+    It can be seen that duplicator is not able to pick a suitable element for $b_3$ in $\mathbb{Z}$ such that $a_1$, $a_2$ and $a_3$ have the same order as $b_1$, $b_2$ and $b_3$.}
+\end{figure}
+
+It should be clear that in order for spoiler to win, they need to exploit the differences of the linear orders in play.
+In the example above spoiler can alway pick their first two elements to be $a_1$ and $a_2$ in $\mathbb{Z}$ in a way where $a_2$ is the immediate successor of $a_1$.
+Then, because $\mathbb{Q}$ is dense, no matter which elements duplicator picks to be $b_1$ and $b_2$, spoiler can pick $b_3$ such that $b_1 < b_3 < b_2$.
+As $a_2$ is the immediate successor of $a_1$, there exists no element in $\mathbb{Z}$ satisfying  $a_1 < a_3 < a_2$.
+
+This is called a \textit{winning strategy} for spoiler.
+A winning strategy for duplicator would be the converse, where duplicator can react according to every possible move by spoiler and still win.
+For duplicator to have a winning strategy, the linear orderings should be \textit{similar} in some sort of way, 
+in fact the existence of a winning strategy by duplicator is a type of equivalence in itself.
+Such a winning strategy shown in the example below, where we play a game with two dense orderings.
+
+\begin{example}\label{game-example-2}
+    We play an Ehrenfeucht-Fra\"isse game in $n$ rounds.
+
+    Let $A = \mathbb{R}$ and $B=\mathbb{Q}$ under the usual order.
+    We can define a winning strategy for duplicator inductively.
+    Duplicator then picks a point according to one of the following cases on an arbitrary turn $i$:
+    \begin{enumerate}
+        \item It is the first turn and spoiler picks $a_1 \in A$.
+        
+        Duplicator then picks $b_1 = 0$.
+        \item Spoiler picks $a_i \in A$ such that $a_j < a_i < a_k$ holds for some $a_j,\, a_k \in A$.
+        
+        It can be assumed without loss of generality that $a_j$ and $a_k$ are the respectively largest and smallest points for which this property holds.
+        Then there exist corresponding $b_j,\, b_k \in B$ with $b_j < b_k$. Hence duplicator can choose $$b_i = \frac{b_k - b_j}{2}.$$
+        \item Spoiler picks $a_i \in A$ such that $a_i$ is either larger or smaller than all $a_k$ for $k < i$.
+        
+        Duplicator can pick 
+        \begin{align*}
+            b_i = b_s - 1 && \text{or} && b_i = b_l + 1
+        \end{align*}
+        in $B$ where $b_s$ and $b_l$ are the smallest and largest elements of $\left\{b_k \,\vert\, k < n\right\}$ respectively.
+    \end{enumerate}    
+    Since $\mathbb{Q}$ is a proper subset of $\mathbb{R}$ the same strategy works if spoiler chooses an element $b_i$ in $B = \mathbb{Q}$.
+    The strategy for the second turn follows immediately from the third case. 
 \end{example}
 
+With this example in mind we now formally a play of an Ehrenfeucht-Fra\"isse game and what it means for duplicator to have a winning strategy.
+
 \begin{definition}[Ehrenfeucht-Fra\"isse Game]\cite[Definition 6.2]{Ros82}
-    Formal definition of EF-Game.
+    Let $A$ and $B$ be linear orderings and let $n \in \mathbb{Z}^+$ be a fixed positive integer.
+    Then a \textit{play of an Ehrenfeucht-Fra\"isse game} $EF_n(A,\, B)$ is defined as an ordered sequence with $2n$ elements.
+    For each positive integer $k \leq n$ player I, \textit{spoiler}, chooses an element in either $A$ or $B$.
+    Player II, \textit{duplicator}, then chooses an element of the ordering spoiler did not pick.
+    We denote an element at the $k$th turn as $a_k$ if it was picked from $A$ and $b_k$ if it was picked from $B$.
+
+    We say that duplicator has won a play of the game $EF_n(A,\, B)$ if for all positive integers $i,\, j \leq n$
+    $$a_i <_A a_j \iff b_i <_B b_j$$
+    with respect to the linear orders $<_A$ and $<_B$ of $A$ and $B$.
+    We say that spoiler has won a play of the game if duplicator did not win.
+
+    We say that there exists \textit{winning strategy of duplicator} if there exists a sequence of functions $f_1,\ldots,\,f_n$,
+    which fulfills the following requirements:
+    \begin{enumerate}[label=(\roman*)]
+        \item The domain of each $f_k$ is the set of all ordered $k$-tuples with elements in $A \cup B$;
+        \item For elements $c_1,\ldots,\, c_k \in A \cup B$, representing the first $k$ moves by spoiler, $f_k$ satisfies
+              \begin{align*}
+                    &f_k(c_1,\ldots,\, c_k) \in A \ \text{if} \ c_k \in B \ \text{and}\\
+                    &f_k(c_1,\ldots,\, c_k) \in B \ \text{if} \ c_k \in A.
+              \end{align*}
+        \item For elements $c_1,\ldots,\, c_k \in A \cup B$, $f_k$, $a_k$ and $b_k$ are defined as
+              \begin{align*}
+                a_k = \begin{cases}
+                        c_k \ &\text{if} \ c_k \in A \\
+                        f_k(c_1,\ldots,\, c_k) &\text{if} \ c_k \in B
+                    \end{cases} 
+                    && \text{and} &&
+                    b_k = \begin{cases}
+                        c_k \ &\text{if} \ c_k \in B \\
+                        f_k(c_1,\ldots,\, c_k) &\text{if} \ c_k \in A
+                    \end{cases}
+              \end{align*}
+              for positive integers $k \leq n$.
+              These terms, based on $f_1,\ldots,\,f_n$, then satisfy $$a_i <_A a_j \iff b_i <_B b_j$$ for all $i,\, j \leq n$, where $i,\, j \in \mathbb{Z}^+$.
+    \end{enumerate}
+    If no such sequence of functions exists, we say that there exists a \textit{winning strategy of spoiler}.
 \end{definition}
 
-\begin{definition}[$G_n$-equivalence]\cite[Definition 6.8]{Ros82}
-    Formal definition of EF-equivalence.
+The proper definition of a winning strategy lets us define the following type of equivalence:
+\begin{definition}[$EF_n$-equivalence]\cite[Definition 6.8]{Ros82}
+    We say that a linearly ordered set $A$ is $EF_n$-equivalent to a linearly ordered set $B$,
+    if there exists a winning strategy of duplicator in $EF_n(A,\, B)$.
+
+    The orderings $A$ and $B$ are called $EF$-equivalent if duplicator has a winning strategy in $EF_n(A,\, B)$ for all $n \in \mathbb{N}$.
 \end{definition}
+
+This is indeed a proper type of equivalence, since by the Gale-Stewart Theorem from game theory all Ehrenfeucht-Fra\"isse games are determined.\cite[\S 6]{Wil24}
+This means that one, and only one, of the players will always have a winning strategy.
+
+We saw in Example \ref{game-example-2} that $\mathbb{R}$ and $\mathbb{Q}$ are $EF$-equivalent.
+We were able to find a winning strategy for duplicator because both ordered sets were dense. 
+As such we could always find a point between any other two points in the rational numbers that could match the order of the possibly irrational points in $\mathbb{R}$.
+The sets $\mathbb{R}$ and $\mathbb{Q}$ are of course different, but they still \textit{satisfy the same property} of densely linear orders.
+
+This notion of what structure satisfy which properties is at the core of model theory.
+And its no coincidence that Ehrenfeucht-Fra\"isse games seem give rise so naturally to the field. 
+We do indeed have a theorem relating them to model theory proper.
 
 \begin{theorem}\cite[Theorem 2.4.6]{Mar02}\label{elementary-eq-th}
     Let $\mathcal{M}$ and $\mathcal{N}$ be two $\mathcal{L}$-structures, where $\mathcal{L}$ is a finite language without any function symbols.
     Then duplicator has a winning strategy in $G_n(\mathcal{M},\, \mathcal{N})$ for all $n \in \mathbb{N}$ if and only if $\mathcal{M}$ and $\mathcal{N}$ satisfy exactly the same theories.
 \end{theorem}
-
+ 
 We will not prove Theorem \ref{elementary-eq-th} here, but rather include it as an appetizer;
 a means show the usefulness of model theory applied to problems we may already be interested in.
 The reader interested in the proof of the theorem may read it in the sub-subsection titled ``Ehrenfeucht-Fra\"isse Games'' in \cite[\S 2.4]{Mar02}.
-The rest of this chapter should provide an adequate, although maybe not ideal, background to understanding it.
-
+The rest of this chapter should provide an adequate background for understanding it.
+ 
 \section{Models of Formal Languages}
 \begin{definition}\cite[Definition 1.1.1]{Mar02}
     A \textit{formal language} $\mathcal{L}$ in first order logic is given by the following:
