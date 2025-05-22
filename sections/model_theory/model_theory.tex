@@ -30,7 +30,7 @@ This is how a single play of an \textit{Ehrenfeucht-Fra\"isse game}, also called
     We will go through the play of a game with $3$ steps. 
     Let $A = \mathbb{Q}$ and $B=\mathbb{Z}$ under the usual order be the two linear orderings that are played on.
     
-    Spoiler starts and picks the point $a_1 = 0$ in $\mathbb{Z}$. Duplicator on their turn also picks the point $b_0 = 0$ but in $\mathbb{Z}$.
+    Spoiler starts and picks the point $a_1 = 0$ in $\mathbb{Q}$. Duplicator on their turn also picks the point $b_0 = 0$ but in $\mathbb{Z}$.
     On the next turn spoiler picks $a_2 = 1$ in $\mathbb{Z}$, duplicator again matches this and picks $b_2 = 1$ in $\mathbb{Q}$.
     Now however spoiler can and does pick $b_3$ in $\mathbb{Q}$ to be $\frac{1}{2}$. 
     This is not possible for duplicator to match since they are now confined to picking a point $a_3$ in $\mathbb{Z}$.
@@ -105,7 +105,7 @@ Such a winning strategy shown in the example below, where we play a game with tw
     The strategy for the second turn follows immediately from the third case. 
 \end{example}
 
-With this example in mind we now formally a play of an Ehrenfeucht-Fra\"isse game and what it means for duplicator to have a winning strategy.
+With this example in mind we now formally define the play of an Ehrenfeucht-Fra\"isse game and what it means for duplicator to have a winning strategy.
 
 \begin{definition}[Ehrenfeucht-Fra\"isse Game]\cite[Definition 6.2]{Ros82}
     Let $A$ and $B$ be linear orderings and let $n \in \mathbb{Z}^+$ be a fixed positive integer.
@@ -162,13 +162,13 @@ We were able to find a winning strategy for duplicator because both ordered sets
 As such we could always find a point between any other two points in the rational numbers that could match the order of the possibly irrational points in $\mathbb{R}$.
 The sets $\mathbb{R}$ and $\mathbb{Q}$ are of course different, but they still \textit{satisfy the same property} of densely linear orders.
 
-This notion of what structure satisfy which properties is at the core of model theory.
+This notion of what structures satisfy which properties is at the core of model theory.
 And its no coincidence that Ehrenfeucht-Fra\"isse games seem give rise so naturally to the field. 
 We do indeed have a theorem relating them to model theory proper.
 
 \begin{theorem}\cite[Theorem 2.4.6]{Mar02}\label{elementary-eq-th}
     Let $\mathcal{M}$ and $\mathcal{N}$ be two $\mathcal{L}$-structures, where $\mathcal{L}$ is a finite language without any function symbols.
-    Then duplicator has a winning strategy in $G_n(\mathcal{M},\, \mathcal{N})$ for all $n \in \mathbb{N}$ if and only if $\mathcal{M}$ and $\mathcal{N}$ satisfy exactly the same theories.
+    Then duplicator has a winning strategy in $EF_n(\mathcal{M},\, \mathcal{N})$ for all $n \in \mathbb{N}$ if and only if $\mathcal{M}$ and $\mathcal{N}$ satisfy exactly the same theories.
 \end{theorem}
  
 We will not prove Theorem \ref{elementary-eq-th} here, but rather include it as an appetizer;
@@ -177,31 +177,36 @@ The reader interested in the proof of the theorem may read it in the sub-subsect
 The rest of this chapter should provide an adequate background for understanding it.
  
 \section{Models of Formal Languages}
-\begin{definition}\cite[Definition 1.1.1]{Mar02}
-    A \textit{formal language} $\mathcal{L}$ in first order logic is given by the following:
+We utilize set theoretic notation in the definition of languages, however we do not consider the set inclusion symbol $\in$ to be to be part of first-order logic here.
+In general we are working within \textbf{ZFC} in this chapter.
+
+\begin{definition}
+    A \textit{formal language} $\mathcal{L}$ in first order logic is associated with the following sets:
     \begin{enumerate}
-        \item A set $\mathcal{F}$ of functions $f$ of $n_f$ variables, with $n_f \in \mathbb{Z}^+$ a positive integer,
-        \item a set $\mathcal{R}$ of $n_R$-ary relations $R$, with $n_R \in \mathbb{Z}^+$ a positive integer,
-        \item a set $\mathcal{C}$ of constants.
+        \item A set $\mathcal{F}$ of function symbols $f$ with $n_f$ arguments each, 
+        where $n_f \in \mathbb{Z}^+$ is a positive integer;
+        \item a set $\mathcal{R}$ of $n_R$-ary relation symbols $R$, 
+        where $n_R \in \mathbb{Z}^+$ is a positive integer,
+        \item a set $\mathcal{C}$ of constant symbols. \cite[Definition 1.1.1]{Mar02}
     \end{enumerate}
+    The set-theoretic structure of $\mathcal{L}$ is $\mathcal{L} = \mathcal{F} \cup \mathcal{R} \cup \mathcal{C}$.
+    If $\left\lvert \mathcal{L}\right\rvert$ is the cardinality of the set $\mathcal{L}$ we say that the \textit{power} of the language $\mathcal{L}$ is
+    $$\left\lVert \mathcal{L}\right\rVert = \left\lvert\mathcal{L}\right\rvert \cup \omega.$$
+    We say that $\mathcal{L}$ is either countable or uncountable depending on whether $\left\lVert\mathcal{L}\right\rVert$ is countable or uncountable. \cite[\S1.3]{Cha90}
 \end{definition}
 
-Since we utilize set theory in the definition of languages, we consider the set inclusion symbol $\in$ to be to be part of first-order logic here (in the same vein as $=$.)
-As such, when we dealt with set theoretic constructions we used the language of given by $\mathcal{L}_{Set} = \varnothing$.
-Some other examples of languages are those of groups or of rings,
-\begin{align*}
-    \mathcal{L}_g = \left\{\cdot,\, e\right\} 
-    && \text{and} &&
-    \mathcal{L}_r = \left\{+,\,\cdot,\, 0,\, 1\right\},
-\end{align*}
-where $+$, and $\cdot$ are binary functions and $e$, $0$, $1$ are constants.
+The language of pure sets is the empty language $\mathcal{L}_{Set} = \varnothing$.
+In order to make meaningful statements regarding sets however, we need the set inclusion symbol $\in$, which we view as a relation.
+Therefore the language of set theory is $\mathcal{L}_{\textbf{ZFC}} = \left\{\in\right\}$. \cite[p.8]{Mar02}\cite[p.80]{Jec78}
 
-These are just \textit{languages} however, they do not dictate any additional structure related to the objects they contain.
-The axioms of groups and rings are not part of the language itself, for groups, say, we only know the parity of $\cdot$ and that some distinguished element $e$ exists.
-As such the language of rings is also the same as the language of fields, since fields are just a special case of rings.
+Since languages are given by the single set of the symbols they contain, we have that normal set operations are applicable.
+If $\mathcal{L}$ and $\mathcal{L}'$ are two languages, such that $\mathcal{L} \subset \mathcal{L}'$, 
+we say that $\mathcal{L}'$ is the \textit{expansion} of $\mathcal{L}$ and that $\mathcal{L}$ is the \textit{reduction} of $\mathcal{L}'$.
+In the case that $\mathcal{L}'$ is of the form $\mathcal{L}'= \mathcal{L} \cup X$, where $X$ is a set containing only constant symbols, 
+we say that $\mathcal{L}'$ is the \textit{simple expansion} of $\mathcal{L}$. \cite[p.19]{Cha90}
 
-The existence of constant symbols also means we cannot just reuse the definition of a formula we used for sets.
-As such we first define \textit{terms}, a notion of chaining together operations.
+In order to express statements in a language we also define \textit{terms}.
+These are are expressions created from chaining together function symbols with variables and constants.
 
 \begin{definition}\cite[Definition 1.1.4]{Mar02}
     We say that $T$ is the set of $\mathcal{L}$-terms, if $T$ is the smallest set such that
@@ -212,19 +217,50 @@ As such we first define \textit{terms}, a notion of chaining together operations
     \end{enumerate}
 \end{definition}
 
-\begin{definition}[Formula of a Set]
+\begin{example}
+    Consider the language of (unitary) rings $\mathcal{L}_R = \left\{+,\, -,\, \cdot,\, 0,\, 1,\right\}$.
+    The symbols $+,\, -,\, \cdot$ are all binary functions, and $0$ and $1$ are constants.
+    Since a language does not possess any external structure itself, this is also the language of fields.
+
+    For variables $v_1$ and $v_2$ we can define the term
+    $$\cdot \left(+ \left(v_1.\, 1\right),\, +\left(v_2,\, +\left(1,\, 1\right)\right)\right)$$
+    in $\mathcal{L}_R$.
+    In more familiar notation this would be
+    $$\left(v_1 + 1\right) \cdot \left(v_2 + 1 + 1\right).$$
+    Note that this term has can have a different meaning depending on which algebraic structure we evaluate it in.
+    In the finite field $\mathbb{F}_2$ for example, we have that $1 + 1 = 0$.
+\end{example}
+
+We define formulas in a language $\mathcal{L}$ analogously to how we did in Chapter \ref{preliminaries}.
+Note that our definition of a formula in $\mathcal{L}_{\textbf{ZFC}}$ coincides with how we defined it before.
+
+\begin{definition}[Formula of a Set]\cite[Definition 1.1.5]{Mar02}
     An \textit{atomic formula} in a language $\mathcal{L}$ is either
     \begin{enumerate}
         \item $t_1 = t_2$ for terms $t_1,\, t_2 \in T$, or   
         \item $R(t_1,\ldots,\, t_{n_R})$ for $R \in \mathcal{R}$ and terms $t_1,\ldots,\, t_{n_R} \in T$.
     \end{enumerate}
-    A \textit{formula} $\phi$ in $\mathcal{L}$ is an any combination of atomic formulas with logical connectives and quantifiers.
+    A \textit{formula} $\phi$ in $\mathcal{L}$ is an any combination of atomic formulas with logical connectives 
+    $$\lnot \text{ (not), } \wedge \text{(and), } \vee \text{(or), } \rightarrow \text{(implies) and } \leftrightarrow \text{(if and only if)}$$
+    and quantifiers $$\forall \text{ (for all) and } \exists \text{ (exists)}.$$
+    A formula with no free variables is called a sentence.
 \end{definition}
 
-In order to actually utilize languages we also define the namesake of model theory, models.
+When working in model theory we consider the difference between \textit{syntax} and \textit{semantics}.
+Syntax is everything relating to structure of sentences and formal languages.
+This includes what kind of symbols we are working with in a given language and how we can combine them to create valid sentences.
 
-\begin{definition}\cite[Definition 1.1.2]{Mar02}
-    We $\mathcal{L}$-\textit{structure} or \textit{model} $\mathcal{M}$ is given by the following:
+A language is purely \textit{syntactical}, a given sentences in a language has not assigned meaning on its own.
+If we are working with a language describing number theory for example, 
+we might have a relation symbol $gcd$ which takes in three arguments and returns whether the third argument is the greatest common divisor of the first two.
+A formal language only includes the relation symbol itself though, elements for which relations would hold are not part of the language.
+
+Assigning a meaning to a relation symbol such as $gcd$ is \textit{semantics}.
+Having a relation be true or false is a \textit{semantical} property, this is where the namesake models come in.
+In a model the symbols of a language are assigned meaning and we can explore which sentences are or are not true under some given assumptions.\cite[p.3]{Cha90}
+
+\begin{definition}
+    A $\mathcal{L}$-\textit{structure} or \textit{model} $\mathcal{M}$ is given by the following:
     \begin{enumerate}
         \item A nonempty set $M$,
         \item a function $f^{\mathcal{M}}: M^{n_f} \to M$ for each $f \in \mathcal{F}$,
@@ -232,9 +268,10 @@ In order to actually utilize languages we also define the namesake of model theo
         \item an element $c^\mathcal{M} \in M$ for each $c \in \mathcal{C}$.
     \end{enumerate}
     The set $M$ is referred to as the \textit{universe}, \textit{domain} or \textit{underlying set} of $\mathcal{M}$ 
-    and $f^{\mathcal{M}}$, $R^{\mathcal{M}}$ and $c^{\mathcal{M}}$ are called the \textit{interpretations} of $\mathcal{M}$.
+    and $f^{\mathcal{M}}$, $R^{\mathcal{M}}$ and $c^{\mathcal{M}}$ are called the \textit{interpretations} of $\mathcal{M}$. \cite[Definition 1.1.2]{Mar02}
+
     We sometimes also identify a model $\mathcal{M}$ with the pair $\left<M,\, \mathcal{I}\right>$, 
-    where $\mathcal{I}$ is the function mapping $\mathcal{F}$, $\mathcal{R}$ and $\mathcal{C}$ to their respective interpretations in $M$.
+    where $\mathcal{I}$ is the function mapping symbols of $\mathcal{L}$ to their respective interpretations in $M$. \cite[p.20]{Cha90}
 \end{definition}
 
 \section{The Löwenheim-Skolem Theorem}
