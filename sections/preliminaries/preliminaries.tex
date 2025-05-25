@@ -10,7 +10,7 @@ If we want to talk about strictly positive integers we use the notation $\mathbb
 Lastly, whenever we deal with the negation of some symbol, we cross it out to mean this, for example $a \neq b$ means $\lnot \left(a = b\right)$.
 
 \section{First-Order Logic and Classes}
-When talking about first order logic we mean the symbol $$= \text{ (equals)}$$ in conjunction with the logical connectives
+When talking about first-order logic we mean the symbol $$= \text{ (equals)}$$ in conjunction with the logical connectives
 $$\lnot \text{ (not), } \wedge \text{(and), } \vee \text{(or), } \rightarrow \text{(implies) and } \leftrightarrow \text{(if and only if)}$$
 as well as the quantifiers $$\forall \text{ (for all) and } \exists \text{ (exists)}.$$
 Additionally, as we are talking about sets, we use the symbol $\in$ to denote set inclusion. \cite[pp.2-3]{Jec78}
@@ -26,7 +26,7 @@ For now we are only concerned with the language of sets defined above.
         \item $x = y$, or
         \item $x \in y$
     \end{enumerate}
-    A \textit{formula} $\phi$ is an any combination of atomic formulas with logical connectives and quantifiers.
+    A \textit{formula} $\phi$ is any combination of atomic formulas with logical connectives and quantifiers.
 \end{definition}
 
 The symbols $x$ and $y$ above are called variables and for any two variables an atomic formula is either true or false for each $x$ and $y$.
@@ -34,14 +34,14 @@ A variable \textit{occurs freely} inside of a formula if it does not appear insi
 We write $\phi\left(x_1,\ldots,\, x_n\right)$ for a formula with $n \in \mathbb{Z}^+$ free variables.
 A formula where every variable is bound is called a \textit{sentence}. \cite[pp.10-11]{Mar02}
 
-A sentence is either true are false and a formula with free variables is true or false for each choice of the free variables.
+A sentence is either true or false and a formula with free variables is true or false for each choice of the free variables.
 Each of the \textbf{ZF} axioms below are examples of sentences and as axioms we assume them to be inherently true (within the framework of our theory).
 An example of a formula with a free variable would be $$\phi(x) = \exists y \, \left(y \in x\right).$$ 
 This formula is only false for the empty set, since it is the unique set which does not contain any elements.
 In that sense we think of formulas with free variables describing a \textit{property}, something we make use of in \textit{classes}.
 
 \begin{definition}[Class]
-    Let $\phi\left(x,\, p_1,\ldots,\, p_n\right)$ be a formula in first order logic.
+    Let $\phi\left(x,\, p_1,\ldots,\, p_n\right)$ be a formula in first-order logic.
     Then a \textit{class} $\mathbf{C}$ is defined as
     $$\mathbf{C} = \left\{x \,\vert\, \phi\left(x,\, p_1,\ldots,\, p_n\right)\right\}.$$
     The class $\mathbf{C}$ is called \textit{definable from} $p_1,\ldots,\, p_n$.
@@ -49,7 +49,8 @@ In that sense we think of formulas with free variables describing a \textit{prop
 \end{definition}
 
 In practice, we use classes as a tool to help us construct useful sets in \textbf{ZFC}, as elements of classes are always sets in the stricter sense.
-All sets are classes, but not all classes are sets, since if we have a fixed set $s$ we can always construct the corresponding class would be $\mathbf{S} = \left\{x \,\vert\, x = s\right\}$.
+All sets are classes, but not all classes are sets.
+Assume that we have a fixed set $s$; we can then always construct the corresponding class $\mathbf{S} = \left\{x \,\vert\, x = s\right\}$.
 A class which is not a set is called a \textit{proper class}.
 
 We consider to two classes to be the same if they have the same elements.
@@ -87,7 +88,7 @@ Further, ordered $n$-tuples are defined recursively as $\left<x_1,\, x_2,\, x_3,
 Ordered pairs satisfy the property that for any sets $x$, $y$, $u$, $v$, if $\left<x,\, y\right> = \left<u,\, v\right>$, then $x = u$ and $y = v$.\cite[Theorem 4.2]{Gol17}
 
 \subsection{Axiom Schema of Separation}\label{ZF3}
-Let $\phi(z,\ p)$ be a formula in first order logic with free variables $z$ and $x$. Then
+Let $\phi(z,\ p)$ be a formula in first-order logic with free variables $z$ and $x$. Then
 \begin{equation}\label{seperation-axiom}
     \forall x\, \forall p\, \exists y\, \forall z\, \left(z \in y \iff \left(z \in x \wedge \phi(z,\, p)\right)\right).
 \end{equation}
