@@ -176,8 +176,12 @@ a means show the usefulness of model theory applied to problems we may already b
 The reader interested in the proof of the theorem may read it in the sub-subsection titled ``Ehrenfeucht-Fra\"isse Games'' in \cite[\S 2.4]{Mar02}.
 The rest of this chapter should provide an adequate background for understanding it.
  
-\section{Models of Formal Languages}
-We utilize set theoretic notation in the definition of languages, however we do not consider the set inclusion symbol $\in$ to be to be part of first-order logic here.
+\section{Syntax of Formal Languages}
+The rest of this chapter follows mostly from \cite[\S\S 1.3, 1.4, 2.1]{Cha90}, where the overall structure is preserved, 
+although we reformulate and expand on the definitions, theorems and proofs to better fit our context.
+Especially some of the earlier definitions are also lifted from \cite{Mar02}.
+
+We utilize set theoretic notation in the definition of languages, however we do not consider the set inclusion symbol $\in$ to be to be part of first-order logic.
 In general we are working within \textbf{ZFC} in this chapter.
 
 \begin{definition}
@@ -210,7 +214,7 @@ These are are expressions created from chaining together function symbols with v
 
 \begin{definition}\cite[Definition 1.1.4]{Mar02}
     We say that $T$ is the set of $\mathcal{L}$-terms, if $T$ is the smallest set such that
-    \begin{enumerate}
+    \begin{enumerate}[label=(\roman*)]
         \item $c \in T$ for each constant $c \in \mathcal{C}$
         \item $v_i \in T$ for variable symbols $v_i$, where $i = 1,\, 2,\ldots$,
         \item $f(t_1,\ldots,\, t_n) \in T$ for $f \in \mathcal{F}$ and terms $t_1,\ldots,\, t_n \in T$.
@@ -234,31 +238,132 @@ These are are expressions created from chaining together function symbols with v
 We define formulas in a language $\mathcal{L}$ analogously to how we did in Chapter \ref{preliminaries}.
 Note that our definition of a formula in $\mathcal{L}_{\textbf{ZFC}}$ coincides with how we defined it before.
 
-\begin{definition}[Formula of a Set]\cite[Definition 1.1.5]{Mar02}
+\begin{definition}[Formula in a Language]\cite[Definition 1.1.5]{Mar02}\label{formula-def}
     An \textit{atomic formula} in a language $\mathcal{L}$ is either
     \begin{enumerate}
         \item $t_1 = t_2$ for terms $t_1,\, t_2 \in T$, or   
         \item $R(t_1,\ldots,\, t_{n_R})$ for $R \in \mathcal{R}$ and terms $t_1,\ldots,\, t_{n_R} \in T$.
     \end{enumerate}
-    A \textit{formula} $\phi$ in $\mathcal{L}$ is an any combination of atomic formulas with logical connectives 
+
+    The set of $\mathcal{L}$-formulas is then the smallest set such that
+    \begin{enumerate}[label=(\roman*)]
+        \item for all $\phi \in \mathcal{W}$, the negation $\lnot \phi$ is also in $\mathcal{W}$,
+        \item for all $\phi,\, \psi \in \mathcal{W}$, the formulas $\phi \wedge \psi$ and $\phi \vee \psi$ are also in $\mathcal{W}$,
+        \item for all $\phi \in \mathcal{W}$, the formulas $\forall v_i \, \phi$ and $\exists v_i \, \phi$ are also in $\mathcal{W}$.
+    \end{enumerate}
+    with respect to the logical connectives 
     $$\lnot \text{ (not), } \wedge \text{(and), } \vee \text{(or), } \rightarrow \text{(implies) and } \leftrightarrow \text{(if and only if)}$$
     and quantifiers $$\forall \text{ (for all) and } \exists \text{ (exists)}.$$
-    A formula with no free variables is called a sentence.
+    
+    Recall that variables occurring inside of a quantifier are called \textit{bound} and that variables which are not bound are called \textit{free}.
+    A formula with no free variables is called a \textit{sentence}.
 \end{definition}
+
+The more detailed definition of formulas compared to how we defined them in the \hyperref[preliminaries]{Preliminaries} comes from the fact that 
+whenever we want to prove something something is true for all formulas in a language, we can use a proof by induction utilizing Definition \ref{formula-def}.
 
 When working in model theory we consider the difference between \textit{syntax} and \textit{semantics}.
 Syntax is everything relating to structure of sentences and formal languages.
 This includes what kind of symbols we are working with in a given language and how we can combine them to create valid sentences.
 
-A language is purely \textit{syntactical}, a given sentences in a language has not assigned meaning on its own.
+A language is purely \textit{syntactical}, a given sentences in a language has no assigned meaning on its own.
 If we are working with a language describing number theory for example, 
 we might have a relation symbol $gcd$ which takes in three arguments and returns whether the third argument is the greatest common divisor of the first two.
 A formal language only includes the relation symbol itself though, elements for which relations would hold are not part of the language.
 
 Assigning a meaning to a relation symbol such as $gcd$ is \textit{semantics}.
-Having a relation be true or false is a \textit{semantical} property, this is where the namesake models come in.
+Having a relation be true or false for a some given value is a \textit{semantical} property, this is where the namesake models come in.
 In a model the symbols of a language are assigned meaning and we can explore which sentences are or are not true under some given assumptions.\cite[p.3]{Cha90}
 
+There are some sentences which are true in every language however, $x = x$ for example.
+We formalize this notion with the following \textit{logical axioms} and \textit{rules of inference}.
+This is needed in order to make the syntactical notion of formulas into a \textit{formal system}.
+In essence, we define the kind of formulas which have to be true in every model.
+This is also why the \textit{axiom} label is justified.
+
+\begin{definition}[Tautology]\cite[pp.8, 24]{Cha90}
+    Let $\mathcal{J}$ be a set of simple sentence statements and let $\phi$ be a formula in $\mathcal{J}$.
+    Let $\bar{a} = a_1,\ldots a_n$ be a sequence of truth values, meaning each $a_i$ either has the value $t$ for \textit{true} or $f$ for \textit{false}.
+    For a such a sentence $\psi$ in $\mathcal{J}$ containing sentence symbols $S_1,\ldots,\, S_n$, 
+    an assignment of $\bar{a}$ into $\psi$ substitutes each $S_i$ with $a_i$.
+
+    We say that $\psi$ is a \textit{tautology in sentential logic} if and only if the value of $\psi$ is $t$ for every assignment $\bar{a}$.
+
+    We say that a formula $\phi$ of a formal language $\mathcal{L}$ is \textit{a tautology of} $\mathcal{L}$, 
+    if it is possible to obtain $\phi$ by substituting sentence symbols $S_i$ with formulas of $\mathcal{L}$ in a tautology in sentential logic $\psi$. 
+\end{definition}
+
+We can think of a formula in $\mathcal{J}$ as a placeholders $S_1,\ldots,\, S_n$ chained together with logical connectives.
+Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula ``terminates'' either in $t$ or $f$.
+
+\begin{definition}
+    We have the three groups of \textit{logical axioms} and two \textit{rules of inference}.
+    \begin{enumerate}
+        \item \textbf{Sentential Axioms}
+        
+        Every tautology $\psi$ of $\mathcal{L}$ is a logical axiom. %change wording???
+        \item \textbf{Quantifier Axioms}
+        \begin{enumerate}
+            \item Let $\phi,\, \psi$ be formulas in $\mathcal{L}$ and let $v$ be a variable which is not free in $\phi$.
+            Then
+            $$\forall v \left((\phi \implies \psi) \implies (\phi \implies \forall v\, \psi)\right)$$
+            is a logical axiom.
+            \item Let $\phi(v)$ be a formula in $\mathcal{L}$ with a free variable $v$.
+            Let $\psi$ be a formula in $\mathcal{L}$, 
+            such that $\psi$ is the sentence where all free occurrences $v$ in $\psi$ have been substituted by some term $t$.
+            This means that no variable of $t$ is bound in $\psi$ at the place it is introduced.
+            Then 
+            $$\forall v \, \phi(v) \implies \psi$$
+            is a logical axiom.
+        \end{enumerate}
+        \item \textbf{Identity Axioms}
+        
+        Let $x$ and $y$ be variables and let $t(v_1,\ldots,\, v_n)$ and $\phi(v_1,\ldots,\, v_n)$ be a term and an atomic formula respectively,
+        both dependent on free variables $v_1,\ldots,\, v_n$.
+
+        Then 
+        \begin{enumerate}
+            \item $x = x$,
+            \item $x = y \implies$ \newline
+            $\left(t(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) = t(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right)$,
+            \item $x = y \implies$ \newline
+            $\left(\phi(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) \implies \phi(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right)$
+        \end{enumerate}
+        are logical axioms.
+    \end{enumerate}
+    The \textit{Rules of Inference} are then
+    \begin{enumerate}[resume]
+        \item \textbf{Rule of Detachment (Modus Ponens)}
+        
+        If $\psi$ and $\phi \implies \psi$ hold, then $\psi$ holds.
+        \item \textbf{Rule of Generalization}
+        
+        If $\psi$ holds, then $\forall x\, \psi(x)$ holds.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Proof]\cite[p.25]{Cha90}
+    Let $\mathcal{L}$ be a language and let $\Sigma$ be a set of sentences in $\mathcal{L}$.
+    We write $\vdash \phi$ to say that a sentence $\phi$ is a theory in $\mathcal{L}$.
+    Further, we write $\Sigma \vdash \phi$ to say that the sentence $\phi$ \textit{can be proven from} $\Sigma$ (in conjunction with the logical axioms).
+    Another way to say this is to say that $\phi$ \textit{is deductible from} $\Sigma$ or that \textit{there exists a proof of} $\phi$ \textit{from} $\Sigma$.
+\end{definition}
+
+\begin{definition}[Consistency]\cite[p.25]{Cha90}
+    A set of sentences $\Sigma$ is \textit{inconsistent} in a language $\mathcal{L}$ if and only if every formula in $\mathcal{L}$ can be proven from $\Sigma$.
+    The set $\Sigma$ is called \textit{consistent} if it is not inconsistent.
+    We have say that a sentence $\sigma$ is consistent in $\mathcal{L}$ if the singleton set $\left\{\sigma\right\}$ is consistent.
+
+    We say that $\Sigma$ is \textit{maximally consistent} if and only if $\Sigma$ is consistent 
+    and no set of sentences $\Sigma'$ which has $\Sigma$ as a proper subset is consistent.
+\end{definition}
+
+\begin{theorem}[Lindenbaum's Theorem]\cite[Proposition 1.3.11]{Cha90}
+    Let $\Sigma$ be a consistent set of sentences in a language $\mathcal{L}$.
+    Then $\Sigma$ can be extended to a maximally consistent set of sentences in $\mathcal{L}$.
+\end{theorem}
+
+\section{Properties of Models}
 \begin{definition}
     A $\mathcal{L}$-\textit{structure} or \textit{model} $\mathcal{M}$ is given by the following:
     \begin{enumerate}
