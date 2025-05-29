@@ -1,5 +1,6 @@
 \documentclass[../../main.tex]{subfiles}
 \begin{document}
+We now arrive at our main theorem:
 
 \begin{theorem}\cite{Haj72}\label{main-thm}
     The following are equivalent in ZF:
@@ -8,5 +9,46 @@
         \item Every non-empty set admits a cancellative groupoid structure
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+    The theorem is proven in two steps, deriving a single direction implication for each sentence.
+    \begin{enumerate}
+        \item \textbf{Groupoid Structure on arbitrary Sets} $\implies$ \textbf{Axiom of Choice}
+        
+        We show that the existence of a groupoid structure on every non-empty set implies that every set can be well-ordered.
+        By Theorem \ref{well-order-thm-equivalence} this is equivalent to the Axiom of Choice.
+
+        Let $A$ be an arbitrary set and let $\alpha$ be an ordinal as described in Theorem \ref{hartogs-lemma} in Section \ref{hartogs-lemma-section}.
+        This means that there exists no bijective mapping from $\alpha$ to any subset of $A$ (including $A$ itself).
+        We then let $\left(B,\, R\right)$ be a well-ordered set of type $\alpha$ and such that $A \cap B = \varnothing$.
+        
+        Now let $C$ be the set $C = A \cup B$, by assumption there exists some operation $+$, such that $\left(C,\ +\right)$ is a cancellative groupoid. %change notation!!
+        We will show that for every $x \in A$ there exists $y \in B$, such that $x + y \in B$ holds.
+
+        Let us assume for a contradiction that the above claim does not hold.
+        This would imply that some $a \in A$ exists for which $a + y \in A$ holds for all $y \in B$.
+        Let $f: B \to A$ be the function defined by $f(y) = a + y$.
+        We have that $+$ is a cancellative groupoid operation, hence $f$ must be injective;
+        a contradiction by Theorem \ref{hartogs-lemma}, since we had assumed that $B$ is of type $\alpha$.
+
+        We let $D = B \times B$ be the well-ordered set with respect to the lexicographical ordering $R'$ of $R$,
+        and define a function $g: A \to D$ by $$g(x) = \min_{R'} \left\{\left<u,\, v\right> \in D \,\vert\, x + u = v\right\}.$$
+        
+        The function $g$ maps every element $x$ of $A$ to the least pair $\left<u,\, v\right>$ in $B \times B$ satisfying $x + u = v$.
+        From earlier in the proof we know that such a pair must exists and that $g$ must in fact be injective.
+        This again follows from $+$ being cancellative, since if $x_1,\, x_2$ are two elements of $A$, having $f(x_1) = f(x_2)$ would imply that
+        \begin{align*}
+                & x_1 + u = v          = x_2 + u &\\
+           \iff & x_1     = v + u^{-1} = x_2     &
+        \end{align*} 
+        for some pair $\left<u,\, v\right> \in D$.
+        Since $\mathbf{Im}(g)$ is a subset of $D$ it itself is a well-ordered set.
+        As such we can define a well-order $R''$ on $A$ by letting $x_i R'' x_j$ whenever $g(x_i) R' g(x_j)$.
+
+        \item \textbf{Axiom of Choice} $\implies$ \textbf{Groupoid Structure on arbitrary Sets}
+        
+        $\ldots$
+    \end{enumerate}
+\end{proof}
 
 \end{document}
