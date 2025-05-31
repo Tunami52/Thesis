@@ -222,13 +222,13 @@ These are are expressions created from chaining together function symbols with v
 \end{definition}
 
 \begin{example}
-    Consider the language of (unitary) rings $\mathcal{L}_R = \left\{+,\, -,\, \cdot,\, 0,\, 1,\right\}$.
+    Consider the language of (unitary) rings $\mathcal{L}_r = \left\{+,\, -,\, \cdot,\, 0,\, 1\right\}$.
     The symbols $+,\, -,\, \cdot$ are all binary functions, and $0$ and $1$ are constants.
     Since a language does not possess any external structure itself, this is also the language of fields.
 
     For variables $v_1$ and $v_2$ we can define the term
     $$\cdot \left(+ \left(v_1.\, 1\right),\, +\left(v_2,\, +\left(1,\, 1\right)\right)\right)$$
-    in $\mathcal{L}_R$.
+    in $\mathcal{L}_r$.
     In more familiar notation this would be
     $$\left(v_1 + 1\right) \cdot \left(v_2 + 1 + 1\right).$$
     Note that this term has can have a different meaning depending on which algebraic structure we evaluate it in.
@@ -244,7 +244,6 @@ Note that our definition of a formula in $\mathcal{L}_{\textbf{ZFC}}$ coincides 
         \item $t_1 = t_2$ for terms $t_1,\, t_2 \in T$, or   
         \item $R(t_1,\ldots,\, t_{n_R})$ for $R \in \mathcal{R}$ and terms $t_1,\ldots,\, t_{n_R} \in T$.
     \end{enumerate}
-
     The set of $\mathcal{L}$-formulas is then the smallest set such that
     \begin{enumerate}[label=(\roman*)]
         \item for all $\phi \in \mathcal{W}$, the negation $\lnot \phi$ is also in $\mathcal{W}$,
@@ -259,8 +258,20 @@ Note that our definition of a formula in $\mathcal{L}_{\textbf{ZFC}}$ coincides 
     A formula with no free variables is called a \textit{sentence}.
 \end{definition}
 
-The more detailed definition of formulas compared to how we defined them in the \hyperref[preliminaries]{Preliminaries} comes from the fact that 
-whenever we want to prove something something is true for all formulas in a language, we can use a proof by induction utilizing Definition \ref{formula-def}.
+Note that some of the logical connectives can be considered shorthand of others.
+For formulas $\phi$ and $\psi$ we say that $\phi \vee \psi$ is defined as $\lnot \left(\lnot \phi \wedge \lnot \psi\right)$.
+We can then express $\phi \rightarrow \psi$ as $\lnot \phi \vee \psi$ and $\phi \leftrightarrow \psi$ as $\left(\phi \rightarrow \psi\right) \wedge \left(\psi \rightarrow \phi\right)$.
+Lastly, for a variable $v$, the formula $\forall v\,  \phi(v)$ is considered an abbreviation of $\lnot \left(\exists v\, \lnot \phi\right)$\footnote{
+    Alternatively, assuming that $\forall$ is a quantifier, we could also define $\exists v\, \phi(v)$ as $\lnot \left(\forall v\right)\, \lnot \phi(v)$.\cite[p.23]{Cha90}
+}.\cite[Remark 1.1.7]{Mar02}
+
+This is a more technical definition of formulas compared to how we defined them in the \hyperref[preliminaries]{Preliminaries}.
+It comes from the fact that whenever we want to prove something something is true for all formulas in a language, 
+we can use a proof by induction utilizing Definition \ref{formula-def}.
+Using the shorthand formulas we only have to consider the cases $\lnot \phi$, $\phi \wedge \psi$ and $\exists v\, \phi(v)$,
+for formulas $\phi$ and $\psi$ and some variable $v$.
+
+\subsection{Logical Axioms}
 
 When working in model theory we consider the difference between \textit{syntax} and \textit{semantics}.
 Syntax is everything relating to structure of sentences and formal languages.
@@ -296,6 +307,27 @@ This is also why the \textit{axiom} label is justified.
 We can think of a formula in $\mathcal{J}$ as a placeholders $S_1,\ldots,\, S_n$ chained together with logical connectives.
 Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula ``terminates'' either in $t$ or $f$.
 
+\begin{example}
+    The formula $$\tau = \left(S_1 \implies S_2\right) \vee \left(S_2 \implies S_1\right)$$
+    is a tautology in sentential logic.
+    No matter which value of $\bar{a} = \left<a_1,\, a_2\right>$ we choose in the set 
+    $\left\{\left<t,\, t\right>,\, \left<t,\, f\right>,\, \left<f,\, t\right>,\, \left<f,\, f\right>\right\}$ 
+    we always have that $\tau(\bar{a}) = t$.
+
+    Let $\mathcal{L}_{or} = \left\{+,\, -,\, \cdot,\, <,\, 0,\, 1\right\}$ be the language of ordered rings.
+    If we substitute the formulas $\phi_1(v_1,\, v_2) = v_1 + 1 < v_2$ and $\phi_2(v_1,\, v_2) = v_2 \cdot v_1 = v_1$ into $\tau$,
+    we have that
+    \begin{align*}
+        \tau_r(v_1,\, v_2) 
+        &= \left(\phi_1(v_1,\, v_2) \implies \phi_2(v_1,\, v_2)\right) \vee \left(\phi_2(v_1,\, v_2) \implies \phi_1(v_1,\, v_2)\right) \\
+        &= \left(\left(v_1 + 1 < v_2\right) \implies \left(v_2 \cdot v_1 = v_1\right)\right) \\
+        &  \qquad \vee \left(\left(v_2 \cdot v_1 = v_1\right) \implies \left(v_1 + 1 < v_2\right)\right)
+    \end{align*}
+    is a tautology in $\mathcal{L}_{or}$.
+    Note that for example $$(v_1 < v_2) \vee (v_1 = v_2) \vee (v_2 < v_1)$$ is not a tautology in $\mathcal{L}_{or}$.
+    Intuitively, we can explain this by observing that there are structures of the language which might not interpret the symbol $<$ as a linear order.
+\end{example}
+
 \begin{definition}
     We have the three groups of \textit{logical axioms} and two \textit{rules of inference}.
     \begin{enumerate}
@@ -306,7 +338,7 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
         \begin{enumerate}
             \item Let $\phi,\, \psi$ be formulas in $\mathcal{L}$ and let $v$ be a variable which is not free in $\phi$.
             Then
-            $$\forall v \left((\phi \implies \psi) \implies (\phi \implies \forall v\, \psi)\right)$$
+            $$\forall v \left((\phi \implies \psi(v)) \implies (\phi \implies \forall v\, \psi(v))\right)$$
             is a logical axiom.
             \item Let $\phi(v)$ be a formula in $\mathcal{L}$ with a free variable $v$.
             Let $\psi$ be a formula in $\mathcal{L}$, 
@@ -324,10 +356,18 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
         Then 
         \begin{enumerate}
             \item $x = x$,
-            \item $x = y \implies$ \newline
-            $\left(t(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) = t(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right)$,
-            \item $x = y \implies$ \newline
-            $\left(\phi(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) \implies \phi(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right)$
+            \item $\begin{aligned}[t]
+                & x = y \implies \\
+                & \left(t(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) = t(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right),
+            \end{aligned}$
+            % $x = y \implies$ \newline
+            % $\left(t(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) = t(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right)$,
+            \item $\begin{aligned}[t]
+                & x = y \implies \\
+                & \left(\phi(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) \implies \phi(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right)
+            \end{aligned}$
+            % $x = y \implies$ \newline
+            % $\left(\phi(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) \implies \phi(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right)$
         \end{enumerate}
         are logical axioms.
     \end{enumerate}
@@ -335,19 +375,23 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
     \begin{enumerate}[resume]
         \item \textbf{Rule of Detachment (Modus Ponens)}
         
-        If $\psi$ and $\phi \implies \psi$ hold, then $\psi$ holds.
+        If $\psi$ and $\phi \rightarrow \psi$ hold, then $\psi$ holds.
         \item \textbf{Rule of Generalization}
         
         If $\psi$ holds, then $\forall x\, \psi(x)$ holds.
     \end{enumerate}
 \end{definition}
 
-\begin{definition}[Proof]\cite[p.25]{Cha90}
+\begin{definition}[Proof]\label{proof-def}\cite[p.25]{Cha90}
     Let $\mathcal{L}$ be a language and let $\Sigma$ be a set of sentences in $\mathcal{L}$.
     We write $\vdash \phi$ to say that a sentence $\phi$ is a theory in $\mathcal{L}$.
     Further, we write $\Sigma \vdash \phi$ to say that the sentence $\phi$ \textit{can be proven from} $\Sigma$ (in conjunction with the logical axioms).
     Another way to say this is to say that $\phi$ \textit{is deductible from} $\Sigma$ or that \textit{there exists a proof of} $\phi$ \textit{from} $\Sigma$.
 \end{definition}
+
+A theory can thought of as something that can be proven only from the logical axioms.
+While Definition \ref{proof-def} introduces concepts the proof theory, we will in general not be quite that formal when proving sentences in model theory.
+However, this type of formality is needed for the next definition.
 
 \begin{definition}[Consistency]\cite[p.25]{Cha90}
     A set of sentences $\Sigma$ is \textit{inconsistent} in a language $\mathcal{L}$ if and only if every formula in $\mathcal{L}$ can be proven from $\Sigma$.
@@ -363,9 +407,13 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
     Then $\Sigma$ can be extended to a maximally consistent set of sentences in $\mathcal{L}$.
 \end{theorem}
 
-\section{Properties of Models}
+\begin{proof}\cite[Lemma 1.2.9]{Cha90}
+    TBD
+\end{proof}
+
+\section{Structes and Theories}
 \begin{definition}
-    A $\mathcal{L}$-\textit{structure} or \textit{model} $\mathcal{M}$ is given by the following:
+    A $\mathcal{L}$-\textit{structure} or $\mathcal{M}$ is given by the following:
     \begin{enumerate}
         \item A nonempty set $M$,
         \item a function $f^{\mathcal{M}}: M^{n_f} \to M$ for each $f \in \mathcal{F}$,
@@ -375,7 +423,7 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
     The set $M$ is referred to as the \textit{universe}, \textit{domain} or \textit{underlying set} of $\mathcal{M}$ 
     and $f^{\mathcal{M}}$, $R^{\mathcal{M}}$ and $c^{\mathcal{M}}$ are called the \textit{interpretations} of $\mathcal{M}$. \cite[Definition 1.1.2]{Mar02}
 
-    We sometimes also identify a model $\mathcal{M}$ with the pair $\left<M,\, \mathcal{I}\right>$, 
+    We sometimes also identify a structure $\mathcal{M}$ with the pair $\left<M,\, \mathcal{I}\right>$, 
     where $\mathcal{I}$ is the function mapping symbols of $\mathcal{L}$ to their respective interpretations in $M$. \cite[p.20]{Cha90}
 \end{definition}
 
