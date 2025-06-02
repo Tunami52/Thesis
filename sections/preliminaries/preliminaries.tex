@@ -105,7 +105,7 @@ Hence we can generalize the axiom schema to
 \end{equation}
 
 Let $\mathbf{C} = \left\{z \,\vert\, \psi(z,\, p_1,\ldots,\, p_n)\right\}$ be the class containing all sets $z$ which satisfy the formula $\psi$ for any free variables $p_1,\ldots,\, p_n$.
-We can then utilize \ref{general-seperation-axiom} and have that
+We can then utilize \eqref{general-seperation-axiom} and have that
 $$\forall x \, \exists y \, \left(\mathbf{C} \cap x = y\right),$$
 describes the same set.
 This means that any subclass of a set is also a set, and naturally a subclass of a set is called a subset. 
@@ -120,7 +120,7 @@ of a class $\mathbf{C}$ is a set, since it is a subset of all of its elements, w
 $$\exists x \forall y \ y \notin x$$
 There is a set with no elements. We call this set $\varnothing = \left\{\right\}$. \cite{Gol17}
 
-This statement stands out, as it is not an axiom, the existence of the empty set also arises from the \hyperref[ZF3]{Axiom Schema of Seperation}.
+This statement stands out, as it is not an axiom, the existence of the empty set also arises from the \hyperref[ZF3]{Axiom Schema of Separation}.
 We include it here for the sake of completeness.
 
 Since we can define the empty class $\varnothing = \left\{u\, \vert\, u \neq u\right\}$, the empty set is also a set.
@@ -129,14 +129,14 @@ The existence of that set, in turn, follows from the \hyperref[ZF7]{Axiom of Inf
 
 \subsection{Axiom of Unions}\label{ZF5}
 $$\forall x \exists y \forall z \left(z \in y \iff \exists w \left(z \in w \wedge w \in x\right)\right)$$
-For any set $x$ there is a set, denoted by $\bigcup x$, which is the union of all the elements of $x$.
-meaning it contains all elements of the members of $x$.
+For any set $x$ there is a set, denoted by $\bigcup x$, which is the union of all elements of $x$,
+meaning it contains all elements of each member of $x$.
 
 For any sets, we recursively define their union as
 \begin{align*}
     x \cup y &= \bigcup \left\{x,\, y\right\} \\
     x \cup y \cup z &= \left(x \cup y\right) \cup z \\
-    &\cdots
+    &\vdots
 \end{align*}
 as well as a set with more then two members as,
 \begin{align*}
@@ -148,13 +148,13 @@ where the existence of $\left\{x,\, y\right\}$ and $\left\{x\right\} = \left\{x,
 $$\forall x\, \exists y\, \forall z\, \left(z \in y \iff z \subseteq x\right)$$
 For any set $x$ there is a set, denoted by $\mathcal{P}(x)$ and called the power set of $x$, consisting of all subsets $s \subseteq x$.
 
-Using the axioms of \hyperref[ZF3]{Separation}, \hyperref[ZF5]{Union} and \hyperref[ZF6]{Power Set} we can define the \textit{cartesian product} of the sets $X$ and $X$ as
+Using the axioms of \hyperref[ZF3]{Separation}, \hyperref[ZF5]{Union} and \hyperref[ZF6]{Power Set} we can define the \textit{cartesian product} of the sets $x$ and $y$ as
 $$x \times y = \left\{(u,\, v) \,\vert\, u \in x \vee v \in y\right\} \subseteq \mathcal{P}\left(\mathcal{P}\left(x \cup y\right)\right),$$
 and for multiple sets $x_1,\ldots,\, x_n$ as
-$$x^n = \underbrace{x_1 \times \cdots x_{n-1} \times x_n}_{n\ \text{times}}  = \left(x_1 \times \cdots \times x_{n-1}\right) \times x_n.$$
+$$x^n = \underbrace{x_1 \times \cdots \times x_{n-1} \times x_n}_{n\ \text{times}}  = \left(x_1 \times \cdots \times x_{n-1}\right) \times x_n.$$
 
-We call a set $R \subseteq X^n$ a \textit{n-ary} relation over $X$.
-In general $R$ is a set of tuples and if $R$ is a binary relation, we write $x,\ R\, y$ for $(x,\, y) \in R$.
+We call a set $R \subseteq X^n$ an \textit{n-ary} relation over $X$.
+In general $R$ is a set of tuples and if $R$ is a binary relation, we write $x\, R\, y$ for $\left<x,\, y\right> \in R$.
 
 A binary relation $f \subseteq X \times Y$ is called a \textit{function} (or \textit{map}), if
 $$\left((x,\, y) \in f \wedge (x,\, z) \in f\right) \implies y = z$$
@@ -184,8 +184,8 @@ Let $\phi(x,\, y,\, p)$ a formula in first-order logic with free variables $x$, 
     &\implies \forall x'\, \exists y'\, \forall y\, \left(y \in y'\ \iff \left(\exists x \in x'\right) \phi(x,\, y,\, p)\right)
 \end{align}
 
-Similar to \hyperref[ZF3]{the Axiom Schema of Seperation}, this is an axiom schema, meaning that (\ref{replacement-axiom}) is a separate axiom for each formula $\phi(x,\, y,\, p)$.
-We can also generalize the Axiom of replacement in a similar way, by replacing $\phi(x,\, y,\, p)$ with $\phi(x,\, y,\, p_1,\ldots,\, p_n)$.
+Similar to \hyperref[ZF3]{the Axiom Schema of Separation}, this is an axiom schema, meaning that \eqref{replacement-axiom} is a separate axiom for each formula $\phi(x,\, y,\, p)$.
+We can also generalize the Axiom Schema of Replacement in a similar way, by replacing $\phi(x,\, y,\, p)$ with $\phi(x,\, y,\, p_1,\ldots,\, p_n)$.
 
 The axiom schema states that if $\mathbf{F} = \left\{(x\, y) \,\vert\, \phi(x,\, y,\, p)\right\}$ is a class function,
 then the image $\mathbf{Im}(\mathbf{F})$ is a set whenever we restrict the domain of $\mathbf{F}$ to a set.
@@ -197,19 +197,19 @@ Every set contains an $\in$-minimal element, we call this being \textit{well-fou
 This also means there exist no infinitely descending chains of sets, such as $x_0 \ni x_1 \ni x_2 \ni \cdots$.\cite[Theorem 4.3, p.95]{Gol17}
 
 \section{The Axiom of Choice}
-To talk about the axiom of choice we need to first define what a choice function is, the concept which the axiom is centered around.
+To talk about the Axiom of Choice we need to first define what a choice function is, the concept which the axiom is centered around.
 \begin{definition}[Choice Function]\cite[p.38]{Jec78}
-    Let $S$ be a family of nonempty sets.
+    Let $S$ be a family of non-empty sets.
     A function $f: S \to \bigcup S$ is called a \textit{choice function} of $S$ if
     $$f(X) \in X$$
     holds for all sets $X \in S$.
 \end{definition}
 The Axiom of Choice is then defined as follows:
 \begin{definition}[Axiom of Choice]\cite[p.38]{Jec78}\label{choice-axiom}
-    There exists a choice function for every family of nonempty sets.
+    There exists a choice function for every family of non-empty sets.
 \end{definition}
 
-The Axiom of Choice is not always needed for showing that a choice function exist.
+The Axiom of Choice is not always needed for showing that a choice function exists.
 Take for example $S = \mathcal{P}(\mathbb{N})$, under the usual order $<$ every subset of $\mathbb{N}$ has a least element.
 We can therefore construct a choice function $f: S \to \mathbb{N}$ by letting $f(N)$ be the unique least element of $N$ for $N \in S$.
 This is however not possible for a family of possibly infinite subsets of $\mathbb{R}$; for example the open interval $\left(0,\, 1\right)$ does not contain a least element.

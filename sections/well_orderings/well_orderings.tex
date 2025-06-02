@@ -2,7 +2,6 @@
 \begin{document}
 
 \section{Linear, Partial and Well-Orderings}
-
 We start by defining the two types of partial orderings, \textit{strict} and \textit{weak} ones.
 To give a more intuitive understanding of how these differ we use the notation $<$ and $\leq$ respectively, but $R$ is also commonly used to denote a relation.
 
@@ -18,7 +17,7 @@ To give a more intuitive understanding of how these differ we use the notation $
 
 \begin{definition}[Weak Partial Order]\cite[p.164]{Gol17}
     Let $X$ be a set and $\leq\, \subseteq X \times X$ a binary relation on $X$.
-    Then $\leq$ is called a \textit{weak partial order} of $X$, and $(X,\, \leq)$ called a \textit{weakly partially ordered set}, if it is
+    Then $\leq$ is called a \textit{weak partial order} of $X$, and $(X,\, \leq)$ is called a \textit{weakly partially ordered set}, if it is
     \begin{enumerate}[label=(\roman*)]
         \item \textbf{reflexive}: $\forall x \in X \ (x \leq x)$
         \item \textbf{transitive}: $\forall x,\, y,\, z \in X \left(\left(x \leq y \wedge y \leq z\right) \implies x \leq z\right)$
@@ -32,7 +31,7 @@ To give a more intuitive understanding of how these differ we use the notation $
     $$x_1 <_X x_2 \iff f(x_1) <_Y f(x_2).$$
     If $X$ and $Y$ are both linearly ordered, an order-preserving function is also said to be \textit{increasing}.
 
-    The function $f$ is called an \textit{order-isomorphism} if $f$ is both order-preserving and a bijective.
+    The function $f$ is called an \textit{order-isomorphism} if $f$ is both order-preserving and bijective.
     Whenever it is clear from context that we are talking about ordered sets we simply call $f$ an \textit{isomorphism} and write $X \simeq Y$.
     If $f$ is order-preserving and injective, it is called an \textit{order-embedding}. \cite[p.167]{Gol17}
 \end{definition}
@@ -59,7 +58,7 @@ Clearly it is straightforward to define a weak partial order $R'$ from a strict 
         \left<a_1,\, b_1\right> < \left<a_2,\, b_2\right>\ &\text{if}\ a_1 < a_2 \\
         &\text{or}\ a_1 = a_2 \wedge b_1 < b_2.
     \end{align*}
-    This is called the \textit{lexicographical order} of $\mathbb{R}^2$ with respect to the order $<$ on $\mathbb{R}$ and is perhaps the most natural way to a cartesian product. \cite[p.182]{Gol17}
+    This is called the \textit{lexicographical order} of $\mathbb{R}^2$ with respect to the order $<$ on $\mathbb{R}$ and is perhaps the most natural way to a Cartesian product. \cite[p.182]{Gol17}
     The \textit{anti-lexicographical order} order of $\mathbb{R}^2$ would be 
     \begin{align*}
         \left<a_1,\, b_1\right> < \left<a_2,\, b_2\right>\ &\text{if}\ b_1 < b_2 \\
@@ -97,7 +96,7 @@ This notion of a least element lets us define a special kind of linearly ordered
 Well-ordered sets are central to the axiomatic set theory at hand.
 In fact, one of the most important results we will treat here, is that every set can we well-ordered (with the Axiom of Choice).
 
-Further, we will introduce the concept of ordinals as a way effectively classify all well-ordered sets.
+Further, we will introduce the concept of ordinals as a way to properly classify all well-ordered sets.
 The next two lemmata are needed for the proof of Theorem \ref{unique-ordinal}, an important result with regards to ordinals.
 For this we need to define the initial section of an ordered set first:
 
@@ -109,7 +108,7 @@ For this we need to define the initial section of an ordered set first:
     If $\left(W,\, <\right)$ is a well-ordered set and $f: W \to W$ is an increasing function, then $f(x) \geq x$ for each $x\in W$.
 \end{lemma}
 
-\begin{proof}\cite[Lemma 2.1, p.13]{Jec78}
+\begin{proof}
     In order to contrive a contradiction, we assume that $X = \left\{x \in W \,\vert\, f(x) < x\right\}$, the collection of elements of $W$ not satisfying the lemma, is a non-empty set.
     We then let $z$ be the least element of $X$ and $w = f(z)$ its preimage in $f$.
     By the definition of $X$ we this means that $f(w) < w$, contradicting the initial assumption that $f$ is an increasing function.
@@ -119,7 +118,7 @@ For this we need to define the initial section of an ordered set first:
     No well-ordered set is isomorphic to an initial segment of itself.
 \end{lemma}
 
-\begin{proof}\cite[Lemma 2.2, p.13]{Jec78}
+\begin{proof}
     Assume for a contradiction that $f$ is an order-isomorphism from an ordered set $\left(X,\, <\right)$ to an initial segment $\left(S,\, <\right) = \left\{x \in X \,\vert\, x < s\right\}$, for some $s \in X$ of itself.
     The image of $f$ is then $\mathbf{Im}\left(f\right) = \left\{x \in X \,\vert\, x < s\right\} = S$, but we know this is not possible by Lemma \ref{increasing-fcn-lemm}. 
 \end{proof}
@@ -134,7 +133,7 @@ For this we need to define the initial section of an ordered set first:
     \end{enumerate}
 \end{theorem}
 
-\begin{proof}\cite[Theorem 1]{Jec78}
+\begin{proof}
     Let $W_1$ and $W_2$ be as in the statement of the theorem and let $W_i(u)$ be the initial segment $\left\{u \in W_i \,\vert\, u < v\right\}$ of $W_i$ for $i \in \left\{1,\, 2\right\}$.
     We can then define the following set of ordered pairs:
     $$f = \left\{\left<x,\, y\right> \in W_1 \times W_2 \,\vert\, W_1(x) \simeq W_2(y)\right\}.$$
@@ -157,7 +156,7 @@ For this we need to define the initial section of an ordered set first:
 
         As such we have that $f: W_1 \to W_2(y_0)$ is an order-isomorphism and case $2$ of the theorem holds.
         \item If $\mathbf{Dom}(f) \neq W_1$, we have that $\mathbf{Dom}(f) = W_1(w_0)$ for the least element $x_0$ of the set $W_1 \setminus \mathbf{Dom}(f)$.
-        Proceeding analogously to case before we have that $\mathbf{Im}(f) = W_2$. 
+        Proceeding analogously to the case before we have that $\mathbf{Im}(f) = W_2$. 
         Hence $W_2$ is order-isomorphic to an initial segment of $W_1$ and case $3$ of the theorem holds.
     \end{enumerate}
     By case 2 it is clear that these are the only possibilities for $\mathbf{Dom}(f)$ and $\mathbf{Im}(f)$ and by Lemma \ref{initial-segment-isomorphism} the cases must be mutually exclusive.
@@ -187,14 +186,14 @@ This is however not the case for elements of $\mathbb{Q}$, as the natural order 
     $$\forall a_1,\, a_2 \in Y \left(a_1 < a_2 \implies \exists a \in Y \left(a_1 < a \wedge a < a_2\right)\right).$$
 \end{definition}
 
-We will not dwell on the concept of density to long.
+We will not dwell on the concept of density too long.
 Especially the distinction between the two dense orderings of $\mathbb{Q}$ and $\mathbb{R}$ goes more into the direction of point-set topology and is beyond the scope of this text.
 For a treatment of this topic from the perspective of linear orderings we refer the curious reader to \cite[\S 2]{Ros82}.
 
 The broader discussion of the properties of linear orderings is important however, as we need a way to classify and compare ordered sets.
-For the classification we utilize order preserving functions; this is especially useful for the use-case of well-ordered sets all they always relate to each other in this way by Theorem (\ref{well-order-isomorphism}).
+For the classification we utilize order preserving functions; this is especially useful for the use-case of well-ordered sets all they always relate to each other in this way by Theorem \ref{well-order-isomorphism}.
 
-\begin{definition}[Order Type]\cite[Definition 1.12, 1.13]{Ros82}
+\begin{definition}[Order Type]\cite[Definitions 1.12, 1.13]{Ros82}
     Let $(X, <_X)$ and $(Y, <_Y)$ be linear orderings.
     We say that $X$ and $Y$ have the same \textit{order type}, if there exists an order-isomorphism $f: X \to Y$.
 
@@ -256,7 +255,7 @@ It follows from the following lemma that every natural number also is an ordinal
     \end{enumerate}
 \end{lemma}
 
-\begin{proof}\cite[Lemma 2.3, p.15]{Jec78}
+\begin{proof}
     \begin{enumerate}
         \item The empty set has no non-empty subsets, hence it is transitive and well-ordered by $\in$.
         \item If $\beta \in \alpha$, then $\beta \subseteq \alpha$ by definition. Since $\alpha$ is well-ordered and transitive, so is $\beta$.
@@ -278,7 +277,7 @@ It follows from the following lemma that every natural number also is an ordinal
     Every well-ordered set is order-isomorphic to a unique ordinal.
 \end{theorem}
 
-\begin{proof}\cite[Theorem 2]{Jec78}
+\begin{proof}
     Let $W$ be a well ordered set.
     We will show that $W$ is order-isomorphic to an ordinal $\alpha$, the uniqueness of $\alpha$ follows from Lemma \ref{initial-segment-isomorphism}.
 
@@ -341,7 +340,7 @@ This concept is generalized in the following theorem:
     Then $\mathbf{C}$ is the class of all ordinals.
 \end{theorem}
 
-\begin{proof}\cite[Theroem 3]{Jec78}
+\begin{proof}
     Let $\mathit{Ord}$ be the class of all ordinals.
     Assume for a contradiction that the theorem does not hold and assume that $\alpha$ is the least ordinal contained in the class $\mathit{Ord} \setminus \mathbf{C}$.
     
@@ -365,21 +364,21 @@ There is a (bad) joke that goes:
     \newline Every set can be well ordered. 
 \end{definition}
 
-We could provide a proof for Definition \ref{well-order-thm} in \textbf{ZFC} here directly.
+We do not provide a proof for Definition \ref{well-order-thm} in \textbf{ZFC} here directly.
 This theorem, as it turn out, is not just another regular theorem, and we will therefore also not treat it as one.
 
-Indeed, the Well-Ordering Theorem is actually equivalent to the Axiom of Choice.
+Indeed, the Well-Ordering Theorem is actually equivalent to the \hyperref[choice-axiom]{Axiom of Choice}.
 This means that if either statement is assumed to be true (and it has to be assumed since we are talking about \textit{axioms}),
 the other one can be proved from it.
 This is the same methodology we will use for proving our main result, Theorem \ref{main-thm}, as well.
 There we will show equivalence of our main statement, that a group structure exists on all arbitrary sets, with the Well-Ordering Theorem.
 As such by transitivity, this main statement is also equivalent to the Axiom of Choice.
 
-\begin{theorem}\label{well-order-thm-equivalence}
+\begin{theorem}\label{well-order-thm-equivalence}\cite[Theorem 15, p.39]{Jec78}
     \hyperref[well-order-thm]{The Well-ordering Theorem} is equivalent to the Axiom of Choice. %cross-reference AC definition
 \end{theorem}
 
-\begin{proof}\cite[Theorem 15, p.39]{Jec78}
+\begin{proof}
     We provide a proof in two parts; first showing that the Well-Ordering Theorem is true in \textbf{ZFC}.
     Then, conversely, we prove \textbf{AC} in \textbf{ZF}, assuming that the Well-Ordering Theorem holds true.
     \begin{enumerate}
