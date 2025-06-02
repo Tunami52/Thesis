@@ -262,8 +262,8 @@ Note that some of the logical connectives can be considered shorthand of others.
 For formulas $\phi$ and $\psi$ we say that $\phi \vee \psi$ is defined as $\lnot \left(\lnot \phi \wedge \lnot \psi\right)$.
 We can then express $\phi \rightarrow \psi$ as $\lnot \phi \vee \psi$ and $\phi \leftrightarrow \psi$ as $\left(\phi \rightarrow \psi\right) \wedge \left(\psi \rightarrow \phi\right)$.
 Lastly, for a variable $v$, the formula $\forall v\,  \phi(v)$ is considered an abbreviation of $\lnot \left(\exists v\, \lnot \phi\right)$\footnote{
-    Alternatively, assuming that $\forall$ is a quantifier, we could also define $\exists v\, \phi(v)$ as $\lnot \left(\forall v\right)\, \lnot \phi(v)$.\cite[p.23]{Cha90}
-}.\cite[Remark 1.1.7]{Mar02}
+    Alternatively, assuming that $\forall$ is a quantifier, we could also define $\exists v\, \phi(v)$ as $\lnot \left(\forall v\right)\, \lnot \phi(v)$. \cite[p.23]{Cha90}
+}. \cite[Remark 1.1.7]{Mar02}
 
 This is a more technical definition of formulas compared to how we defined them in the \hyperref[preliminaries]{Preliminaries}.
 It comes from the fact that whenever we want to prove something something is true for all formulas in a language, 
@@ -315,11 +315,12 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
     we always have that $\tau(\bar{a}) = t$.
 
     Let $\mathcal{L}_{or} = \left\{+,\, -,\, \cdot,\, <,\, 0,\, 1\right\}$ be the language of ordered rings.
-    If we substitute the formulas $\phi_1(v_1,\, v_2) = v_1 + 1 < v_2$ and $\phi_2(v_1,\, v_2) = v_2 \cdot v_1 = v_1$ into $\tau$,
-    we have that
+    Suppose that $\phi_1$ and $\phi_2$ are the two $\mathcal{L}_{or}$-formulas $v_1 + 1 < v_2$ and $v_2 \cdot v_1 = v_1$ respectively,
+    each having (the same) free variables $v_1$ and $v_2$.
+    If we substitute the formulas $\phi_1$ and $\phi_2$ into $\tau$, we have that
     \begin{align*}
-        \tau_r(v_1,\, v_2) 
-        &= \left(\phi_1(v_1,\, v_2) \implies \phi_2(v_1,\, v_2)\right) \vee \left(\phi_2(v_1,\, v_2) \implies \phi_1(v_1,\, v_2)\right) \\
+        \tau_r
+        &= \left(\phi_1 \implies \phi_2\right) \vee \left(\phi_2 \implies \phi_1\right) \\
         &= \left(\left(v_1 + 1 < v_2\right) \implies \left(v_2 \cdot v_1 = v_1\right)\right) \\
         &  \qquad \vee \left(\left(v_2 \cdot v_1 = v_1\right) \implies \left(v_1 + 1 < v_2\right)\right)
     \end{align*}
@@ -408,10 +409,10 @@ However, this type of formality is needed for the next definition.
 \end{theorem}
 
 \begin{proof}\cite[Lemma 1.2.9]{Cha90}
-    TBD
+    TODO
 \end{proof}
 
-\section{Structes and Theories}
+\section{Structes, Theories and Models}
 \begin{definition}
     A $\mathcal{L}$-\textit{structure} or $\mathcal{M}$ is given by the following:
     \begin{enumerate}
@@ -421,10 +422,79 @@ However, this type of formality is needed for the next definition.
         \item an element $c^\mathcal{M} \in M$ for each $c \in \mathcal{C}$.
     \end{enumerate}
     The set $M$ is referred to as the \textit{universe}, \textit{domain} or \textit{underlying set} of $\mathcal{M}$ 
-    and $f^{\mathcal{M}}$, $R^{\mathcal{M}}$ and $c^{\mathcal{M}}$ are called the \textit{interpretations} of $\mathcal{M}$. \cite[Definition 1.1.2]{Mar02}
+    and $f^{\mathcal{M}}$, $R^{\mathcal{M}}$ and $c^{\mathcal{M}}$ are called the \textit{interpretations} of $\mathcal{M}$. 
+    The \textit{cardinality of} $\mathcal{M}$ is the cardinality of its underlying set $\left\lvert M\right\rvert$. \cite[Definition 1.1.2]{Mar02}
 
-    We sometimes also identify a structure $\mathcal{M}$ with the pair $\left<M,\, \mathcal{I}\right>$, 
+    We sometimes also identify a structure $\mathcal{M}$ by writing $\left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ \cite{Mar02} or $\left(M,\, \mathcal{I}\right)$, 
     where $\mathcal{I}$ is the function mapping symbols of $\mathcal{L}$ to their respective interpretations in $M$. \cite[p.20]{Cha90}
+\end{definition}
+
+\begin{definition}\label{structure-embedding-def}\cite[Definition 1.1.3]{Mar02}
+    Let $\mathcal{M}$ and $\mathcal{N}$ be two $\mathcal{L}$-structures, having the underlying sets $M$ and $N$ respectively.
+    We call a function $\mu: M \to N$ an $\mathcal{L}$-embedding if it is injective and preserves the interpretation of all symbols of $\mathcal{L}$.
+
+    More precisely this means that $\mu$ satisfies
+    \begin{enumerate}[label=(\roman*)]
+        \item $\mu\left(f^\mathcal{M}(a_1,\ldots,\, a_{n_f})\right) = f^\mathcal{N}(a_1,\ldots,\, a_{n_f})$ 
+        for all $f \in \mathcal{F}$ and all sequences $a_1,\ldots,\, a_{n_f}$,
+        \item $\left<a_1,\ldots,\, a_{n_R}\right> \in R^\mathcal{M}$ if and only if $\left<\mu(a_1),\ldots,\, \mu(a_{n_R})\right> \in R^\mathcal{N}$ 
+        for all $f \in \mathcal{F}$ and $a_1,\ldots,\, a_n$,
+        \item $\mu(c^\mathcal{M}) = c^\mathcal{n}$ for all $c \in C$.
+    \end{enumerate}
+    In the case that $N \subseteq M$, 
+    we say that $\mathcal{N}$ is a \textit{substructure} of $\mathcal{M}$ and that $\mathcal{M}$ is an \textit{extension} of $\mathcal{N}$.
+\end{definition}
+
+\begin{example}\cite[p.8]{Mar02}
+    Let $\mathcal{L}_G = \left\{\cdot,\, e\right\}$ be the language of groups, 
+    $\cdot$ is a binary function symbol and $e$ is the constant symbol which we usually associate with the identity element.
+
+    Then $\mathcal{N} = \left(\mathbb{N},\, +,\, 0\right)$ is a $\mathcal{L}_G$-structure, however it is not actually a group.
+\end{example}
+
+As discussed earlier, structures are where we explore \textit{semantics}.
+To effectively explore semantical ideas in different structures however, 
+we first need to actually define what we consider truth in a structure to actually be.
+
+Say we have a term $t$ with (free) variables $v_1,\ldots,\, v_n$,
+and we want to know what truth value $t$ takes in some structure when we evaluate it at $\bar{a} = a_1,\ldots,\, a_n$.
+One might think that this is function evaluation in the same sense which we usually use it, and they would be mostly correct.
+However, since we will use Definition \ref{formula-def} of formulas in defining what truth means for a structure,
+we have to be similarly careful when defining term valuation.
+
+\begin{definition}\cite[1.3.13]{Cha90}
+    Let $t$ be a term in a language $\mathcal{L}$ dependent on variables $v_1,\ldots,\, v_n$.
+    If $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ is a $\mathcal{L}$-structure,
+    we define the \textit{value of the term} $t(v_1,\ldots,\, v_n)$ \textit{at} $\bar{a} = \left<a_1,\ldots,\, a_n\right> \in M^n$ the following way:
+    \begin{enumerate}
+        \item If $t$ is $v_i$, then $t(\bar{a}) = a_i$,
+        \item if $t$ is the constant symbol $c$ in $\mathcal{L}$, 
+        then $t(\bar{a})$ is given by the interpretation $c^{\mathcal{M}}$,
+        \item if $t$ is the function $f(t_1,\ldots,\, t_n)$ in $\mathcal{L}$,
+        then $t(\bar{a})$ is given by the interpretation 
+        $f^{\mathcal{M}}(t_1(\bar{a}),\ldots,\, t_n(\bar{a}))$.
+    \end{enumerate}
+\end{definition}
+
+We can then define what it means for a sentence to be true in a $\mathcal{L}$-structure:
+\begin{definition}\cite[Definition 1.1.6]{Mar02}
+    Let $\mathcal{M}$ be an $\mathcal{L}$-structure and let $\phi$ be a formula in $\mathcal{L}$ with free variables $\bar{v} = \left<v_1,\ldots,\, v_n\right>$.
+    We inductively define $\mathcal{M} \models \phi(\bar{a})$ and for $\bar{a} = \left<a_1,\ldots,\, a_n\right> \in M^n$.
+
+    \begin{enumerate}
+        \item If $\phi$ is $t_1 = t_2$,
+        then $\mathcal{M} \models \phi(\bar{a})$ if and only if $t_1(\bar{a}) = t_2(\bar{a})$, 
+        \item If $\phi$ is $R\left(t_1,\ldots,\, t_{n_R}\right)$,
+        then $\mathcal{M} \models \phi(\bar{a})$ if and only if $\left<t_1(\bar{a}),\ldots,\, t_{n_R}(\bar{a})\right> \in R^{\mathcal{M}}$,
+        \item If $\phi$ is $\lnot \psi$, 
+        then $\mathcal{M} \models \phi(\bar{a})$ if and only if $\mathcal{M} \not\models \psi(\bar{a})$,
+        \item If $\phi$ is $\psi \wedge \rho$, 
+        then $\mathcal{M} \models \phi(\bar{a})$ if and only if $\mathcal{M} \models \psi(\bar{a})$ and $\mathcal{M} \models \rho(\bar{a})$,
+        \item If $\phi$ is $\exists v_i\, \psi(\bar{v},\, v_i)$,
+        then $\mathcal{M} \models \phi(\bar{a})$ if and only if there exists some element $b \in M$ such that $\mathcal{M} \models \psi(\bar{a},\, b)$
+    \end{enumerate}
+
+    We say that $\mathcal{M}$ \textit{satisfies} $\phi(\bar{a})$, whenever $\mathcal{M} \models \phi(\bar{a})$.
 \end{definition}
 
 \section{The Löwenheim-Skolem Theorem}
