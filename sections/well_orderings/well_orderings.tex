@@ -330,7 +330,7 @@ Transfinite is the same concept extended to the ordinal numbers; loosely speakin
 but also that if it holds for all ordinals smaller than some limit ordinal, that it holds for the limit ordinal as well.
 This concept is generalized in the following theorem:
 
-\begin{theorem}[Transfinite Induction]\cite[Theroem 3]{Jec78}
+\begin{theorem}[Transfinite Induction]\cite[Theorem 3]{Jec78}
     Let $\mathbf{C}$ be a class containing only ordinals and let the following hold for $\mathbf{C}$:
     \begin{enumerate}[label=(\roman*)]
         \item $0 \in \mathbf{C}$,
@@ -418,26 +418,95 @@ As such by transitivity, this main statement is also equivalent to the Axiom of 
 
 \section{Hartogs' Lemma}\label{hartogs-lemma-section}
 We continue with the conclusion of this chapter, a lemma originally stated by Hartogs in a paper from 1915. % restated and proven in this form in our main paper by Hajnal and Kertész.
-Just as with Theorem (\ref{well-order-thm}), this is used in the proof of our final result, Theorem (\ref{main-thm}).
-Before we can state and prove this however, we need the following lemma:
+Just as with Theorem \ref{well-order-thm}, this is used in the proof of our final result, Theorem \ref{main-thm}.
+Since our goal is to prove an equivalence with the \hyperref[choice-axiom]{Axiom of Choice}, we will work completely in \textbf{ZF} without \textbf{AC} in this section.
 
-\begin{lemma}\cite[Annex]{Har15}
+The lack of \textbf{AC} is also the reason the comparability of sets is not given, another equivalence of the Axiom of Choice. \cite{Har15}
+As such we do not talk about cardinality in the traditional sense in the lemma, even though the terminology is very similar.
+
+\begin{lemma}\label{well-order-set}\cite[Annex]{Har15}
     Let $M$ be an arbitrary set.
-    Then there exists a set $M_0$ consisting only of elements which are well-ordered set, whose elements are also elements of $M$.
+    Then there exists a set $M_\Omega$ consisting of all well-ordered subsets of $M$.
 \end{lemma}
 
-\begin{lemma}\cite{Har15}\label{hartogs-lemma}\cite[Lemma]{Haj72}
-    Let $A$ be an arbitrary set and let $S = \mathcal{P}(A)$ be the collection of subsets of $A$.
-    Then there exists an ordinal $\alpha$, such that no mapping $f_s: s \to \alpha$ from any subset $s \in S$ of $A$ to the ordinal $\alpha$ is a bijection.
+\begin{proof}
+    We follow the proof from \cite{Har15} and adjust it to fit our own set-theoretic definition of orderings.
+
+    Recall that an ordering of $M$ is defined as a subset $R \subseteq M \times M$.
+    We first construct the set $M_\omega$ of all possible well-orderings of the set $M$ itself.
+    Note that since we cannot assume the Well-ordering Theorem, the set $M_\omega$ might also be the empty set.
+
+    % Hence we let $P$ be the subset of $\mathcal{P}(M \times M)$, such that for all $R \in P$
+    % \begin{enumerate}
+    %     \item for all $x \in M$, $\left<x,\, x\right> \not\in R$,
+    %     \item for all $x,\, y,\, z \in M$, $\left(\left<x,\, y\right> \in R \wedge \left<y,\, z\right> \in R\right) \rightarrow \left<x,\, z\right> \in R$,
+    %     \item for all $x,\, y \in M$, $\left<x,\, y\right> \in R \vee x = y \vee \left<y,\, x\right> \in R$,
+    %     \item for all $S \subseteq M$ there exists $m \in S$, such that for all $x \in S$ $\left<m,\, x\right> \in R \vee m = x$.
+    % \end{enumerate}
+    We can define formulas $\phi_1,\ldots,\, \phi_4$ with free variables $M$ and $R$, 
+    such that these hold true only for well-order relations $R$ of a given set $M$ (in the right context).
+    Then
+    \begin{align*}
+        \phi_1(R,\, M) &=& \forall x \in M \           & \left<x,\, x\right> \not\in R \\
+        \phi_2(R,\, M) &=& \forall x,\, y,\, z \in M \ & \left(\left<x,\, y\right> \in R \wedge \left<y,\, z\right> \in R\right) \rightarrow \left<x,\, z\right> \in R \\
+        \phi_3(R,\, M) &=& \forall x,\, y \in M \      & \left(\left<x,\, y\right> \in R \vee x = y \vee \left<y,\, x\right> \in R\right)\\
+        \phi_4(R,\, M) &=& \forall S \in \mathcal{P}(M)\, \exists m \in S \
+                         & \left(\forall x \in S\, \left(\left<m,\, x\right> \in R \vee m = x\right)\right)
+    \end{align*}
+    are all valid formulas in \textbf{ZF},
+    with $\phi_1,\, \phi_2,\, \phi_3$ utilizing only the \hyperref[ZF2]{Axiom of Pairs} and $\phi_4$ using the Axiom of Pairs and the \hyperref[ZF6]{Axiom of Power Sets}.
+
+    Then, fixing the set $M$, we have that
+    $$M_\omega = \left\{R \in \mathcal{P}(M \times M) \,\vert\, \phi_1(R,\, M) \wedge \phi_2(R,\, M) \wedge \phi_3(R,\, M) \wedge \phi_4(R,\, M)\right\}$$
+    is the initially desired set of all well-orders of $M$ and a valid construction following from the \hyperref[ZF3]{Axiom Schema of Replacement} and Axiom of Power Sets.
+    
+    We can also see that we are able to construct such a set $X_\omega$ for any arbitrary set $X$.
+    Hence, finally, given a set $M$, the set of all possible well-orderings of any subsets $m$ of $M$ is given by the union
+    $$M_\Omega = \bigcup_{m \in \mathcal{P}(M)} m_\omega.$$
+    Note that $M_\Omega$ is non-empty, since we are always able to define a well-order for finite subsets of $M$. 
+    (Compare with the proof of Theorem \ref{well-order-thm-equivalence}, however we do not need \textbf{AC} for a choice function on finite sets.)
+\end{proof}
+
+With this lemma in mind, we now continue to the desired statement.
+We follow the outline given in \cite{Haj72} for the proof of this lemma, the more detailed steps are taken from \cite{Har15}.
+
+\begin{lemma}\label{hartogs-lemma}\cite{Har15}\cite[Lemma]{Haj72}
+    Let $A$ be an arbitrary set.
+    Then there exists an ordinal $\alpha$, such that no mapping from a subset $S \subseteq A$ to the ordinal $\alpha$ is a bijection.
 \end{lemma}
 
 \begin{proof}
     We let the ordinal $\alpha$ take the following value:
-    $$\alpha = \cup\left\{ \text{type}\left(X, R\right) + 1 \,\vert\, X \subseteq A, R \subseteq A \times A \wedge R\ \text{well-orders}\ A\right\}.$$
+    \begin{equation}\label{hartogs-lemma-ordinal}
+        \alpha = \bigcup \left\{\text{type}\left(X, R\right) + 1 \,\vert\, X \subseteq A, R \subseteq A \times A \wedge R\ \text{well-orders}\ A\right\}.
+    \end{equation}
     We will show that $\alpha$ is such that it satisfies the lemma's statement.
 
-    % -> show that alpha is a set
-    % -> show that alpha is an ordinal (so it is well-ordered)
-\end{proof}
+    We can see that the right hand side of the set is precisely the set described in Lemma \ref{well-order-set}.
+    As such we can express the ordinal in \eqref{hartogs-lemma-ordinal} as
+    $$\alpha = \bigcup \left\{\text{type}\left(R\right) + 1 \,\vert\, R \in A{_\Omega}\right\},$$
+    where $\text{type}\left(R\right)$ is the order type of each well-order $R$\footnote{
+        This is an abuse of notation, since we usually refer to the ordering $R$ of a set $X$ using $\left(X,\, R\right)$.
+        Here the underlying set was left out in order to more clearly convey what ordinal we are talking about.
 
+        However, if we only view the set structure of an ordering and how we defined ordered pairs,
+        we have that $\bigcup \left<x,\, y\right> = \bigcup \left\{\left\{x\right\},\, \left\{x,\, y\right\}\right\} = \left\{x,\, y\right\}$.
+        In a linear ordering every element relates to every other element in some way, therefore we have that $\bigcup \bigcup R = X$.
+
+        For this reason it is justified to leave out the underlying set of the well-order $R$.
+    }
+    in the set $A_\Omega$ of all well-orderings of subsets of $A$.
+
+    Recall that we associate the order type of a well-ordered set with the unique ordinal it is isomorphic to, motivated by Theorem \ref{unique-ordinal}.
+    Hence $\alpha$ describes the smallest ordinal which is larger (in an ordinal sense) than all well-orderable subsets of $A$.
+    The latter property follows from the fact that such an ordinal is either an successor ordinal or a limit ordinal, 
+    the term ``$+1$'' and the union symbol in the definition of $\alpha$ make sure that both these cases are accounted for.
+
+    By construction we now have that every subset associated with an order $R$ in $A_\Omega$ is isomorphic to an initial segment of $\alpha$, but not to $\alpha$ itself.
+    Further, there can not exist a bijective map from an arbitrary subset $S \subseteq A$ to $\alpha$.
+    
+    If such a map were to exist, we could define a well-ordering of $S$ according to $\alpha$;
+    however we have already established that $S$ either has no well-order or that there exists a bijection to an initial segment of $\alpha$.
+    This is a contradiction and we must have that no injective function from $\alpha$ to $A$ exists, satisfying the requirements of the lemma.
+\end{proof}
 \end{document}

@@ -149,7 +149,7 @@ $$\forall x\, \exists y\, \forall z\, \left(z \in y \iff z \subseteq x\right)$$
 For any set $x$ there is a set, denoted by $\mathcal{P}(x)$ and called the power set of $x$, consisting of all subsets $s \subseteq x$.
 
 Using the axioms of \hyperref[ZF3]{Separation}, \hyperref[ZF5]{Union} and \hyperref[ZF6]{Power Set} we can define the \textit{cartesian product} of the sets $x$ and $y$ as
-$$x \times y = \left\{(u,\, v) \,\vert\, u \in x \vee v \in y\right\} \subseteq \mathcal{P}\left(\mathcal{P}\left(x \cup y\right)\right),$$
+$$x \times y = \left\{\left<u,\, v\right> \,\vert\, u \in x \vee v \in y\right\} \subseteq \mathcal{P}\left(\mathcal{P}\left(x \cup y\right)\right),$$
 and for multiple sets $x_1,\ldots,\, x_n$ as
 $$x^n = \underbrace{x_1 \times \cdots \times x_{n-1} \times x_n}_{n\ \text{times}}  = \left(x_1 \times \cdots \times x_{n-1}\right) \times x_n.$$
 
@@ -157,14 +157,14 @@ We call a set $R \subseteq X^n$ an \textit{n-ary} relation over $X$.
 In general $R$ is a set of tuples and if $R$ is a binary relation, we write $x\, R\, y$ for $\left<x,\, y\right> \in R$.
 
 A binary relation $f \subseteq X \times Y$ is called a \textit{function} (or \textit{map}), if
-$$\left((x,\, y) \in f \wedge (x,\, z) \in f\right) \implies y = z$$
-holds for all $x \in X$ and $y,\, z \in Y$, and if for all $u \in X$ there exists some $v \in Y$, such that $(u,\, v) \in f$.
+$$\left(\left<x,\, y\right> \in f \wedge \left<x,\, z\right> \in f\right) \implies y = z$$
+holds for all $x \in X$ and $y,\, z \in Y$, and if for all $u \in X$ there exists some $v \in Y$, such that $\left<u,\, v\right> \in f$.
 
 In the definition above, we call $X$ the \textit{domain} and $Y$ the \textit{codomain} of $f$.
 The set
-$$\mathbf{Im}(f) = \left\{y \,\vert\, \exists x \in X \, \left((x,\, y) \in f\right)\right\}$$
+$$\mathbf{Im}(f) = \left\{y \,\vert\, \exists x \in X \, \left(\left<x,\, y\right> \in f\right)\right\}$$
 is called the \textit{image} of $f$. 
-In general we write $f: X \to Y$ for $f \subseteq X \times Y$ and $f(x) = y$ whenever $(x,\, y) \in f$, in the latter case saying that $x$ \textit{maps to} $y$ in $f$.
+In general we write $f: X \to Y$ for $f \subseteq X \times Y$ and $f(x) = y$ whenever $\left<x,\, y\right> \in f$, in the latter case saying that $x$ \textit{maps to} $y$ in $f$.
 
 A function $f: X \to Y$ is called a \textit{surjection} if $\mathbf{Im}(f) = Y$
 and an \textit{injection}, if $$\left(f(x_1) = y \wedge f(x_2) = y\right) \implies x_1 = x_2.$$ 
