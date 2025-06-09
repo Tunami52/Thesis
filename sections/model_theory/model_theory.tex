@@ -271,6 +271,10 @@ we can use a proof by induction utilizing Definition \ref{formula-def}.
 Using the shorthand formulas we only have to consider the cases $\lnot \phi$, $\phi \wedge \psi$ and $\exists v\, \phi(v)$,
 for formulas $\phi$ and $\psi$ and some variable $v$.
 
+\begin{proposition}\label{language-cardinality}\cite[Proposition 1.3.4.]{Cha90}
+    The set of all formulas of a language $\mathcal{L}$ has cardinality $\left\lVert\mathcal{L}\right\rVert$.
+\end{proposition}
+
 \subsection{Logical Axioms}
 
 When working in model theory we consider the difference between \textit{syntax} and \textit{semantics}.
@@ -392,7 +396,7 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
 
 A theory can thought of as something that can be proven only from the logical axioms.
 While Definition \ref{proof-def} introduces concepts the proof theory, we will in general not be quite that formal when proving sentences in model theory.
-However, this type of formality is needed for the next definition.
+However, this type of formality is needed for this next definition and following theorem.
 
 \begin{definition}[Consistency]\cite[p.25]{Cha90}
     A set of sentences $\Sigma$ is \textit{inconsistent} in a language $\mathcal{L}$ if and only if every formula in $\mathcal{L}$ can be proven from $\Sigma$.
@@ -401,20 +405,71 @@ However, this type of formality is needed for the next definition.
 
     We say that $\Sigma$ is \textit{maximally consistent} if and only if $\Sigma$ is consistent 
     and no set of sentences $\Sigma'$ which has $\Sigma$ as a proper subset is consistent.
-\end{definition}
+\end{definition}  
+
+This notion of consistency has some fairly intuitive consequences which we provide below and without proof.
+
+\begin{proposition}\label{consistency-prop}\cite[Proposition 1.3.10.]{Cha90}
+    Let $\Sigma$ be a set of sentences in a language $\mathcal{L}$. Then
+    \begin{enumerate}
+        \item the set $\Sigma$ is consistent if and only if every finite subset of $\Sigma$ is consistent;
+        \item the set $\Sigma \cup \left\{\sigma\right\}$ is inconsistent for a sentence $\sigma$ if and only if $\Sigma \vdash \lnot \sigma$;
+        \item if $\Sigma$ is maximally consistent and $\sigma,\, \tau$ are arbitrary sentences in $\mathcal{L}$, we have that
+        \begin{enumerate}[label=(\roman*)]
+            \item $\Sigma \vdash \sigma$ if and only if $\sigma \in \Sigma$,
+            \item $\sigma \not\in \Sigma$ if and only if $\lnot \sigma \in \Sigma$,
+            \item $\sigma \wedge \tau \in \Sigma$ if and only if $\sigma \in \Sigma$ and $\tau \in \Sigma$;
+        \end{enumerate}
+        \item a formula $\tau$ is deductible from $\Sigma \cup \left\{\sigma\right\}$ for a sentence $\sigma$ if and only if $\Sigma \vdash \sigma \rightarrow \tau$.
+    \end{enumerate}
+
+    The last point is also known as the ``Deduction Theorem''.
+\end{proposition}
+
+With this proposition in mind we continue on to the final result relating only to formal languages.
+After this we move on to actually using these language to construct structures and models.
 
 \begin{theorem}[Lindenbaum's Theorem]\cite[Proposition 1.3.11]{Cha90}
     Let $\Sigma$ be a consistent set of sentences in a language $\mathcal{L}$.
     Then $\Sigma$ can be extended to a maximally consistent set of sentences in $\mathcal{L}$.
 \end{theorem}
 
-\begin{proof}\cite[Lemma 1.2.9]{Cha90}
-    TODO
+\begin{proof}\cite[Lemma 1.2.9]{Cha90}  
+    By Proposition \ref{language-cardinality} we have that any given language has $\left\lVert \mathcal{L}\right\rVert$ formulas.
+    We arrange the sentences of $\mathcal{L}$ in some list
+    $$\phi_1,\, \phi_2,\ldots,\, \phi_{\alpha},\ldots$$
+    where the specific order is irrelevant, but in a way where each $\phi_{\alpha}$ is associated with an ordinal $\alpha$.
+    Based on our existing consistent set of sentences $\Sigma$ we now construct an increasing chain
+    $$\Sigma = \Sigma_0 \subset \Sigma_1 \subset \Sigma_2 \subset \cdots \subset \Sigma_{\alpha} \subset \cdots$$
+    using this sequence of sentences.
+    
+    We define $\Sigma_1$ as $\Sigma_0 \cup \phi_0$ if the set $\Sigma_0 \cup \phi_0$ is consistent and choose $\Sigma_1 = \Sigma_0$ otherwise.
+    In general, at any given step $\alpha$, we let $\Sigma_{\alpha + 1} = \Sigma_{\alpha} \cup \left\{\phi_{\alpha}\right\}$
+    if and only if $\Sigma_{\alpha} \cup \left\{\phi_{\alpha}\right\}$ is consistent.
+    If $\Sigma_{\alpha} \cup \left\{\phi_{\alpha}\right\}$ is inconsistent we let $\Sigma_{\alpha + 1} = \Sigma_{\alpha}$.
+    Finally, we let $\Gamma$ be the union of all sets $\Sigma_{\  alpha}$.
+
+    The claim is now that $\Gamma$ is consistent and indeed maximally consistent.
+
+    We first assume that $\Gamma$ is inconsistent in order to contrive a contradiction.
+    Then, by Proposition \ref{consistency-prop}, there must exist a deduction $\Gamma \vdash \left(\sigma \wedge \lnot\sigma\right)$ for some sentence $\sigma$ in $\mathcal{L}$.
+    Assume that $\theta_0,\, \theta_1, \ldots,\, \theta_q$ are the sentences in $\Gamma$ used for this deduction.
+    There then exists some ordinal $\alpha$ such that $\theta_0,\, \theta_1, \ldots,\, \theta_q$ all belong to $\Sigma_{\alpha}$.
+    The set of sentences $\Sigma_{\alpha}$ is consistent by construction however and we arrive at a contradiction.
+    Hence $\Gamma$ must be consistent.
+
+    Assume now that $\Gamma$ is not maximally consistent.
+    Then $\Gamma$ is the proper subset of some other consistent set of sentences $\Delta$.
+    Let $\phi_{\beta}$ be some sentence in $\Delta$.
+    Since both $\Delta$ and $\Gamma$ are consistent and $\Gamma \subset \Delta$, 
+    we must have that $\Sigma_{\beta} \cup \left\{\phi_{\beta}\right\}$ also is consistent.
+    But if that is the case, we would have that $\Sigma_{\beta + 1} = \Sigma_{\beta} \cup \left\{\phi_{\beta}\right\}$ and therefore $\phi_{\beta} \in \Gamma$.
+    As such $\Gamma$ must be maximally consistent.
 \end{proof}
 
 \section{Structes, Theories and Models}
 \begin{definition}
-    A $\mathcal{L}$-\textit{structure} or $\mathcal{M}$ is given by the following:
+    A $\mathcal{L}$-\textit{structure} $\mathcal{M}$ is given by the following:
     \begin{enumerate}
         \item A nonempty set $M$,
         \item a function $f^{\mathcal{M}}: M^{n_f} \to M$ for each $f \in \mathcal{F}$,
