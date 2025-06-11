@@ -119,16 +119,17 @@ With this example in mind we now formally define the play of an Ehrenfeucht-Fra\
     with respect to the linear orders $<_A$ and $<_B$ of $A$ and $B$.
     We say that spoiler has won a play of the game if duplicator did not win.
 
-    We say that there exists \textit{winning strategy of duplicator} if there exists a sequence of functions $f_1,\ldots,\,f_n$,
+    We say that there exists a \textit{winning strategy of duplicator} if there exists a sequence of functions $f_1,\ldots,\,f_n$,
     which fulfills the following requirements:
     \begin{enumerate}[label=(\roman*)]
         \item The domain of each $f_k$ is the set of all ordered $k$-tuples with elements in $A \cup B$;
-        \item For elements $c_1,\ldots,\, c_k \in A \cup B$, representing the first $k$ moves by spoiler, $f_k$ satisfies
+        \item For elements $c_1,\ldots,\, c_k \in A \cup B$, representing the first $k$ moves by spoiler, 
+        the function $f_k$ satisfies
               \begin{align*}
                     &f_k(c_1,\ldots,\, c_k) \in A \ \text{if} \ c_k \in B \ \text{and}\\
                     &f_k(c_1,\ldots,\, c_k) \in B \ \text{if} \ c_k \in A.
               \end{align*}
-        \item For elements $c_1,\ldots,\, c_k \in A \cup B$, $f_k$, $a_k$ and $b_k$ are defined as
+        \item For elements $c_1,\ldots,\, c_k \in A \cup B$, the additional sequences of functions $a_k$ and $b_k$ are defined as
               \begin{align*}
                 a_k = \begin{cases}
                         c_k \ &\text{if} \ c_k \in A \\
@@ -148,14 +149,14 @@ With this example in mind we now formally define the play of an Ehrenfeucht-Fra\
 
 The proper definition of a winning strategy lets us define the following type of equivalence:
 \begin{definition}[$EF_n$-equivalence]\cite[Definition 6.8]{Ros82}
-    We say that a linearly ordered set $A$ is $EF_n$-equivalent to a linearly ordered set $B$,
+    We say that a linearly ordered set $A$ is \emph{$EF_n$-equivalent} to a linearly ordered set $B$,
     if there exists a winning strategy of duplicator in $EF_n(A,\, B)$.
 
-    The orderings $A$ and $B$ are called $EF$-equivalent if duplicator has a winning strategy in $EF_n(A,\, B)$ for all $n \in \mathbb{N}$.
+    The orderings $A$ and $B$ are called \emph{$EF$-equivalent} if duplicator has a winning strategy in $EF_n(A,\, B)$ for all $n \in \mathbb{N}$.
 \end{definition}
 
-This is indeed a proper type of equivalence, since by the Gale-Stewart Theorem from game theory all Ehrenfeucht-Fra\"isse games are determined.\cite[\S 6]{Wil24}
-This means that one, and only one, of the players will always have a winning strategy.
+This is indeed a proper type of equivalence, since all Ehrenfeucht-Fra\"isse games are determined.
+This means that one, and only one, of the players will always have a winning strategy \cite[\S 6]{Wil24}.
 
 We saw in Example \ref{game-example-2} that $\mathbb{R}$ and $\mathbb{Q}$ are $EF$-equivalent.
 We were able to find a winning strategy for duplicator because both ordered sets were dense. 
@@ -163,11 +164,11 @@ As such we could always find a point between any other two points in the rationa
 The sets $\mathbb{R}$ and $\mathbb{Q}$ are of course different, but they still \textit{satisfy the same property} of densely linear orders.
 
 This notion of what structures satisfy which properties is at the core of model theory.
-And its no coincidence that Ehrenfeucht-Fra\"isse games seem give rise so naturally to the field. 
+And it is no coincidence that Ehrenfeucht-Fra\"isse games seem to arise so naturally in the field. 
 We do indeed have a theorem relating them to model theory proper.
 
-\begin{theorem}\cite[Theorem 2.4.6]{Mar02}\label{elementary-eq-th}
-    Let $\mathcal{M}$ and $\mathcal{N}$ be two $\mathcal{L}$-structures, where $\mathcal{L}$ is a finite language without any function symbols.
+\begin{theorem}\label{elementary-eq-th}\cite[Theorem 2.4.6]{Mar02}
+    Let $\mathcal{M}$ and $\mathcal{N}$ be two \hyperref[structure-def]{$\mathcal{L}$-structures}, where $\mathcal{L}$ is a finite language without any function symbols.
     Then duplicator has a winning strategy in $EF_n(\mathcal{M},\, \mathcal{N})$ for all $n \in \mathbb{N}$ if and only if $\mathcal{M}$ and $\mathcal{N}$ satisfy exactly the same theories.
 \end{theorem}
  
@@ -184,19 +185,19 @@ Especially some of the earlier definitions are also lifted from \cite{Mar02}.
 We utilize set theoretic notation in the definition of languages, however we do not consider the set inclusion symbol $\in$ to be to be part of first-order logic.
 In general we are working within \textbf{ZFC} in this chapter.
 
-\begin{definition}
+\begin{definition}\cite[Definition 1.1.1]{Mar02}
     A \textit{formal language} $\mathcal{L}$ in first order logic is associated with the following sets:
     \begin{enumerate}
         \item A set $\mathcal{F}$ of function symbols $f$ with $n_f$ arguments each, 
         where $n_f \in \mathbb{Z}^+$ is a positive integer;
         \item a set $\mathcal{R}$ of $n_R$-ary relation symbols $R$, 
         where $n_R \in \mathbb{Z}^+$ is a positive integer,
-        \item a set $\mathcal{C}$ of constant symbols. \cite[Definition 1.1.1]{Mar02}
+        \item a set $\mathcal{C}$ of constant symbols.
     \end{enumerate}
     The set-theoretic structure of $\mathcal{L}$ is $\mathcal{L} = \mathcal{F} \cup \mathcal{R} \cup \mathcal{C}$.
     If $\left\lvert \mathcal{L}\right\rvert$ is the cardinality of the set $\mathcal{L}$ we say that the \textit{power} of the language $\mathcal{L}$ is
     $$\left\lVert \mathcal{L}\right\rVert = \left\lvert\mathcal{L}\right\rvert \cup \omega.$$
-    We say that $\mathcal{L}$ is either countable or uncountable depending on whether $\left\lVert\mathcal{L}\right\rVert$ is countable or uncountable. \cite[\S1.3]{Cha90}
+    We say that $\mathcal{L}$ is either \emph{countable} or \emph{uncountable} depending on whether $\left\lVert\mathcal{L}\right\rVert$ is countable or uncountable \cite[\S1.3]{Cha90}.
 \end{definition}
 
 The language of pure sets is the empty language $\mathcal{L}_{Set} = \varnothing$.
@@ -213,7 +214,7 @@ In order to express statements in a language we also define \textit{terms}.
 These are are expressions created from chaining together function symbols with variables and constants.
 
 \begin{definition}\cite[Definition 1.1.4]{Mar02}
-    We say that $T$ is the set of $\mathcal{L}$-terms, if $T$ is the smallest set such that
+    We say that $T$ is the set of \emph{$\mathcal{L}$-terms}, if $T$ is the smallest set such that
     \begin{enumerate}[label=(\roman*)]
         \item $c \in T$ for each constant $c \in \mathcal{C}$
         \item $v_i \in T$ for variable symbols $v_i$, where $i = 1,\, 2,\ldots$,
@@ -231,7 +232,7 @@ These are are expressions created from chaining together function symbols with v
     in $\mathcal{L}_r$.
     In more familiar notation this would be
     $$\left(v_1 + 1\right) \cdot \left(v_2 + 1 + 1\right).$$
-    Note that this term has can have a different meaning depending on which algebraic structure we evaluate it in.
+    Note that this term can have a different meaning depending on which algebraic structure we evaluate it in.
     In the finite field $\mathbb{F}_2$ for example, we have that $1 + 1 = 0$.
 \end{example}
 
@@ -244,15 +245,15 @@ Note that our definition of a formula in $\mathcal{L}_{\textbf{ZFC}}$ coincides 
         \item $t_1 = t_2$ for terms $t_1,\, t_2 \in T$, or   
         \item $R(t_1,\ldots,\, t_{n_R})$ for $R \in \mathcal{R}$ and terms $t_1,\ldots,\, t_{n_R} \in T$.
     \end{enumerate}
-    The set of $\mathcal{L}$-formulas is then the smallest set such that
+    The set of $\mathcal{L}$-formulas is then the smallest set $\mathcal{W}$ such that
     \begin{enumerate}[label=(\roman*)]
         \item for all $\phi \in \mathcal{W}$, the negation $\lnot \phi$ is also in $\mathcal{W}$,
         \item for all $\phi,\, \psi \in \mathcal{W}$, the formulas $\phi \wedge \psi$ and $\phi \vee \psi$ are also in $\mathcal{W}$,
-        \item for all $\phi \in \mathcal{W}$, the formulas $\forall v_i \, \phi$ and $\exists v_i \, \phi$ are also in $\mathcal{W}$.
+        \item for all $\phi \in \mathcal{W}$, the formulas $\forall v_i \, \phi$ and $\exists v_i \, \phi$ are also in $\mathcal{W}$,
     \end{enumerate}
     with respect to the logical connectives 
-    $$\lnot \text{ (not), } \wedge \text{(and), } \vee \text{(or), } \rightarrow \text{(implies) and } \leftrightarrow \text{(if and only if)}$$
-    and quantifiers $$\forall \text{ (for all) and } \exists \text{ (exists)}.$$
+    $$\lnot \text{ (not), } \wedge \text{(and), } \vee \text{(or), } \rightarrow \text{(implies)}\quad \text{and}\quad \leftrightarrow \text{(if and only if)}$$
+    and quantifiers $$\forall \text{ (for all)}\quad \text{and}\quad \exists \text{ (exists)}.$$
     
     Recall that variables occurring inside of a quantifier are called \textit{bound} and that variables which are not bound are called \textit{free}.
     A formula with no free variables is called a \textit{sentence}.
@@ -266,7 +267,7 @@ Lastly, for a variable $v$, the formula $\forall v\,  \phi(v)$ is considered an 
 }. \cite[Remark 1.1.7]{Mar02}
 
 This is a more technical definition of formulas compared to how we defined them in the \hyperref[preliminaries]{Preliminaries}.
-It comes from the fact that whenever we want to prove something something is true for all formulas in a language, 
+It comes from the fact that whenever we want to prove something is true for all formulas in a language, 
 we can use a proof by induction utilizing Definition \ref{formula-def}.
 Using the shorthand formulas we only have to consider the cases $\lnot \phi$, $\phi \wedge \psi$ and $\exists v\, \phi(v)$,
 for formulas $\phi$ and $\psi$ and some variable $v$.
@@ -281,7 +282,7 @@ When working in model theory we consider the difference between \textit{syntax} 
 Syntax is everything relating to structure of sentences and formal languages.
 This includes what kind of symbols we are working with in a given language and how we can combine them to create valid sentences.
 
-A language is purely \textit{syntactical}, a given sentences in a language has no assigned meaning on its own.
+A language is purely \textit{syntactical}, a given sentence in a language has no assigned meaning on its own.
 If we are working with a language describing number theory for example, 
 we might have a relation symbol $gcd$ which takes in three arguments and returns whether the third argument is the greatest common divisor of the first two.
 A formal language only includes the relation symbol itself though, elements for which relations would hold are not part of the language.
@@ -298,7 +299,7 @@ This is also why the \textit{axiom} label is justified.
 
 \begin{definition}[Tautology]\cite[pp.8, 24]{Cha90}
     Let $\mathcal{J}$ be a set of simple sentence statements and let $\phi$ be a formula in $\mathcal{J}$.
-    Let $\bar{a} = a_1,\ldots a_n$ be a sequence of truth values, meaning each $a_i$ either has the value $t$ for \textit{true} or $f$ for \textit{false}.
+    Let $\bar{a} = a_1,\ldots,\, a_n$ be a sequence of truth values, meaning each $a_i$ either has the value $t$ for \textit{true} or $f$ for \textit{false}.
     For a such a sentence $\psi$ in $\mathcal{J}$ containing sentence symbols $S_1,\ldots,\, S_n$, 
     an assignment of $\bar{a}$ into $\psi$ substitutes each $S_i$ with $a_i$.
 
@@ -325,8 +326,8 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
     \begin{align*}
         \tau_r
         &= \left(\phi_1 \implies \phi_2\right) \vee \left(\phi_2 \implies \phi_1\right) \\
-        &= \left(\left(v_1 + 1 < v_2\right) \implies \left(v_2 \cdot v_1 = v_1\right)\right) \\
-        &  \qquad \vee \left(\left(v_2 \cdot v_1 = v_1\right) \implies \left(v_1 + 1 < v_2\right)\right)
+        &= \big(\left(v_1 + 1 < v_2\right) \implies \left(v_2 \cdot v_1 = v_1\right)\big) \\
+        &  \qquad \vee \big(\left(v_2 \cdot v_1 = v_1\right) \implies \left(v_1 + 1 < v_2\right)\big)
     \end{align*}
     is a tautology in $\mathcal{L}_{or}$.
     Note that for example $$(v_1 < v_2) \vee (v_1 = v_2) \vee (v_2 < v_1)$$ is not a tautology in $\mathcal{L}_{or}$.
@@ -334,7 +335,8 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
 \end{example}
 
 \begin{definition}
-    We have the three groups of \textit{logical axioms} and two \textit{rules of inference}.
+    We have three groups of \textit{logical axioms} and two \textit{rules of inference} given below.
+    We start with the logical axioms.
     \begin{enumerate}
         \item \textbf{Sentential Axioms}
         
@@ -395,15 +397,15 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
 \end{definition}
 
 A theory can thought of as something that can be proven only from the logical axioms.
-While Definition \ref{proof-def} introduces concepts the proof theory, we will in general not be quite that formal when proving sentences in model theory.
-However, this type of formality is needed for this next definition and following theorem.
+While Definition \ref{proof-def} introduces concepts from proof theory, we will in general not be quite as thorough when proving sentences in model theory.
+However, this type of formality is needed for the next definition and following theorem.
 
 \begin{definition}[Consistency]\cite[p.25]{Cha90}
-    A set of sentences $\Sigma$ is \textit{inconsistent} in a language $\mathcal{L}$ if and only if every formula in $\mathcal{L}$ can be proven from $\Sigma$.
-    The set $\Sigma$ is called \textit{consistent} if it is not inconsistent.
-    We have say that a sentence $\sigma$ is consistent in $\mathcal{L}$ if the singleton set $\left\{\sigma\right\}$ is consistent.
+    A set of sentences $\Sigma$ is \emph{inconsistent} in a language $\mathcal{L}$ if and only if every formula in $\mathcal{L}$ can be proven from $\Sigma$.
+    The set $\Sigma$ is called \emph{consistent} if it is not inconsistent.
+    We say that a sentence $\sigma$ is \emph{consistent} in $\mathcal{L}$ if the singleton set $\left\{\sigma\right\}$ is consistent.
 
-    We say that $\Sigma$ is \textit{maximally consistent} if and only if $\Sigma$ is consistent 
+    We say that $\Sigma$ is \emph{maximally consistent} if and only if $\Sigma$ is consistent 
     and no set of sentences $\Sigma'$ which has $\Sigma$ as a proper subset is consistent.
 \end{definition}  
 
@@ -439,6 +441,8 @@ After this we move on to actually using these language to construct structures a
     We arrange the sentences of $\mathcal{L}$ in some list
     $$\phi_1,\, \phi_2,\ldots,\, \phi_{\alpha},\ldots$$
     where the specific order is irrelevant, but in a way where each $\phi_{\alpha}$ is associated with an ordinal $\alpha$.
+    This is possible since we are working within \textbf{ZFC} and as such every set has a well-order.
+
     Based on our existing consistent set of sentences $\Sigma$ we now construct an increasing chain
     $$\Sigma = \Sigma_0 \subset \Sigma_1 \subset \Sigma_2 \subset \cdots \subset \Sigma_{\alpha} \subset \cdots$$
     using this sequence of sentences.
@@ -467,11 +471,11 @@ After this we move on to actually using these language to construct structures a
     As such $\Gamma$ must be maximally consistent.
 \end{proof}
 
-\section{Structes, Theories and Models}
-\begin{definition}
+\section{Structures, Theories and Models}
+\begin{definition}\label{structure-def}
     A $\mathcal{L}$-\textit{structure} $\mathcal{M}$ is given by the following:
     \begin{enumerate}
-        \item A nonempty set $M$,
+        \item a nonempty set $M$,
         \item a function $f^{\mathcal{M}}: M^{n_f} \to M$ for each $f \in \mathcal{F}$,
         \item a set $R^\mathcal{M} \subseteq M^{n_R}$ for each $R \in \mathcal{R}$,
         \item an element $c^\mathcal{M} \in M$ for each $c \in \mathcal{C}$.
@@ -504,7 +508,7 @@ After this we move on to actually using these language to construct structures a
     Let $\mathcal{L}_G = \left\{\cdot,\, e\right\}$ be the language of groups, 
     $\cdot$ is a binary function symbol and $e$ is the constant symbol which we usually associate with the identity element.
 
-    Then $\mathcal{N} = \left(\mathbb{N},\, +,\, 0\right)$ is a $\mathcal{L}_G$-structure, however it is not actually a group.
+    Then $\mathcal{N} = \left(\mathbb{N},\, +,\, 0\right)$ is an $\mathcal{L}_G$-structure, however it is not actually a group.
 \end{example}
 
 As discussed earlier, structures are where we explore \textit{semantics}.
@@ -519,10 +523,10 @@ we have to be similarly careful when defining term valuation.
 
 \begin{definition}\cite[1.3.13]{Cha90}
     Let $t$ be a term in a language $\mathcal{L}$ dependent on variables $v_1,\ldots,\, v_n$.
-    If $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ is a $\mathcal{L}$-structure,
+    If $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ is an $\mathcal{L}$-structure,
     we define the \textit{value of the term} $t(v_1,\ldots,\, v_n)$ \textit{at} $\bar{a} = \left<a_1,\ldots,\, a_n\right> \in M^n$ the following way:
     \begin{enumerate}
-        \item If $t$ is $v_i$, then $t(\bar{a}) = a_i$,
+        \item if $t$ is $v_i$, then $t(\bar{a}) = a_i$,
         \item if $t$ is the constant symbol $c$ in $\mathcal{L}$, 
         then $t(\bar{a})$ is given by the interpretation $c^{\mathcal{M}}$,
         \item if $t$ is the function $f(t_1,\ldots,\, t_n)$ in $\mathcal{L}$,
@@ -531,7 +535,7 @@ we have to be similarly careful when defining term valuation.
     \end{enumerate}
 \end{definition}
 
-We can then define what it means for a sentence to be true in a $\mathcal{L}$-structure:
+We can then define what it means for a sentence to be true in an $\mathcal{L}$-structure:
 \begin{definition}\cite[Definition 1.1.6]{Mar02}
     Let $\mathcal{M}$ be an $\mathcal{L}$-structure and let $\phi$ be a formula in $\mathcal{L}$ with free variables $\bar{v} = \left<v_1,\ldots,\, v_n\right>$.
     We inductively define $\mathcal{M} \models \phi(\bar{a})$ and for $\bar{a} = \left<a_1,\ldots,\, a_n\right> \in M^n$.

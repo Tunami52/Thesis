@@ -111,7 +111,7 @@ For this we need to define the initial section of an ordered set first:
 \begin{proof}
     In order to contrive a contradiction, we assume that $X = \left\{x \in W \,\vert\, f(x) < x\right\}$, the collection of elements of $W$ not satisfying the lemma, is a non-empty set.
     We then let $z$ be the least element of $X$ and $w = f(z)$ its preimage in $f$.
-    By the definition of $X$ we this means that $f(w) < w$, contradicting the initial assumption that $f$ is an increasing function.
+    By the definition of $X$ this means that $f(w) < w$, contradicting the initial assumption that $f$ is an increasing function.
 \end{proof}
 
 \begin{lemma}\cite[Lemma 2.2, p.13]{Jec78}\label{initial-segment-isomorphism}
@@ -256,6 +256,7 @@ It follows from the following lemma that every natural number also is an ordinal
 \end{lemma}
 
 \begin{proof}
+    We prove each statement of the lemma separately.
     \begin{enumerate}
         \item The empty set has no non-empty subsets, hence it is transitive and well-ordered by $\in$.
         \item If $\beta \in \alpha$, then $\beta \subseteq \alpha$ by definition. Since $\alpha$ is well-ordered and transitive, so is $\beta$.
@@ -375,7 +376,7 @@ There we will show equivalence of our main statement, that a group structure exi
 As such by transitivity, this main statement is also equivalent to the Axiom of Choice.
 
 \begin{theorem}\label{well-order-thm-equivalence}\cite[Theorem 15, p.39]{Jec78}
-    \hyperref[well-order-thm]{The Well-ordering Theorem} is equivalent to the Axiom of Choice. %cross-reference AC definition
+    \hyperref[well-order-thm]{The Well-Ordering Theorem} is equivalent to the Axiom of Choice. %cross-reference AC definition
 \end{theorem}
 
 \begin{proof}
@@ -424,7 +425,7 @@ Since our goal is to prove an equivalence with the \hyperref[choice-axiom]{Axiom
 The lack of \textbf{AC} is also the reason the comparability of sets is not given, another equivalence of the Axiom of Choice. \cite{Har15}
 As such we do not talk about cardinality in the traditional sense in the lemma, even though the terminology is very similar.
 
-\begin{lemma}\label{well-order-set}\cite[Annex]{Har15}
+\begin{lemma}\label{well-order-set}\cite[Appendix]{Har15}
     Let $M$ be an arbitrary set.
     Then there exists a set $M_\Omega$ consisting of all well-ordered subsets of $M$.
 \end{lemma}
@@ -434,7 +435,7 @@ As such we do not talk about cardinality in the traditional sense in the lemma, 
 
     Recall that an ordering of $M$ is defined as a subset $R \subseteq M \times M$.
     We first construct the set $M_\omega$ of all possible well-orderings of the set $M$ itself.
-    Note that since we cannot assume the Well-ordering Theorem, the set $M_\omega$ might also be the empty set.
+    Note that since we cannot assume the Well-Ordering Theorem, the set $M_\omega$ might also be the empty set.
 
     % Hence we let $P$ be the subset of $\mathcal{P}(M \times M)$, such that for all $R \in P$
     % \begin{enumerate}

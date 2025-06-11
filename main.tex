@@ -17,6 +17,10 @@
 % ebgaramond, ebgaramond-maths, graphicx, hyperref, newtxmath, xparse
 % load with 'times' option to use a Times New Roman replacement as default font
 
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{bibliography.bib}
+% bibliography
+
 \usepackage{tikz}     % used for displaying in-document graphics
 \usetikzlibrary{shapes}
 \usepackage{enumitem} % used to customize enumerate 
@@ -147,8 +151,9 @@
 
 %%%%% BEGIN references
 
-\bibliographystyle{alpha}
-\bibliography{bibliography}
+%\bibliographystyle{alpha}
+%\bibliography{bibliography}
+\printbibliography
 
 %%%%% END references
 

@@ -1,50 +1,333 @@
-\begin{thebibliography}{Mar02}
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem[CK90]{Cha90}
-Chen~Chung Chang and H.~Jerome Keisler.
-\newblock {\em Model Theory}.
-\newblock North-Holland Publishing Co., Amsterdam, 3. edition, 1990.
 
-\bibitem[Gol98]{Gol17}
-D.C. Goldrei.
-\newblock {\em Classic set theory}.
-\newblock CRC Press, Boca Raton, 1998.
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{Gol17}{book}{}
+      \name{author}{1}{}{%
+        {{hash=531194c47bb5f44c16108762fcee46eb}{%
+           family={Goldrei},
+           familyi={G\bibinitperiod},
+           given={D.C.},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boca Raton}%
+      }
+      \list{publisher}{1}{%
+        {CRC Press}%
+      }
+      \strng{namehash}{531194c47bb5f44c16108762fcee46eb}
+      \strng{fullhash}{531194c47bb5f44c16108762fcee46eb}
+      \strng{bibnamehash}{531194c47bb5f44c16108762fcee46eb}
+      \strng{authorbibnamehash}{531194c47bb5f44c16108762fcee46eb}
+      \strng{authornamehash}{531194c47bb5f44c16108762fcee46eb}
+      \strng{authorfullhash}{531194c47bb5f44c16108762fcee46eb}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1st ed.}
+      \field{isbn}{0-412-60610-0}
+      \field{origyear}{1996}
+      \field{title}{Classic set theory}
+      \field{year}{1998}
+      \field{origdateera}{ce}
+    \endentry
+    \entry{Jec78}{book}{}
+      \name{author}{1}{}{%
+        {{hash=b8ddd852d7bc9bcd5d92f6c9c3251005}{%
+           family={Jech},
+           familyi={J\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Academic Press}%
+      }
+      \strng{namehash}{b8ddd852d7bc9bcd5d92f6c9c3251005}
+      \strng{fullhash}{b8ddd852d7bc9bcd5d92f6c9c3251005}
+      \strng{bibnamehash}{b8ddd852d7bc9bcd5d92f6c9c3251005}
+      \strng{authorbibnamehash}{b8ddd852d7bc9bcd5d92f6c9c3251005}
+      \strng{authornamehash}{b8ddd852d7bc9bcd5d92f6c9c3251005}
+      \strng{authorfullhash}{b8ddd852d7bc9bcd5d92f6c9c3251005}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0-12-381950-4}
+      \field{series}{Pure and Applied Mathematics}
+      \field{title}{Set Theory}
+      \field{year}{1978}
+    \endentry
+    \entry{Haj72}{article}{}
+      \name{author}{2}{}{%
+        {{hash=2af2993b347449da8dc629a24e5496df}{%
+           family={Hajnal},
+           familyi={H\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=4ec9e1ac7781a4f6824b2ed695ea34ee}{%
+           family={Kertész},
+           familyi={K\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b197ab26ed5d41cf9fc76b7f3f09483}
+      \strng{fullhash}{8b197ab26ed5d41cf9fc76b7f3f09483}
+      \strng{bibnamehash}{8b197ab26ed5d41cf9fc76b7f3f09483}
+      \strng{authorbibnamehash}{8b197ab26ed5d41cf9fc76b7f3f09483}
+      \strng{authornamehash}{8b197ab26ed5d41cf9fc76b7f3f09483}
+      \strng{authorfullhash}{8b197ab26ed5d41cf9fc76b7f3f09483}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0033-3883,2064-2849}
+      \field{journaltitle}{Publ. Math. Debrecen}
+      \field{title}{Some new algebraic equivalents of the axiom of choice}
+      \field{volume}{19}
+      \field{year}{1972}
+      \field{pages}{339\bibrangedash 340}
+      \range{pages}{2}
+      \verb{doi}
+      \verb 10.5486/pmd.1972.19.1-4.37
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.5486/pmd.1972.19.1-4.37
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.5486/pmd.1972.19.1-4.37
+      \endverb
+    \endentry
+    \entry{Ker75}{book}{}
+      \name{author}{1}{}{%
+        {{hash=6130a0f8379f58dba4bd2eae2371c9f8}{%
+           family={Kertész},
+           familyi={K\bibinitperiod},
+           given={Andor},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Basel}%
+      }
+      \list{publisher}{1}{%
+        {Birkhäuser}%
+      }
+      \strng{namehash}{6130a0f8379f58dba4bd2eae2371c9f8}
+      \strng{fullhash}{6130a0f8379f58dba4bd2eae2371c9f8}
+      \strng{bibnamehash}{6130a0f8379f58dba4bd2eae2371c9f8}
+      \strng{authorbibnamehash}{6130a0f8379f58dba4bd2eae2371c9f8}
+      \strng{authornamehash}{6130a0f8379f58dba4bd2eae2371c9f8}
+      \strng{authorfullhash}{6130a0f8379f58dba4bd2eae2371c9f8}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{3-7643-0735-8}
+      \field{title}{Einführung in die transfinite Algebra}
+      \field{year}{1975}
+    \endentry
+    \entry{Har15}{article}{}
+      \name{author}{1}{}{%
+        {{hash=7c6518bb74e6cdc8c40d7d5c2626c68f}{%
+           family={Hartogs},
+           familyi={H\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{7c6518bb74e6cdc8c40d7d5c2626c68f}
+      \strng{fullhash}{7c6518bb74e6cdc8c40d7d5c2626c68f}
+      \strng{bibnamehash}{7c6518bb74e6cdc8c40d7d5c2626c68f}
+      \strng{authorbibnamehash}{7c6518bb74e6cdc8c40d7d5c2626c68f}
+      \strng{authornamehash}{7c6518bb74e6cdc8c40d7d5c2626c68f}
+      \strng{authorfullhash}{7c6518bb74e6cdc8c40d7d5c2626c68f}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0025-5831,1432-1807}
+      \field{journaltitle}{Math. Ann.}
+      \field{number}{4}
+      \field{title}{Über das {P}roblem der {W}ohlordnung}
+      \field{volume}{76}
+      \field{year}{1915}
+      \field{pages}{438\bibrangedash 443}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1007/BF01458215
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/BF01458215
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/BF01458215
+      \endverb
+    \endentry
+    \entry{Cha90}{book}{}
+      \name{author}{2}{}{%
+        {{hash=c33564af19e0cefd25ed4905e79722f6}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Chen\bibnamedelima Chung},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=8462e0856cc893e2bf292cfd4b5e5ab2}{%
+           family={Keisler},
+           familyi={K\bibinitperiod},
+           given={H.\bibnamedelimi Jerome},
+           giveni={H\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Amsterdam}%
+      }
+      \list{publisher}{1}{%
+        {North-Holland Publishing Co.}%
+      }
+      \strng{namehash}{9fcf330f2157d98cbade37b4021d0863}
+      \strng{fullhash}{9fcf330f2157d98cbade37b4021d0863}
+      \strng{bibnamehash}{9fcf330f2157d98cbade37b4021d0863}
+      \strng{authorbibnamehash}{9fcf330f2157d98cbade37b4021d0863}
+      \strng{authornamehash}{9fcf330f2157d98cbade37b4021d0863}
+      \strng{authorfullhash}{9fcf330f2157d98cbade37b4021d0863}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3rd ed.}
+      \field{isbn}{0-444-88054-2}
+      \field{title}{Model Theory}
+      \field{year}{1990}
+    \endentry
+    \entry{Mar02}{book}{}
+      \name{author}{1}{}{%
+        {{hash=83cf8fd2fac896d981259a1072281e2a}{%
+           family={Marker},
+           familyi={M\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{83cf8fd2fac896d981259a1072281e2a}
+      \strng{fullhash}{83cf8fd2fac896d981259a1072281e2a}
+      \strng{bibnamehash}{83cf8fd2fac896d981259a1072281e2a}
+      \strng{authorbibnamehash}{83cf8fd2fac896d981259a1072281e2a}
+      \strng{authornamehash}{83cf8fd2fac896d981259a1072281e2a}
+      \strng{authorfullhash}{83cf8fd2fac896d981259a1072281e2a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0-387-98760-6}
+      \field{series}{Graduate Texts in Mathematics}
+      \field{title}{Model Theory: an Introduction}
+      \field{year}{2002}
+    \endentry
+    \entry{Ros82}{book}{}
+      \name{author}{1}{}{%
+        {{hash=52ac636aebce30d889885fb97475205a}{%
+           family={Rosenstein},
+           familyi={R\bibinitperiod},
+           given={Joseph\bibnamedelima G.},
+           giveni={J\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Academic Press}%
+      }
+      \strng{namehash}{52ac636aebce30d889885fb97475205a}
+      \strng{fullhash}{52ac636aebce30d889885fb97475205a}
+      \strng{bibnamehash}{52ac636aebce30d889885fb97475205a}
+      \strng{authorbibnamehash}{52ac636aebce30d889885fb97475205a}
+      \strng{authornamehash}{52ac636aebce30d889885fb97475205a}
+      \strng{authorfullhash}{52ac636aebce30d889885fb97475205a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0-12-597680-1}
+      \field{series}{Pure and Applied Mathematics}
+      \field{title}{Linear Orderings}
+      \field{year}{1982}
+    \endentry
+    \entry{Wil24}{incollection}{}
+      \name{author}{2}{}{%
+        {{hash=5982fe965747f607f6042392bb0197f1}{%
+           family={Hodges},
+           familyi={H\bibinitperiod},
+           given={Wilfrid},
+           giveni={W\bibinitperiod}}}%
+        {{hash=cbc46d49c0749900ddde1beaf19c89d9}{%
+           family={Väänänen},
+           familyi={V\bibinitperiod},
+           given={Jouko},
+           giveni={J\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=5ff1c29ff1cc8f6336533b0ffd842a79}{%
+           family={Zalta},
+           familyi={Z\bibinitperiod},
+           given={Edward\bibnamedelima N.},
+           giveni={E\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=47603970fcd579d567acd0cb66cdb242}{%
+           family={Nodelman},
+           familyi={N\bibinitperiod},
+           given={Uri},
+           giveni={U\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Metaphysics Research Lab, Stanford University}%
+      }
+      \strng{namehash}{7fcc5ffbdeb6a1fcaa1ce0a1552c1eab}
+      \strng{fullhash}{7fcc5ffbdeb6a1fcaa1ce0a1552c1eab}
+      \strng{bibnamehash}{7fcc5ffbdeb6a1fcaa1ce0a1552c1eab}
+      \strng{authorbibnamehash}{7fcc5ffbdeb6a1fcaa1ce0a1552c1eab}
+      \strng{authornamehash}{7fcc5ffbdeb6a1fcaa1ce0a1552c1eab}
+      \strng{authorfullhash}{7fcc5ffbdeb6a1fcaa1ce0a1552c1eab}
+      \strng{editorbibnamehash}{ab8d8ffb26096a29ec1c38ef9e4911c6}
+      \strng{editornamehash}{ab8d8ffb26096a29ec1c38ef9e4911c6}
+      \strng{editorfullhash}{ab8d8ffb26096a29ec1c38ef9e4911c6}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{The {Stanford} Encyclopedia of Philosophy}
+      \field{edition}{{W}inter 2024 ed.}
+      \field{title}{Logic and Games}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://plato.stanford.edu/archives/win2024/entries/logic-games/
+      \endverb
+      \verb{url}
+      \verb https://plato.stanford.edu/archives/win2024/entries/logic-games/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
 
-\bibitem[Har15]{Har15}
-F.~Hartogs.
-\newblock {\"U}ber das {P}roblem der {W}ohlordnung.
-\newblock {\em Math. Ann.}, 76(4):438--443, 1915.
-
-\bibitem[HK72]{Haj72}
-A.~Hajnal and A.~Kert\'esz.
-\newblock Some new algebraic equivalents of the axiom of choice.
-\newblock {\em Publ. Math. Debrecen}, 19:339--340, 1972.
-
-\bibitem[HV24]{Wil24}
-Wilfrid Hodges and Jouko Väänänen.
-\newblock {Logic and Games}.
-\newblock In Edward~N. Zalta and Uri Nodelman, editors, {\em The {Stanford}
-  Encyclopedia of Philosophy}. Metaphysics Research Lab, Stanford University,
-  {W}inter 2024 edition, 2024.
-
-\bibitem[Jec78]{Jec78}
-Thomas Jech.
-\newblock {\em Set Theory}.
-\newblock Pure and applied Mathematics. Academic Press, New York, 1978.
-
-\bibitem[Ker75]{Ker75}
-Andor Kertész.
-\newblock {\em Einführung in die transfinite Algebra}.
-\newblock Birkhäuser, Basel, cop. 1975.
-
-\bibitem[Mar02]{Mar02}
-David Marker.
-\newblock {\em Model theory}.
-\newblock Graduate texts in mathematics. Springer, New York, cop. 2002.
-
-\bibitem[Ros82]{Ros82}
-Joseph~G. Rosenstein.
-\newblock {\em Linear Orderings}.
-\newblock Pure and applied Mathematics. Academic Press, New York, 1982.
-
-\end{thebibliography}

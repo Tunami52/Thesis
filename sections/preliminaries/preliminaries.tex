@@ -136,7 +136,7 @@ For any sets, we recursively define their union as
 \begin{align*}
     x \cup y &= \bigcup \left\{x,\, y\right\} \\
     x \cup y \cup z &= \left(x \cup y\right) \cup z \\
-    &\vdots
+    &\,\,\, \vdots
 \end{align*}
 as well as a set with more then two members as,
 \begin{align*}
@@ -148,7 +148,7 @@ where the existence of $\left\{x,\, y\right\}$ and $\left\{x\right\} = \left\{x,
 $$\forall x\, \exists y\, \forall z\, \left(z \in y \iff z \subseteq x\right)$$
 For any set $x$ there is a set, denoted by $\mathcal{P}(x)$ and called the power set of $x$, consisting of all subsets $s \subseteq x$.
 
-Using the axioms of \hyperref[ZF3]{Separation}, \hyperref[ZF5]{Union} and \hyperref[ZF6]{Power Set} we can define the \textit{cartesian product} of the sets $x$ and $y$ as
+Using the axioms of \hyperref[ZF3]{Separation}, \hyperref[ZF5]{Union} and \hyperref[ZF6]{Power Set} we can define the \textit{Cartesian product} of the sets $x$ and $y$ as
 $$x \times y = \left\{\left<u,\, v\right> \,\vert\, u \in x \vee v \in y\right\} \subseteq \mathcal{P}\left(\mathcal{P}\left(x \cup y\right)\right),$$
 and for multiple sets $x_1,\ldots,\, x_n$ as
 $$x^n = \underbrace{x_1 \times \cdots \times x_{n-1} \times x_n}_{n\ \text{times}}  = \left(x_1 \times \cdots \times x_{n-1}\right) \times x_n.$$
