@@ -24,7 +24,7 @@ The spoiler and duplicator go back and forth picking points on the linear orderi
 Spoiler always gets to choose the ordering they pick a point on and duplicator has to pick something on the other ordering.
 The second player, duplicator, wins if the elements $a_1,\ldots,\, a_n$ are in the same order with respect to $A$ as the elements $b_1,\ldots,\, b_n$ are with respect to $B$.
 Spoiler wins if duplicator loses, if the elements are not in the same order. 
-This is how a single play of an \textit{Ehrenfeucht-Fra\"isse game}, also called a \textit{Back-and-forth game}, in $n$ turns is played out. \cite[\S 6.1]{Ros82}
+This is how a single play of an \textit{Ehrenfeucht-Fra\"isse game}, also called a \textit{Back-and-forth game}, in $n$ turns is played out \cite[\S 6.1]{Ros82}.
 
 \begin{example}\label{game-example-1}
     We will go through the play of a game with $3$ steps. 
@@ -174,7 +174,7 @@ We do indeed have a theorem relating them to model theory proper.
  
 We will not prove Theorem \ref{elementary-eq-th} here, but rather include it as an appetizer;
 a means show the usefulness of model theory applied to problems we may already be interested in.
-The reader interested in the proof of the theorem may read it in the sub-subsection titled ``Ehrenfeucht-Fra\"isse Games'' in \cite[\S 2.4]{Mar02}.
+The reader interested in the proof of the theorem may read it in the subsection titled ``Ehrenfeucht-Fra\"isse Games'' in \cite[\S 2.4]{Mar02}.
 The rest of this chapter should provide an adequate background for understanding it.
  
 \section{Syntax of Formal Languages}
@@ -196,19 +196,20 @@ In general we are working within \textbf{ZFC} in this chapter.
     \end{enumerate}
     The set-theoretic structure of $\mathcal{L}$ is $\mathcal{L} = \mathcal{F} \cup \mathcal{R} \cup \mathcal{C}$.
     If $\left\lvert \mathcal{L}\right\rvert$ is the cardinality of the set $\mathcal{L}$ we say that the \textit{power} of the language $\mathcal{L}$ is
-    $$\left\lVert \mathcal{L}\right\rVert = \left\lvert\mathcal{L}\right\rvert \cup \omega.$$
+    $$\left\lVert \mathcal{L}\right\rVert = \left\lvert\mathcal{L}\right\rvert \cup \omega,$$
+    where $\omega$ is the set of natural numbers.
     We say that $\mathcal{L}$ is either \emph{countable} or \emph{uncountable} depending on whether $\left\lVert\mathcal{L}\right\rVert$ is countable or uncountable \cite[\S1.3]{Cha90}.
 \end{definition}
 
 The language of pure sets is the empty language $\mathcal{L}_{Set} = \varnothing$.
 In order to make meaningful statements regarding sets however, we need the set inclusion symbol $\in$, which we view as a relation.
-Therefore the language of set theory is $\mathcal{L}_{\textbf{ZFC}} = \left\{\in\right\}$. \cite[p.8]{Mar02}\cite[p.80]{Jec78}
+Therefore the language of set theory is $\mathcal{L}_{\textbf{ZFC}} = \left\{\in\right\}$ \cite[p.8]{Mar02}\cite[p.80]{Jec78}.
 
 Since languages are given by the single set of the symbols they contain, we have that normal set operations are applicable.
 If $\mathcal{L}$ and $\mathcal{L}'$ are two languages, such that $\mathcal{L} \subset \mathcal{L}'$, 
 we say that $\mathcal{L}'$ is the \textit{expansion} of $\mathcal{L}$ and that $\mathcal{L}$ is the \textit{reduction} of $\mathcal{L}'$.
 In the case that $\mathcal{L}'$ is of the form $\mathcal{L}'= \mathcal{L} \cup X$, where $X$ is a set containing only constant symbols, 
-we say that $\mathcal{L}'$ is the \textit{simple expansion} of $\mathcal{L}$. \cite[p.19]{Cha90}
+we say that $\mathcal{L}'$ is the \textit{simple expansion} of $\mathcal{L}$ \cite[p.19]{Cha90}.
 
 In order to express statements in a language we also define \textit{terms}.
 These are are expressions created from chaining together function symbols with variables and constants.
@@ -263,8 +264,8 @@ Note that some of the logical connectives can be considered shorthand of others.
 For formulas $\phi$ and $\psi$ we say that $\phi \vee \psi$ is defined as $\lnot \left(\lnot \phi \wedge \lnot \psi\right)$.
 We can then express $\phi \rightarrow \psi$ as $\lnot \phi \vee \psi$ and $\phi \leftrightarrow \psi$ as $\left(\phi \rightarrow \psi\right) \wedge \left(\psi \rightarrow \phi\right)$.
 Lastly, for a variable $v$, the formula $\forall v\,  \phi(v)$ is considered an abbreviation of $\lnot \left(\exists v\, \lnot \phi\right)$\footnote{
-    Alternatively, assuming that $\forall$ is a quantifier, we could also define $\exists v\, \phi(v)$ as $\lnot \left(\forall v\right)\, \lnot \phi(v)$. \cite[p.23]{Cha90}
-}. \cite[Remark 1.1.7]{Mar02}
+    Alternatively, assuming that $\forall$ is a quantifier, we could also define $\exists v\, \phi(v)$ as $\lnot \left(\forall v\right)\, \lnot \phi(v)$ \cite[p.23]{Cha90}.
+} \cite[Remark 1.1.7]{Mar02}.
 
 This is a more technical definition of formulas compared to how we defined them in the \hyperref[preliminaries]{Preliminaries}.
 It comes from the fact that whenever we want to prove something is true for all formulas in a language, 
@@ -334,7 +335,7 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
     Intuitively, we can explain this by observing that there are structures of the language which might not interpret the symbol $<$ as a linear order.
 \end{example}
 
-\begin{definition}
+\begin{definition}\cite[1.3.5-1.3.9.]{Cha90}
     We have three groups of \textit{logical axioms} and two \textit{rules of inference} given below.
     We start with the logical axioms.
     \begin{enumerate}
@@ -451,7 +452,7 @@ After this we move on to actually using these language to construct structures a
     In general, at any given step $\alpha$, we let $\Sigma_{\alpha + 1} = \Sigma_{\alpha} \cup \left\{\phi_{\alpha}\right\}$
     if and only if $\Sigma_{\alpha} \cup \left\{\phi_{\alpha}\right\}$ is consistent.
     If $\Sigma_{\alpha} \cup \left\{\phi_{\alpha}\right\}$ is inconsistent we let $\Sigma_{\alpha + 1} = \Sigma_{\alpha}$.
-    Finally, we let $\Gamma$ be the union of all sets $\Sigma_{\  alpha}$.
+    Finally, we let $\Gamma$ be the union of all sets $\Sigma_{\alpha}$.
 
     The claim is now that $\Gamma$ is consistent and indeed maximally consistent.
 
@@ -482,10 +483,10 @@ After this we move on to actually using these language to construct structures a
     \end{enumerate}
     The set $M$ is referred to as the \textit{universe}, \textit{domain} or \textit{underlying set} of $\mathcal{M}$ 
     and $f^{\mathcal{M}}$, $R^{\mathcal{M}}$ and $c^{\mathcal{M}}$ are called the \textit{interpretations} of $\mathcal{M}$. 
-    The \textit{cardinality of} $\mathcal{M}$ is the cardinality of its underlying set $\left\lvert M\right\rvert$. \cite[Definition 1.1.2]{Mar02}
+    The \textit{cardinality of} $\mathcal{M}$ is the cardinality of its underlying set $\left\lvert M\right\rvert$ \cite[Definition 1.1.2]{Mar02}.
 
     We sometimes also identify a structure $\mathcal{M}$ by writing $\left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ \cite{Mar02} or $\left(M,\, \mathcal{I}\right)$, 
-    where $\mathcal{I}$ is the function mapping symbols of $\mathcal{L}$ to their respective interpretations in $M$. \cite[p.20]{Cha90}
+    where $\mathcal{I}$ is the function mapping symbols of $\mathcal{L}$ to their respective interpretations in $M$ \cite[p.20]{Cha90}.
 \end{definition}
 
 \begin{definition}\label{structure-embedding-def}\cite[Definition 1.1.3]{Mar02}
@@ -554,6 +555,59 @@ We can then define what it means for a sentence to be true in an $\mathcal{L}$-s
     \end{enumerate}
 
     We say that $\mathcal{M}$ \textit{satisfies} $\phi(\bar{a})$, whenever $\mathcal{M} \models \phi(\bar{a})$.
+\end{definition}
+
+
+\textbf{Oskar:}
+
+The following two theorems are given in the Chang and Keisler book in order to show that the model satisfaction relation is well defined.
+I am somewhat unsure whether to include the proofs, since as the book puts it they are ``tedious but straightforward''.
+On the other hand, this section barely has any interesting theorems, so including the proofs here would maybe add some necessary substance?
+Then again the important theory needed in this chapter is in Section 3.4.
+
+Note also that I will include some more examples of different models in the subsection 3.3.1 on theories of models.
+There are plenty in both \cite{Cha90} and \cite{Mar02} and I will of course come up with some myself.
+
+
+\begin{theorem}\cite[Proposition 1.3.16]{Cha90}
+    Let $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ be a $\mathcal{L}$-structure.
+    Then the following statements hold:
+    \begin{enumerate}
+        \item Let $t(v_0,\ldots,\, v_p)$ be a term dependent on the variables $v_0,\ldots,\, v_p$ and let $\bar{x} = \left<x_0,\ldots,\, x_q\right>$ and $\bar{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
+        such that $p \leq q$, $p \leq r$ and $x_i = y_i$ whenever $v_i$ is a variable of $t$.
+        Then $$t(\bar{x}) = t(\bar{y}).$$
+        \item Let $\phi$ be a formula in $\mathcal{L}$ with free and bound variables among $v_0,\ldots,\, v_p$ and let $\bar{x} = \left<x_0,\ldots,\, x_q\right>$ and $\bar{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
+        such that $p \leq q$, $p \leq r$ and $x_i = y_i$ whenever $v_i$ is a variable of $t$.
+        Then $$\mathcal{M} \models \phi(\bar{x}) \quad \text{if and only if} \quad \mathcal{M} \models \phi(\bar{y}).$$
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}\cite[Proposition 1.3.16]{Cha90}
+    Let $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ be a $\mathcal{L}$-structure.
+
+    Let $\phi(v_0,\ldots,\, v_p)$ be a formula in $\mathcal{L}$ and let $t_1(v_0,\ldots,\, v_p),\ldots,\, t_p(v_0,\ldots,\, v_p)$ be terms, 
+    such that none of the variables of $t$ occur bound in $\phi$.
+
+    Now let $\bar{x} = \left<x_0,\ldots,\, x_p\right>$ be a sequence in $M$ bad let $\phi(t_0,\ldots,\, t_p)$ be the formula in $\mathcal{L}$,
+    where each variable $v_i$ is substituted with the corresponding term $t_i$ for $i = 0,\ldots,\, p$.
+    Then $$\mathcal{M} \models \big(\phi(t_0,\ldots,\, t_p)\big)(\bar{x}) \quad \text{if and only if} \quad \mathcal{M} \models  \phi\big(t_0(\bar{x}) ,\ldots,\, t_p(\bar{x})\big).$$
+\end{theorem}
+
+%%% TODO %%%
+% Additional properties of formula satisfaction
+% Semantical consequence
+% Add examples of structures
+
+\subsection{Theories}
+\begin{definition}[Theory]\cite[\S.1.2]{Mar02}\cite[\S 1.4]{Cha90}
+    We call a set $T$ of sentences in a language $\mathcal{L}$ a \emph{theory} in $\mathcal{L}$.
+    Further, we say that an $\mathcal{L}$-structure $\mathcal{M}$ is a \emph{model} of $T$,
+    if $\mathcal{M} \models \phi$ for all sentences $\phi \in T$.
+
+    A theory $T$ is said to be \emph{closed} if it is closed under syntactic consequence $\models$.
+    Additionally, $T$ is called \emph{complete} if and only if its set of consequences is maximally consistent.
+
+    Since $T$ is a set of sentences, the notions of a \emph{subtheory} and an \emph{extension} of a theory are defined as usual.
 \end{definition}
 
 \section{The Löwenheim-Skolem Theorem}

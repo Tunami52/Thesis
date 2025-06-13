@@ -1,6 +1,25 @@
 \documentclass[../../main.tex]{subfiles}
 \begin{document}
-We now arrive at our main theorem:
+\begin{definition}[Groupoid]
+    Let $G$ be a set.
+    We say that $G$ together with a binary operation $*$ is a \emph{(left) cancellative groupoid}, if 
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{groupoid-axiom-1} $\forall g,\, h \in G \quad g * h \in G$
+        \item \label{groupoid-axiom-2} $\forall g,\, h,\, k \in G \quad \left(g * h = k * h\right) \rightarrow g = k$
+    \end{enumerate}
+    Analogously $\left(G,\, *\right)$ is called right cancellative if we replace condition \ref{groupoid-axiom-2} by
+    $\forall g,\, h,\, k \in G \ \left(g * h = g * k\right) \rightarrow h = k$.
+
+    Let $\mathcal{L} = \left\{*\right\}$ be the language containing only the binary function $*$.
+    Then an $\mathcal{L}$-structure $M$ is a model of a cancellative groupoid, 
+    if and only if it satisfies the theory given by conditions \ref{groupoid-axiom-1}-\ref{groupoid-axiom-2}.
+\end{definition}
+An example of a cancellative groupoid (without identity and which is not a group) is the positive integers $\mathbb{Z}^+$ under addition.
+
+We now finally arrive at our main theorem.
+Note that in the proof of Theorem \ref{main-thm} it is not important weather a groupoid is left or right cancellative,
+but rather that it has some form of the cancellation property.
+In our case we choose to utilize a right cancellative groupoid.
 
 \begin{theorem}\cite{Haj72}\label{main-thm}
     The following are equivalent in ZF:
@@ -47,7 +66,15 @@ We now arrive at our main theorem:
 
         \item \textbf{Axiom of Choice} $\implies$ \textbf{Groupoid Structure on arbitrary sets}
         
-        $\ldots$
+        Let $A$ be a finite set with $n$ elements.
+        Then we can imbue $A$ with the structure of the cyclic group $\mathbb{Z}_n$, since every group is also a cancellative groupoid.
+        Similarly, if $A$ is countably infinite there exist a bijection to the set of integers $\mathbb{Z}$.
+        Hence we can let $A$ have the group structure $\left(\mathbb{Z}, +\right)$ of integers under addition.
+
+        Finally, since there exists a countably infinite model of a cancellative groupoid, we can apply Theorem \ref{up-lowenheim-skolem}.
+        By this there also exist models of arbitrary infinite powers.
+
+        Therefore it is possible to define a cancellative groupoid structure on every arbitrary set $A$. \qedhere
     \end{enumerate}
 \end{proof}
 

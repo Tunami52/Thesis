@@ -33,11 +33,11 @@ To give a more intuitive understanding of how these differ we use the notation $
 
     The function $f$ is called an \textit{order-isomorphism} if $f$ is both order-preserving and bijective.
     Whenever it is clear from context that we are talking about ordered sets we simply call $f$ an \textit{isomorphism} and write $X \simeq Y$.
-    If $f$ is order-preserving and injective, it is called an \textit{order-embedding}. \cite[p.167]{Gol17}
+    If $f$ is order-preserving and injective, it is called an \textit{order-embedding} \cite[p.167]{Gol17}.
 \end{definition}
 
 A partially ordered set $(X, <)$ is sometimes also referred to simply as $X$ by some abuse of notation when the relation $<$ is known.
-Additionally, whenever we talk about partially or linearly ordered sets without specifying which type, and where the type of partial order matters, we are referring to strict ones. \cite[p.12]{Jec78}
+Additionally, whenever we talk about partially or linearly ordered sets without specifying which type, and where the type of partial order matters, we are referring to strict ones \cite[p.12]{Jec78}.
 Out of convenience, when talking about a strict partial order $<$, we sometimes refer to the term $\left(a < b \vee a = b\right)$ as $a \leq b$.
 
 Clearly it is straightforward to define a weak partial order $R'$ from a strict partial order $R$, letting $\left<x,\, y\right> \in R'$ whenever $\left<x,\, y\right> \in R$ or $x = y$.
@@ -58,7 +58,7 @@ Clearly it is straightforward to define a weak partial order $R'$ from a strict 
         \left<a_1,\, b_1\right> < \left<a_2,\, b_2\right>\ &\text{if}\ a_1 < a_2 \\
         &\text{or}\ a_1 = a_2 \wedge b_1 < b_2.
     \end{align*}
-    This is called the \textit{lexicographical order} of $\mathbb{R}^2$ with respect to the order $<$ on $\mathbb{R}$ and is perhaps the most natural way to a Cartesian product. \cite[p.182]{Gol17}
+    This is called the \textit{lexicographical order} of $\mathbb{R}^2$ with respect to the order $<$ on $\mathbb{R}$ and is perhaps the most natural way to a Cartesian product \cite[p.182]{Gol17}.
     The \textit{anti-lexicographical order} order of $\mathbb{R}^2$ would be 
     \begin{align*}
         \left<a_1,\, b_1\right> < \left<a_2,\, b_2\right>\ &\text{if}\ b_1 < b_2 \\
@@ -214,10 +214,14 @@ For the classification we utilize order preserving functions; this is especially
 \end{example}
 %%
 %% \\TODO
+\textbf{Oskar:}
+
+This is still left to do, I have focussed on writing Chapter 3 for now.
+There is a similar theorem in the Jech Set Theory book \cite{Jec78} though, which might be helpful.
 
 \section{Ordinals}\label{ordinals-section}
 There are several ways to define the natural numbers $\mathbb{N}$, the way we do it here, and the way generally used in set theory, is to use the \hyperref[ZF7]{Axiom of Infinity}, motivated by the Peano Axioms.
-This states that $\mathbb{N}$ is an \textit{inductive set}, meaning that it contains $0$, defined as $\varnothing = \left\{\right\}$, as well as the successor of every element in it, including of course $0$ itself. \cite[p.39]{Gol17}
+This states that $\mathbb{N}$ is an \textit{inductive set}, meaning that it contains $0$, defined as $\varnothing = \left\{\right\}$, as well as the successor of every element in it, including of course $0$ itself \cite[p.39]{Gol17}.
 
 \begin{definition}\cite[p.38]{Gol17}
     The successor of a set $\alpha$ is $\alpha^+ = \alpha \cup \left\{\alpha\right\}$.
@@ -422,12 +426,12 @@ We continue with the conclusion of this chapter, a lemma originally stated by Ha
 Just as with Theorem \ref{well-order-thm}, this is used in the proof of our final result, Theorem \ref{main-thm}.
 Since our goal is to prove an equivalence with the \hyperref[choice-axiom]{Axiom of Choice}, we will work completely in \textbf{ZF} without \textbf{AC} in this section.
 
-The lack of \textbf{AC} is also the reason the comparability of sets is not given, another equivalence of the Axiom of Choice. \cite{Har15}
+The lack of \textbf{AC} is also the reason the comparability of sets is not given, another equivalence of the Axiom of Choice \cite{Har15}.
 As such we do not talk about cardinality in the traditional sense in the lemma, even though the terminology is very similar.
 
 \begin{lemma}\label{well-order-set}\cite[Appendix]{Har15}
     Let $M$ be an arbitrary set.
-    Then there exists a set $M_\Omega$ consisting of all well-ordered subsets of $M$.
+    Then there exists a set $M_\Omega$ consisting of all well-ordered subsets of $M$. 
 \end{lemma}
 
 \begin{proof}
@@ -464,8 +468,9 @@ As such we do not talk about cardinality in the traditional sense in the lemma, 
     We can also see that we are able to construct such a set $X_\omega$ for any arbitrary set $X$.
     Hence, finally, given a set $M$, the set of all possible well-orderings of any subsets $m$ of $M$ is given by the union
     $$M_\Omega = \bigcup_{m \in \mathcal{P}(M)} m_\omega.$$
-    Note that $M_\Omega$ is non-empty, since we are always able to define a well-order for finite subsets of $M$. 
-    (Compare with the proof of Theorem \ref{well-order-thm-equivalence}, however we do not need \textbf{AC} for a choice function on finite sets.)
+    Note that $M_\Omega$ is non-empty, since we are always able to define a well-order for finite subsets of $M$\footnote{
+        Compare with the proof of Theorem \ref{well-order-thm-equivalence}, however we do not need \textbf{AC} for a choice function on finite sets.
+    }.
 \end{proof}
 
 With this lemma in mind, we now continue to the desired statement.
