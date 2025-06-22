@@ -185,7 +185,7 @@ Especially some of the earlier definitions are also lifted from \cite{Mar02}.
 We utilize set theoretic notation in the definition of languages, however we do not consider the set inclusion symbol $\in$ to be to be part of first-order logic.
 In general we are working within \textbf{ZFC} in this chapter.
 
-\begin{definition}\cite[Definition 1.1.1]{Mar02}
+\begin{definition}\label{language-def}\cite[Definition 1.1.1]{Mar02}
     A \textit{formal language} $\mathcal{L}$ in first order logic is associated with the following sets:
     \begin{enumerate}
         \item A set $\mathcal{F}$ of function symbols $f$ with $n_f$ arguments each, 
@@ -195,9 +195,9 @@ In general we are working within \textbf{ZFC} in this chapter.
         \item a set $\mathcal{C}$ of constant symbols.
     \end{enumerate}
     The set-theoretic structure of $\mathcal{L}$ is $\mathcal{L} = \mathcal{F} \cup \mathcal{R} \cup \mathcal{C}$.
-    If $\left\lvert \mathcal{L}\right\rvert$ is the cardinality of the set $\mathcal{L}$ we say that the \textit{power} of the language $\mathcal{L}$ is
+    If $\left\lvert \mathcal{L}\right\rvert$ is the cardinality of the set $\mathcal{L}$ we say that the \emph{power} of the language $\mathcal{L}$ is
     $$\left\lVert \mathcal{L}\right\rVert = \left\lvert\mathcal{L}\right\rvert \cup \omega,$$
-    where $\omega$ is the set of natural numbers.
+    where $\omega$ is the cardinality of the natural numbers.
     We say that $\mathcal{L}$ is either \emph{countable} or \emph{uncountable} depending on whether $\left\lVert\mathcal{L}\right\rVert$ is countable or uncountable \cite[\S1.3]{Cha90}.
 \end{definition}
 
@@ -214,7 +214,7 @@ we say that $\mathcal{L}'$ is the \textit{simple expansion} of $\mathcal{L}$ \ci
 In order to express statements in a language we also define \textit{terms}.
 These are are expressions created from chaining together function symbols with variables and constants.
 
-\begin{definition}\cite[Definition 1.1.4]{Mar02}
+\begin{definition}\label{term-def}\cite[Definition 1.1.4]{Mar02}
     We say that $T$ is the set of \emph{$\mathcal{L}$-terms}, if $T$ is the smallest set such that
     \begin{enumerate}[label=(\roman*)]
         \item $c \in T$ for each constant $c \in \mathcal{C}$
@@ -314,7 +314,7 @@ We can think of a formula in $\mathcal{J}$ as a placeholders $S_1,\ldots,\, S_n$
 Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula ``terminates'' either in $t$ or $f$.
 
 \begin{example}
-    The formula $$\tau = \left(S_1 \implies S_2\right) \vee \left(S_2 \implies S_1\right)$$
+    The formula $$\tau = \left(S_1 \rightarrow S_2\right) \vee \left(S_2 \rightarrow S_1\right)$$
     is a tautology in sentential logic.
     No matter which value of $\bar{a} = \left<a_1,\, a_2\right>$ we choose in the set 
     $\left\{\left<t,\, t\right>,\, \left<t,\, f\right>,\, \left<f,\, t\right>,\, \left<f,\, f\right>\right\}$ 
@@ -326,9 +326,9 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
     If we substitute the formulas $\phi_1$ and $\phi_2$ into $\tau$, we have that
     \begin{align*}
         \tau_r
-        &= \left(\phi_1 \implies \phi_2\right) \vee \left(\phi_2 \implies \phi_1\right) \\
-        &= \big(\left(v_1 + 1 < v_2\right) \implies \left(v_2 \cdot v_1 = v_1\right)\big) \\
-        &  \qquad \vee \big(\left(v_2 \cdot v_1 = v_1\right) \implies \left(v_1 + 1 < v_2\right)\big)
+        &= \left(\phi_1 \rightarrow \phi_2\right) \vee \left(\phi_2 \rightarrow \phi_1\right) \\
+        &= \big(\left(v_1 + 1 < v_2\right) \rightarrow \left(v_2 \cdot v_1 = v_1\right)\big) \\
+        &  \qquad \vee \big(\left(v_2 \cdot v_1 = v_1\right) \rightarrow \left(v_1 + 1 < v_2\right)\big)
     \end{align*}
     is a tautology in $\mathcal{L}_{or}$.
     Note that for example $$(v_1 < v_2) \vee (v_1 = v_2) \vee (v_2 < v_1)$$ is not a tautology in $\mathcal{L}_{or}$.
@@ -342,21 +342,21 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
         \item \textbf{Sentential Axioms}
         
         Every tautology $\psi$ of $\mathcal{L}$ is a logical axiom. %change wording???
-        \item \textbf{Quantifier Axioms}
+        \item\label{quantifier-axioms} \textbf{Quantifier Axioms}
         \begin{enumerate}
             \item Let $\phi,\, \psi$ be formulas in $\mathcal{L}$ and let $v$ be a variable which is not free in $\phi$.
             Then
-            $$\forall v \left((\phi \implies \psi(v)) \implies (\phi \implies \forall v\, \psi(v))\right)$$
+            $$\forall v \left((\phi \rightarrow \psi(v)) \rightarrow (\phi \rightarrow \forall v\, \psi(v))\right)$$
             is a logical axiom.
             \item Let $\phi(v)$ be a formula in $\mathcal{L}$ with a free variable $v$.
             Let $\psi$ be a formula in $\mathcal{L}$, 
             such that $\psi$ is the sentence where all free occurrences $v$ in $\psi$ have been substituted by some term $t$.
             This means that no variable of $t$ is bound in $\psi$ at the place it is introduced.
             Then 
-            $$\forall v \, \phi(v) \implies \psi$$
+            $$\forall v \, \phi(v) \rightarrow \psi$$
             is a logical axiom.
         \end{enumerate}
-        \item \textbf{Identity Axioms}
+        \item\label{identity-axioms} \textbf{Identity Axioms}
         
         Let $x$ and $y$ be variables and let $t(v_1,\ldots,\, v_n)$ and $\phi(v_1,\ldots,\, v_n)$ be a term and an atomic formula respectively,
         both dependent on free variables $v_1,\ldots,\, v_n$.
@@ -365,26 +365,26 @@ Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula
         \begin{enumerate}
             \item $x = x$,
             \item $\begin{aligned}[t]
-                & x = y \implies \\
+                & x = y \rightarrow \\
                 & \left(t(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) = t(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right),
             \end{aligned}$
-            % $x = y \implies$ \newline
+            % $x = y \rightarrow$ \newline
             % $\left(t(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) = t(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right)$,
             \item $\begin{aligned}[t]
-                & x = y \implies \\
-                & \left(\phi(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) \implies \phi(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right)
+                & x = y \rightarrow \\
+                & \left(\phi(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) \rightarrow \phi(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right)
             \end{aligned}$
-            % $x = y \implies$ \newline
-            % $\left(\phi(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) \implies \phi(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right)$
+            % $x = y \rightarrow$ \newline
+            % $\left(\phi(v_1,\ldots,\, v_{i-1},\, x,\, v_{i+1},\ldots,\, v_n) \rightarrow \phi(v_1,\ldots,v_{i-1},\, y,\, v_{i+1},\ldots,\, v_n)\right)$
         \end{enumerate}
         are logical axioms.
     \end{enumerate}
     The \textit{Rules of Inference} are then
     \begin{enumerate}[resume]
-        \item \textbf{Rule of Detachment (Modus Ponens)}
+        \item\label{detachment-rule} \textbf{Rule of Detachment (Modus Ponens)}
         
         If $\psi$ and $\phi \rightarrow \psi$ hold, then $\psi$ holds.
-        \item \textbf{Rule of Generalization}
+        \item\label{generalization-rule} \textbf{Rule of Generalization}
         
         If $\psi$ holds, then $\forall x\, \psi(x)$ holds.
     \end{enumerate}
@@ -432,7 +432,7 @@ This notion of consistency has some fairly intuitive consequences which we provi
 With this proposition in mind we continue on to the final result relating only to formal languages.
 After this we move on to actually using these language to construct structures and models.
 
-\begin{theorem}[Lindenbaum's Theorem]\cite[Proposition 1.3.11]{Cha90}
+\begin{theorem}[Lindenbaum's Theorem]\label{lindenbaums-theorem}\cite[Proposition 1.3.11]{Cha90}
     Let $\Sigma$ be a consistent set of sentences in a language $\mathcal{L}$.
     Then $\Sigma$ can be extended to a maximally consistent set of sentences in $\mathcal{L}$.
 \end{theorem}
@@ -537,7 +537,7 @@ we have to be similarly careful when defining term valuation.
 \end{definition}
 
 We can then define what it means for a sentence to be true in an $\mathcal{L}$-structure:
-\begin{definition}\cite[Definition 1.1.6]{Mar02}
+\begin{definition}\label{model-satisfaction-def}\cite[Definition 1.1.6]{Mar02}
     Let $\mathcal{M}$ be an $\mathcal{L}$-structure and let $\phi$ be a formula in $\mathcal{L}$ with free variables $\bar{v} = \left<v_1,\ldots,\, v_n\right>$.
     We inductively define $\mathcal{M} \models \phi(\bar{a})$ and for $\bar{a} = \left<a_1,\ldots,\, a_n\right> \in M^n$.
 
@@ -557,38 +557,36 @@ We can then define what it means for a sentence to be true in an $\mathcal{L}$-s
     We say that $\mathcal{M}$ \textit{satisfies} $\phi(\bar{a})$, whenever $\mathcal{M} \models \phi(\bar{a})$.
 \end{definition}
 
+With this definition we followed the \hyperref[formula-def]{inductive definition of formulas},
+hence the notion of a formula should be unambiguously defined, however there are still some edge cases we need to cover.
 
-\textbf{Oskar:}
-
-The following two theorems are given in the Chang and Keisler book in order to show that the model satisfaction relation is well defined.
-I am somewhat unsure whether to include the proofs, since as the book puts it they are ``tedious but straightforward''.
-On the other hand, this section barely has any interesting theorems, so including the proofs here would maybe add some necessary substance?
-Then again the important theory needed in this chapter is in Section 3.4.
-
-Note also that I will include some more examples of different models in the subsection 3.3.1 on theories of models.
-There are plenty in both \cite{Cha90} and \cite{Mar02} and I will of course come up with some myself.
+First of all, we should note that Definition \label{model-satisfaction-def} only accounts for sentences,
+as formulas with free variables are always evaluated at some sequence $\bar{a} = \left<a_1,\ldots,\, a_n\right>$.
+Secondly, a formula might not always have the same free variables as its subformulas, since quantifiers can bind variables which are free in a subformula.
 
 
-\begin{theorem}\cite[Proposition 1.3.16]{Cha90}
-    Let $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ be a $\mathcal{L}$-structure.
-    Then the following statements hold:
-    \begin{enumerate}
-        \item Let $t(v_0,\ldots,\, v_p)$ be a term dependent on the variables $v_0,\ldots,\, v_p$ and let $\bar{x} = \left<x_0,\ldots,\, x_q\right>$ and $\bar{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
-        such that $p \leq q$, $p \leq r$ and $x_i = y_i$ whenever $v_i$ is a variable of $t$.
-        Then $$t(\bar{x}) = t(\bar{y}).$$
-        \item Let $\phi$ be a formula in $\mathcal{L}$ with free and bound variables among $v_0,\ldots,\, v_p$ and let $\bar{x} = \left<x_0,\ldots,\, x_q\right>$ and $\bar{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
-        such that $p \leq q$, $p \leq r$ and $x_i = y_i$ whenever $v_i$ is a variable of $t$.
-        Then $$\mathcal{M} \models \phi(\bar{x}) \quad \text{if and only if} \quad \mathcal{M} \models \phi(\bar{y}).$$
-    \end{enumerate}
-\end{theorem}
+% This proposition is not needed since we require the variables v1,...,vn to be free in the definition of model satisfaction.
+%
+% \begin{proposition}\cite[Proposition 1.3.16]{Cha90}
+%     Let $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ be a $\mathcal{L}$-structure.
+%     Then the following statements hold:
+%     \begin{enumerate}
+%         \item Let $t(v_0,\ldots,\, v_p)$ be a term dependent on the variables $v_0,\ldots,\, v_p$ and let $\bar{x} = \left<x_0,\ldots,\, x_q\right>$ and $\bar{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
+%         such that $p \leq q$, $p \leq r$ and $x_i = y_i$ whenever $v_i$ is a variable of $t$.
+%         Then $$t(\bar{x}) = t(\bar{y}).$$
+%         \item Let $\phi$ be a formula in $\mathcal{L}$ with free and bound variables among $v_0,\ldots,\, v_p$ and let $\bar{x} = \left<x_0,\ldots,\, x_q\right>$ and $\bar{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
+%         such that $p \leq q$, $p \leq r$ and $x_i = y_i$ whenever $v_i$ is a variable of $t$.
+%         Then $$\mathcal{M} \models \phi(\bar{x}) \quad \text{if and only if} \quad \mathcal{M} \models \phi(\bar{y}).$$
+%     \end{enumerate}
+% \end{proposition}
 
 \begin{theorem}\cite[Proposition 1.3.16]{Cha90}
     Let $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ be a $\mathcal{L}$-structure.
 
     Let $\phi(v_0,\ldots,\, v_p)$ be a formula in $\mathcal{L}$ and let $t_1(v_0,\ldots,\, v_p),\ldots,\, t_p(v_0,\ldots,\, v_p)$ be terms, 
-    such that none of the variables of $t$ occur bound in $\phi$.
+    such that none of the variables of the $t_i$s occur bound in $\phi$.
 
-    Now let $\bar{x} = \left<x_0,\ldots,\, x_p\right>$ be a sequence in $M$ bad let $\phi(t_0,\ldots,\, t_p)$ be the formula in $\mathcal{L}$,
+    Now let $\bar{x} = \left<x_0,\ldots,\, x_p\right>$ be a sequence in $M$ and let $\phi(t_0,\ldots,\, t_p)$ be the formula in $\mathcal{L}$,
     where each variable $v_i$ is substituted with the corresponding term $t_i$ for $i = 0,\ldots,\, p$.
     Then $$\mathcal{M} \models \big(\phi(t_0,\ldots,\, t_p)\big)(\bar{x}) \quad \text{if and only if} \quad \mathcal{M} \models  \phi\big(t_0(\bar{x}) ,\ldots,\, t_p(\bar{x})\big).$$
 \end{theorem}
@@ -612,18 +610,228 @@ There are plenty in both \cite{Cha90} and \cite{Mar02} and I will of course come
 
 \section{The Löwenheim-Skolem Theorem}
 
+\begin{definition}[Henkin Witness]
+    Let $T$ be a set of sentences in a language $\mathcal{L}$ and let $C \subseteq \mathcal{C}$ be a set of constant symbols of $\mathcal{L}$.
+    We then call $C$ a \emph{set of witnesses} for $T$ if and only if there exists some constant $c \in C$, such that
+    $$T \vdash \big(\exists x \, \phi(x) \rightarrow \phi(c)\big)$$
+    holds for all formulas $\phi$ of $\mathcal{L}$ which have at most a single free variable $x$.
+\end{definition}
+
 \begin{lemma}\cite[Lemma 2.1.1]{Cha90}
-    Let $T$ be a consistent set of sentences of $\mathcal{L}$.  
-    Let $C$ be a set of new constant symbols of power $\left\lvert C \right\rvert = \left\lVert \mathcal{L} \right\rVert$
-     and let $\bar{\mathcal{L}} = \mathcal{L} \cup C$ be the simple expansion of $\mathcal{L}$ formed by adding $C$.
+    Let $T$ be a consistent set of sentences of a language $\mathcal{L}$ and   
+    let $C$ be a set of new constant symbols not in $\mathcal{L}$ and of power $\left\lvert C \right\rvert = \left\lVert \mathcal{L} \right\rVert$.
+    Then let $\overline{\mathcal{L}} = \mathcal{L} \cup C$ be the simple expansion of $\mathcal{L}$ formed by adding $C$.
     
-    Then $T$ can be expanded to a consistent set of sentences $\bar{T}$ in $\bar{\mathcal{L}}$, which has $C$ as a set of witnesses in $\bar{\mathcal{L}}$.
+    Then $T$ can be expanded to a consistent set of sentences $\bar{T}$ in $\overline{\mathcal{L}}$, which has $C$ as a set of witnesses in $\overline{\mathcal{L}}$.
 \end{lemma}
 
+\begin{proof}
+    We will first define the set $C$ with cardinality $\left\lVert \mathcal{L} \right\rVert$.
+    Then, similarly to how we did in the proof of Theorem \ref{lindenbaums-theorem}, 
+    we define a sequence of consistent terms $T_\xi$ based on the elements of $C$ and show that the desired set of sentences $\bar{T}$ is the union $\bigcup_{\xi < \alpha} T_\xi$.
+
+    Let $\alpha$ be the cardinal $\left\lVert \mathcal{L}\right\rVert$.
+    Then, for each cardinal $\beta < \alpha$ we let $c_\beta$ be a constant symbol, 
+    such that $c_\beta \neq c_\gamma$ holds for all cardinals $\gamma$ where $\beta < \gamma < \alpha$.
+    We can now define set $C = \left\{c_\beta \,\vert\, \beta < \alpha\right\}$ 
+    and let $\overline{\mathcal{L}}$ be the simple extension $\overline{\mathcal{L}} = \mathcal{L} \cup C$.
+
+    Since $\left\lVert \mathcal{L}\right\rVert$ is at least countably infinite by the \hyperref[language-def]{definition of the power of a language},
+    we have that $\left\lVert \overline{\mathcal{L}}\right\rVert = \alpha$.
+    Further, since $\alpha$ is also an ordinal, 
+    we can define the sequence $\left\{\phi_\xi \, \vert \, \xi < \alpha\right\}$ of all formulas $\phi$ in $\overline{\mathcal{L}}$ which have at most one free variable.
+
+    We now inductively define another sequence
+    $$T = T_0 \subset T_1 \subset \cdots \subset T_\xi \subset \cdots,$$
+    of sets of sentences together with a sequence $\left\{d_\xi \, \vert \, \xi < \alpha\right\}$ of constants in $C$,
+    such that these satisfy the following properties:
+    \begin{enumerate}[label=(\roman*)]
+        \item for each $\xi$, the set $T_\xi$ is consistent in $\overline{\mathcal{L}}$;
+        \item if $\xi$ is a successor ordinal $\xi = \eta + 1$, 
+        then $T_\xi = T_\eta \cup \left\{\exists x_\eta \, \phi_\eta(x_\eta) \rightarrow \phi_\eta(d_\eta)\right\}$,
+        where $x_\eta$ is the free variable of $\phi_\eta$ if it exists and an arbitrary variable $v$ otherwise;
+        \item if $\xi$ is a non-zero limit ordinal,
+        then $T_\xi = \bigcup_{\eta < \xi} T_\eta$.
+    \end{enumerate}
+
+    Assume now that we have defined $T_\eta$ as above.
+    We show that $T_\zeta$ is consistent for $\zeta = \eta + 1$.
+
+    Firstly we note that $T_\eta$ contains a strictly lesser than $\alpha$ amount of sentences which are not valid formulas in the original language $\mathcal{L}$ (in a cardinality sense).
+    These are all sentences which include symbols from $C$ and follows from the fact that we inductively define $T_\xi$ 
+    Secondly, observe that each of these sentences only contain a finite number of constant symbols from $C$.
+    Because of these two assertions, we can assume that there exists some constant $d_\eta$ in the sequence $\left\{d_\xi \, \vert \, \xi < \alpha\right\}$,
+    which has not previously occurred in any of the $T_\xi$ for $\xi < \zeta$.
+
+    Now let 
+    $$T_\zeta = T_\eta \cup \left\{\exists x_\eta \, \phi_\eta(x_\eta) \rightarrow \phi_\eta(d_\eta)\right\}$$
+    and we assume that $T_\zeta$ is inconsistent in order to derive a contradiction.
+    This means that $$T_\eta \vdash \lnot \big(\exists x_\eta \, \phi_\eta(x_\eta) \rightarrow \phi_\eta(d_\eta)\big).$$
+    Then, using that $\phi \rightarrow \psi$ and $\phi \vee \psi$ are defined as $\lnot \left(\lnot \phi \wedge \lnot \psi\right)$ and $\lnot \phi \vee \psi$ respectively,
+    we have that
+    \begin{align*}
+             & T_\eta \vdash \lnot \big(\exists x_\eta \, \phi_\eta(x_\eta) \rightarrow \phi_\eta(d_\eta)\big) \\
+        \iff & T_\eta \vdash \lnot \big(\lnot\left(\exists x_\eta \, \phi_\eta(x_\eta)\right) \vee \phi_\eta(d_\eta)\big) \\
+        \iff & T_\eta \vdash \exists x_\eta \, \phi_\eta(x_\eta) \wedge \lnot \, \phi_\eta(d_\eta).
+    \end{align*}
+    Since $d_\eta$ does not occur in $T_\eta$, we can utilize the \hyperref[generalization-rule]{Rule of Generalization} in the last statement and obtain 
+    $$T_\eta \vdash \forall x_\eta \, \big(\exists x_\eta \, \phi_\eta(x_\eta) \wedge \lnot \, \phi_\eta(x_\eta)\big)$$
+    which is a more general formulation of 
+    $$T_\eta \vdash \big(\exists x_\eta \, \phi_\eta(x_\eta)\big) \wedge \lnot \big(\exists x_\eta \, \phi_\eta(x_\eta)\big).$$
+    This is clearly a contradiction and hence $T_\zeta$ must be consistent.
+
+    We now assume that $\zeta$ is a limit ordinal and that $T_\eta$ is properly defined for all $\eta <\zeta$.
+    Then, since each $T_\eta$ is consistent, so is $T_\zeta = \bigcup_{\eta < \zeta} T_\eta$.
+    As such $\left\{T_\xi \, \vert \, \xi < \alpha\right\}$ is a well-defined sequence.
+
+    We now let $\bar{T}$ be the union $\bigcup_{\xi < \alpha} T_\xi$.
+    Then, as we just showed in the definition of $\left\{T_\xi \, \vert \, \xi < \alpha\right\}$,
+    $\bar{T}$ is made up of only consistent sets of sentences and is therefore also consistent in $\overline{\mathcal{L}}$,
+    as an extension of $T$.
+
+    Finally we show that $C$ is the set of witnesses of $\bar{T}$ in $\overline{\mathcal{L}}$.
+    Suppose that $\phi$ is a formula with at most one free variable $x$ in $\overline{\mathcal{L}}$.
+    We can assume that $\phi$ is $\phi_\xi$ and that $x = x_\xi$.
+    As such the sentence $\exists x_\xi \, \phi_\eta(x_\xi) \rightarrow \phi_\eta(d_\xi)$ is a member of $T_{\xi + 1}$ and thus also of $\bar{T}$.
+    Since the formula $\phi$ was arbitrary, the set $C$ is indeed a set of witnesses for $\bar{T}$. 
+\end{proof}
+
 \begin{lemma}\cite[Lemma 2.1.2]{Cha90}
-    Let $T$ be a set of sentences and let $C$ be a set of witnesses of $T$ in $\mathcal{L}$.
-    Then $T$ has a model $\mathfrak{U}$, such that every element of $\mathfrak{U}$ is an interpretation of a constant $c \in C$.
+    Let $T$ be a consistent set of sentences and let $C$ be a set of witnesses for $T$ in $\mathcal{L}$.
+    Then there exists a model $\mathcal{M}$ satisfying the theory of $T$, such that every element of $\mathcal{M}$ is an interpretation of a constant $c \in C$.
 \end{lemma} 
+
+\begin{proof}
+    Suppose that $T'$ is an extension of $T$, i.e. $T \subset T'$.
+    Then $T'$ also has $C$ for a set of witnesses in $\mathcal{L}$ and if some $\mathcal{L}$-structure is a model of $T'$ it is also a model of $T$.
+    Because of this and since by Theorem \ref{lindenbaums-theorem} we can always extend a consistent set of sentences to a maximally consistent one,
+    we can assume without loss of generality that the set $T$ is maximally consistent.
+
+    Let $c,\, d \in C$ be two constants. 
+    We define a relation $c \sim d$ if and only if the formula $c = d$ is in $T$.
+    This is indeed an equivalence relation.
+    Since $T$ is maximally consistent we have that the relation $\sim$ satisfies
+    \begin{enumerate}[label=(\roman*)]
+        \item $c \sim c$,
+        \item if $c \sim d$ and $d \sim e$, then $c \sim e$,
+        \item if $c \sim d$, then $d \sim c$
+    \end{enumerate}
+    for all $c,\, d,\, e \in C$.
+    For elements $c \in C$ we denote the equivalence class of $c$ by
+    $$\tilde{c} = \left\{d \in C \,\vert\,c \sim d\right\}.$$
+
+    We now get to constructing an $\mathcal{L}$-structure $\mathcal{M}$ with the underlying set $A$,
+    the elements of which are the equivalence classes $\tilde{c}$ for $c \in C$.
+    We construct this structure in steps and then show that it is actually a model of $T$.
+    \begin{enumerate}
+        \item \label{lemma-proof-step-1} \textbf{Interpretations of relations} $R \in \mathcal{R}$
+        
+        For each $n_R$-ary relation symbol $R$ in $\mathcal{L}$,
+        we define a relation $R' \subseteq C^{n_R}$ on the set $C$ such that
+        \begin{equation}\label{congruence-eq}
+            \left<c_1,\cdots,\,c_{n_R}\right> \in R' \iff R(c_1,\cdots,\,c_{n_R}) \in T.
+        \end{equation}
+        We have that $\sim$ is a \emph{congruence relation} for the relation $R'$.
+        This means that if we have $\left<c_1,\cdots,\,c_{n_R}\right> \in R'$ and $c_i \sim d_i$ for elements $c_i,\, d_i, \in C,\, i = 1,\cdots,\, n_{n_R}$, 
+        it follows that $\left<d_1,\cdots,\,d_{n_R}\right> \in R'$.
+        
+        More formally the \hyperref[identity-axioms]{Identity Axioms} ensure that
+        $$\vdash R(c_1,\cdots,\,c_{n_R}) \wedge (c_1 = d_1) \wedge \cdots \wedge (c_{n_R} = d_{n_R}) \rightarrow R(d_1,\cdots,\,d_{n_R}).$$
+
+        We now define the interpretation $R^\mathcal{M}$ of $R$ on $A$ by
+        $$\left<\tilde{c}_1,\cdots,\,\tilde{c}_{n_R}\right> \in R^\mathcal{M} \iff R(c_1,\cdots,\,c_{n_R}) \in T$$
+        and have by \eqref{congruence-eq} that $R^\mathcal{M}$ is not dependent on the choice of representative $c$ for each equivalence class $\tilde{c}$.
+
+        \item \label{lemma-proof-step-2} \textbf{Interpretations of constants} $d \in \mathcal{C}$
+        
+        Let $d$ be a constant symbol of $\mathcal{L}$.
+        It then follows from first-order logic that 
+        $$\vdash \exists v \, (d = v)$$
+        and since $T$ is maximally consistent this also means that $\big(\exists v \, (d = v)\big) \in T$.
+        
+        Further, since $C$ is a set of witnesses in $T$, there exists a constant $c \in C$, such that $(d = c) \in T$.
+        Hence we choose the interpretation of $d$ in $\mathcal{M}$ to be the equivalence class $\tilde{c}$.
+        In the case that $d \in C$, it of course follows that the interpretation of $d$ is $\tilde{d}$.
+
+        The constant $c$ might not be unique, however the equivalence class is.
+        Using the Identity Axioms we have that
+        $$\vdash (d = c \wedge d = c') \rightarrow c = c'$$
+        such that the interpretation of $d$ is not dependent on the representative of the equivalence class.
+
+        \item \label{lemma-proof-step-3}\textbf{Interpretations of functions} $f \in \mathcal{F}$
+        
+        We proceed similarly to steps \ref{lemma-proof-step-1} and \ref{lemma-proof-step-2}.
+        We have that
+        $$\vdash \exists v\, f(c_1,\ldots,\, c_{n_f}) = v$$
+        holds by first order logic for constants $c_1,\ldots,\, c_{n_f} \in C$ and a function $f \in \mathcal{F}$.
+        Then, as $T$ has witnesses in $C$, it follows that $\big(f(c_1,\ldots,\, c_{n_f}) = c\big) \in T$ for some constant $c \in C$.
+        By the Identity Axioms
+        \begin{multline}\label{function-congruence-eq}
+            \vdash f(c_1,\cdots,\,c_{n_f}) = c \wedge (c_1 = d_1) \wedge \cdots \wedge (c_{n_R} = d_{n_R}) \wedge (c = d) \\
+            \rightarrow f(d_1,\cdots,\,d_{n_f})= d.
+        \end{multline}
+        and as such the value of the function is unique with respect to the equivalence classes of $C$.
+
+        Finally, we define the interpretation of $f$ in $\mathcal{M}$ by 
+        $$f^\mathcal{M}(\tilde{c}_1,\cdots,\,\tilde{c}_{n_f}) = \tilde{c} \iff \big(f(c_1,\cdots,\,c_{n_f}) = c\big) \in T.$$
+    \end{enumerate}
+    We have constructed an $\mathcal{L}$-structure $\mathcal{M}$,
+    of which the underlying set $A$ consists entirely out of the equivalence classes $\tilde{c}$ of $C$ with respect to the relation $\sim$.
+    As such every $\tilde{c} \in A$ is the interpretation of some constant symbol $c \in C$.
+
+    We now show that $\mathcal{M}$ is indeed a model of $T$.
+    Let $t$ be a term in $\mathcal{L}$ with no free variables, 
+    we show that 
+    \begin{equation}\label{lemma-proof-term-model}
+        \mathcal{M} \models t = c \iff (t = c) \in T.
+    \end{equation}
+
+    By Definition \ref{term-def} a term without free variables is either of the form $t = d$ for a constant $d \in \mathcal{C}$ or $t = f(t_1,\ldots,\, t_{f_n})$ for a function $f \in \mathcal{F}$ and terms $t_1,\ldots,\, t_{f_n}$.
+    We have that \eqref{lemma-proof-term-model} already holds for $t = d$ and $t = f(d_1,\ldots,\, d_{f_n})$ by steps \ref{lemma-proof-step-2} and \ref{lemma-proof-step-3} above,
+    where $d,\, d_1,\ldots,\, d_{f_n} \in \mathcal{C}$ are constants.
+    Additionally \eqref{function-congruence-eq} assures us that all functions are well defined in $\mathcal{M}$, 
+    meaning that we can extent \eqref{lemma-proof-term-model} to hold for all terms $t$.
+
+    We now also have that
+    \begin{align}
+        \mathcal{M} \models t_1 = t_2  &\iff (t_1 = t_2) \in T, \label{lemma-proof-term-eqality}\\
+        \mathcal{M} \models R^\mathcal{M}\left(t_1,\cdots,\,t_{n_R}\right) &\iff R(t_1,\cdots,\,t_{n_R}) \in T \ \label{lemma-proof-term-relation}
+    \end{align}
+    for bound terms $t_1,\, t_2, \ldots,\, t_{n_R}$ following from step \ref{lemma-proof-step-1} above and the fact that $T$ has witnesses in $C$.
+
+    With this we have covered model satisfaction for all atomic sentences in $\mathcal{L}$.
+    We now proceed with proving 
+    \begin{equation}\label{lemma-proof-forumula}
+        \mathcal{M} \models \phi \iff \phi \in T
+    \end{equation}
+    for sentences $\phi$ using induction on Definition \ref{formula-def}.
+    For sentences $\phi,\, \psi \in \mathcal{L}$ it follows from Definition \ref{formula-def} that
+    \begin{align*}
+        \mathcal{M} \models \lnot\, \phi &\iff (\lnot\, \phi) \in T \\
+        \mathcal{M} \models \phi \wedge \psi &\iff (\phi \wedge \psi) \in T.
+    \end{align*}
+    Now assume that $\phi$ is the sentence $\exists v\, \psi(v)$ and that $\mathcal{M} \models \phi$.
+    Then there exists some $\tilde{c} \in A$ such that $\mathcal{M} \models \psi(\tilde{c})$.
+    
+    Due to how we defined the model $\mathcal{M}$ this means that there also exists some constant symbol $c \in C$ in $\mathcal{L}$,
+    such that $\mathcal{M} \models \psi(c)$.
+    This in turn, also by construction, means that $\psi(c) \in T$.
+    Note that by $\psi(c)$ we mean the sentence in $\mathcal{L}$ where all occurrences of $v$ have been replaced by the constant $c$ and \emph{not} the evaluation of $\phi$ with respect to $c$.
+    
+    As such we have that
+    $$\vdash \psi(c) \rightarrow \exists v\, \psi(v)$$
+    and since $\phi$ \emph{is} $\exists v\, \psi(v)$ also $\phi \in T$.
+
+    Now assume that $\phi \in T$, where again $\phi$ is $\exists v\, \psi(v)$, we want to prove that $\mathcal{M}$ satisfies $\phi$.
+    Because $C$ is a set of witnesses to $T$ this means that 
+    $$T \vdash \exists v\, \psi(v) \rightarrow \psi(c).$$
+    The set $T$ is maximally consistent and hence $\psi(c) \in T$ and $\mathcal{M} \models \psi(c)$.
+    Therefore there exists an equivalence class $\tilde{c} \in A$ such that $\mathcal{M} \models \psi(\tilde{c})$.
+    
+    Finally we have that
+    $$\mathcal{M} \models \phi$$
+    and hence $\mathcal{M}$ is a model of the theory $T$.
+\end{proof}
 
 \begin{theorem}[Extended Completeness Theorem]\cite[Theorem 1.3.21]{Cha90}
     Let $\Sigma$ be a set of sentences in $\mathcal{L}$.

@@ -426,9 +426,6 @@ We continue with the conclusion of this chapter, a lemma originally stated by Ha
 Just as with Theorem \ref{well-order-thm}, this is used in the proof of our final result, Theorem \ref{main-thm}.
 Since our goal is to prove an equivalence with the \hyperref[choice-axiom]{Axiom of Choice}, we will work completely in \textbf{ZF} without \textbf{AC} in this section.
 
-The lack of \textbf{AC} is also the reason the comparability of sets is not given, another equivalence of the Axiom of Choice \cite{Har15}.
-As such we do not talk about cardinality in the traditional sense in the lemma, even though the terminology is very similar.
-
 \begin{lemma}\label{well-order-set}\cite[Appendix]{Har15}
     Let $M$ be an arbitrary set.
     Then there exists a set $M_\Omega$ consisting of all well-ordered subsets of $M$. 
@@ -515,4 +512,24 @@ We follow the outline given in \cite{Haj72} for the proof of this lemma, the mor
     however we have already established that $S$ either has no well-order or that there exists a bijection to an initial segment of $\alpha$.
     This is a contradiction and we must have that no injective function from $\alpha$ to $A$ exists, satisfying the requirements of the lemma.
 \end{proof}
+
+\begin{remark}
+    We say that two sets $X$ and $Y$ have the same \emph{cardinality} and write 
+    \begin{equation}\label{cardinality-def}
+        \left\lvert X\right\rvert = \left\lvert Y\right\rvert
+    \end{equation}
+    if there exists a bijective map between $X$ and $Y$.
+    Further we say that $X$ has cardinality greater or equal to $Y$ and write $\left\lvert X\right\rvert \geq \left\lvert Y\right\rvert$,
+    if there exists a injective function from $Y$ to $X$ \cite[p.22]{Jec78}.
+
+    We call an ordinal $\kappa$ a \emph{cardinal} if $\left\lvert \kappa\right\rvert \neq \left\lvert \alpha\right\rvert$ for all $\alpha < \kappa$ \cite[p.24]{Jec78}.
+    The ordinal $\omega$ representing the natural numbers is the smallest infinite cardinal.
+
+    It seems tempting to use the definition of cardinality in the statement of Lemma \ref{hartogs-lemma}, 
+    saying that ``for all sets $A$ there exists an ordinal $\alpha$ with cardinality greater than $A$''.
+    However, the relation \eqref{cardinality-def} is only an equivalence relation over the universe of sets if we assume \textbf{AC}.
+    As such the comparability of sets, meaning that for any sets $\left\lvert X\right\rvert$ and $\left\lvert Y\right\rvert$ we either have
+    $\left\lvert X\right\rvert \leq \left\lvert Y\right\rvert$ or $\left\lvert X\right\rvert \geq \left\lvert Y\right\rvert$, does in general \emph{not} hold in \textbf{ZF} \cite[p.38]{Jec78}.
+    We therefore refrained from talking about cardinals here, instead opting for a more general formulation.
+\end{remark}
 \end{document}
