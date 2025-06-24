@@ -32,7 +32,7 @@ To give a more intuitive understanding of how these differ we use the notation $
     If $X$ and $Y$ are both linearly ordered, an order-preserving function is also said to be \textit{increasing}.
 
     The function $f$ is called an \textit{order-isomorphism} if $f$ is both order-preserving and bijective.
-    Whenever it is clear from context that we are talking about ordered sets we simply call $f$ an \textit{isomorphism} and write $X \simeq Y$.
+    Whenever it is clear from the context that we are talking about ordered sets we simply call $f$ an \textit{isomorphism} and write $X \simeq Y$.
     If $f$ is order-preserving and injective, it is called an \textit{order-embedding} \cite[p.167]{Gol17}.
 \end{definition}
 
@@ -94,7 +94,7 @@ This notion of a least element lets us define a special kind of linearly ordered
 \end{example}
 
 Well-ordered sets are central to the axiomatic set theory at hand.
-In fact, one of the most important results we will treat here, is that every set can we well-ordered (with the Axiom of Choice).
+In fact, one of the most important results we will treat here, is that every set can be well-ordered (with the Axiom of Choice).
 
 Further, we will introduce the concept of ordinals as a way to properly classify all well-ordered sets.
 The next two lemmata are needed for the proof of Theorem \ref{unique-ordinal}, an important result with regards to ordinals.
@@ -104,7 +104,7 @@ For this we need to define the initial section of an ordered set first:
     If $X$ is a well-ordered set and $s \in X$, we call the set $\left\{x \in X \,\vert\, x < s\right\}$ an \textit{initial segment} of $X$.
 \end{definition}
 
-\begin{lemma}\label{increasing-fcn-lemm}\cite[Lemma 2.1, p.13]{Jec78}
+\begin{lemma}\label{increasing-fcn-lemm}\cite[Lemma 2.1]{Jec78}
     If $\left(W,\, <\right)$ is a well-ordered set and $f: W \to W$ is an increasing function, then $f(x) \geq x$ for each $x\in W$.
 \end{lemma}
 
@@ -114,7 +114,7 @@ For this we need to define the initial section of an ordered set first:
     By the definition of $X$ this means that $f(w) < w$, contradicting the initial assumption that $f$ is an increasing function.
 \end{proof}
 
-\begin{lemma}\cite[Lemma 2.2, p.13]{Jec78}\label{initial-segment-isomorphism}
+\begin{lemma}\cite[Lemma 2.2]{Jec78}\label{initial-segment-isomorphism}
     No well-ordered set is isomorphic to an initial segment of itself.
 \end{lemma}
 
@@ -245,12 +245,17 @@ The notion of a \textit{transitive set} is not to be confused with that of a \te
     We say $\alpha < \beta$ if and only if $\alpha \in \beta$.
 \end{definition}
 
+We can see that the set $3 = \left\{0,\, 1,\, 2\right\}$ from before is transitive.
+We have that $2 \in 3$, but $2$ itself is defined as the set of its predecessors.
+As such we also have $\left\{0,\, 1\right\} = 2 \subseteq 3 = \left\{0,\, 1,\, 2\right\}$.
+In general all natural numbers $n$ are transitive and indeed also ordinal numbers.
+
 Ordinals are denoted by lowercase Greek letters: $\alpha,\, \beta,\, \gamma,\ldots.$
 The ordinal associated with $\left(\mathbb{N},\, \in\right)$ specifically is denoted by $\omega$.
-We know that $\omega$ is indeed an ordinal by construction.
+Just as with the individual natural numbers, we know that $\omega$ is indeed an ordinal by construction.
 It follows from the following lemma that every natural number also is an ordinal with respect to set inclusion.
 
-\begin{lemma}\cite[Lemma 2.3, p.15]{Jec78}
+\begin{lemma}\cite[Lemma 2.3]{Jec78}
     \begin{enumerate}
         \item The empty set $\varnothing$ is an ordinal.
         \item If $\alpha$ is an ordinal and $\beta \in \alpha$, then $\beta$ is an ordinal.
@@ -278,7 +283,7 @@ It follows from the following lemma that every natural number also is an ordinal
     \end{enumerate}
 \end{proof}
 
-\begin{theorem}\label{unique-ordinal}\cite[Theorem 2, p.15]{Jec78}
+\begin{theorem}\label{unique-ordinal}\cite[Theorem 2]{Jec78}
     Every well-ordered set is order-isomorphic to a unique ordinal.
 \end{theorem}
 
@@ -307,7 +312,7 @@ The idea of ordinals was introduced using the natural numbers and while that is 
 we want to think about ordinals more as a generalization of $\mathbb{N}$, rather that a direct analog.
 As the name implies, ordinals describe magnitudes of \textit{order} rather than \textit{size}.
 
-Consider for example the ordinal $\omega + 1 = \omega \cup \left\{\omega\right\}$, which describes the element coming after the ``number'' which is larger that every natural number.
+Consider for example the ordinal $\omega + 1 = \omega \cup \left\{\omega\right\}$, which describes the element coming after the ``number'' which is larger than every natural number.
 We can still define a bijective function from $\omega + 1$ to the natural numbers, so $\omega + 1$ is not larger in a \textit{cardinal} sense, but rather relates to order.
 We will not deal with the proper notion of cardinality, the size of sets, in this text, 
 however we will see in Theorem \ref{hartogs-lemma} that the distinction between cardinality and ordinals is not always clear cut.
@@ -365,12 +370,12 @@ There is a (bad) joke that goes:
     and who knows with \textit{Zorn's Lemma}.
 \end{quote}
 
-\begin{definition}[Zermelo's Well-Ordering Theorem]\cite[Theorem 15, p.39]{Jec78}\label{well-order-thm}
+\begin{definition}[Zermelo's Well-Ordering Theorem]\cite[Theorem 15]{Jec78}\label{well-order-thm}
     \newline Every set can be well ordered. 
 \end{definition}
 
 We do not provide a proof for Definition \ref{well-order-thm} in \textbf{ZFC} here directly.
-This theorem, as it turn out, is not just another regular theorem, and we will therefore also not treat it as one.
+This theorem, as it turns out, is not just another regular theorem, and we will therefore also not treat it as one.
 
 Indeed, the Well-Ordering Theorem is actually equivalent to the \hyperref[choice-axiom]{Axiom of Choice}.
 This means that if either statement is assumed to be true (and it has to be assumed since we are talking about \textit{axioms}),
@@ -379,7 +384,7 @@ This is the same methodology we will use for proving our main result, Theorem \r
 There we will show equivalence of our main statement, that a group structure exists on all arbitrary sets, with the Well-Ordering Theorem.
 As such by transitivity, this main statement is also equivalent to the Axiom of Choice.
 
-\begin{theorem}\label{well-order-thm-equivalence}\cite[Theorem 15, p.39]{Jec78}
+\begin{theorem}\label{well-order-thm-equivalence}\cite[Theorem 15]{Jec78}
     \hyperref[well-order-thm]{The Well-Ordering Theorem} is equivalent to the Axiom of Choice. %cross-reference AC definition
 \end{theorem}
 
@@ -425,6 +430,9 @@ As such by transitivity, this main statement is also equivalent to the Axiom of 
 We continue with the conclusion of this chapter, a lemma originally stated by Hartogs in a paper from 1915. % restated and proven in this form in our main paper by Hajnal and Kertész.
 Just as with Theorem \ref{well-order-thm}, this is used in the proof of our final result, Theorem \ref{main-thm}.
 Since our goal is to prove an equivalence with the \hyperref[choice-axiom]{Axiom of Choice}, we will work completely in \textbf{ZF} without \textbf{AC} in this section.
+
+The lack of \textbf{AC} is also the reason the comparability of sets is not given, another equivalence of the Axiom of Choice \cite{Har15}.Add commentMore actions
+As such we do not talk about cardinality in the traditional sense in the lemma, even though the terminology is very similar.
 
 \begin{lemma}\label{well-order-set}\cite[Appendix]{Har15}
     Let $M$ be an arbitrary set.
@@ -485,7 +493,7 @@ We follow the outline given in \cite{Haj72} for the proof of this lemma, the mor
     \end{equation}
     We will show that $\alpha$ is such that it satisfies the lemma's statement.
 
-    We can see that the right hand side of the set is precisely the set described in Lemma \ref{well-order-set}.
+    We can see that the right-hand side of this set is precisely the set described in Lemma \ref{well-order-set}.
     As such we can express the ordinal in \eqref{hartogs-lemma-ordinal} as
     $$\alpha = \bigcup \left\{\text{type}\left(R\right) + 1 \,\vert\, R \in A{_\Omega}\right\},$$
     where $\text{type}\left(R\right)$ is the order type of each well-order $R$\footnote{
@@ -506,30 +514,30 @@ We follow the outline given in \cite{Haj72} for the proof of this lemma, the mor
     the term ``$+1$'' and the union symbol in the definition of $\alpha$ make sure that both these cases are accounted for.
 
     By construction we now have that every subset associated with an order $R$ in $A_\Omega$ is isomorphic to an initial segment of $\alpha$, but not to $\alpha$ itself.
-    Further, there can not exist a bijective map from an arbitrary subset $S \subseteq A$ to $\alpha$.
+    Further, there cannot exist a bijective map from an arbitrary subset $S \subseteq A$ to $\alpha$.
     
     If such a map were to exist, we could define a well-ordering of $S$ according to $\alpha$;
     however we have already established that $S$ either has no well-order or that there exists a bijection to an initial segment of $\alpha$.
     This is a contradiction and we must have that no injective function from $\alpha$ to $A$ exists, satisfying the requirements of the lemma.
 \end{proof}
 
-\begin{remark}
-    We say that two sets $X$ and $Y$ have the same \emph{cardinality} and write 
-    \begin{equation}\label{cardinality-def}
-        \left\lvert X\right\rvert = \left\lvert Y\right\rvert
-    \end{equation}
-    if there exists a bijective map between $X$ and $Y$.
-    Further we say that $X$ has cardinality greater or equal to $Y$ and write $\left\lvert X\right\rvert \geq \left\lvert Y\right\rvert$,
-    if there exists a injective function from $Y$ to $X$ \cite[p.22]{Jec78}.
-
-    We call an ordinal $\kappa$ a \emph{cardinal} if $\left\lvert \kappa\right\rvert \neq \left\lvert \alpha\right\rvert$ for all $\alpha < \kappa$ \cite[p.24]{Jec78}.
-    The ordinal $\omega$ representing the natural numbers is the smallest infinite cardinal.
-
-    It seems tempting to use the definition of cardinality in the statement of Lemma \ref{hartogs-lemma}, 
-    saying that ``for all sets $A$ there exists an ordinal $\alpha$ with cardinality greater than $A$''.
-    However, the relation \eqref{cardinality-def} is only an equivalence relation over the universe of sets if we assume \textbf{AC}.
-    As such the comparability of sets, meaning that for any sets $\left\lvert X\right\rvert$ and $\left\lvert Y\right\rvert$ we either have
-    $\left\lvert X\right\rvert \leq \left\lvert Y\right\rvert$ or $\left\lvert X\right\rvert \geq \left\lvert Y\right\rvert$, does in general \emph{not} hold in \textbf{ZF} \cite[p.38]{Jec78}.
-    We therefore refrained from talking about cardinals here, instead opting for a more general formulation.
-\end{remark}
+% \begin{remark}
+%     We say that two sets $X$ and $Y$ have the same \emph{cardinality} and write 
+%     \begin{equation}\label{cardinality-def}
+%         \left\lvert X\right\rvert = \left\lvert Y\right\rvert
+%     \end{equation}
+%     if there exists a bijective map between $X$ and $Y$.
+%     Further we say that $X$ has cardinality greater or equal to $Y$ and write $\left\lvert X\right\rvert \geq \left\lvert Y\right\rvert$,
+%     if there exists a injective function from $Y$ to $X$ \cite[p.22]{Jec78}.
+% 
+%     We call an ordinal $\kappa$ a \emph{cardinal} if $\left\lvert \kappa\right\rvert \neq \left\lvert \alpha\right\rvert$ for all $\alpha < \kappa$ \cite[p.24]{Jec78}.
+%     The ordinal $\omega$ representing the natural numbers is the smallest infinite cardinal.
+% 
+%     It seems tempting to use the definition of cardinality in the statement of Lemma \ref{hartogs-lemma}, 
+%     saying that ``for all sets $A$ there exists an ordinal $\alpha$ with cardinality greater than $A$''.
+%     However, the relation \eqref{cardinality-def} is only an equivalence relation over the universe of sets if we assume \textbf{AC}.
+%     As such the comparability of sets, meaning that for any sets $\left\lvert X\right\rvert$ and $\left\lvert Y\right\rvert$ we either have
+%     $\left\lvert X\right\rvert \leq \left\lvert Y\right\rvert$ or $\left\lvert X\right\rvert \geq \left\lvert Y\right\rvert$, does in general \emph{not} hold in \textbf{ZF} \cite[p.38]{Jec78}.
+%     We therefore refrained from talking about cardinals here, instead opting for a more general formulation.
+% \end{remark}
 \end{document}

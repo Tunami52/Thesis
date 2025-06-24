@@ -1,7 +1,7 @@
 \documentclass[../../main.tex]{subfiles}
 \begin{document}
-The convention in this thesis will be to say \textbf{ZF} when talking about Zermelo-Fraenkel set theory \textit{without} the axiom of choice.
-When talking about the axiom of choice on its own we will say \textbf{AC}, and when talking about Zermelo-Fraenkel set theory together with the axiom of choice we use \textbf{ZFC}.
+The convention in this thesis will be to say \textbf{ZF} when talking about Zermelo-Fraenkel set theory \textit{without} the Axiom of Choice.
+When talking about the Axiom of Choice on its own we will say \textbf{AC}, and when talking about Zermelo-Fraenkel set theory together with the Axiom of Choice we use \textbf{ZFC}.
 
 We will use the convention of including $0$ at the beginning of the natural numbers $\mathbb{N}$, i.e. $\mathbb{N} = \left\{0, \, 1, \, 2\, \ldots\right\}$.
 This is a \textit{natural} choice, since we then can use $\mathbb{N}$ to mean the set described by the \hyperref[ZF7]{Axiom of Infinity}.
@@ -49,8 +49,10 @@ In that sense we think of formulas with free variables describing a \textit{prop
 \end{definition}
 
 In practice, we use classes as a tool to help us construct useful sets in \textbf{ZFC}, as elements of classes are always sets in the stricter sense.
-All sets are classes, but not all classes are sets.
-Assume that we have a fixed set $s$; we can then always construct the corresponding class $\mathbf{S} = \left\{x \,\vert\, x = s\right\}$.
+All sets are classes, but not all classes are sets, 
+Take for example the class $\mathbf{C}_x = \left\{z \,\vert\, x \in z\right\}$ which consists of all sets that contain the set $x$.
+Since we do not know what these sets $z$ might look like, except that they contain $x$, the class $\mathbf{C}_x$ is not itself a set.
+However assume that we have a fixed set $s$; we can then always construct the corresponding class $\mathbf{S} = \left\{x \,\vert\, x \in s\right\}$.
 A class which is not a set is called a \textit{proper class}.
 
 We consider to two classes to be the same if they have the same elements.
@@ -76,16 +78,16 @@ The formulation of the axioms below is based on both textbooks.
 
 \subsection{Axiom of Extensionality}\label{ZF1}
 $$\forall x\, \forall y\, \left(x = y \iff \forall z \left(z \in x \iff z \in y\right) \right)$$
-Two sets are equal if and only if they contain the same elements.\cite[\S 4.3, p.76]{Gol17}
+Two sets are equal if and only if they contain the same elements \cite[\S 4.3, p.76]{Gol17}.
 
 \subsection{Axiom of Pairs}\label{ZF2}
 $$\forall x\, \forall y\, \exists z\, \forall w\, \left( w \in z \iff \left(w = x \vee w = y \right)\right)$$
 For any two sets, there is a set whose elements are precisely these sets.
  
 We define an ordered pair $\left<x,\, y\right>$ to be the set $\left\{\left\{x\right\},\, \left\{x,\, y\right\}\right\}$.
-Further, ordered $n$-tuples are defined recursively as $\left<x_1,\, x_2,\, x_3,\ldots,\, x_n\right> = \left<x_1,\, \left<x_2,\, x_3,\ldots,\, x_n\right>\right>$.\cite[\S 4.3, pp.76, 79-80]{Gol17}
+Further, ordered $n$-tuples are defined recursively as $\left<x_1,\, x_2,\, x_3,\ldots,\, x_n\right> = \left<x_1,\, \left<x_2,\, x_3,\ldots,\, x_n\right>\right>$ \cite[\S 4.3, pp.76, 79-80]{Gol17}.
 
-Ordered pairs satisfy the property that for any sets $x$, $y$, $u$, $v$, if $\left<x,\, y\right> = \left<u,\, v\right>$, then $x = u$ and $y = v$.\cite[Theorem 4.2]{Gol17}
+Ordered pairs satisfy the property that for any sets $x$, $y$, $u$, $v$, if $\left<x,\, y\right> = \left<u,\, v\right>$, then $x = u$ and $y = v$ \cite[Theorem 4.2]{Gol17}.
 
 \subsection{Axiom Schema of Separation}\label{ZF3}
 Let $\phi(z,\ p)$ be a formula in first-order logic with free variables $z$ and $x$. Then
@@ -118,14 +120,14 @@ of a class $\mathbf{C}$ is a set, since it is a subset of all of its elements, w
 
 \subsection{The Empty Set}\label{ZF4}
 $$\exists x \forall y \ y \notin x$$
-There is a set with no elements. We call this set $\varnothing = \left\{\right\}$. \cite{Gol17}
+There is a set with no elements. We call this set $\varnothing = \left\{\right\}$ \cite[p.76]{Gol17}.
 
 This statement stands out, as it is not an axiom, the existence of the empty set also arises from the \hyperref[ZF3]{Axiom Schema of Separation}.
 We include it here for the sake of completeness.
 
 Since we can define the empty class $\varnothing = \left\{u\, \vert\, u \neq u\right\}$, the empty set is also a set.
 However this follows from $\varnothing$ being a subset of all sets and hence only under the assumption that at least one other set exists.
-The existence of that set, in turn, follows from the \hyperref[ZF7]{Axiom of Infinity}.\cite[p.6]{Jec78}
+The existence of that set, in turn, follows from the \hyperref[ZF7]{Axiom of Infinity} \cite[p.6]{Jec78}.
 
 \subsection{Axiom of Unions}\label{ZF5}
 $$\forall x \exists y \forall z \left(z \in y \iff \exists w \left(z \in w \wedge w \in x\right)\right)$$
@@ -148,7 +150,7 @@ where the existence of $\left\{x,\, y\right\}$ and $\left\{x\right\} = \left\{x,
 $$\forall x\, \exists y\, \forall z\, \left(z \in y \iff z \subseteq x\right)$$
 For any set $x$ there is a set, denoted by $\mathcal{P}(x)$ and called the power set of $x$, consisting of all subsets $s \subseteq x$.
 
-Using the axioms of \hyperref[ZF3]{Separation}, \hyperref[ZF5]{Union} and \hyperref[ZF6]{Power Set} we can define the \textit{Cartesian product} of the sets $x$ and $y$ as
+Using the Axioms of \hyperref[ZF3]{Separation}, \hyperref[ZF5]{Union} and \hyperref[ZF6]{Power Set} we can define the \textit{Cartesian product} of the sets $x$ and $y$ as
 $$x \times y = \left\{\left<u,\, v\right> \,\vert\, u \in x \vee v \in y\right\} \subseteq \mathcal{P}\left(\mathcal{P}\left(x \cup y\right)\right),$$
 and for multiple sets $x_1,\ldots,\, x_n$ as
 $$x^n = \underbrace{x_1 \times \cdots \times x_{n-1} \times x_n}_{n\ \text{times}}  = \left(x_1 \times \cdots \times x_{n-1}\right) \times x_n.$$
@@ -193,8 +195,8 @@ Consequently this restriction of $\mathbf{F}$ is also a function of sets. \cite[
 
 \subsection{Axiom of Foundation}\label{ZF9}
 $$\forall x \exists y \left(y \in x \wedge x \cap y = \varnothing \right)$$
-Every set contains an $\in$-minimal element, we call this being \textit{well-founded}.\cite[p.92]{Gol17}
-This also means there exist no infinitely descending chains of sets, such as $x_0 \ni x_1 \ni x_2 \ni \cdots$.\cite[Theorem 4.3, p.95]{Gol17}
+Every set contains an $\in$-minimal element, we call this being \textit{well-founded} \cite[p.92]{Gol17}.
+This also means there exist no infinitely descending chains of sets, such as $x_0 \ni x_1 \ni x_2 \ni \cdots$ \cite[Theorem 4.3, p.95]{Gol17}.
 
 \section{The Axiom of Choice}
 To talk about the Axiom of Choice we need to first define what a choice function is, the concept which the axiom is centered around.
@@ -217,6 +219,6 @@ This is however not possible for a family of possibly infinite subsets of $\math
 In general there does not always exist an external structure for sets which we can utilize to construct a choice function.
 The Axiom of Choice ensures that we can, but not how that choice function might look like.
 In fact \textbf{AC} is the only axiom of \textbf{ZFC} which states the existence of a mathematical object without explicitly defining it.
-This is a powerful tool, but can lead lead to fairly unintuitive results. 
+This is a powerful tool, but can lead to fairly unintuitive results. 
 As such, with \textbf{AC} there exists a way to order the real numbers where every subset has a least element (including open intervals like $\left(0,\, 1\right)$)!
 \end{document}
