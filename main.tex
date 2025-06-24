@@ -17,7 +17,7 @@
 % ebgaramond, ebgaramond-maths, graphicx, hyperref, newtxmath, xparse
 % load with 'times' option to use a Times New Roman replacement as default font
 
-\usepackage[backend=biber, style=ieee]{biblatex}
+\usepackage[backend=biber, style=ieee, sorting=nty]{biblatex}
 \addbibresource{bibliography.bib}
 % bibliography
 
@@ -73,7 +73,7 @@
 \author{Oskar Emmerich}
 % the thesis' author
 
-\title{Group Structure on arbitrary sets:\\An algebraic application of the Axiom of Choice}
+\title{Group structure on arbitrary sets:\\An algebraic application of the Axiom of Choice}
 % the thesis' title
 
 \date{\today}
@@ -91,18 +91,22 @@
 \thispagestyle{empty}
 
 \begin{abstract}
-  The thesis should include an abstract that summarizes its contents;
-  mathematical jargon can be utilized here. The typical length of an abstract is
-  between 100 and 300 words.
+  In 1972 Hajnal and Kertész published a paper proving that the Axiom of Choice is equivalent to the assertion that a groupoid structure exists every sets.
+  This thesis aims to provide the necessary background needed for this proof.
+  In a first part basic concepts in set theory such as the Well-Ordering Theorem are derived. 
+  This culminates in a lemma by Hartogs (1915) in which it is shown, without the Axiom of Choice, that for every set there exists an ordinal with cardinality greater than that of the set exists.
+  A second part then gives an introduction to model theory with the aim to give a proof for the Löwenheim-Skolem Theorem.
+  This states that every theory with an infinite model also has infinite models of any given power.
+  The final part of the thesis then examines the proof by Hajnal and Kertész in detail.
 \end{abstract}
 
 %%%%% END Abstract
 
 %%%%% BEGIN popsci description
 
-%\chapter*{Popular science description}
-%\addcontentsline{toc}{chapter}{Popular science description}
-%\subfile{sections/popular_description/popular_description}
+\chapter*{Popular science description}
+\addcontentsline{toc}{chapter}{Popular science description}
+\subfile{sections/popular_description/popular_description}
 
 %%%%% END popsci description
 

@@ -7,7 +7,7 @@ In 1902 Bertrand Russell showed with what is now known as \textit{Russell's Para
 Ernst Zermelo then created an axiomatic framework for set theory in 1905, motivated both by attempting to preserve results such as the theory of infinities by Georg Cantor, as well as avoiding paradoxes.
 These axioms, later modified by Abraham Fraenkel, became known as the nine \textit{Zermelo-Fraenkel Axioms} (ZF) as well as the \textit{Axiom of Choice} (AC)\cite[pp.66-70, 75]{Gol17}.
 
-The axiom of choice in particular is of special interest in many areas of mathematics, especially in algebra and topology, often in the form of the equivalent statement of \textit{Zorn's Lemma},
+The Axiom of Choice in particular is of special interest in many areas of mathematics, especially in algebra and topology, often in the form of the equivalent statement of \textit{Zorn's Lemma},
 which says that every non-empty partially ordered set with an upper bound has a maximal element \cite{Jec78}.
 
 Finally in 1971 András Hajnal and Andor Kertész published a paper \cite{Haj72} which provided another equivalence to AC, namely that there exists a cancellative groupoid structure on every (uncountably infinite) set.
@@ -17,27 +17,27 @@ Kertész later expanded on this, providing an alternative algebraic partial proo
 \subsection*{Thesis Structure}
 
 The aim of this thesis is to provide context to the paper \cite{Haj72} and to derive the theory needed for the proof of its main theorem:
-\begin{theorem}
+\begin{utheorem}
     The following sentences are equivalent in ZF:
     \begin{enumerate}
-        \item Axiom of Choice
+        \item The Axiom of Choice
         \item Every non-empty set admits a cancellative groupoid structure
     \end{enumerate}
-\end{theorem}
+\end{utheorem}
 We start in the first chapter by briefly giving an overview of some of the necessary background knowledge needed for the rest of the text.
 This includes stating the ZF axioms as well as the Axiom of Choice itself.
 
 Then, in the second chapter, we will explore orderings and well-orderings in the context of axiomatic set theory.
-Of special importance here will be Zorn's Lemma, a well-known equivalence of AC.
+Of special importance here will be the Well-Ordering Theorem, a well-known equivalence of AC.
 We will finish this chapter by giving a proof for a lemma by Hartogs \cite{Har15}, which is also found in \cite{Haj72}.
 This lemma states that for any arbitrary set, there always exists an ordinal which no subset of that set can be injectively mapped to.
 
 In the third chapter we will move on to an introduction to model theory. 
-This is done with the aim of proving the upwards Löwenheim-Skolem Theorem, which states that a language with a countable model also has a uncountable model.
+This is done with the aim of proving the upwards Löwenheim-Skolem Theorem, which states that a language with a countable model also has an uncountable model.
 Model theory is a very useful tool for applying results from logic to non-logic areas of mathematics, especially abstract algebra as we will see later.
 As Chang and Heisler put it in \cite{Cha90} (a very good historical introduction to model theory and the first comprehensive textbook for the subject), 
 $$\textbf{Model Theory = Universal Algebra + Logic}.$$
 
 Finally, in the fourth and final chapter, we will give a detailed proof of the aforementioned theorem by Hajnal and Kertész.
-In this, we will apply the previous results by Hartogs and Löwenheim and Skolem from Chapters \ref{orderings} and \ref{model-theory}.
+Here we will apply the previous results by Hartogs and Löwenheim and Skolem from Chapters \ref{orderings} and \ref{model-theory}.
 \end{document}

@@ -1,5 +1,53 @@
 \documentclass[../../main.tex]{subfiles}
 \begin{document}
+In mathematics we always assume that we have something called a set of axioms, 
+which kind of act like a starting point for all of the theory which is built up after.
+Axioms are in essence something which we have to assume is true, because it is impossible to prove something from nothing.
+For example. we assume that two sets of objects are the same if they contain exactly the same objects.
 
-test
+Modern mathematics, then, depend (mostly) on the so-called Zermelo-Fraenkel Axioms of set theory.
+This is a special set of seven axioms that all other mathematics is developed from.
+One of these axioms, the ``Axiom of Choice'', is of special interest for us.
+It assures us that some mathematical objects exist without giving the specifics on how to construct them.
+The Axiom of Choice in essence tells us that a certain type of function, a choice function, always exists.
+
+Imagine you are in a library where all of the books are mixed up, there is no system to any of the placements and nothing is where you would expect it to be.
+Consider now that you are given a list of all of the authors by whom the books in the library were written.
+Your task is now to pick out exactly one book by each author.
+
+This sounds possible but tedious, right? 
+You can just go through all books one-by-one and whenever you encounter a book by a new author for the first time you put that book aside.
+Soon enough you will have gone all of the books and in the pile of books you put aside one book by each author will be featured.
+
+In mathematics it unfortunately is not always as easy.
+This is because we can also consider infinite objects, in our analogy this would be a library with infinitely many books.
+
+What if one author was very productive and wrote infinitely many books?
+When going through a list of all books you could just get stuck on searching through works by that one author and never get to any other books.
+Or maybe you have a list of infinitely many authors each having written infinitely many books.
+Is there really a way to arrange the books in such a way that you could, even given infinitely much time, eventually pick out exactly one book by each author?
+
+The Axiom of Choice assures us that you can always find a way to pick out one book by each author, 
+no matter how many books there are in the library or how weird the list of authors gets.
+This is in essence what a choice function is, a function which given an author always returns a book by that author.
+The Axiom of Choice does not tell you anything about what strategy you should use however, just that such a strategy exists.
+
+The Axiom of Choice is special in other regards too.
+Namely, it is famous for its many equivalent formulations, the one we are interested in has to do with groups.
+
+A group is a set of objects together with an operation that satisfies certain properties.
+What is important here is that you can always ``smash'' two objects together and still get out another object of that same set.
+Also, whenever you have an equation with one object and the result, you are always able infer what the other object in the operation originally was.
+(Think solving for $x$ in $2 \cdot x = 4$.)
+
+Take the set of whole numbers $\left\{\cdots,\, -1,\, 0,\, 1,\, 2,\cdots\right\}$ together with addition, ``$+$'', for example, this would be a group.
+In the context of the infinite library from before, a group structure would maybe take the form of an index.
+Whenever you pick out two books you then can look up that pair in the index and it will give you the name and shelf location of a some new book.
+
+Without going into too much detail (yet), this thesis is focussed on the proving following equivalence:
+
+Saying that there is a way to define an operation for any arbitrary set such that it is a group is equivalent to saying that the Axiom of Choice is true.
+So if you are always able to define a group operation on a set you are also able to always define a choice ``book picking'' function.
+Vise-versa, if it is possible for you to create a choice function for all possible sets, 
+it is also possible for you to make a group out of every possible set.
 \end{document}
