@@ -44,5 +44,17 @@
             "args": ["--output-directory=%OUTDIR%", "%DOCFILE%"],
             "env": {}
         },
+    ],
+    "cSpell.words": [
+        "axiomatizations",
+        "Ehrenfeucht",
+        "injective",
+        "isse",
+        "Löwenheim",
+        "Ponens",
+        "Skolem",
+        "subformula",
+        "subformulas",
+        "subtheory"
     ]
 }

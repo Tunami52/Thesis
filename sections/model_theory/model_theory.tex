@@ -308,25 +308,25 @@ This is also why the \textit{axiom} label is justified.
 
 \begin{definition}[Tautology]\cite[pp.8, 24]{Cha90}
     Let $\mathcal{J}$ be a set of simple sentence statements and let $\phi$ be a formula in $\mathcal{J}$.
-    Let $\bar{a} = a_1,\ldots,\, a_n$ be a sequence of truth values, meaning each $a_i$ either has the value $t$ for \textit{true} or $f$ for \textit{false}.
+    Let $\overline{a} = a_1,\ldots,\, a_n$ be a sequence of truth values, meaning each $a_i$ either has the value $t$ for \textit{true} or $f$ for \textit{false}.
     For a such a sentence $\psi$ in $\mathcal{J}$ containing sentence symbols $S_1,\ldots,\, S_n$, 
-    an assignment of $\bar{a}$ into $\psi$ substitutes each $S_i$ with $a_i$.
+    an assignment of $\overline{a}$ into $\psi$ substitutes each $S_i$ with $a_i$.
 
-    We say that $\psi$ is a \textit{tautology in sentential logic} if and only if the value of $\psi$ is $t$ for every assignment $\bar{a}$.
+    We say that $\psi$ is a \textit{tautology in sentential logic} if and only if the value of $\psi$ is $t$ for every assignment $\overline{a}$.
 
     We say that a formula $\phi$ of a formal language $\mathcal{L}$ is \textit{a tautology of} $\mathcal{L}$, 
     if it is possible to obtain $\phi$ by substituting sentence symbols $S_i$ with formulas of $\mathcal{L}$ in a tautology in sentential logic $\psi$. 
 \end{definition}
 
 We can think of a formula in $\mathcal{J}$ as a placeholders $S_1,\ldots,\, S_n$ chained together with logical connectives.
-Then, when we evaluate it with a sequence of truth values $\bar{a}$, the formula ``terminates'' either in $t$ or $f$.
+Then, when we evaluate it with a sequence of truth values $\overline{a}$, the formula ``terminates'' either in $t$ or $f$.
 
 \begin{example}
     The formula $$\tau = \left(S_1 \rightarrow S_2\right) \vee \left(S_2 \rightarrow S_1\right)$$
     is a tautology in sentential logic.
-    No matter which value of $\bar{a} = \left<a_1,\, a_2\right>$ we choose in the set 
+    No matter which value of $\overline{a} = \left<a_1,\, a_2\right>$ we choose in the set 
     $\left\{\left<t,\, t\right>,\, \left<t,\, f\right>,\, \left<f,\, t\right>,\, \left<f,\, f\right>\right\}$ 
-    we always have that $\tau(\bar{a}) = t$.
+    we always have that $\tau(\overline{a}) = t$.
 
     Let $\mathcal{L}_{or} = \left\{+,\, -,\, \cdot,\, <,\, 0,\, 1\right\}$ be the language of ordered rings.
     Suppose that $\phi_1$ and $\phi_2$ are the two $\mathcal{L}_{or}$-formulas $v_1 + 1 < v_2$ and $v_2 \cdot v_1 = v_1$ respectively,
@@ -525,7 +525,7 @@ To effectively explore semantical ideas in different structures however,
 we first need to actually define what we consider truth in a structure to actually be.
 
 Say we have a term $t$ with (free) variables $v_1,\ldots,\, v_n$,
-and we want to know what truth value $t$ takes in some structure when we evaluate it at $\bar{a} = a_1,\ldots,\, a_n$.
+and we want to know what truth value $t$ takes in some structure when we evaluate it at $\overline{a} = a_1,\ldots,\, a_n$.
 One might think that this is function evaluation in the same sense which we usually use it, and they would be mostly correct.
 However, since we will use Definition \ref{formula-def} of formulas in defining what truth means for a structure,
 we have to be similarly careful when defining term valuation.
@@ -533,43 +533,43 @@ we have to be similarly careful when defining term valuation.
 \begin{definition}\cite[1.3.13]{Cha90}
     Let $t$ be a term in a language $\mathcal{L}$ dependent on variables $v_1,\ldots,\, v_n$.
     If $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ is an $\mathcal{L}$-structure,
-    we define the \textit{value of the term} $t(v_1,\ldots,\, v_n)$ \textit{at} $\bar{a} = \left<a_1,\ldots,\, a_n\right> \in M^n$ the following way:
+    we define the \textit{value of the term} $t(v_1,\ldots,\, v_n)$ \textit{at} $\overline{a} = \left<a_1,\ldots,\, a_n\right> \in M^n$ the following way:
     \begin{enumerate}
-        \item if $t$ is $v_i$, then $t(\bar{a}) = a_i$,
+        \item if $t$ is $v_i$, then $t(\overline{a}) = a_i$,
         \item if $t$ is the constant symbol $c$ in $\mathcal{L}$, 
-        then $t(\bar{a})$ is given by the interpretation $c^{\mathcal{M}}$,
+        then $t(\overline{a})$ is given by the interpretation $c^{\mathcal{M}}$,
         \item if $t$ is the function $f(t_1,\ldots,\, t_n)$ in $\mathcal{L}$,
-        then $t(\bar{a})$ is given by the interpretation 
-        $f^{\mathcal{M}}(t_1(\bar{a}),\ldots,\, t_n(\bar{a}))$.
+        then $t(\overline{a})$ is given by the interpretation 
+        $f^{\mathcal{M}}(t_1(\overline{a}),\ldots,\, t_n(\overline{a}))$.
     \end{enumerate}
 \end{definition}
 
 We can then define what it means for a sentence to be true in an $\mathcal{L}$-structure:
 \begin{definition}\label{model-satisfaction-def}\cite[Definition 1.1.6]{Mar02}
-    Let $\mathcal{M}$ be an $\mathcal{L}$-structure and let $\phi$ be a formula in $\mathcal{L}$ with free variables $\bar{v} = \left<v_1,\ldots,\, v_n\right>$.
-    We inductively define $\mathcal{M} \models \phi(\bar{a})$ and for $\bar{a} = \left<a_1,\ldots,\, a_n\right> \in M^n$.
+    Let $\mathcal{M}$ be an $\mathcal{L}$-structure and let $\phi$ be a formula in $\mathcal{L}$ with free variables $\overline{v} = \left<v_1,\ldots,\, v_n\right>$.
+    We inductively define $\mathcal{M} \models \phi(\overline{a})$ and for $\overline{a} = \left<a_1,\ldots,\, a_n\right> \in M^n$.
 
     \begin{enumerate}
         \item If $\phi$ is $t_1 = t_2$,
-        then $\mathcal{M} \models \phi(\bar{a})$ if and only if $t_1(\bar{a}) = t_2(\bar{a})$, 
+        then $\mathcal{M} \models \phi(\overline{a})$ if and only if $t_1(\overline{a}) = t_2(\overline{a})$, 
         \item If $\phi$ is $R\left(t_1,\ldots,\, t_{n_R}\right)$,
-        then $\mathcal{M} \models \phi(\bar{a})$ if and only if $\left<t_1(\bar{a}),\ldots,\, t_{n_R}(\bar{a})\right> \in R^{\mathcal{M}}$,
+        then $\mathcal{M} \models \phi(\overline{a})$ if and only if $\left<t_1(\overline{a}),\ldots,\, t_{n_R}(\overline{a})\right> \in R^{\mathcal{M}}$,
         \item If $\phi$ is $\lnot \psi$, 
-        then $\mathcal{M} \models \phi(\bar{a})$ if and only if $\mathcal{M} \not\models \psi(\bar{a})$,
+        then $\mathcal{M} \models \phi(\overline{a})$ if and only if $\mathcal{M} \not\models \psi(\overline{a})$,
         \item If $\phi$ is $\psi \wedge \rho$, 
-        then $\mathcal{M} \models \phi(\bar{a})$ if and only if $\mathcal{M} \models \psi(\bar{a})$ and $\mathcal{M} \models \rho(\bar{a})$,
-        \item If $\phi$ is $\exists v_i\, \psi(\bar{v},\, v_i)$,
-        then $\mathcal{M} \models \phi(\bar{a})$ if and only if there exists some element $b \in M$ such that $\mathcal{M} \models \psi(\bar{a},\, b)$
+        then $\mathcal{M} \models \phi(\overline{a})$ if and only if $\mathcal{M} \models \psi(\overline{a})$ and $\mathcal{M} \models \rho(\overline{a})$,
+        \item If $\phi$ is $\exists v_i\, \psi(\overline{v},\, v_i)$,
+        then $\mathcal{M} \models \phi(\overline{a})$ if and only if there exists some element $b \in M$ such that $\mathcal{M} \models \psi(\overline{a},\, b)$
     \end{enumerate}
 
-    We say that $\mathcal{M}$ \textit{satisfies} $\phi(\bar{a})$, whenever $\mathcal{M} \models \phi(\bar{a})$.
+    We say that $\mathcal{M}$ \textit{satisfies} $\phi(\overline{a})$, whenever $\mathcal{M} \models \phi(\overline{a})$.
 \end{definition}
 
 With this definition we followed the \hyperref[formula-def]{inductive definition of formulas},
 hence the notion of a formula should be unambiguously defined, however there are still some edge cases we need to cover.
 
 % First of all, we should note that Definition \ref{model-satisfaction-def} only accounts for sentences,
-% as formulas with free variables are always evaluated at some sequence $\bar{a} = \left<a_1,\ldots,\, a_n\right>$.
+% as formulas with free variables are always evaluated at some sequence $\overline{a} = \left<a_1,\ldots,\, a_n\right>$.
 % Secondly, a formula might not always have the same free variables as its subformulas, since quantifiers can bind variables which are free in a subformula.
 % 
 % This proposition is not needed since we require the variables v1,...,vn to be free in the definition of model satisfaction.
@@ -578,12 +578,12 @@ hence the notion of a formula should be unambiguously defined, however there are
 %     Let $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ be an $\mathcal{L}$-structure.
 %     Then the following statements hold:
 %     \begin{enumerate}
-%         \item Let $t(v_0,\ldots,\, v_p)$ be a term dependent on the variables $v_0,\ldots,\, v_p$ and let $\bar{x} = \left<x_0,\ldots,\, x_q\right>$ and $\bar{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
+%         \item Let $t(v_0,\ldots,\, v_p)$ be a term dependent on the variables $v_0,\ldots,\, v_p$ and let $\overline{x} = \left<x_0,\ldots,\, x_q\right>$ and $\overline{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
 %         such that $p \leq q$, $p \leq r$ and $x_i = y_i$ whenever $v_i$ is a variable of $t$.
-%         Then $$t(\bar{x}) = t(\bar{y}).$$
-%         \item Let $\phi$ be a formula in $\mathcal{L}$ with free and bound variables among $v_0,\ldots,\, v_p$ and let $\bar{x} = \left<x_0,\ldots,\, x_q\right>$ and $\bar{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
+%         Then $$t(\overline{x}) = t(\overline{y}).$$
+%         \item Let $\phi$ be a formula in $\mathcal{L}$ with free and bound variables among $v_0,\ldots,\, v_p$ and let $\overline{x} = \left<x_0,\ldots,\, x_q\right>$ and $\overline{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
 %         such that $p \leq q$, $p \leq r$ and $x_i = y_i$ whenever $v_i$ is a variable of $t$.
-%         Then $$\mathcal{M} \models \phi(\bar{x}) \quad \text{if and only if} \quad \mathcal{M} \models \phi(\bar{y}).$$
+%         Then $$\mathcal{M} \models \phi(\overline{x}) \quad \text{if and only if} \quad \mathcal{M} \models \phi(\overline{y}).$$
 %     \end{enumerate}
 % \end{proposition}
 
@@ -593,9 +593,9 @@ hence the notion of a formula should be unambiguously defined, however there are
     Let $\phi(v_0,\ldots,\, v_p)$ be a formula in $\mathcal{L}$ and let $t_1(v_0,\ldots,\, v_p),\ldots,\, t_p(v_0,\ldots,\, v_p)$ be terms, 
     such that none of the variables of the $t_i$s occur bound in $\phi$.
 
-    Now let $\bar{x} = \left<x_0,\ldots,\, x_p\right>$ be a sequence in $M$ and let $\phi(t_0,\ldots,\, t_p)$ be the formula in $\mathcal{L}$,
+    Now let $\overline{x} = \left<x_0,\ldots,\, x_p\right>$ be a sequence in $M$ and let $\phi(t_0,\ldots,\, t_p)$ be the formula in $\mathcal{L}$,
     where each variable $v_i$ is substituted with the corresponding term $t_i$ for $i = 0,\ldots,\, p$.
-    Then $$\mathcal{M} \models \big(\phi(t_0,\ldots,\, t_p)\big)(\bar{x}) \quad \text{if and only if} \quad \mathcal{M} \models  \phi\big(t_0(\bar{x}) ,\ldots,\, t_p(\bar{x})\big).$$
+    Then $$\mathcal{M} \models \big(\phi(t_0,\ldots,\, t_p)\big)(\overline{x}) \quad \text{if and only if} \quad \mathcal{M} \models  \phi\big(t_0(\overline{x}) ,\ldots,\, t_p(\overline{x})\big).$$
 \end{theorem}
 
 %%% TODO %%%
@@ -617,25 +617,43 @@ hence the notion of a formula should be unambiguously defined, however there are
 
 \section{The Löwenheim-Skolem Theorem}
 
-\begin{definition}[Henkin Witness]
+We now explore the completeness and compactness regarding the models of a given theory.
+This bridges the gap between syntax and semantics and as such
+the \hyperref[completeness-thm]{Extended Completeness Theorem} tells us that a theory is consistent if and only if it has a model.
+The \hyperref[compactness-thm]{Compactness Theorem} states that models of a set of sentences is closed under taking subsets:
+if a set of sentences has a model, then every finite subset of that set also has a model.
+
+What we focus on here of course is to prove the namesake of this chapter, the Löwenheim-Skolem Theorem.
+The proof of this is very straightforward and mostly a corollary of the two aforementioned theorems.
+
+\begin{definition}\label{witness-def}\cite[p.61]{Cha90}
     Let $T$ be a set of sentences in a language $\mathcal{L}$ and let $C \subseteq \mathcal{C}$ be a set of constant symbols of $\mathcal{L}$.
     We then call $C$ a \emph{set of witnesses} for $T$ if and only if there exists some constant $c \in C$, such that
     $$T \vdash \big(\exists x \, \phi(x) \rightarrow \phi(c)\big)$$
     holds for all formulas $\phi$ of $\mathcal{L}$ which have at most a single free variable $x$.
 \end{definition}
 
-\begin{lemma}\cite[Lemma 2.1.1]{Cha90}
+It should be noted that this definition relates entirely to the syntax of $\mathcal{L}$, it does not have anything to do with $\mathcal{L}$-structures as is.
+Hence the expression $\phi(c)$ also means that we have replaced all free occurrences of $x$ in $\phi(x)$ by the constant $c$.
+It is \emph{not} the evaluation of a formula as seen in Definition \ref{model-satisfaction-def}.
+
+Definition \ref{witness-def} is quite technical and also very catered to the needs of our proofs.
+We use it mainly in the following two lemmata, the proofs of which are quite lengthy and tedious as a result.
+This is the heavy lifting we have to do before applying Lemmata \ref{completeness-lemma-1} and \ref{completeness-lemma-2} in the proofs of Theorems \ref{completeness-thm} and \ref{compactness-thm}.
+Those proofs are in turn comparatively straightforward, the most of the complexity is contained in the lemmata.
+
+\begin{lemma}\label{completeness-lemma-1}\cite[Lemma 2.1.1]{Cha90}
     Let $T$ be a consistent set of sentences of a language $\mathcal{L}$ and   
     let $C$ be a set of new constant symbols not in $\mathcal{L}$ and of power $\left\lvert C \right\rvert = \left\lVert \mathcal{L} \right\rVert$.
     Then let $\overline{\mathcal{L}} = \mathcal{L} \cup C$ be the simple expansion of $\mathcal{L}$ formed by adding $C$.
     
-    Then $T$ can be expanded to a consistent set of sentences $\bar{T}$ in $\overline{\mathcal{L}}$, which has $C$ as a set of witnesses in $\overline{\mathcal{L}}$.
+    Then $T$ can be expanded to a consistent set of sentences $\overline{T}$ in $\overline{\mathcal{L}}$, which has $C$ as a set of witnesses in $\overline{\mathcal{L}}$.
 \end{lemma}
 
 \begin{proof}
     We will first define the set $C$ with cardinality $\left\lVert \mathcal{L} \right\rVert$.
     Then, similarly to how we did in the proof of Theorem \ref{lindenbaums-theorem}, 
-    we define a sequence of consistent terms $T_\xi$ based on the elements of $C$ and show that the desired set of sentences $\bar{T}$ is the union $\bigcup_{\xi < \alpha} T_\xi$.
+    we define a sequence of consistent terms $T_\xi$ based on the elements of $C$ and show that the desired set of sentences $\overline{T}$ is the union $\bigcup_{\xi < \alpha} T_\xi$.
 
     Let $\alpha$ be the cardinal $\left\lVert \mathcal{L}\right\rVert$.
     Then, for each cardinal $\beta < \alpha$ we let $c_\beta$ be a constant symbol, 
@@ -650,7 +668,7 @@ hence the notion of a formula should be unambiguously defined, however there are
 
     We now inductively define another sequence
     $$T = T_0 \subset T_1 \subset \cdots \subset T_\xi \subset \cdots,$$
-    of sets of sentences together with a sequence $\left\{d_\xi \, \vert \, \xi < \alpha\right\}$ of constants in $C$,
+    of sets of sentences together with a sequence $\left(d_\xi \, \vert \, \xi < \alpha\right)$ of constants in $C$,
     such that these satisfy the following properties:
     \begin{enumerate}[label=(\roman*)]
         \item for each $\xi$, the set $T_\xi$ is consistent in $\overline{\mathcal{L}}$;
@@ -664,17 +682,17 @@ hence the notion of a formula should be unambiguously defined, however there are
     Assume now that we have defined $T_\eta$ as above.
     We show that $T_\zeta$ is consistent for $\zeta = \eta + 1$.
 
-    Firstly we note that $T_\eta$ contains a strictly lesser than $\alpha$ amount of sentences which are not valid formulas in the original language $\mathcal{L}$ (in a cardinality sense).
-    These are all sentences which include symbols from $C$ and follows from the fact that we inductively define $T_\xi$ 
+    Firstly we note that $T_\eta$ contains a strictly lesser than $\alpha$ amount of sentences which are not valid formulas in the original language $\mathcal{L}$.
+    These are all sentences which include symbols from $C$.
     Secondly, observe that each of these sentences only contain a finite number of constant symbols from $C$.
-    Because of these two assertions, we can assume that there exists some constant $d_\eta$ in the sequence $\left\{d_\xi \, \vert \, \xi < \alpha\right\}$,
-    which has not previously occurred in any of the $T_\xi$ for $\xi < \zeta$.
+    Because of these two assertions, we can assume that there exists some constant $d_\eta$ in the sequence $\left(d_\xi \, \vert \, \xi < \alpha\right)$,
+    which has not previously occurred in any of the $T_\xi$, for $\xi < \zeta$.
 
     Now let 
     $$T_\zeta = T_\eta \cup \left\{\exists x_\eta \, \phi_\eta(x_\eta) \rightarrow \phi_\eta(d_\eta)\right\}$$
     and we assume that $T_\zeta$ is inconsistent in order to derive a contradiction.
-    This means that $$T_\eta \vdash \lnot \big(\exists x_\eta \, \phi_\eta(x_\eta) \rightarrow \phi_\eta(d_\eta)\big).$$
-    Then, using that $\phi \rightarrow \psi$ and $\phi \vee \psi$ are defined as $\lnot \left(\lnot \phi \wedge \lnot \psi\right)$ and $\lnot \phi \vee \psi$ respectively,
+    By Proposition \ref{consistency-prop}, this means that $$T_\eta \vdash \lnot \big(\exists x_\eta \, \phi_\eta(x_\eta) \rightarrow \phi_\eta(d_\eta)\big).$$
+    Then, using that $\phi \vee \psi$ and $\phi \rightarrow \psi$ are defined as $\lnot \left(\lnot \phi \wedge \lnot \psi\right)$ and $\left(\lnot \phi \vee \psi\right)$ respectively,
     we have that
     \begin{align*}
              & T_\eta \vdash \lnot \big(\exists x_\eta \, \phi_\eta(x_\eta) \rightarrow \phi_\eta(d_\eta)\big) \\
@@ -689,21 +707,21 @@ hence the notion of a formula should be unambiguously defined, however there are
 
     We now assume that $\zeta$ is a limit ordinal and that $T_\eta$ is properly defined for all $\eta <\zeta$.
     Then, since each $T_\eta$ is consistent, so is $T_\zeta = \bigcup_{\eta < \zeta} T_\eta$.
-    As such $\left\{T_\xi \, \vert \, \xi < \alpha\right\}$ is a well-defined sequence.
+    As such $\left(T_\xi \, \vert \, \xi < \alpha\right)$ is a well-defined sequence.
 
-    We now let $\bar{T}$ be the union $\bigcup_{\xi < \alpha} T_\xi$.
-    Then, as we just showed in the definition of $\left\{T_\xi \, \vert \, \xi < \alpha\right\}$,
-    $\bar{T}$ is made up of only consistent sets of sentences and is therefore also consistent in $\overline{\mathcal{L}}$,
+    We now let $\overline{T}$ be the union $\bigcup_{\xi < \alpha} T_\xi$.
+    Then, as we just showed in the definition of $\left(T_\xi \, \vert \, \xi < \alpha\right)$,
+    $\overline{T}$ is made up of only consistent sets of sentences and is therefore also consistent in $\overline{\mathcal{L}}$,
     as an extension of $T$.
 
-    Finally we show that $C$ is the set of witnesses of $\bar{T}$ in $\overline{\mathcal{L}}$.
+    Finally we show that $C$ is the set of witnesses of $\overline{T}$ in $\overline{\mathcal{L}}$.
     Suppose that $\phi$ is a formula with at most one free variable $x$ in $\overline{\mathcal{L}}$.
     We can assume that $\phi$ is $\phi_\xi$ and that $x = x_\xi$.
-    As such the sentence $\exists x_\xi \, \phi_\eta(x_\xi) \rightarrow \phi_\eta(d_\xi)$ is a member of $T_{\xi + 1}$ and thus also of $\bar{T}$.
-    Since the formula $\phi$ was arbitrary, the set $C$ is indeed a set of witnesses for $\bar{T}$. 
+    As such the sentence $$\exists x_\xi \, \phi_\xi(x_\xi) \rightarrow \phi_\xi(d_\xi)$$ is a member of $T_{\xi + 1}$ and thus also of $\overline{T}$.
+    Since the formula $\phi$ was arbitrary, the set $C$ is indeed a set of witnesses for $\overline{T}$. 
 \end{proof}
 
-\begin{lemma}\cite[Lemma 2.1.2]{Cha90}
+\begin{lemma}\label{completeness-lemma-2}\cite[Lemma 2.1.2]{Cha90}
     Let $T$ be a consistent set of sentences and let $C$ be a set of witnesses for $T$ in $\mathcal{L}$.
     Then there exists a model $\mathcal{M}$ satisfying the theory of $T$, such that every element of $\mathcal{M}$ is an interpretation of a constant $c \in C$.
 \end{lemma} 
@@ -840,21 +858,97 @@ hence the notion of a formula should be unambiguously defined, however there are
     and hence $\mathcal{M}$ is a model of the theory $T$.
 \end{proof}
 
-\begin{theorem}[Extended Completeness Theorem]\cite[Theorem 1.3.21]{Cha90}
+\begin{theorem}[Extended Completeness Theorem]\label{completeness-thm}\cite[Theorem 1.3.21]{Cha90}
     Let $\Sigma$ be a set of sentences in $\mathcal{L}$.
     Then $\Sigma$ is consistent if and only if $\Sigma$ has a model.
 \end{theorem}
 
-\begin{theorem}[Downward Löwenheim-Skolem Theorem]\label{down-lowenheim-skolem}\cite[Corollary 2.1.4]{Cha90}
-    Every consistent theory $T$ in $\mathcal{L}$ has a model of power at most $\left\lVert \mathcal{L} \right\rVert$.
-\end{theorem}
+\begin{proof}
+    %Show that model -> consistency
+    Let $\mathcal{M}$ be a model of $\Sigma$ and assume towards a contradiction that $\Sigma$ is inconsistent.
+    Then by Proposition , there exits a sentence $\phi \in \Sigma$, such that $\Sigma \vdash \lnot\phi$.
+    This also means that $\mathcal{M} \models \phi$ and $\mathcal{M} \models \lnot \phi$.
+    However this is a violation of Definition \ref{model-satisfaction-def} and therefore $\Sigma$ must be consistent.
 
-\begin{theorem}[Compactness Theorem]\cite[Theorem 1.3.22]{Cha90}
+    We now assume that $\Sigma$ is a consistent set of sentences and want to show that a model $\mathcal{M}$ of $\Sigma$ exists.
+    Consider extension $\overline{\Sigma}$ and $\overline{\mathcal{L}}$ of $\Sigma$ and $\mathcal{L}$ respectively,
+    such that $\overline{\mathcal{L}}$ has witnesses in $\overline{\Sigma}$, which is possible by Lemma \ref{completeness-lemma-1}.
+
+    Using Lemma \ref{completeness-lemma-2} we construct a model $\mathcal{N}$ of $\overline{\Sigma}$.
+    Now, $\mathcal{N}$ is an $\overline{\mathcal{L}}$-structure.
+    Hence we let $\mathcal{M}$ be the restriction of $\mathcal{N}$ to $\mathcal{L}$.
+    Because $\Sigma$ does not contain any sentences of $\overline{\mathcal{L}}$,
+    we have that $\mathcal{M}$ is an $\mathcal{L}$-structure and a model of $\Sigma$.
+\end{proof}
+
+\begin{theorem}[Compactness Theorem]\label{compactness-thm}\cite[Theorem 1.3.22]{Cha90}
     A set of sentences $\Sigma$ has a model if and only if every finite subset of $\Sigma$ has a model.
 \end{theorem}
 
-\begin{theorem}[Upward Löwenheim-Skolem Theorem]\label{up-lowenheim-skolem}\cite[Corollary 2.1.6]{Cha90}
-    If $T$ has infinite models, then it has infinite models of any given power $\alpha \geq \left\lVert \mathcal{L} \right\rVert$.
+\begin{proof}
+    By Proposition \ref{consistency-prop} the set $\Sigma$ is consistent if and only if every finite subset of $\Sigma$ is consistent.
+    This combined with Theorem \ref{completeness-thm} means that if every finite subset of $\Sigma$ has a model, it is also consistent.
+    Hence $\Sigma$ itself is consistent and has a model.
+    By that same line of reasoning every finite subset of $\Sigma$ has a model if $\Sigma$ is consistent.
+\end{proof}
+
+We now come to our final theorem and the namesake of this section.
+Assume we have a theory $T$ in a language $\mathcal{L}$.
+The Löwenheim-Skolem Theorem then relates the power of models of a $T$ to the power of $\mathcal{L}$ itself.
+
+We treat the theorem in two separate parts.
+The Downward Löwenheim-Skolem Theorem assures us that there exist models of $T$ with power \emph{at most} $\left\lVert \mathcal{L}\right\rVert$.
+As such, if we have a model of $T$ with cardinality greater than $\left\lVert \mathcal{L} \right\rVert$, 
+we can \emph{move down} and know that a model with lower power exists.
+
+Similarly, the Upward Löwenheim-Skolem Theorem states that if $T$ has an infinite model, it in fact has models of arbitrary infinite cardinality.
+This means that if we are able to model $T$ using, say, the natural numbers as the underlying set,
+we are also know that that an uncountable model of $T$ exists.
+This is the property we later make use of in the proof on Theorem \ref{main-thm}.
+As such the the Upward Löwenheim-Skolem Theorem allows us to \emph{move up} in cardinality for models of $T$.
+
+\begin{theorem}[Downward Löwenheim-Skolem Theorem]\label{down-lowenheim-skolem}\cite[Corollary 2.1.4]{Cha90}
+    Every consistent theory $T$ in a language $\mathcal{L}$ has a model of power at most $\left\lVert \mathcal{L} \right\rVert$.
 \end{theorem}
 
+\begin{proof}
+    We modify the proof of Theorem \ref{completeness-thm} using arguments from Lemma \ref{completeness-lemma-1}.
+
+    Let $\left\lVert \mathcal{L} \right\rVert = \alpha$.
+    We again consider the simple extension of $\mathcal{L}$ by a set of constants, such that $\overline{\mathcal{L}} = \mathcal{L} \cup C$.
+    Then by Lemma \ref{completeness-lemma-1} $T$ can be expanded to a consistent set of sentences $\overline{T}$ in $\overline{\mathcal{L}}$, 
+    such that $\overline{T}$ has $C$ as a set of witnesses.
+    As in the proof of Lemma \ref{completeness-lemma-1} we can construct this set of constants $C$ in a way where the cardinality of $C$ is $\left\lvert C\right\rvert = \alpha$.
+    This means that the power of $\overline{\mathcal{L}}$ also is $\alpha$.
+
+    By Lemma \ref{completeness-lemma-2} the set $\overline{T}$ has a model $\mathcal{N}$ in $\overline{\mathcal{L}}$.
+    Hence we consider the model $\mathcal{M}$ which is the restriction of $\mathcal{N}$ to $\mathcal{L}$.
+    We have already shown in the proof of Theorem \ref{completeness-thm} that $\mathcal{M}$ is indeed a model of $T$.
+    Further, since $\left\lVert \mathcal{L} \right\rVert = \alpha$ we have that $\mathcal{M}$ has power of at most $\alpha$.
+\end{proof}
+
+\begin{theorem}[Upward Löwenheim-Skolem Theorem]\label{up-lowenheim-skolem}\cite[Corollary 2.1.6]{Cha90}
+    If a theory $T$ has infinite models, then it has infinite models of any given power $\alpha \geq \left\lVert \mathcal{L} \right\rVert$.
+\end{theorem}
+
+\begin{proof}
+    Consider a set $C = \left\{c_\xi \,\vert\, \xi < \alpha\right\}$ of constant symbols $c_\xi$ which are not part of the language $\mathcal{L}$.
+    We define a set of sentences $\Sigma$ by
+    $$\Sigma = T \cup \left\{\lnot (c_\xi = c_\zeta) \,\vert\, \xi < \zeta < \alpha\right\}.$$
+    Further, note that every finite subset $\Sigma' \subset \Sigma$ also only contains a finite number of constants $c_\xi$.
+    Hence every infinite model $\mathcal{M}$ of $T$ can be extended to a model $\mathcal{M}'$ of $\Sigma'$.
+
+    It then follows from Theorem \ref{compactness-thm} that $\Sigma$ itself also has a model $\mathcal{N}$.
+    By the \hyperref[down-lowenheim-skolem]{Downward Löwenheim-Skolem Theorem} this model   $\mathcal{N}$ has power of at most
+    $$\left\lVert \mathcal{L} \cup \left\{c_\xi \,\vert\, \xi < \alpha\right\}\right\rVert = \alpha.$$
+    However, the underlying set $N$ of $\mathcal{N}$ must have unique interpretations for each symbol in $\left\{c_\xi \,\vert\, \xi < \alpha\right\}$.
+    As such we have that the cardinality of $N$ satisfies
+    $$\alpha \leq \left\lvert N\right\rvert$$
+    and indeed see that $\mathcal{N}$ exactly has power $\left\lvert N\right\rvert$.
+\end{proof}
+
+Lastly it should be pointed out, that we do indeed use the Axiom of Choice in the last proof.
+They way we arrange the constants in a sequence is not always possible without \textbf{AC}.
+Additionally the comparability of sets is not given in \textbf{ZF}, which is the property that $\left\lvert X\right\rvert \leq \left\lvert Y\right\rvert$ or $\left\lvert X\right\rvert \geq \left\lvert Y\right\rvert$ holds for all set $X$ and $Y$.
+This is something the theorem implicitly assumes in its formulation.
 \end{document}
