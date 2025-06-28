@@ -211,13 +211,59 @@ For the classification we utilize order preserving functions; this is especially
 \begin{example}\cite[Exercise 2.3]{Ros82}
     We denote the order type of the rational numbers $\mathbb{Q}$ under the usual order by $\eta$.
     Then the punctured rationals $\mathbb{Q} \setminus \left\{0\right\}$ with the usual ordering also have order type $\eta$.
-\end{example}
-%%
-%% \\TODO
-\textbf{Oskar:}
 
-This is still left to do, I have focussed on writing Chapter 3 for now.
-There is a similar theorem in the Jech Set Theory book \cite{Jec78} though, which might be helpful.
+    We use the fact that both $\mathbb{Q}$ and $\mathbb{Q} \setminus 0$ are countable.
+    As such we can define 
+    \begin{align*}
+        & x_1,\, x_2,\ldots,\, x_i,\ldots \\
+        \text{and} \quad & y_1,\, y_2,\ldots,\, y_i,\ldots
+    \end{align*}
+    as the sequences which enumerate $\mathbb{Q}$ and $\mathbb{Q} \setminus 0$ respectively.
+    Such an enumeration could for example be the well-known sequence 
+    $$0,\, 1,\, -1,\, 2,\, -2,\, \frac{1}{2},\, -\frac{1}{2},\, \frac{1}{3},\, -\frac{1}{3}, \frac{2}{3},\ldots$$
+    for $\mathbb{Q}$ and $1,\, -1,\, \frac{1}{2},\ldots$ for $\mathbb{Q} \setminus 0$.
+
+    We now define a function $f: \mathbb{Q} \to \mathbb{Q} \setminus 0$ inductively:
+    \begin{enumerate}
+        \item For $i=1$, we let $f(x_1) = y_1$,
+        \item Say $f$ is defined for all $x_j$ with $j < i$.
+        Then $f(x_i)$ maps to the least $y_k$ (with respect to its index),
+        such that $f(x_1),\ldots,\, f(x_i)$ is order preserving with respect to the strict order relation $<$.
+    \end{enumerate}
+    Clearly $f$ is order preserving by construction.
+    Further, since we referred to the strict ordering $<$, as opposed to the weak order relation $\leq$,
+    we must have that $f$ is injective.
+    Left to show now is that $f$ is also surjective.
+
+    Let $y_i$ be some element in the sequence enumerating $\mathbb{Q} \setminus 0$.
+    We now show that $y_i$ has a preimage in $f$.
+    Say that $f$ has been defined up to $x_n$, then there are three cases.
+    We must have that either $$y_i < f(x_j)\quad \text{or} \quad f(x_j) < y_i$$ for all $j \leq k$ or $$f(x_j) < y_i < f(x_k)$$ for some $h,\, k \leq n$.
+    In the latter case we assume that $f(x_j)$ is the largest element and $f(x_k)$ is the smallest element for which this holds.
+
+    We have that $\mathbb{Q}$ has no maximal or minimal element.
+    Hence there exists some element $x_m$ in the first sequence, such that $x_m$ is larger/smaller than all $x_j$ for $j < m$.
+    Further, since $n$ is finite, we can assume that it is the first such element in the sequence.
+    Therefore, in the first two cases, we must have $f(x_m) = y_i$.
+
+    Now assume that $f(x_j) < y_i < f(x_k)$ for some $h,\, k \leq n$.
+    Since $\mathbb{Q}$ is dense, there exists some $x_m$ such that $x_j < x_m < x_k$.
+    We again can assume that $x_m$ is the first such element in the sequence enumerating $\mathbb{Q}$.
+    As such we have that $f$ maps $x_m$ to $y_i$.
+
+    With this we have all cases covered.
+    As such every element $y_i$ in the sequence enumerating $\mathbb{Q} \setminus 0$ has a preimage in $f$.
+    Because $f$ is also surjective, this means that $f$ is in fact a bijection.
+    Hence we have defined an order isomorphism between $\mathbb{Q}$ and $\mathbb{Q} \setminus 0$.
+\end{example}
+
+Note that in the last example we are able to construct a similar function for any two countable dense orderings.
+This means that any countable and densely ordered set has order type $\eta$.
+
+% \textbf{Oskar:}
+% 
+% This is still left to do, I have focussed on writing Chapter 3 for now.
+% There is a similar theorem in the Jech Set Theory book \cite{Jec78} though, which might be helpful.
 
 \section{Ordinals}\label{ordinals-section}
 There are several ways to define the natural numbers $\mathbb{N}$, the way we do it here, and the way generally used in set theory, is to use the \hyperref[ZF7]{Axiom of Infinity}, motivated by the Peano Axioms.
