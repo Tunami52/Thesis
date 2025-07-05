@@ -633,14 +633,14 @@ The proof of this is very straightforward and mostly a corollary of the two afor
     holds for all formulas $\phi$ of $\mathcal{L}$ which have at most a single free variable $x$.
 \end{definition}
 
-It should be noted that this definition relates entirely to the syntax of $\mathcal{L}$, it does not have anything to do with $\mathcal{L}$-structures as is.
+It should be noted that this definition relates entirely to the syntax of $\mathcal{L}$, it does not have anything to do with $\mathcal{L}$-structures.
 Hence the expression $\phi(c)$ also means that we have replaced all free occurrences of $x$ in $\phi(x)$ by the constant $c$.
 It is \emph{not} the evaluation of a formula as seen in Definition \ref{model-satisfaction-def}.
 
 Definition \ref{witness-def} is quite technical and also very catered to the needs of our proofs.
 We use it mainly in the following two lemmata, the proofs of which are quite lengthy and tedious as a result.
 This is the heavy lifting we have to do before applying Lemmata \ref{completeness-lemma-1} and \ref{completeness-lemma-2} in the proofs of Theorems \ref{completeness-thm} and \ref{compactness-thm}.
-Those proofs are in turn comparatively straightforward, the most of the complexity is contained in the lemmata.
+Those proofs are in turn comparatively straightforward; most of the complexity is contained in the lemmata.
 
 \begin{lemma}\label{completeness-lemma-1}\cite[Lemma 2.1.1]{Cha90}
     Let $T$ be a consistent set of sentences of a language $\mathcal{L}$ and   
@@ -658,7 +658,7 @@ Those proofs are in turn comparatively straightforward, the most of the complexi
     Let $\alpha$ be the cardinal $\left\lVert \mathcal{L}\right\rVert$.
     Then, for each cardinal $\beta < \alpha$ we let $c_\beta$ be a constant symbol, 
     such that $c_\beta \neq c_\gamma$ holds for all cardinals $\gamma$ where $\beta < \gamma < \alpha$.
-    We can now define set $C = \left\{c_\beta \,\vert\, \beta < \alpha\right\}$ 
+    We can now define the set $C = \left\{c_\beta \,\vert\, \beta < \alpha\right\}$ 
     and let $\overline{\mathcal{L}}$ be the simple extension $\overline{\mathcal{L}} = \mathcal{L} \cup C$.
 
     Since $\left\lVert \mathcal{L}\right\rVert$ is at least countably infinite by the \hyperref[language-def]{definition of the power of a language},
@@ -754,17 +754,17 @@ Those proofs are in turn comparatively straightforward, the most of the complexi
         For each $n_R$-ary relation symbol $R$ in $\mathcal{L}$,
         we define a relation $R' \subseteq C^{n_R}$ on the set $C$ such that
         \begin{equation}\label{congruence-eq}
-            \left<c_1,\cdots,\,c_{n_R}\right> \in R' \iff R(c_1,\cdots,\,c_{n_R}) \in T.
+            \left<c_1,\ldots,\,c_{n_R}\right> \in R' \iff R(c_1,\ldots,\,c_{n_R}) \in T.
         \end{equation}
         We have that $\sim$ is a \emph{congruence relation} for the relation $R'$.
-        This means that if we have $\left<c_1,\cdots,\,c_{n_R}\right> \in R'$ and $c_i \sim d_i$ for elements $c_i,\, d_i, \in C,\, i = 1,\cdots,\, n_{n_R}$, 
-        it follows that $\left<d_1,\cdots,\,d_{n_R}\right> \in R'$.
+        This means that if we have $\left<c_1,\ldots,\,c_{n_R}\right> \in R'$ and $c_i \sim d_i$ for elements $c_i,\, d_i, \in C,\, i = 1,\ldots,\, n_{n_R}$, 
+        it follows that $\left<d_1,\ldots,\,d_{n_R}\right> \in R'$.
         
         More formally the \hyperref[identity-axioms]{Identity Axioms} ensure that
-        $$\vdash R(c_1,\cdots,\,c_{n_R}) \wedge (c_1 = d_1) \wedge \cdots \wedge (c_{n_R} = d_{n_R}) \rightarrow R(d_1,\cdots,\,d_{n_R}).$$
+        $$\vdash R(c_1,\ldots,\,c_{n_R}) \wedge (c_1 = d_1) \wedge \cdots \wedge (c_{n_R} = d_{n_R}) \rightarrow R(d_1,\ldots,\,d_{n_R}).$$
 
         We now define the interpretation $R^\mathcal{M}$ of $R$ on $A$ by
-        $$\left<\tilde{c}_1,\cdots,\,\tilde{c}_{n_R}\right> \in R^\mathcal{M} \iff R(c_1,\cdots,\,c_{n_R}) \in T$$
+        $$\left<\tilde{c}_1,\ldots,\,\tilde{c}_{n_R}\right> \in R^\mathcal{M} \iff R(c_1,\ldots,\,c_{n_R}) \in T$$
         and have by \eqref{congruence-eq} that $R^\mathcal{M}$ is not dependent on the choice of representative $c$ for each equivalence class $\tilde{c}$.
 
         \item \label{lemma-proof-step-2} \textbf{Interpretations of constants} $d \in \mathcal{C}$
@@ -792,13 +792,13 @@ Those proofs are in turn comparatively straightforward, the most of the complexi
         Then, as $T$ has witnesses in $C$, it follows that $\big(f(c_1,\ldots,\, c_{n_f}) = c\big) \in T$ for some constant $c \in C$.
         By the Identity Axioms
         \begin{multline}\label{function-congruence-eq}
-            \vdash f(c_1,\cdots,\,c_{n_f}) = c \wedge (c_1 = d_1) \wedge \cdots \wedge (c_{n_R} = d_{n_R}) \wedge (c = d) \\
-            \rightarrow f(d_1,\cdots,\,d_{n_f})= d.
+            \vdash f(c_1,\ldots,\,c_{n_f}) = c \wedge (c_1 = d_1) \wedge \cdots \wedge (c_{n_R} = d_{n_R}) \wedge (c = d) \\
+            \rightarrow f(d_1,\ldots,\,d_{n_f})= d.
         \end{multline}
         and as such the value of the function is unique with respect to the equivalence classes of $C$.
 
         Finally, we define the interpretation of $f$ in $\mathcal{M}$ by 
-        $$f^\mathcal{M}(\tilde{c}_1,\cdots,\,\tilde{c}_{n_f}) = \tilde{c} \iff \big(f(c_1,\cdots,\,c_{n_f}) = c\big) \in T.$$
+        $$f^\mathcal{M}(\tilde{c}_1,\ldots,\,\tilde{c}_{n_f}) = \tilde{c} \iff \big(f(c_1,\ldots,\,c_{n_f}) = c\big) \in T.$$
     \end{enumerate}
     We have constructed an $\mathcal{L}$-structure $\mathcal{M}$,
     of which the underlying set $A$ consists entirely out of the equivalence classes $\tilde{c}$ of $C$ with respect to the relation $\sim$.
@@ -815,12 +815,12 @@ Those proofs are in turn comparatively straightforward, the most of the complexi
     We have that \eqref{lemma-proof-term-model} already holds for $t = d$ and $t = f(d_1,\ldots,\, d_{f_n})$ by steps \ref{lemma-proof-step-2} and \ref{lemma-proof-step-3} above,
     where $d,\, d_1,\ldots,\, d_{f_n} \in \mathcal{C}$ are constants.
     Additionally \eqref{function-congruence-eq} assures us that all functions are well defined in $\mathcal{M}$, 
-    meaning that we can extent \eqref{lemma-proof-term-model} to hold for all terms $t$.
+    meaning that we can extend \eqref{lemma-proof-term-model} to hold for all terms $t$.
 
     We now also have that
     \begin{align}
         \mathcal{M} \models t_1 = t_2  &\iff (t_1 = t_2) \in T, \label{lemma-proof-term-eqality}\\
-        \mathcal{M} \models R^\mathcal{M}\left(t_1,\cdots,\,t_{n_R}\right) &\iff R(t_1,\cdots,\,t_{n_R}) \in T \ \label{lemma-proof-term-relation}
+        \mathcal{M} \models R^\mathcal{M}\left(t_1,\ldots,\,t_{n_R}\right) &\iff R(t_1,\ldots,\,t_{n_R}) \in T \ \label{lemma-proof-term-relation}
     \end{align}
     for bound terms $t_1,\, t_2, \ldots,\, t_{n_R}$ following from step \ref{lemma-proof-step-1} above and the fact that $T$ has witnesses in $C$.
 
@@ -866,7 +866,7 @@ Those proofs are in turn comparatively straightforward, the most of the complexi
 \begin{proof}
     %Show that model -> consistency
     Let $\mathcal{M}$ be a model of $\Sigma$ and assume towards a contradiction that $\Sigma$ is inconsistent.
-    Then by Proposition , there exits a sentence $\phi \in \Sigma$, such that $\Sigma \vdash \lnot\phi$.
+    Then by Proposition \ref{consistency-prop}, there exists a sentence $\phi \in \Sigma$, such that $\Sigma \vdash \lnot\phi$.
     This also means that $\mathcal{M} \models \phi$ and $\mathcal{M} \models \lnot \phi$.
     However this is a violation of Definition \ref{model-satisfaction-def} and therefore $\Sigma$ must be consistent.
 
@@ -905,7 +905,7 @@ Similarly, the Upward Löwenheim-Skolem Theorem states that if $T$ has an infini
 This means that if we are able to model $T$ using, say, the natural numbers as the underlying set,
 we are also know that that an uncountable model of $T$ exists.
 This is the property we later make use of in the proof on Theorem \ref{main-thm}.
-As such the the Upward Löwenheim-Skolem Theorem allows us to \emph{move up} in cardinality for models of $T$.
+As such the Upward Löwenheim-Skolem Theorem allows us to \emph{move up} in cardinality for models of $T$.
 
 \begin{theorem}[Downward Löwenheim-Skolem Theorem]\label{down-lowenheim-skolem}\cite[Corollary 2.1.4]{Cha90}
     Every consistent theory $T$ in a language $\mathcal{L}$ has a model of power at most $\left\lVert \mathcal{L} \right\rVert$.
