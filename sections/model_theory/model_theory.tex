@@ -511,6 +511,7 @@ After this we move on to actually using these language to construct structures a
     \end{enumerate}
     In the case that $N \subseteq M$, 
     we say that $\mathcal{N}$ is a \textit{substructure} of $\mathcal{M}$ and that $\mathcal{M}$ is an \textit{extension} of $\mathcal{N}$.
+    A surjective $\mathcal{L}$-embedding, meaning the function $\mu$ is a bijection, is called an $\mathcal{L}$-\emph{isomorphism}.
 \end{definition}
 
 \begin{example}\cite[p.8]{Mar02}
@@ -565,53 +566,88 @@ We can then define what it means for a sentence to be true in an $\mathcal{L}$-s
     We say that $\mathcal{M}$ \textit{satisfies} $\phi(\overline{a})$, whenever $\mathcal{M} \models \phi(\overline{a})$.
 \end{definition}
 
-With this definition we followed the \hyperref[formula-def]{inductive definition of formulas},
-hence the notion of a formula should be unambiguously defined, however there are still some edge cases we need to cover.
+The following propositions make sure that Definition \ref{model-satisfaction-def} is well-defined.
+As such we ensure that model satisfaction of a formula is only dependent on the variables which are actually free in said formula.
+We also have that can restrict $\mathcal{L}$-structures and still have certain types of formulas be true.
+Both of the following propositions follow from induction on Definitions \ref{term-def}, \ref{formula-def} of terms and formulas.
 
+\begin{proposition}\cite[Proposition 1.3.16]{Cha90}
+    Let $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ be an $\mathcal{L}$-structure.
+    Then the following statements hold:
+    \begin{enumerate}
+        \item Let $t(v_0,\ldots,\, v_p)$ be a term dependent on the variables $v_0,\ldots,\, v_p$ and let $\overline{x} = \left<x_0,\ldots,\, x_q\right>$ and $\overline{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
+        such that $p \leq q$, $p \leq r$ and $x_i = y_i$ whenever $v_i$ is a variable of $t$.
+        Then $$t(\overline{x}) = t(\overline{y}).$$
+        \item Let $\phi$ be a formula in $\mathcal{L}$ with free and bound variables among $v_0,\ldots,\, v_p$ and let $\overline{x} = \left<x_0,\ldots,\, x_q\right>$ and $\overline{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
+        such that $p \leq q$, $p \leq r$ and $x_i = y_i$ whenever $v_i$ is a variable of $t$.
+        Then $$\mathcal{M} \models \phi(\overline{x}) \quad \text{if and only if} \quad \mathcal{M} \models \phi(\overline{y}).$$
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}\cite[Proposition 1.1.8]{Mar02}
+        Suppose that $\mathcal{M}$ and $\mathcal{N}$ are two $\mathcal{L}$-structures with underlying sets $M$ and $N$ respectively and that $\mathcal{M}$ is a substructure of $\mathcal{N}$.
+        Then, for $\overline{a} \in M$ and a quantifier-free formula $\phi(\overline{v})$ of $\mathcal{L}$,
+        $\mathcal{M} \models \phi(\overline{a})$ if and only if $\mathcal{N} \models \phi(\overline{a})$.
+\end{proposition}
+
+% With this definition we followed the \hyperref[formula-def]{inductive definition of formulas},
+% hence the notion of a formula should be unambiguously defined, however there are still some edge cases we need to cover.
+% 
 % First of all, we should note that Definition \ref{model-satisfaction-def} only accounts for sentences,
 % as formulas with free variables are always evaluated at some sequence $\overline{a} = \left<a_1,\ldots,\, a_n\right>$.
 % Secondly, a formula might not always have the same free variables as its subformulas, since quantifiers can bind variables which are free in a subformula.
 % 
 % This proposition is not needed since we require the variables v1,...,vn to be free in the definition of model satisfaction.
 %
-% \begin{proposition}\cite[Proposition 1.3.16]{Cha90}
+
+
+% \begin{theorem}\cite[Proposition 1.3.16]{Cha90}
 %     Let $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ be an $\mathcal{L}$-structure.
-%     Then the following statements hold:
-%     \begin{enumerate}
-%         \item Let $t(v_0,\ldots,\, v_p)$ be a term dependent on the variables $v_0,\ldots,\, v_p$ and let $\overline{x} = \left<x_0,\ldots,\, x_q\right>$ and $\overline{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
-%         such that $p \leq q$, $p \leq r$ and $x_i = y_i$ whenever $v_i$ is a variable of $t$.
-%         Then $$t(\overline{x}) = t(\overline{y}).$$
-%         \item Let $\phi$ be a formula in $\mathcal{L}$ with free and bound variables among $v_0,\ldots,\, v_p$ and let $\overline{x} = \left<x_0,\ldots,\, x_q\right>$ and $\overline{y} = \left<y_0,\ldots,\, y_r\right>$ be sequences in $M$,
-%         such that $p \leq q$, $p \leq r$ and $x_i = y_i$ whenever $v_i$ is a variable of $t$.
-%         Then $$\mathcal{M} \models \phi(\overline{x}) \quad \text{if and only if} \quad \mathcal{M} \models \phi(\overline{y}).$$
-%     \end{enumerate}
-% \end{proposition}
+% 
+%     Let $\phi(v_0,\ldots,\, v_p)$ be a formula in $\mathcal{L}$ and let $t_1(v_0,\ldots,\, v_p),\ldots,\, t_p(v_0,\ldots,\, v_p)$ be terms, 
+%     such that none of the variables of the $t_i$s occur bound in $\phi$.
+% 
+%     Now let $\overline{x} = \left<x_0,\ldots,\, x_p\right>$ be a sequence in $M$ and let $\phi(t_0,\ldots,\, t_p)$ be the formula in $\mathcal{L}$,
+%     where each variable $v_i$ is substituted with the corresponding term $t_i$ for $i = 0,\ldots,\, p$.
+%     Then $$\mathcal{M} \models \big(\phi(t_0,\ldots,\, t_p)\big)(\overline{x}) \quad \text{if and only if} \quad \mathcal{M} \models  \phi\big(t_0(\overline{x}) ,\ldots,\, t_p(\overline{x})\big).$$
+% \end{theorem}
 
-\begin{theorem}\cite[Proposition 1.3.16]{Cha90}
-    Let $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ be an $\mathcal{L}$-structure.
+We can also define a type of equivalence between $\mathcal{L}$-structures.
 
-    Let $\phi(v_0,\ldots,\, v_p)$ be a formula in $\mathcal{L}$ and let $t_1(v_0,\ldots,\, v_p),\ldots,\, t_p(v_0,\ldots,\, v_p)$ be terms, 
-    such that none of the variables of the $t_i$s occur bound in $\phi$.
+\begin{definition}\label{elementary-eq-def}\cite[Definition 1.1.9]{Mar02}
+    Two $\mathcal{L}$-structures $\mathcal{M}$ and $\mathcal{N}$ are called \emph{elementary equivalent} if
+    $$\mathcal{M} \models \phi \quad \text{if and only if} \quad \mathcal{N} \models \phi$$
+    for all sentences $\phi$ of $\mathcal{L}$.
+\end{definition}
 
-    Now let $\overline{x} = \left<x_0,\ldots,\, x_p\right>$ be a sequence in $M$ and let $\phi(t_0,\ldots,\, t_p)$ be the formula in $\mathcal{L}$,
-    where each variable $v_i$ is substituted with the corresponding term $t_i$ for $i = 0,\ldots,\, p$.
-    Then $$\mathcal{M} \models \big(\phi(t_0,\ldots,\, t_p)\big)(\overline{x}) \quad \text{if and only if} \quad \mathcal{M} \models  \phi\big(t_0(\overline{x}) ,\ldots,\, t_p(\overline{x})\big).$$
-\end{theorem}
+This is important, since like with algebraic structures we are more interested in the properties an $\mathcal{L}$-structure has rather how we name its elements.
+Definition \ref{elementary-eq-def} is very powerful when comparing models, this is used in Theorem \ref{elementary-eq-th} for example.
+The notion of an $\mathcal{L}$-isomorphism is more powerful, as the following proposition shows.
+Two isomorphic $\mathcal{L}$-structure are always elementary equivalent, however the converse only holds when the structures are finite \cite[Proposition 1.3.19]{Cha90}
 
-%%% TODO %%%
-% Additional properties of formula satisfaction
-% Semantical consequence
-% Add examples of structures
+\begin{proposition}\label{elementary-eq-prop}\cite[Theorem 1.1.10]{Mar02}
+    Let $\mathcal{M}$ and $\mathcal{N}$ be two $\mathcal{L}$-structures and suppose that $h: \mathcal{M} \to \mathcal{N}$ is an isomorphism.
+    Then $\mathcal{M}$ and $\mathcal{N}$ are also elementary equivalent.
+\end{proposition}
+The proof of Proposition \ref{elementary-eq-prop} follows from Definition \ref{formula-def} of formulas, we omit it here for reasons of brevity.
+The full proof can be found in \cite{Mar02}.
+An important takeaway from it however, is that it shows that terms are ``well-behaved'' with respect to model satisfaction.
+
+Suppose that $\phi(\overline{v})$ is a formula with free variables $\overline{v} = \left<v_0,\ldots,\, v_p\right>$ in the language $\mathcal{L}$ and let $t_1(\overline{v}),\ldots,\, t_p(\overline{v})$ be terms, 
+such that none of the variables of the $t_i$s occur bound in $\phi$.
+If $\mathcal{M}$ is an $\mathcal{L}$-structure,
+terms being well-behaved then means that $\mathcal{M} \models \big(\phi(t_0,\ldots,\, t_p)\big)(\overline{x})$ if and only if $\mathcal{M} \models  \phi\big(t_0(\overline{x}) ,\ldots,\, t_p(\overline{x})\big)$,
+Here $\overline{x} = \left<x_0,\ldots,\, x_p\right>$ is a sequence in $M$ and $\phi(t_0,\ldots,\, t_p)$ is the formula in $\mathcal{L}$ where each variable $v_i$ is substituted with the corresponding term $t_i$ for $i = 0,\ldots,\, p$.
 
 \subsection{Theories}
 \begin{definition}[Theory]\cite[\S.1.2]{Mar02}\cite[\S 1.4]{Cha90}
     We call a set $T$ of sentences in a language $\mathcal{L}$ a \emph{theory} in $\mathcal{L}$.
     Further, we say that an $\mathcal{L}$-structure $\mathcal{M}$ is a \emph{model} of $T$,
     if $\mathcal{M} \models \phi$ for all sentences $\phi \in T$.
-
-    A theory $T$ is said to be \emph{closed} if it is closed under syntactic consequence $\models$.
-    Additionally, $T$ is called \emph{complete} if and only if its set of consequences is maximally consistent.
-
+    %
+    % A theory $T$ is said to be \emph{closed} if it is closed under syntactic consequence $\models$.
+    % Additionally, $T$ is called \emph{complete} if and only if its set of consequences is maximally consistent.
+    %
     Since $T$ is a set of sentences, the notions of a \emph{subtheory} and an \emph{extension} of a theory are defined as usual.
 \end{definition}
 
