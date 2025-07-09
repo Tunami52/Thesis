@@ -648,9 +648,52 @@ Here $\overline{x} = \left<x_0,\ldots,\, x_p\right>$ is a sequence in $M$ and $\
     % A theory $T$ is said to be \emph{closed} if it is closed under syntactic consequence $\models$.
     % Additionally, $T$ is called \emph{complete} if and only if its set of consequences is maximally consistent.
     %
+
     Since $T$ is a set of sentences, the notions of a \emph{subtheory} and an \emph{extension} of a theory are defined as usual.
 \end{definition}
+For a theory $T$ and a sentence $\phi$ in a language $\mathcal{L}$,
+we say that $\phi$ is a \emph{logical consequence} of $T$ if $\mathcal{M} \models \phi$ whenever $\mathcal{M} \models T$ \cite[Definition 1.2.12]{Mar02}.
 
+We now provide some examples of models of different theories.
+One such example is of course the theory of \hyperref[groupoid-def]{groupoids}, which the proof in our final chapter centres around.
+
+\begin{example}\cite[Example 1.2.2]{Mar02}
+    Let $\mathcal{L} = \left\{<\right\}$ be the language consisting only of the binary relation symbol $<$.
+    We can then form the theory $T_{lin}$ of strict linear orders by requiring it to contain the following sentences:
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{order-theory-1} $\forall x \quad \lnot \left(x < x\right)$,
+        \item \label{order-theory-2} $\forall x,\, y,\, z \quad \left(x < y \wedge y < z\right) \rightarrow x < z$,
+        \item \label{order-theory-3} $\forall x,\, y \quad \left(x < y\right) \vee \left(x = y\right) \vee \left(y < x\right)$.
+    \end{enumerate}
+    Removing sentence \ref{order-theory-3} for example would give us the theory of non-linear strict orderings.
+    Alternatively, we can expand $T$ to be the theory of dense linear orders by adding the sentences
+    $$\forall x,\, y \left(x < y \rightarrow \exists z\, x < z < y\right)$$
+    and 
+    $$\forall x\, \exists y,\, z \, \left(y < x < z\right).$$ 
+\end{example}
+
+\begin{example}\cite[Example 1.2.5]{Mar02}
+    Let $\mathcal{L}_g = \left\{\cdot,\, e\right\}$ be the language of groups,
+    where $\cdot$ is a binary function and $e$ is a constant.
+    The theory $T_g$ of groups is then given by the following sentences:
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{group-associativity} $\forall x,\, y,\, z \quad (x \cdot y) \cdot z = x \cdot (y \cdot z)$,
+        \item \label{group-identity}      $\forall x \quad e \cdot x = x \cdot e = x$,
+        \item \label{group-invertability} $\forall x \exists x^{-1} \quad x \cdot x^{-1} = x^{-1} \cdot x = e$.
+    \end{enumerate}
+    Hence models of $T_g$ is are models of group theory.
+    If we add the sentence $$\forall x,\, y \quad x \cdot y = y \cdot x,$$ to the theory above,
+    we get the theory of abelian groups.
+                    
+    Say we remove condition \ref{group-invertability}, then the theory is that of \emph{monoids}.
+
+    Say we let $T$ be the theory of groups of order $2$.
+    This means that $T$ contains the sentences \ref{group-associativity} - \ref{group-invertability} above,
+    along with the sentence $\forall x \quad x \cdot x = e$.
+    Then $$T \not\models \exists x\, \exists y\, \exists z \ \left(x \neq y \wedge y \neq z \wedge x \neq z\right).$$
+    We then have that $$\mathbf{Z} / 2 \mathbf{Z} \models T \wedge \exists x\, \exists y\, \exists z \ \left(x \neq y \wedge y \neq z \wedge x \neq z\right).$$
+Since this is the only group of order $2$, the above statement holds \cite[Proposition 1.2.13]{Mar02}.
+\end{example}
 \section{The Löwenheim-Skolem Theorem}
 
 We now explore the completeness and compactness regarding the models of a given theory.

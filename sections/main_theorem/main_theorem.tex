@@ -1,6 +1,6 @@
 \documentclass[../../main.tex]{subfiles}
 \begin{document}
-\begin{definition}[Groupoid]
+\begin{definition}\label{groupoid-def}[Groupoid]
     Let $G$ be a set.
     We say that $G$ together with a binary operation $*$ is a \emph{(left) cancellative groupoid}, if 
     \begin{enumerate}[label=(\roman*)]
@@ -40,7 +40,7 @@ In our case we choose to utilize a right cancellative groupoid.
         Let $A$ be an arbitrary set and let $\alpha$ be an ordinal as described in Theorem \ref{hartogs-lemma} in Section \ref{hartogs-lemma-section}.
         This means that there exists no bijective mapping from $\alpha$ to any subset of $A$ (including $A$ itself).
         We then let $\left(B,\, R\right)$ be a well-ordered set of type $\alpha$ and such that $A \cap B = \varnothing$.
-        
+    
         Now let $C$ be the set $C = A \cup B$, by assumption there exists some operation $+$, such that $\left(C,\ +\right)$ is a cancellative groupoid. %change notation!!
         We will show that for every $x \in A$ there exists $y \in B$, such that $x + y \in B$ holds.
 
