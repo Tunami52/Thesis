@@ -59,7 +59,7 @@ Clearly it is straightforward to define a weak partial order $R'$ from a strict 
         &\text{or}\ a_1 = a_2 \wedge b_1 < b_2.
     \end{align*}
     This is called the \textit{lexicographical order} of $\mathbb{R}^2$ with respect to the order $<$ on $\mathbb{R}$ and is perhaps the most natural way to a Cartesian product \cite[p.182]{Gol17}.
-    The \textit{anti-lexicographical order} order of $\mathbb{R}^2$ would be 
+    The \textit{anti-lexicographical order} of $\mathbb{R}^2$ would be 
     \begin{align*}
         \left<a_1,\, b_1\right> < \left<a_2,\, b_2\right>\ &\text{if}\ b_1 < b_2 \\
         &\text{or}\ b_1 = b_2 \wedge a_1 < a_2.
@@ -73,8 +73,8 @@ Clearly it is straightforward to define a weak partial order $R'$ from a strict 
 \end{example}
 
 \begin{definition}\cite[p.12]{Jec78}
-    An element $a$ of an ordered set $\left(X,\, <\right)$ is the \textit{least element} of $X$ with respect to $<$, if $\forall x \in X  \left(a < x \vee x = a\right)$.
-    Similarly, an element $z$ is called the \textit{greatest element} of $X$ if $\forall x \in X  \left(x < a \vee x = a\right)$.
+    An element $a$ of an ordered set $\left(X,\, <\right)$ is the \textit{least element} of $X$ with respect to $<$, if $$\forall x \in X  \left(a < x \vee x = a\right).$$
+    Similarly, an element $z$ is called the \textit{greatest element} of $X$ if $\forall x \in X  \left(x < z \vee x = z\right)$.
 \end{definition}
 
 This notion of a least element lets us define a special kind of linearly ordered set:
@@ -105,12 +105,12 @@ For this we need to define the initial section of an ordered set first:
 \end{definition}
 
 \begin{lemma}\label{increasing-fcn-lemm}\cite[Lemma 2.1]{Jec78}
-    If $\left(W,\, <\right)$ is a well-ordered set and $f: W \to W$ is an increasing function, then $f(x) \geq x$ for each $x\in W$.
+    If $\left(W,\, <\right)$ is a well-ordered set and $f: W \to W$ is an increasing, i.e. order-preserving, function, then $f(x) \geq x$ for each $x\in W$.
 \end{lemma}
 
 \begin{proof}
-    In order to contrive a contradiction, we assume that $X = \left\{x \in W \,\vert\, f(x) < x\right\}$, the collection of elements of $W$ not satisfying the lemma, is a non-empty set.
-    We then let $z$ be the least element of $X$ and $w = f(z)$ its preimage in $f$.
+    In order to contrive a contradiction we assume that $X = \left\{x \in W \,\vert\, f(x) < x\right\}$, the collection of elements of $W$ not satisfying the lemma, is a non-empty set.
+    We then let $z$ be the least element of $X$ and $w = f(z)$ its image in $f$.
     By the definition of $X$ this means that $f(w) < w$, contradicting the initial assumption that $f$ is an increasing function.
 \end{proof}
 
@@ -119,12 +119,13 @@ For this we need to define the initial section of an ordered set first:
 \end{lemma}
 
 \begin{proof}
-    Assume for a contradiction that $f$ is an order-isomorphism from an ordered set $\left(X,\, <\right)$ to an initial segment $\left(S,\, <\right) = \left\{x \in X \,\vert\, x < s\right\}$, for some $s \in X$ of itself.
-    The image of $f$ is then $\mathbf{Im}\left(f\right) = \left\{x \in X \,\vert\, x < s\right\} = S$, but we know this is not possible by Lemma \ref{increasing-fcn-lemm}. 
+    Assume for a contradiction that $f$ is an order-isomorphism from a well-ordered set $\left(X,\, <\right)$ to an initial segment $\left(S,\, <\right) = \left\{x \in X \,\vert\, x < s\right\}$, for some $s \in X$ of itself.
+    The image of $f$ is then $\mathbf{Im}\left(f\right) = \left\{x \in X \,\vert\, x < s\right\} = S$.
+    This implies that we have $f(x) < x$ whenever $s < x$ and we know this is not possible by Lemma \ref{increasing-fcn-lemm}, since all order-isomorphisms are also order-preserving.
 \end{proof}
 
 \begin{theorem}\label{well-order-isomorphism}\cite[Theorem 1]{Jec78}
-    Let $(W_1,\, <_1)$ and $(W_1,\, <_2)$ be well-ordered sets.
+    Let $(W_1,\, <_1)$ and $(W_2,\, <_2)$ be well-ordered sets.
     Then one of the following holds:
     \begin{enumerate}
         \item $W_1$ is isomorphic to $W_2$,
@@ -134,11 +135,11 @@ For this we need to define the initial section of an ordered set first:
 \end{theorem}
 
 \begin{proof}
-    Let $W_1$ and $W_2$ be as in the statement of the theorem and let $W_i(u)$ be the initial segment $\left\{u \in W_i \,\vert\, u < v\right\}$ of $W_i$ for $i \in \left\{1,\, 2\right\}$.
+    Let $W_1$ and $W_2$ be as in the statement of the theorem and let $W_i(u)$ be the initial segment $\left\{v \in W_i \,\vert\, v < u\right\}$ of $W_i$ for $i \in \left\{1,\, 2\right\}$.
     We can then define the following set of ordered pairs:
     $$f = \left\{\left<x,\, y\right> \in W_1 \times W_2 \,\vert\, W_1(x) \simeq W_2(y)\right\}.$$
     By Lemma \ref{initial-segment-isomorphism} no element of either $W_1$ or $W_2$ can be a member of more than one ordered pair in $f$,
-    since $$\left<x,\, y_1\right>, \left<x,\, y_1\right> \in f \implies y_1 \simeq x \simeq y_2.$$
+    since $$\left<x,\, y_1\right>,\, \left<x,\, y_2\right> \in f \implies W_2(y_1) \simeq W_1(x) \simeq W_2(y_2).$$
     Hence $f$ is a bijective function, however not necessarily one of which the domain and image are $W_1$ and $W_2$.
     
     Let $h: W_1(u) \to W_2(v)$ be an isomorphism between two initial segments of $W_1$ and $W_2$.
@@ -151,11 +152,11 @@ For this we need to define the initial section of an ordered set first:
         \item If $\mathbf{Im}(f) \neq W_2$, we have that $W_2 \setminus \mathbf{Im}(f)$ is non-empty and denote the least element of $W_2 \setminus \mathbf{Im}(f)$ by $y_0$.
         Then $\mathbf{Im}(f) = W_2(y_0)$, since for $y_1 < y_2$ in $W_2$, having $y_2 \in \mathbf{Im}(W_2)$ means that $y_1 \in \mathbf{Im}(W_2)$.
 
-        Further $\mathbf{Dom}(f) = W_1$, because otherwise $\mathbf{Dom}(f) = W_1(w_0)$ for the least element $x_0$ of $W_1 \setminus \mathbf{Dom}(f)$.
+        Further $\mathbf{Dom}(f) = W_1$, because otherwise $\mathbf{Dom}(f) = W_1(x_0)$ for the least element $x_0$ of $W_1 \setminus \mathbf{Dom}(f)$.
         This in turn results in a contradiction as $W_1(x_0)$ is necessarily isomorphic to $W_2(y_0)$, meaning that $\left<x_0,\, y_0\right> \in f$ and $x_0 \in \mathbf{Dom}(f)$.
 
         As such we have that $f: W_1 \to W_2(y_0)$ is an order-isomorphism and case $2$ of the theorem holds.
-        \item If $\mathbf{Dom}(f) \neq W_1$, we have that $\mathbf{Dom}(f) = W_1(w_0)$ for the least element $x_0$ of the set $W_1 \setminus \mathbf{Dom}(f)$.
+        \item If $\mathbf{Dom}(f) \neq W_1$, we have that $\mathbf{Dom}(f) = W_1(x_0)$ for the least element $x_0$ of the set $W_1 \setminus \mathbf{Dom}(f)$.
         Proceeding analogously to the case before we have that $\mathbf{Im}(f) = W_2$. 
         Hence $W_2$ is order-isomorphic to an initial segment of $W_1$ and case $3$ of the theorem holds.
     \end{enumerate}
@@ -318,7 +319,7 @@ It follows from the following lemma that every natural number also is an ordinal
         
         The ordinal $\alpha$ is transitive by definition and from this it follows that there are no ``gaps'' in the order. Indeed $\alpha$ must be an initial segment of $\beta$.
         As an initial segment, we can describe $\alpha$ as the set $\left\{\xi \in \beta \,\vert\, \xi < \gamma\right\}$.
-        Again by the definition of ordinals, this is the set $\gamma$ itself and $\alpha = \beta$.
+        Again by the definition of ordinals, this is the set $\gamma$ itself and $\alpha \in \beta$.
         \item We know that the intersection $\alpha \cap \beta = \gamma$ must be an ordinal, since not least the empty set also is an ordinal.
         However anything other than $\alpha = \gamma$ or $\beta = \gamma$ results in a contradiction:
         
@@ -476,7 +477,7 @@ We continue with the conclusion of this chapter, a lemma originally stated by Ha
 Just as with Theorem \ref{well-order-thm}, this is used in the proof of our final result, Theorem \ref{main-thm}.
 Since our goal is to prove an equivalence with the \hyperref[choice-axiom]{Axiom of Choice}, we will work completely in \textbf{ZF} without \textbf{AC} in this section.
 
-The lack of \textbf{AC} is also the reason the comparability of sets is not given, another equivalence of the Axiom of Choice \cite{Har15}.Add commentMore actions
+The lack of \textbf{AC} is also the reason the comparability of sets is not given, another equivalence of the Axiom of Choice \cite{Har15}.
 As such we do not talk about cardinality in the traditional sense in the lemma, even though the terminology is very similar.
 
 \begin{lemma}\label{well-order-set}\cite[Appendix]{Har15}

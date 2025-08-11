@@ -12,7 +12,7 @@ exemplifying how the field relates to the linear orderings from Chapter \ref{ord
 The impatient or familiar reader however may skip this section without missing any necessary theory.
 
 \section{Ehrenfeucht-Fra\"isse Games}
-Let us suppose we are given two linear orderings, based on which we define a two player game.
+Let us suppose we are given two linear orderings called $A$ and $B$, based on which we define a two player game.
 Player I is called \textit{spoiler} and starts by picking a point on one of the two orderings.
 If they pick an element of $A$ we call this $a_1$ and if they pick an element of $B$ we call it $b_1$.
 After the spoiler has picked their point, player II will pick a point on the other linear ordering. 
@@ -266,7 +266,7 @@ Note that our definition of a formula in $\mathcal{L}_{\textbf{ZFC}}$ coincides 
     A formula with no free variables is called a \textit{sentence}.
 \end{definition}
 An example of a formula $\phi(v)$ with a free variable $v$ would be $\exists w \, (v = w)$.
-An simple example of a sentence would be $\forall x \, \exists y \, R(x,\, y)$, where $R$ is a binary relation symbol.
+A simple example of a sentence would be $\forall x \, \exists y \, R(x,\, y)$, where $R$ is a binary relation symbol.
 
 Note that some of the logical connectives can be considered shorthand of others.
 For formulas $\phi$ and $\psi$ we say that $\phi \vee \psi$ is defined as $\lnot \left(\lnot \phi \wedge \lnot \psi\right)$.
@@ -586,7 +586,7 @@ Both of the following propositions follow from induction on Definitions \ref{ter
 
 \begin{proposition}\cite[Proposition 1.1.8]{Mar02}
         Suppose that $\mathcal{M}$ and $\mathcal{N}$ are two $\mathcal{L}$-structures with underlying sets $M$ and $N$ respectively and that $\mathcal{M}$ is a substructure of $\mathcal{N}$.
-        Then, for $\overline{a} \in M$ and a quantifier-free formula $\phi(\overline{v})$ of $\mathcal{L}$,
+        Then, for $\overline{a} \in M^n$ and a quantifier-free formula $\phi(\overline{v})$ of $\mathcal{L}$ with $n$ free variables,
         $\mathcal{M} \models \phi(\overline{a})$ if and only if $\mathcal{N} \models \phi(\overline{a})$.
 \end{proposition}
 
@@ -690,9 +690,12 @@ One such example is of course the theory of \hyperref[groupoid-def]{groupoids}, 
     Say we let $T$ be the theory of groups of order $2$.
     This means that $T$ contains the sentences \ref{group-associativity} - \ref{group-invertability} above,
     along with the sentence $\forall x \quad x \cdot x = e$.
-    Then $$T \not\models \exists x\, \exists y\, \exists z \ \left(x \neq y \wedge y \neq z \wedge x \neq z\right).$$
+    We claim that 
+    \begin{equation}\label{group-order-2-statement}
+        T \not\models \exists x\, \exists y\, \exists z \ \left(x \neq y \wedge y \neq z \wedge x \neq z\right).
+    \end{equation}
     We then have that $$\mathbf{Z} / 2 \mathbf{Z} \models T \wedge \exists x\, \exists y\, \exists z \ \left(x \neq y \wedge y \neq z \wedge x \neq z\right).$$
-Since this is the only group of order $2$, the above statement holds \cite[Proposition 1.2.13]{Mar02}.
+    Since this is the only group of order $2$, the above statement \eqref{group-order-2-statement} holds \cite[Proposition 1.2.13]{Mar02}.
 \end{example}
 \section{The Löwenheim-Skolem Theorem}
 
@@ -950,7 +953,7 @@ Those proofs are in turn comparatively straightforward; most of the complexity i
     However this is a violation of Definition \ref{model-satisfaction-def} and therefore $\Sigma$ must be consistent.
 
     We now assume that $\Sigma$ is a consistent set of sentences and want to show that a model $\mathcal{M}$ of $\Sigma$ exists.
-    Consider extension $\overline{\Sigma}$ and $\overline{\mathcal{L}}$ of $\Sigma$ and $\mathcal{L}$ respectively,
+    Consider the extensions $\overline{\Sigma}$ and $\overline{\mathcal{L}}$ of $\Sigma$ and $\mathcal{L}$ respectively,
     such that $\overline{\mathcal{L}}$ has witnesses in $\overline{\Sigma}$, which is possible by Lemma \ref{completeness-lemma-1}.
 
     Using Lemma \ref{completeness-lemma-2} we construct a model $\mathcal{N}$ of $\overline{\Sigma}$.
