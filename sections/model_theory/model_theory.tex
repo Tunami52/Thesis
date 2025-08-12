@@ -186,7 +186,7 @@ We utilize set theoretic notation in the definition of languages, however we do 
 In general we are working within \textbf{ZFC} in this chapter.
 
 \begin{definition}\label{language-def}\cite[Definition 1.1.1]{Mar02}
-    A \textit{formal language} $\mathcal{L}$ in first order logic is associated with the following sets:
+    A \textit{formal language} $\mathcal{L}$ in first-order logic is associated with the following sets:
     \begin{enumerate}
         \item A set $\mathcal{F}$ of function symbols $f$ with $n_f$ arguments each, 
         where $n_f \in \mathbb{Z}^+$ is a positive integer;
@@ -352,9 +352,9 @@ Then, when we evaluate it with a sequence of truth values $\overline{a}$, the fo
         Every tautology $\psi$ of $\mathcal{L}$ is a logical axiom. %change wording???
         \item\label{quantifier-axioms} \textbf{Quantifier Axioms}
         \begin{enumerate}
-            \item Let $\phi,\, \psi$ be formulas in $\mathcal{L}$ and let $v$ be a variable which is not free in $\phi$.
+            \item Let $\phi,\, \psi$ be formulas in $\mathcal{L}$ and let $v$ be a variable which is free in $\psi$, but not in $\phi$.
             Then
-            $$\forall v \left((\phi \rightarrow \psi(v)) \rightarrow (\phi \rightarrow \forall v\, \psi(v))\right)$$
+            $$\forall v \, (\phi \rightarrow \psi(v)) \rightarrow (\phi \rightarrow \forall v\, \psi(v))$$
             is a logical axiom.
             \item Let $\phi(v)$ be a formula in $\mathcal{L}$ with a free variable $v$.
             Let $\psi$ be a formula in $\mathcal{L}$, 
@@ -870,7 +870,7 @@ Those proofs are in turn comparatively straightforward; most of the complexity i
         We proceed similarly to steps \ref{lemma-proof-step-1} and \ref{lemma-proof-step-2}.
         We have that
         $$\vdash \exists v\, f(c_1,\ldots,\, c_{n_f}) = v$$
-        holds by first order logic for constants $c_1,\ldots,\, c_{n_f} \in C$ and a function $f \in \mathcal{F}$.
+        holds by first-order logic for constants $c_1,\ldots,\, c_{n_f} \in C$ and a function $f \in \mathcal{F}$.
         Then, as $T$ has witnesses in $C$, it follows that $\big(f(c_1,\ldots,\, c_{n_f}) = c\big) \in T$ for some constant $c \in C$.
         By the Identity Axioms
         \begin{multline}\label{function-congruence-eq}

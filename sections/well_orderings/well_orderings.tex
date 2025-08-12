@@ -135,15 +135,15 @@ For this we need to define the initial section of an ordered set first:
 \end{theorem}
 
 \begin{proof}
-    Let $W_1$ and $W_2$ be as in the statement of the theorem and let $W_i(u)$ be the initial segment $\left\{v \in W_i \,\vert\, v < u\right\}$ of $W_i$ for $i \in \left\{1,\, 2\right\}$.
+    Let $W_1$ and $W_2$ be as in the statement of the theorem and let $W_i(u_i)$ be the initial segment $\left\{v_i \in W_i \,\vert\, v_i < u_i\right\}$ of $W_i$ for $i \in \left\{1,\, 2\right\}$.
     We can then define the following set of ordered pairs:
     $$f = \left\{\left<x,\, y\right> \in W_1 \times W_2 \,\vert\, W_1(x) \simeq W_2(y)\right\}.$$
     By Lemma \ref{initial-segment-isomorphism} no element of either $W_1$ or $W_2$ can be a member of more than one ordered pair in $f$,
     since $$\left<x,\, y_1\right>,\, \left<x,\, y_2\right> \in f \implies W_2(y_1) \simeq W_1(x) \simeq W_2(y_2).$$
     Hence $f$ is a bijective function, however not necessarily one of which the domain and image are $W_1$ and $W_2$.
     
-    Let $h: W_1(u) \to W_2(v)$ be an isomorphism between two initial segments of $W_1$ and $W_2$.
-    Then if we have $u' < u$ in $W_1$, it follows that $W_1(u') \simeq W_2(h(u'))$ and hence $\left<u',\, h(u')\right>$ must be in $f$.
+    Let $h: W_1(x) \to W_2(y)$ be an isomorphism between two initial segments of $W_1$ and $W_2$.
+    Then if we have $x' < x$ in $W_1$, it follows that $W_1(x') \simeq W_2(h(x'))$ and hence $\left<x',\, h(x')\right>$ must be in $f$.
 
     Based on these properties we can explore the following cases:
     \begin{enumerate}
@@ -192,7 +192,7 @@ Especially the distinction between the two dense orderings of $\mathbb{Q}$ and $
 For a treatment of this topic from the perspective of linear orderings we refer the curious reader to \cite[\S 2]{Ros82}.
 
 The broader discussion of the properties of linear orderings is important however, as we need a way to classify and compare ordered sets.
-For the classification we utilize order preserving functions; this is especially useful for the use-case of well-ordered sets all they always relate to each other in this way by Theorem \ref{well-order-isomorphism}.
+For the classification we utilize order preserving functions; this is especially useful for the use-case of well-ordered sets as they always relate to each other in this way by Theorem \ref{well-order-isomorphism}.
 
 \begin{definition}[Order Type]\cite[Definitions 1.12, 1.13]{Ros82}
     Let $(X, <_X)$ and $(Y, <_Y)$ be linear orderings.
@@ -227,7 +227,7 @@ For the classification we utilize order preserving functions; this is especially
     \begin{enumerate}
         \item For $i=1$, we let $f(x_1) = y_1$,
         \item Say $f$ is defined for all $x_j$ with $j < i$.
-        Then $f(x_i)$ maps to the least $y_k$ (with respect to its index),
+        Then $f(x_i)$ maps to the element $y_k$ with the least $k$,
         such that $f(x_1),\ldots,\, f(x_i)$ is order preserving with respect to the strict order relation $<$.
     \end{enumerate}
     Clearly $f$ is order preserving by construction.
@@ -279,7 +279,7 @@ It also means that any natural number is defined as the set of all of its predec
 For example $3 = \left\{0,\, 1,\, 2\right\} = \left\{\left\{\right\},\, \left\{\left\{\right\}\right\},\, \left\{\left\{\right\},\, \left\{\left\{\right\}\right\}\right\}\right\}$ and $5 = \left\{0,\, 1,\, 2,\, 3,\, 4\right\}$.
 
 Perhaps slightly more subtle then is that, under the usual ordering, $n < m \implies n \in m \wedge n \subset m$.
-This is an important property and the natural numbers, as well as the set $\mathbb{N}$ at large, are called \textit{transitive} sets.
+This is an important property and the natural numbers, as well as the set $\mathbb{N}$ at large, are examples of what are called \textit{transitive} sets.
 The notion of a \textit{transitive set} is not to be confused with that of a \textit{transitive (binary) relation}, which is an unfortunate overlap in terminology.
 
 \begin{definition}\cite[p.14]{Jec78}
@@ -320,7 +320,7 @@ It follows from the following lemma that every natural number also is an ordinal
         The ordinal $\alpha$ is transitive by definition and from this it follows that there are no ``gaps'' in the order. Indeed $\alpha$ must be an initial segment of $\beta$.
         As an initial segment, we can describe $\alpha$ as the set $\left\{\xi \in \beta \,\vert\, \xi < \gamma\right\}$.
         Again by the definition of ordinals, this is the set $\gamma$ itself and $\alpha \in \beta$.
-        \item We know that the intersection $\alpha \cap \beta = \gamma$ must be an ordinal, since not least the empty set also is an ordinal.
+        \item We know that the intersection $\alpha \cap \beta = \gamma$ must be an ordinal, since even the empty set is an ordinal.
         However anything other than $\alpha = \gamma$ or $\beta = \gamma$ results in a contradiction:
         
         Assume for this contradiction that $\gamma \in \alpha$. Then $\gamma \in \beta$ by the second point of the lemma. 
@@ -334,8 +334,8 @@ It follows from the following lemma that every natural number also is an ordinal
 \end{theorem}
 
 \begin{proof}
-    Let $W$ be a well ordered set.
-    We will show that $W$ is order-isomorphic to an ordinal $\alpha$, the uniqueness of $\alpha$ follows from Lemma \ref{initial-segment-isomorphism}.
+    Let $W$ be a well-ordered set.
+    We will show that $W$ is order-isomorphic to an ordinal $\alpha$,; the uniqueness of $\alpha$ then follows from Lemma \ref{initial-segment-isomorphism}.
 
     Let $\mathbf{F}$ be the class function
     $$\mathbf{F} = \left\{\left<x, \alpha\right> \,\vert\, W(x) \simeq \alpha\right\},$$
@@ -344,14 +344,14 @@ It follows from the following lemma that every natural number also is an ordinal
     As such $\mathbf{Im}(\mathbf{F\vert_W})$ is also a set.
 
     Additionally, we have that $\mathbf{F}(w)$ is defined for each $w \in W$:
-    Consider for a contradiction the least element $w_0$ of $W$ not isomorphic to an ordinal.
+    consider for a contradiction the least element $w_0$ of $W$ not isomorphic to an ordinal.
     Then $W(w_0) \simeq \beta$ for some ordinal $\beta$ and consequently the least ordinal $\alpha_0$ for which $\beta < \alpha_0$ holds must be isomorphic to $w_0$.
 
     Finally we let $\gamma$ be the least ordinal such that $\gamma \not\in \textbf{Im}(\mathbf{F}\vert_W)$ and have that $\gamma$ is order-isomorphic to $W$ 
     as every $\alpha \in \gamma$ is isomorphic to an initial segment of $W$.
 \end{proof}
 
-This theorem makes it possible for us to associate the order type of a well-ordered sets with precisely the ordinal it is order-isomorphic to.
+This theorem makes it possible for us to associate the order type of a well-ordered set with precisely the ordinal it is order-isomorphic to.
 In that sense we use the terms order type and ordinal interchangeably when talking about well-ordered sets.
 
 The idea of ordinals was introduced using the natural numbers and while that is a useful comparison, 
@@ -390,8 +390,8 @@ This concept is generalized in the following theorem:
     Let $\mathbf{C}$ be a class containing only ordinals and let the following hold for $\mathbf{C}$:
     \begin{enumerate}[label=(\roman*)]
         \item $0 \in \mathbf{C}$,
-        \item If $\alpha \in \mathbf{C}$ is an ordinal, then $\alpha + 1 \in \mathbf{C}$,
-        \item If $\alpha$ is a non-zero ordinal and $\beta \in \mathbf{C}$ holds for all $\beta < \alpha$, then $\alpha \in \mathbf{C}$.
+        \item if $\alpha \in \mathbf{C}$ is an ordinal, then $\alpha + 1 \in \mathbf{C}$,
+        \item if $\alpha$ is a non-zero ordinal and $\beta \in \mathbf{C}$ holds for all $\beta < \alpha$, then $\alpha \in \mathbf{C}$.
     \end{enumerate}
     Then $\mathbf{C}$ is the class of all ordinals.
 \end{theorem}
@@ -417,12 +417,11 @@ There is a (bad) joke that goes:
 \end{quote}
 
 \begin{definition}[Zermelo's Well-Ordering Theorem]\cite[Theorem 15]{Jec78}\label{well-order-thm}
-    \newline Every set can be well ordered. 
+    \newline Every set can be well-ordered. 
 \end{definition}
 
 We do not provide a proof for Definition \ref{well-order-thm} in \textbf{ZFC} here directly.
 This theorem, as it turns out, is not just another regular theorem, and we will therefore also not treat it as one.
-
 Indeed, the Well-Ordering Theorem is actually equivalent to the \hyperref[choice-axiom]{Axiom of Choice}.
 This means that if either statement is assumed to be true (and it has to be assumed since we are talking about \textit{axioms}),
 the other one can be proved from it.
@@ -466,7 +465,7 @@ As such by transitivity, this main statement is also equivalent to the Axiom of 
         Let $S$ be a set of non-empty sets.
 
         The union $\bigcup S$ can be well-ordered by assumption and clearly $s \in S$ implies $s \subseteq \bigcup S$.
-        We can then define the function $f: S \to \bigcup S$ to map any elements of $S$ to its least element, according to the well-order of $\bigcup S$.
+        We can then define the function $f: S \to \bigcup S$ to map any element of $S$ to its least element, according to the well-order of $\bigcup S$.
         
         Evidently $f$ is a choice function and since the set $S$ was arbitrary the Axiom of Choice holds. \qedhere
     \end{enumerate}
@@ -518,7 +517,8 @@ As such we do not talk about cardinality in the traditional sense in the lemma, 
     
     We can also see that we are able to construct such a set $X_\omega$ for any arbitrary set $X$.
     Hence, finally, given a set $M$, the set of all possible well-orderings of any subsets $m$ of $M$ is given by the union
-    $$M_\Omega = \bigcup_{m \in \mathcal{P}(M)} m_\omega.$$
+    $$M_\Omega = \bigcup_{m \in \mathcal{P}(M)} m_\omega,$$
+    of the sets $m_\omega$, which in turn contain the possible well-orderings of $m$.
     Note that $M_\Omega$ is non-empty, since we are always able to define a well-order for finite subsets of $M$\footnote{
         Compare with the proof of Theorem \ref{well-order-thm-equivalence}, however we do not need \textbf{AC} for a choice function on finite sets.
     }.
@@ -556,7 +556,7 @@ We follow the outline given in \cite{Haj72} for the proof of this lemma, the mor
 
     Recall that we associate the order type of a well-ordered set with the unique ordinal it is isomorphic to, motivated by Theorem \ref{unique-ordinal}.
     Hence $\alpha$ describes the smallest ordinal which is larger (in an ordinal sense) than all well-orderable subsets of $A$.
-    The latter property follows from the fact that such an ordinal is either an successor ordinal or a limit ordinal, 
+    The latter property follows from the fact that such an ordinal is either a successor ordinal or a limit ordinal, 
     the term ``$+1$'' and the union symbol in the definition of $\alpha$ make sure that both these cases are accounted for.
 
     By construction we now have that every subset associated with an order $R$ in $A_\Omega$ is isomorphic to an initial segment of $\alpha$, but not to $\alpha$ itself.
