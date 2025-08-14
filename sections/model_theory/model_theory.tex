@@ -291,10 +291,10 @@ When working in model theory we consider the difference between \textit{syntax} 
 Syntax is everything relating to structure of sentences and formal languages.
 This includes what kind of symbols we are working with in a given language and how we can combine them to create valid sentences.
 
-A language is purely \textit{syntactical}, a given sentence in a language has no assigned meaning on its own.
+A language is purely \textit{syntactical}, since any given sentence in a language has no assigned meaning on its own.
 If we are working with a language describing number theory for example, 
 we might have a relation symbol $gcd$ which takes in three arguments and returns whether the third argument is the greatest common divisor of the first two.
-A formal language only includes the relation symbol itself though, elements for which relations would hold are not part of the language.
+A formal language only includes the relation symbol itself though, the elements for which the relation would hold are not part of the language.
 
 Assigning a meaning to a relation symbol such as $gcd$ is \textit{semantics}.
 Having a relation be true or false for a some given value is a \textit{semantical} property, this is where the namesake models come in.
@@ -306,19 +306,25 @@ This is needed in order to make the syntactical notion of formulas into a \texti
 In essence, we define the kind of formulas which have to be true in every model.
 This is also why the \textit{axiom} label is justified.
 
-\begin{definition}[Tautology]\cite[pp.8, 24]{Cha90}
-    Let $\mathcal{J}$ be a set of simple sentence statements and let $\phi$ be a formula in $\mathcal{J}$.
-    Let $\overline{a} = a_1,\ldots,\, a_n$ be a sequence of truth values, meaning each $a_i$ either has the value $t$ for \textit{true} or $f$ for \textit{false}.
-    For a such a sentence $\psi$ in $\mathcal{J}$ containing sentence symbols $S_1,\ldots,\, S_n$, 
-    an assignment of $\overline{a}$ into $\psi$ substitutes each $S_i$ with $a_i$.
+\begin{definition}[Tautology]\cite[pp.4-8, 24]{Cha90}
+    Sentential logic consists of sentence symbols, also called propositional variables, together with the logical symbol
+    $$\lnot \text{ (not)} \quad \text{and} \quad \wedge \text{(and)}.$$
+    Every propositional variable $S$ is a formula in sentential logic.
+    Further, if $\phi$ is a formula in sentential logic, then $\lnot \phi$ is also a formula.
+    Then, if $\psi$ is another formula, so is $\psi \wedge \phi$.
+
+    Let $\overline{a} = \left<a_1,\ldots,\, a_n\right>$ be a sequence of truth values, meaning each $a_i$ either has the value $t$ for \textit{true} or $f$ for \textit{false}.
+    For a formula $\psi$ in sentential logic containing the sentence symbols $S_1,\ldots,\, S_n$, an assignment of $\overline{a}$ into $\psi$ substitutes each $S_i$ with $a_i$.
 
     We say that $\psi$ is a \textit{tautology in sentential logic} if and only if the value of $\psi$ is $t$ for every assignment $\overline{a}$.
 
     We say that a formula $\phi$ of a formal language $\mathcal{L}$ is \textit{a tautology of} $\mathcal{L}$, 
     if it is possible to obtain $\phi$ by substituting sentence symbols $S_i$ with formulas of $\mathcal{L}$ in a tautology in sentential logic $\psi$. 
+    This means that if $\psi$ has propositional variables $S_1,\ldots,\, S_n$,
+    we can simultaneously and uniformly substitute these variables with formulas $\rho_1,\ldots,\, \rho_n$ in $\mathcal{L}$ to arrive back at $\phi$.
 \end{definition}
 
-We can think of a formula in $\mathcal{J}$ as a placeholders $S_1,\ldots,\, S_n$ chained together with logical connectives.
+We can think of a formula in sentential logic as a placeholders $S_1,\ldots,\, S_n$ chained together with logical connectives.
 Then, when we evaluate it with a sequence of truth values $\overline{a}$, the formula ``terminates'' either in $t$ or $f$.
 
 \begin{example}
@@ -331,14 +337,22 @@ Then, when we evaluate it with a sequence of truth values $\overline{a}$, the fo
     Let $\mathcal{L}_{or} = \left\{+,\, -,\, \cdot,\, <,\, 0,\, 1\right\}$ be the language of ordered rings.
     Suppose that $\phi_1$ and $\phi_2$ are the two $\mathcal{L}_{or}$-formulas $v_1 + 1 < v_2$ and $v_2 \cdot v_1 = v_1$ respectively,
     each having (the same) free variables $v_1$ and $v_2$.
-    If we substitute the formulas $\phi_1$ and $\phi_2$ into $\tau$, we have that
-    \begin{align*}
-        \tau_r
-        &= \left(\phi_1 \rightarrow \phi_2\right) \vee \left(\phi_2 \rightarrow \phi_1\right) \\
-        &= \big(\left(v_1 + 1 < v_2\right) \rightarrow \left(v_2 \cdot v_1 = v_1\right)\big) \\
-        &  \qquad \vee \big(\left(v_2 \cdot v_1 = v_1\right) \rightarrow \left(v_1 + 1 < v_2\right)\big)
-    \end{align*}
-    is a tautology in $\mathcal{L}_{or}$.
+    If we substitute the formulas $\phi_1$ and $\phi_2$ into $\tau$, we get
+    \begin{equation}\label{tautology-ex}
+        \left(\phi_1 \rightarrow \phi_2\right) \vee \left(\phi_2 \rightarrow \phi_1\right),
+    \end{equation}
+    which is equal to 
+    $$\big(\left(v_1 + 1 < v_2\right) \rightarrow \left(v_2 \cdot v_1 = v_1\right)\big) \vee \big(\left(v_2 \cdot v_1 = v_1\right) \rightarrow \left(v_1 + 1 < v_2\right)\big).$$
+    In any given structure both $\phi_1$ and $\phi_2$ are either true or false, depending on $v_1$ and $v_2$.
+    However since $\tau$ is a tautology in sentential logic, it is true for all possible assignments of truth values.
+    As such \eqref{tautology-ex} is true in every $\mathcal{L}_{or}$-structure, regardless if $\phi_1$ and $\phi_2$ are true or false, and is therefore a tautology in $\mathcal{L}_{or}$.
+    %%\begin{align*}
+    %%    \tau_r
+    %%    &= \left(\phi_1 \rightarrow \phi_2\right) \vee \left(\phi_2 \rightarrow \phi_1\right) \\
+    %%    &= \big(\left(v_1 + 1 < v_2\right) \rightarrow \left(v_2 \cdot v_1 = v_1\right)\big) \\
+    %%    &  \qquad \vee \big(\left(v_2 \cdot v_1 = v_1\right) \rightarrow \left(v_1 + 1 < v_2\right)\big)
+    %%\end{align*}
+    %%is a tautology in $\mathcal{L}_{or}$.
     Note that for example $$(v_1 < v_2) \vee (v_1 = v_2) \vee (v_2 < v_1)$$ is not a tautology in $\mathcal{L}_{or}$.
     Intuitively, we can explain this by observing that there are structures of the language which might not interpret the symbol $<$ as a linear order.
 \end{example}
@@ -358,7 +372,7 @@ Then, when we evaluate it with a sequence of truth values $\overline{a}$, the fo
             is a logical axiom.
             \item Let $\phi(v)$ be a formula in $\mathcal{L}$ with a free variable $v$.
             Let $\psi$ be a formula in $\mathcal{L}$, 
-            such that $\psi$ is the sentence where all free occurrences $v$ in $\psi$ have been substituted by some term $t$.
+            such that $\psi$ is the sentence where all free occurrences $v$ in $\phi$ have been substituted by some term $t$.
             This means that no variable of $t$ is bound in $\psi$ at the place it is introduced.
             Then 
             $$\forall v \, \phi(v) \rightarrow \psi$$
@@ -368,7 +382,6 @@ Then, when we evaluate it with a sequence of truth values $\overline{a}$, the fo
         
         Let $x$ and $y$ be variables and let $t(v_1,\ldots,\, v_n)$ and $\phi(v_1,\ldots,\, v_n)$ be a term and an atomic formula respectively,
         both dependent on free variables $v_1,\ldots,\, v_n$.
-
         Then 
         \begin{enumerate}
             \item $x = x$,
@@ -391,7 +404,7 @@ Then, when we evaluate it with a sequence of truth values $\overline{a}$, the fo
     \begin{enumerate}[resume]
         \item\label{detachment-rule} \textbf{Rule of Detachment (Modus Ponens)}
         
-        If $\psi$ and $\phi \rightarrow \psi$ hold, then $\psi$ holds.
+        If $\phi$ and $\phi \rightarrow \psi$ hold, then $\psi$ holds.
         \item\label{generalization-rule} \textbf{Rule of Generalization}
         
         If $\psi$ holds, then $\forall x\, \psi(x)$ holds.
@@ -420,7 +433,7 @@ However, this type of formality is needed for the next definition and following 
 
 This notion of consistency has some fairly intuitive consequences which we provide below and without proof.
 
-\begin{proposition}\label{consistency-prop}\cite[Proposition 1.3.10.]{Cha90}
+\begin{proposition}\label{consistency-prop}\cite[Proposition 1.3.10]{Cha90}
     Let $\Sigma$ be a set of sentences in a language $\mathcal{L}$. Then
     \begin{enumerate}
         \item the set $\Sigma$ is consistent if and only if every finite subset of $\Sigma$ is consistent;
@@ -438,7 +451,7 @@ This notion of consistency has some fairly intuitive consequences which we provi
 \end{proposition}
 
 With this proposition in mind we continue on to the final result relating only to formal languages.
-After this we move on to actually using these language to construct structures and models.
+After this we move on to actually using these languages to construct structures and models.
 
 \begin{theorem}[Lindenbaum's Theorem]\label{lindenbaums-theorem}\cite[Proposition 1.3.11]{Cha90}
     Let $\Sigma$ be a consistent set of sentences in a language $\mathcal{L}$.

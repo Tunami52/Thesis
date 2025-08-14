@@ -135,7 +135,7 @@ For this we need to define the initial section of an ordered set first:
 \end{theorem}
 
 \begin{proof}
-    Let $W_1$ and $W_2$ be as in the statement of the theorem and let $W_i(u_i)$ be the initial segment $\left\{v_i \in W_i \,\vert\, v_i < u_i\right\}$ of $W_i$ for $i \in \left\{1,\, 2\right\}$.
+    Let $W_1$ and $W_2$ be as in the statement of the theorem and let $W_i(u_i)$ be the initial segment $\left\{v \in W_i \,\vert\, v < u_i\right\}$ of $W_i$ for $i \in \left\{1,\, 2\right\}$.
     We can then define the following set of ordered pairs:
     $$f = \left\{\left<x,\, y\right> \in W_1 \times W_2 \,\vert\, W_1(x) \simeq W_2(y)\right\}.$$
     By Lemma \ref{initial-segment-isomorphism} no element of either $W_1$ or $W_2$ can be a member of more than one ordered pair in $f$,
@@ -227,7 +227,7 @@ For the classification we utilize order preserving functions; this is especially
     \begin{enumerate}
         \item For $i=1$, we let $f(x_1) = y_1$,
         \item Say $f$ is defined for all $x_j$ with $j < i$.
-        Then $f(x_i)$ maps to the element $y_k$ with the least $k$,
+        Then $f(x_i)$ maps to the element $y_k$ with the least $k$
         such that $f(x_1),\ldots,\, f(x_i)$ is order preserving with respect to the strict order relation $<$.
     \end{enumerate}
     Clearly $f$ is order preserving by construction.
@@ -328,14 +328,14 @@ It follows from the following lemma that every natural number also is an ordinal
         Since $\gamma$ is an ordinal, strictly linearly ordered, this is not possible. \qedhere
     \end{enumerate}
 \end{proof}
-
+ 
 \begin{theorem}\label{unique-ordinal}\cite[Theorem 2]{Jec78}
     Every well-ordered set is order-isomorphic to a unique ordinal.
 \end{theorem}
 
 \begin{proof}
     Let $W$ be a well-ordered set.
-    We will show that $W$ is order-isomorphic to an ordinal $\alpha$,; the uniqueness of $\alpha$ then follows from Lemma \ref{initial-segment-isomorphism}.
+    We will show that $W$ is order-isomorphic to an ordinal $\alpha$; the uniqueness of $\alpha$ then follows from Lemma \ref{initial-segment-isomorphism}.
 
     Let $\mathbf{F}$ be the class function
     $$\mathbf{F} = \left\{\left<x, \alpha\right> \,\vert\, W(x) \simeq \alpha\right\},$$
