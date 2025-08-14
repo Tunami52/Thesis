@@ -431,7 +431,10 @@ However, this type of formality is needed for the next definition and following 
     and no set of sentences $\Sigma'$ which has $\Sigma$ as a proper subset is consistent.
 \end{definition}  
 
-This notion of consistency has some fairly intuitive consequences which we provide below and without proof.
+%This notion of consistency has some fairly intuitive consequences which we provide below and without proof.
+The definition of inconsistency can be intuitively explained by the fact that if all sentences can be proven, clearly contradictory sentences are also included.
+So if for example $T$ is an inconsistent set of sentences in a language $\mathcal{L}$, then both $T \vdash (t_1 = t_2)$ and $T \vdash \lnot\,(t_1 = t_2)$ for terms $t_1,\, t_2$ in $\mathcal{L}$.
+The following proposition formalizes this some more, we present it without proof.
 
 \begin{proposition}\label{consistency-prop}\cite[Proposition 1.3.10]{Cha90}
     Let $\Sigma$ be a set of sentences in a language $\mathcal{L}$. Then
@@ -453,12 +456,12 @@ This notion of consistency has some fairly intuitive consequences which we provi
 With this proposition in mind we continue on to the final result relating only to formal languages.
 After this we move on to actually using these languages to construct structures and models.
 
-\begin{theorem}[Lindenbaum's Theorem]\label{lindenbaums-theorem}\cite[Proposition 1.3.11]{Cha90}
+\begin{theorem}[Lindenbaum's Theorem]\label{lindenbaums-theorem}\cite[Lemma 1.2.9]{Cha90}, see also \cite[Proposition 1.3.11]{Cha90}.
     Let $\Sigma$ be a consistent set of sentences in a language $\mathcal{L}$.
     Then $\Sigma$ can be extended to a maximally consistent set of sentences in $\mathcal{L}$.
 \end{theorem}
 
-\begin{proof}\cite[Lemma 1.2.9]{Cha90}  
+\begin{proof} 
     By Proposition \ref{language-cardinality} we have that any given language has $\left\lVert \mathcal{L}\right\rVert$ formulas.
     We arrange the sentences of $\mathcal{L}$ in some list
     $$\phi_1,\, \phi_2,\ldots,\, \phi_{\alpha},\ldots$$
