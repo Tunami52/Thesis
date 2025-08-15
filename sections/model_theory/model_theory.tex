@@ -324,7 +324,7 @@ This is also why the \textit{axiom} label is justified.
     we can simultaneously and uniformly substitute these variables with formulas $\rho_1,\ldots,\, \rho_n$ in $\mathcal{L}$ to arrive back at $\phi$.
 \end{definition}
 
-We can think of a formula in sentential logic as a placeholders $S_1,\ldots,\, S_n$ chained together with logical connectives.
+We can think of a formula in sentential logic as placeholders $S_1,\ldots,\, S_n$ chained together with logical connectives.
 Then, when we evaluate it with a sequence of truth values $\overline{a}$, the formula ``terminates'' either in $t$ or $f$.
 
 \begin{example}
@@ -520,9 +520,9 @@ After this we move on to actually using these languages to construct structures 
     More precisely this means that $\mu$ satisfies
     \begin{enumerate}[label=(\roman*)]
         \item $\mu\left(f^\mathcal{M}(a_1,\ldots,\, a_{n_f})\right) = f^\mathcal{N}(a_1,\ldots,\, a_{n_f})$ 
-        for all $f \in \mathcal{F}$ and all sequences $a_1,\ldots,\, a_{n_f}$,
+        for all $f \in \mathcal{F}$ and all sequences $a_1,\ldots,\, a_{n_f}$ in $M$,
         \item $\left<a_1,\ldots,\, a_{n_R}\right> \in R^\mathcal{M}$ if and only if $\left<\mu(a_1),\ldots,\, \mu(a_{n_R})\right> \in R^\mathcal{N}$ 
-        for all $f \in \mathcal{F}$ and $a_1,\ldots,\, a_n$,
+        for all $f \in \mathcal{F}$ and $a_1,\ldots,\, a_{n_R}$ in $M$,
         \item $\mu(c^\mathcal{M}) = c^\mathcal{n}$ for all $c \in C$.
     \end{enumerate}
     In the case that $N \subseteq M$, 
@@ -547,7 +547,7 @@ One might think that this is function evaluation in the same sense which we usua
 However, since we will use Definition \ref{formula-def} of formulas in defining what truth means for a structure,
 we have to be similarly careful when defining term valuation.
 
-\begin{definition}\cite[1.3.13]{Cha90}
+\begin{definition}\cite[Definition 1.3.13]{Cha90}
     Let $t$ be a term in a language $\mathcal{L}$ dependent on variables $v_1,\ldots,\, v_n$.
     If $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ is an $\mathcal{L}$-structure,
     we define the \textit{value of the term} $t(v_1,\ldots,\, v_n)$ \textit{at} $\overline{a} = \left<a_1,\ldots,\, a_n\right> \in M^n$ the following way:
@@ -564,7 +564,7 @@ we have to be similarly careful when defining term valuation.
 We can then define what it means for a sentence to be true in an $\mathcal{L}$-structure:
 \begin{definition}\label{model-satisfaction-def}\cite[Definition 1.1.6]{Mar02}
     Let $\mathcal{M}$ be an $\mathcal{L}$-structure and let $\phi$ be a formula in $\mathcal{L}$ with free variables $\overline{v} = \left<v_1,\ldots,\, v_n\right>$.
-    We inductively define $\mathcal{M} \models \phi(\overline{a})$ and for $\overline{a} = \left<a_1,\ldots,\, a_n\right> \in M^n$.
+    We inductively define $\mathcal{M} \models \phi(\overline{a})$ for $\overline{a} = \left<a_1,\ldots,\, a_n\right> \in M^n$.
 
     \begin{enumerate}
         \item If $\phi$ is $t_1 = t_2$,
@@ -582,10 +582,10 @@ We can then define what it means for a sentence to be true in an $\mathcal{L}$-s
     We say that $\mathcal{M}$ \textit{satisfies} $\phi(\overline{a})$, whenever $\mathcal{M} \models \phi(\overline{a})$.
 \end{definition}
 
-The following propositions make sure that Definition \ref{model-satisfaction-def} is well-defined.
+The following propositions make sure that Definition \ref{model-satisfaction-def} is well defined.
 As such we ensure that model satisfaction of a formula is only dependent on the variables which are actually free in said formula.
-We also have that can restrict $\mathcal{L}$-structures and still have certain types of formulas be true.
-Both of the following propositions follow from induction on Definitions \ref{term-def}, \ref{formula-def} of terms and formulas.
+We also have that we can restrict $\mathcal{L}$-structures to a substructure and still have certain types of formulas be true.
+Both of the following propositions follow from induction on Definitions \ref{term-def} and \ref{formula-def} of terms and formulas.
 
 \begin{proposition}\cite[Proposition 1.3.16]{Cha90}
     Let $\mathcal{M} = \left(M,\, f^{\mathcal{M}},\, R^{\mathcal{M}},\, c^{\mathcal{M}}\right)$ be an $\mathcal{L}$-structure.
@@ -639,7 +639,7 @@ We can also define a type of equivalence between $\mathcal{L}$-structures.
 This is important, since like with algebraic structures we are more interested in the properties an $\mathcal{L}$-structure has rather how we name its elements.
 Definition \ref{elementary-eq-def} is very powerful when comparing models, this is used in Theorem \ref{elementary-eq-th} for example.
 The notion of an $\mathcal{L}$-isomorphism is more powerful, as the following proposition shows.
-Two isomorphic $\mathcal{L}$-structure are always elementary equivalent, however the converse only holds when the structures are finite \cite[Proposition 1.3.19]{Cha90}
+Two isomorphic $\mathcal{L}$-structures are always elementary equivalent, however the converse only holds when the structures are finite \cite[Proposition 1.3.19]{Cha90}.
 
 \begin{proposition}\label{elementary-eq-prop}\cite[Theorem 1.1.10]{Mar02}
     Let $\mathcal{M}$ and $\mathcal{N}$ be two $\mathcal{L}$-structures and suppose that $h: \mathcal{M} \to \mathcal{N}$ is an isomorphism.
@@ -710,7 +710,7 @@ One such example is of course the theory of \hyperref[groupoid-def]{groupoids}, 
     \begin{equation}\label{group-order-2-statement}
         T \not\models \exists x\, \exists y\, \exists z \ \left(x \neq y \wedge y \neq z \wedge x \neq z\right).
     \end{equation}
-    We then have that $$\mathbf{Z} / 2 \mathbf{Z} \models T \wedge \exists x\, \exists y\, \exists z \ \left(x \neq y \wedge y \neq z \wedge x \neq z\right).$$
+    We then have that $$\mathbb{Z} / 2 \mathbb{Z} \models T \wedge \exists x\, \exists y\, \exists z \ \left(x \neq y \wedge y \neq z \wedge x \neq z\right).$$
     Since this is the only group of order $2$, the above statement \eqref{group-order-2-statement} holds \cite[Proposition 1.2.13]{Mar02}.
 \end{example}
 \section{The Löwenheim-Skolem Theorem}
