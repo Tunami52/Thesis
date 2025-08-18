@@ -832,8 +832,7 @@ Those proofs are in turn comparatively straightforward; most of the complexity i
 
     Let $c,\, d \in C$ be two constants. 
     We define a relation $c \sim d$ if and only if the formula $c = d$ is in $T$.
-    This is indeed an equivalence relation.
-    Since $T$ is maximally consistent we have that the relation $\sim$ satisfies
+    This is indeed an equivalence relation: since $T$ is maximally consistent we have that the relation $\sim$ satisfies
     \begin{enumerate}[label=(\roman*)]
         \item $c \sim c$,
         \item if $c \sim d$ and $d \sim e$, then $c \sim e$,
@@ -891,7 +890,7 @@ Those proofs are in turn comparatively straightforward; most of the complexity i
         By the Identity Axioms
         \begin{multline}\label{function-congruence-eq}
             \vdash f(c_1,\ldots,\,c_{n_f}) = c \wedge (c_1 = d_1) \wedge \cdots \wedge (c_{n_R} = d_{n_R}) \wedge (c = d) \\
-            \rightarrow f(d_1,\ldots,\,d_{n_f})= d.
+            \rightarrow f(d_1,\ldots,\,d_{n_f})= d
         \end{multline}
         and as such the value of the function is unique with respect to the equivalence classes of $C$.
 
@@ -1001,7 +1000,7 @@ we can \emph{move down} and know that a model with lower power exists.
 
 Similarly, the Upward Löwenheim-Skolem Theorem states that if $T$ has an infinite model, it in fact has models of arbitrary infinite cardinality.
 This means that if we are able to model $T$ using, say, the natural numbers as the underlying set,
-we are also know that that an uncountable model of $T$ exists.
+we also know that an uncountable model of $T$ exists.
 This is the property we later make use of in the proof on Theorem \ref{main-thm}.
 As such the Upward Löwenheim-Skolem Theorem allows us to \emph{move up} in cardinality for models of $T$.
 
@@ -1046,7 +1045,7 @@ As such the Upward Löwenheim-Skolem Theorem allows us to \emph{move up} in card
 \end{proof}
 
 Lastly it should be pointed out, that we do indeed use the Axiom of Choice in the last proof.
-They way we arrange the constants in a sequence is not always possible without \textbf{AC}.
+The way we arrange the constants in a sequence is not always possible without \textbf{AC}.
 Additionally the comparability of sets is not given in \textbf{ZF}, which is the property that $\left\lvert X\right\rvert \leq \left\lvert Y\right\rvert$ or $\left\lvert X\right\rvert \geq \left\lvert Y\right\rvert$ holds for all set $X$ and $Y$.
 This is something the theorem implicitly assumes in its formulation.
 \end{document}

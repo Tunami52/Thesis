@@ -1,31 +1,32 @@
 \documentclass[../../main.tex]{subfiles}
 \begin{document}
-\begin{definition}\label{groupoid-def}[Groupoid]
+\begin{definition}[Groupoid]\label{groupoid-def}
     Let $G$ be a set.
-    We say that $G$ together with a binary operation $*$ is a \emph{(left) cancellative groupoid}, if 
+    We say that $G$ together with a binary operation $*$ is a \emph{right cancellative groupoid}, if 
     \begin{enumerate}[label=(\roman*)]
         \item \label{groupoid-axiom-1} for all $g,\, h \in G$ we have $g * h \in G$
         \item \label{groupoid-axiom-2} for all $g,\, h,\, k \in G$ we have $\left(g * h = k * h\right) \rightarrow g = k$.
     \end{enumerate}
-    Analogously $\left(G,\, *\right)$ is called right cancellative if we replace condition \ref{groupoid-axiom-2} by
-    $\forall g,\, h,\, k \in G \ \left(g * h = g * k\right) \rightarrow h = k$.
+    Analogously $\left(G,\, *\right)$ is called \emph{left cancellative} if we replace condition \ref{groupoid-axiom-2} by
+    \begin{enumerate}[label=(\roman*), resume]
+        \item \label{groupoid-axiom-3} for all $g,\, h,\, k \in G \ \left(g * h = g * k\right) \rightarrow h = k$.
+    \end{enumerate}
+    A groupoid is referred to as \emph{cancellative}, if it satisfies both left and right cancellative properties.
 
     Let $\mathcal{L} = \left\{*\right\}$ be the language containing only the binary function $*$.
     Then an $\mathcal{L}$-structure $M$ is a model of a cancellative groupoid, 
-    if and only if it satisfies the theory given by conditions \ref{groupoid-axiom-1}-\ref{groupoid-axiom-2}.
+    if and only if it satisfies the theory given by conditions \ref{groupoid-axiom-1}-\ref{groupoid-axiom-3}.
 \end{definition}
 An example of a cancellative groupoid (without identity and which is not a group) is the positive integers $\mathbb{Z}^+$ under addition.
 
 We now finally arrive at our main theorem.
-Note that in the proof of Theorem \ref{main-thm} it is not important weather a groupoid is left or right cancellative,
-but rather that it has some form of the cancellation property.
-In our case we choose to utilize a right cancellative groupoid.
+Note that in the proof of Theorem \ref{main-thm} it is important that the groupoid is both left and right cancellative.
 
 \begin{theorem}\cite{Haj72}\label{main-thm}
     The following are equivalent in ZF:
     \begin{enumerate}
-        \item The Axiom of Choice
-        \item Every non-empty set admits a cancellative groupoid structure
+        \item The Axiom of Choice.
+        \item Every non-empty set admits a cancellative groupoid structure.
     \end{enumerate}
 \end{theorem}
 
@@ -41,25 +42,26 @@ In our case we choose to utilize a right cancellative groupoid.
         This means that there exists no bijective mapping from $\alpha$ to any subset of $A$ (including $A$ itself).
         We then let $\left(B,\, R\right)$ be a well-ordered set of type $\alpha$ and such that $A \cap B = \varnothing$.
     
-        Now let $C$ be the set $C = A \cup B$, by assumption there exists some operation $+$, such that $\left(C,\ +\right)$ is a cancellative groupoid. %change notation!!
-        We will show that for every $x \in A$ there exists $y \in B$, such that $x + y \in B$ holds.
+        Now let $C$ be the set $C = A \cup B$, by assumption there exists some operation $*$, such that $\left(C,\ *\right)$ is a cancellative groupoid. %change notation!!
+        We will show that for every $x \in A$ there exists $y \in B$, such that $x * y \in B$ holds.
 
         Let us assume for a contradiction that the above claim does not hold.
-        This would imply that some $a \in A$ exists for which $a + y \in A$ holds for all $y \in B$.
-        Let $f: B \to A$ be the function defined by $f(y) = a + y$.
-        We have that $+$ is a cancellative groupoid operation, hence $f$ must be injective;
+        This would imply that some $a \in A$ exists for which $a * y \in A$ holds for all $y \in B$.
+        Let $f: B \to A$ be the function defined by $f(y) = a * y$.
+        We have that $*$ is a cancellative groupoid operation, hence $f$ must be injective;
         a contradiction by Theorem \ref{hartogs-lemma}, since we had assumed that $B$ is of type $\alpha$.
 
         We let $D = B \times B$ be the well-ordered set with respect to the lexicographical ordering $R'$ of $R$,
-        and define a function $g: A \to D$ by $$g(x) = \min_{R'} \left\{\left<u,\, v\right> \in D \,\vert\, x + u = v\right\}.$$
+        and define a function $g: A \to D$ by $$g(x) = \min_{R'} \left\{\left<u,\, v\right> \in D \,\vert\, x * u = v\right\}.$$
         
-        The function $g$ maps every element $x$ of $A$ to the least pair $\left<u,\, v\right>$ in $B \times B$ satisfying $x + u = v$.
+        The function $g$ maps every element $x$ of $A$ to the least pair $\left<u,\, v\right>$ in $B \times B$ satisfying $x * u = v$.
         From earlier in the proof we know that such a pair must exists and that $g$ must in fact be injective.
-        This again follows from $+$ being cancellative, since if $x_1,\, x_2$ are two elements of $A$, having $f(x_1) = f(x_2)$ would imply that
-        \begin{alignat*}{3}
-                        x_1 + u  &= \quad \ v     &=& \ x_2 + u \\
-            \iff \qquad x_1      &= \ v + u^{-1}\ &=& \ x_2     
-        \end{alignat*} 
+        This again follows from $*$ being cancellative, since if $x_1,\, x_2$ are two elements of $A$, having $f(x_1) = f(x_2)$ would imply that
+        $$x_1 * u = v = x_2 * u \, \iff \, x_1 = x_2$$
+        % \begin{alignat*}{3}
+        %                 x_1 * u  &= \quad \ v     &=& \ x_2 * u \\
+        %     \iff \qquad x_1      &= \ v * u^{-1}\ &=& \ x_2     
+        % \end{alignat*} 
         for some pair $\left<u,\, v\right> \in D$.
         Since $\mathbf{Im}(g)$ is a subset of $D$ it itself is a well-ordered set.
         As such we can define a well-order $R''$ on $A$ by letting $x_i R'' x_j$ whenever $g(x_i) R' g(x_j)$.
