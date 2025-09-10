@@ -11,6 +11,7 @@
   basicstyle={\small\ttfamily},
 }
 
+\usepackage{pdfpages}
 \usepackage{lu-thesis}
 % load after amsmath!
 % requires the memoir document class as well as the following packages:
@@ -68,6 +69,8 @@
 
 \begin{document}
 
+\includepdf[pages={1}]{cover_page_2025.pdf}
+
 %%%%% BEGIN cover page
 
 \author{Oskar Emmerich}
@@ -76,7 +79,7 @@
 \title{Group structure on arbitrary sets:\\An algebraic application of the Axiom of Choice}
 % the thesis' title
 
-\date{\today}
+\date{11th September 2025}
 % the thesis' hand-in date
 
 \maketitleLU{Bachelor's}{Anitha Thillaisundaram} % comment for master's thesis
@@ -103,6 +106,16 @@
 %%%%% END Abstract
 
 %%%%% BEGIN popsci description
+
+\chapter*{Acknowledgements}
+I would like to thank Anitha Thillaisundaram for being my thesis advisor and for all the helpful suggestions and feedback she provided.
+
+I would like to thank my family as well as my friends both in Lund and in Frankfurt. 
+I appreciate the patience and support you gave me during the entire writing process.
+I would also like to extend my thanks the regulars of the mathematics student council (MUR) room, where large parts of this thesis were conceptualized and written.
+You were there whenever I needed to explain something in order to understand it myself.
+
+Lastly I would like to thank Tomas Persson for taking the time to be my examiner.
 
 \chapter*{Popular science description}
 \addcontentsline{toc}{chapter}{Popular science description}
@@ -160,5 +173,7 @@
 \printbibliography
 
 %%%%% END references
+
+\includepdf[pages={2}]{cover_page_2025.pdf}
 
 \end{document}
