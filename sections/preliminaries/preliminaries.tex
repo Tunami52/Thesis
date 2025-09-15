@@ -26,8 +26,11 @@ For now we are only concerned with the language of sets defined above.
         \item $x = y$, or
         \item $x \in y$
     \end{enumerate}
-    A \textit{formula} $\phi$ is any combination of atomic formulas with logical connectives and quantifiers.
+    A \textit{formula} $\phi$ is any countable combination of atomic formulas with logical connectives and quantifiers.
 \end{definition}
+
+We go into more detail about formulas in Chapter \ref{model-theory}, introducing an inductive definition in Definition \ref{formula-def}.
+For now it is adequate to have anything that we are used being a valid formula be a formula in set theory.
 
 The symbols $x$ and $y$ above are called variables and for any two variables an atomic formula is either true or false for each $x$ and $y$.
 A variable \textit{occurs freely} inside of a formula if it does not appear inside of a $\exists$ or $\forall$ quantifier, otherwise the variable is \textit{bound}.
@@ -79,6 +82,9 @@ The formulation of the axioms below is based on both textbooks.
 \subsection{Axiom of Extensionality}\label{ZF1}
 $$\forall x\, \forall y\, \left(x = y \leftrightarrow \forall z \left(z \in x \leftrightarrow z \in y\right) \right)$$
 Two sets are equal if and only if they contain the same elements \cite[\S 4.3, p.76]{Gol17}.
+This is in fact the way we define equality between sets.
+As such if a set $x$ only contains elements which are also members of another set $y$ and $y$ only contains elements which are also elements of $x$, we write $x = y$.
+We can then view the names $x$ and $y$ as different labels for the same set.
 
 \subsection{Axiom of Pairs}\label{ZF2}
 $$\forall x\, \forall y\, \exists z\, \forall w\, \left( w \in z \leftrightarrow \left(w = x \vee w = y \right)\right)$$
@@ -208,14 +214,14 @@ Another important consequence of this is that there exist no infinitely descendi
 \section{The Axiom of Choice}
 To talk about the Axiom of Choice we need to first define what a choice function is, the concept which the axiom is centered around.
 \begin{definition}[Choice Function]\cite[p.38]{Jec78}
-    Let $S$ be a family of non-empty sets.
+    Let $S$ be a set of non-empty sets.
     A function $f: S \to \bigcup S$ is called a \textit{choice function} of $S$ if
     $$f(x) \in x$$
     holds for all sets $x \in S$.
 \end{definition}
 The Axiom of Choice is then defined as follows:
 \begin{definition}[Axiom of Choice]\cite[p.38]{Jec78}\label{choice-axiom}
-    There exists a choice function for every family of non-empty sets.
+    There exists a choice function for every set of non-empty sets.
 \end{definition}
 
 The Axiom of Choice is not always needed for showing that a choice function exists.

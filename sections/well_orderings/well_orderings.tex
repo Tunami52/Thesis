@@ -288,7 +288,10 @@ The notion of a \textit{transitive set} is not to be confused with that of a \te
 
 \begin{definition}\cite[p.14]{Jec78}
     A set is called an \textit{ordinal number} or \textit{ordinal} if it is transitive and well-ordered by $\in$.
-    We say $\alpha < \beta$ if and only if $\alpha \in \beta$.
+    We say $\alpha < \beta$ if and only if $\alpha \in \beta$.\footnote{       
+        Ordinals are sometimes also defined by being the equivalence class of all well-ordered sets which are order-isomorphic to each other.
+        However, then an ordinal can not be a member of the set it describes, making it a proper class and not a set, which in turn is not suited to our axiomatic treatment of set theory. 
+    }
 \end{definition}
 
 We can see that the set $3 = \left\{0,\, 1,\, 2\right\}$ from before is transitive.
@@ -393,7 +396,11 @@ This concept is generalized in the following theorem:
         \item if $\alpha \in \mathbf{C}$ is an ordinal, then $\alpha + 1 \in \mathbf{C}$,
         \item if $\alpha$ is a non-zero ordinal and $\beta \in \mathbf{C}$ holds for all $\beta < \alpha$, then $\alpha \in \mathbf{C}$.
     \end{enumerate}
-    Then $\mathbf{C}$ is the class of all ordinals.
+    Then $\mathbf{C}$ is the class of all ordinals.\footnote{
+        Note that $\mathbf{C}$ must indeed be a proper class:
+        if $\mathbf{C}$ was a set, then by definition it would also have to be an ordinal.
+        By the last criteria of the theorem this would make $\mathbf{C}$ a member of itself; a contradiction by the \hyperref[ZF9]{Axiom of Foundation}.
+    }
 \end{theorem}
 
 \begin{proof}
@@ -535,7 +542,7 @@ We follow the outline given in \cite{Haj72} for the proof of this lemma, the mor
 \begin{proof}
     We let the ordinal $\alpha$ take the following value:
     \begin{equation}\label{hartogs-lemma-ordinal}
-        \alpha = \bigcup \left\{\text{type}\left(X, R\right) + 1 \,\vert\, X \subseteq A, R \subseteq A \times A \wedge R\ \text{well-orders}\ A\right\}.
+        \alpha = \bigcup \left\{\text{type}\left(X, R\right) + 1 \,\vert\, X \subseteq A, R \subseteq A \times A \wedge R\ \text{well-orders}\ X\right\}.
     \end{equation}
     We will show that $\alpha$ is such that it satisfies the lemma's statement.
 

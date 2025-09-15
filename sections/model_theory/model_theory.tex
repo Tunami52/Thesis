@@ -658,7 +658,7 @@ Here $\overline{x} = \left<x_0,\ldots,\, x_p\right>$ is a sequence in $M$ and $\
 \subsection{Theories}
 \begin{definition}[Theory]\cite[\S.1.2]{Mar02}\cite[\S 1.4]{Cha90}
     We call a set $T$ of sentences in a language $\mathcal{L}$ a \emph{theory} in $\mathcal{L}$.
-    Further, we say that an $\mathcal{L}$-structure $\mathcal{M}$ is a \emph{model} of $T$,
+    Further, we say that an $\mathcal{L}$-structure $\mathcal{M}$ is a \emph{model} of $T$ and write $\mathcal{M} \models T$,
     if $\mathcal{M} \models \phi$ for all sentences $\phi \in T$.
     %
     % A theory $T$ is said to be \emph{closed} if it is closed under syntactic consequence $\models$.
@@ -726,9 +726,10 @@ The proof of this is very straightforward and mostly a corollary of the two afor
 
 \begin{definition}\label{witness-def}\cite[p.61]{Cha90}
     Let $T$ be a set of sentences in a language $\mathcal{L}$ and let $C \subseteq \mathcal{C}$ be a set of constant symbols of $\mathcal{L}$.
-    We then call $C$ a \emph{set of witnesses} for $T$ if and only if there exists some constant $c \in C$, such that
+    We then call $C$ a \emph{set of witnesses} for $T$ if and only if for all formulas $\phi$ of $\mathcal{L}$ which have at most a single free variable $x$ there exists some constant $c \in C$, 
+    such that
     $$T \vdash \big(\exists x \, \phi(x) \rightarrow \phi(c)\big)$$
-    holds for all formulas $\phi$ of $\mathcal{L}$ which have at most a single free variable $x$.
+    holds.
 \end{definition}
 
 It should be noted that this definition relates entirely to the syntax of $\mathcal{L}$, it does not have anything to do with $\mathcal{L}$-structures.
